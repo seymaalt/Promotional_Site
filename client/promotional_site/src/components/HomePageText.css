@@ -1,0 +1,24 @@
+/* HomePageText.css */
+.homePageText {
+    color: white;
+    /* Other common styles for the span container if needed */
+  }
+  
+  .firstParagraph {
+    font-weight: bold; /* Note: '15px' might be a wrong value, 'font-weight' usually takes keywords or numeric values */
+    /* Additional styles for the first paragraph */ 
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 45px;
+}
+
+.secondParagraph {
+    font-weight: 75px; /* Note: '15px' might be a wrong value, 'font-weight' usually takes keywords or numeric values */
+    /* Additional styles for the first paragraph */ 
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+}
+  /* Define different classes for different fonts */

@@ -1,14 +1,20 @@
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import backgroundImage from "../assets/bkd.jpg"; // Resminizin yolunu doğru bir şekilde belirtin
 import Grid from "@mui/material/Grid";
 import Input from "../components/Input";
+import Logo from "../components/Logo";
+import HomePageImage from "../components/HomePageImage";
+import HomePageText from "../components/HomePageText";
 
 const CustomBox = styled(Box)({
-  backgroundImage: `url(${backgroundImage})`,
-  backgroundSize: "cover", // Arka planın kaplamasını ayarlar
-  height: "103vh", // Box'un boyutunu ekran yüksekliği kadar yapılandırır
+  background: "linear-gradient(to right, #6C46AE, #A84DB0, #D84FB4)",
+  backgroundSize: "cover",
+  height: "103vh",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
 });
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -22,19 +28,25 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function AutoGrid() {
   return (
     <CustomBox>
+      <Logo />
       <Grid container spacing={3}>
-        <Grid item xs></Grid>
-        <Grid item xs={6} style={{marginTop:"280px"}}>
-          <Item>
-           
-            <div style={{ display: "flex" }}>
-              <p style={{ marginRight: "10px" }}>URL </p>
-              <Input style={{ flex: 1, marginLeft: "8px" }} />
-            </div>
-          </Item>
+        <Grid item xs={0.5}></Grid>
+        <Grid item xs={5} style={{ marginTop: "100px" }}>
+          <HomePageText></HomePageText>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <p style={{ marginRight: "10px", color: "white", fontFamily: 'Roboto, sans-serif', fontSize: "25px" }}>
+              URL
+            </p>
+            <Input style={{ flex: 1, marginLeft: "8px" }} />
+          </div>
         </Grid>
-        <Grid item xs></Grid>
-      </Grid>{" "}
+        <Grid item xs={1}></Grid>
+        <Grid item xs={4}>
+          <Box style={{ marginLeft: "50px" }}>
+            <HomePageImage></HomePageImage>
+          </Box>
+        </Grid>
+      </Grid>
     </CustomBox>
   );
 }
