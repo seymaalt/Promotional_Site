@@ -4,9 +4,9 @@ import Paper from "@mui/material/Paper";
 import backgroundImage from "../assets/bkd.jpg"; // Resminizin yolunu doğru bir şekilde belirtin
 import Grid from "@mui/material/Grid";
 import Input from "../components/Input";
-
+import Logo from '../components/Logo'
 const CustomBox = styled(Box)({
-  backgroundImage: `url(${backgroundImage})`,
+  background: "linear-gradient(to right, #192a56, #5c258d, #192a56)", // İstediğiniz renk geçişini burada tanımlayın
   backgroundSize: "cover", // Arka planın kaplamasını ayarlar
   height: "103vh", // Box'un boyutunu ekran yüksekliği kadar yapılandırır
 });
@@ -22,13 +22,14 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function AutoGrid() {
   return (
     <CustomBox>
+      <Logo></Logo>
       <Grid container spacing={3}>
         <Grid item xs></Grid>
-        <Grid item xs={6} style={{marginTop:"280px"}}>
+        <Grid item xs={6} style={{marginTop:"180px"}}>
           <Item>
            
             <div style={{ display: "flex" }}>
-              <p style={{ marginRight: "10px" }}>URL </p>
+              <p style={{ marginRight: "10px",  fontWeight: "bold" , color:"black"}}>URL </p>
               <Input style={{ flex: 1, marginLeft: "8px" }} />
             </div>
           </Item>

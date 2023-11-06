@@ -33,7 +33,7 @@ const MyButton = styled(Button)({
   });
 const MyComponent = () => {
   const handleGenerate = () => {
-    console.log('Generate button clicked');
+    
   };
 
   return (
