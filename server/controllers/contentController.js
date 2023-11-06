@@ -4,9 +4,9 @@ const express = require("express");
 
 const getContact = asyncHandler(async (req, res) => {
   try {
-    const id = req.body;
+    const id = req.body.data;
     console.log(id.data);
-    const url = `https://play.google.com/store/apps/details?id=${id.data}`;
+    const url = `https://play.google.com/store/apps/details?id=${id}`;
     const browser = await puppeteer.launch({ headless: "new" });
     const page = await browser.newPage();
     await page.goto(url);
@@ -87,8 +87,8 @@ const getContact = asyncHandler(async (req, res) => {
       return img.map((x) => x.src)
     });
 
-    res.status(200).json({ description: description, header: header, dataSecurity: dataSecurity, innovations: innovations });
-    console.log({ description: description,header:header,dataSecurity:dataSecurity,innovations:innovations });
+    res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, star: star, download: download, logo: logo, images: images });
+    console.log({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, star: star, download: download, logo: logo, images: images });
 
     await browser.close();
   } catch (error) {
