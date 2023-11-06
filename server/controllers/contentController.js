@@ -4,7 +4,8 @@ const express = require("express");
 
 const getContact = asyncHandler(async (req, res) => {
   try {
-    const id = req.params.id;
+    const id = req.body;
+    console.log(id);
     const url = `https://play.google.com/store/apps/details?id=${id}`;
     const browser = await puppeteer.launch({ headless: "new" });
     const page = await browser.newPage();
