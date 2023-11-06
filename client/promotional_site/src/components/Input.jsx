@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -32,13 +33,27 @@ const MyButton = styled(Button)({
     },
   });
 const MyComponent = () => {
-  const handleGenerate = () => {
+  const [inputValue, setInputValue] = useState()
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value)
+  }
+  const [response, setResponse] = useState()
+  const handleGenerate = async () => {
+
+    try {
+      console.log("Sending Value:", inputValue)
+      const response = await axios.post("http://localhost:3000/content/", {
+        data:inputValue,
+      })
+    } catch (error) {
+      console.error("Error fetching data from server!!!!!!", error)
+    }
     console.log('Generate button clicked');
   };
 
   return (
     <Container>
-      <MyTextField variant="outlined" />
+      <MyTextField variant="outlined" onChange={handleInputChange} />
       <MyButton variant="contained" color="primary" onClick={handleGenerate}>
         Generate
       </MyButton>

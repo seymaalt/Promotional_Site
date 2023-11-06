@@ -5,6 +5,6 @@ const {
 } = require("../controllers/contentController");
 
 
-routes.route("/:id").get(getContact);
+routes.route("/").post(getContact);
 
 module.exports = routes;

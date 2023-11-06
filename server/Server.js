@@ -1,11 +1,22 @@
 const express = require("express");
+const bodyParser = require('body-parser');
 const asyncHandler = require("express-async-handler");
+const cors = require('cors')
 const dotenv = require("dotenv").config();
 const contentRoutes = require("./routes/contentRoutes")
 const app = express();
 
-app.use(express.json());
+const corsOptions = {
+  origin: 'http://localhost:5173', // İstemcinin çalıştığı adres
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
 
+//app.use(express.json());
+
+app.use(bodyParser.json());
 
 app.use("/content",contentRoutes);
 
