@@ -11,55 +11,53 @@ const getContact = asyncHandler(async (req, res) => {
     const page = await browser.newPage();
     await page.goto(url);
 
-   
-    
-   const innovations = await page.evaluate(() => {
-    const innovationsElement = document.evaluate(
-      '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[2]/div[2]/div/div[1]/div[1]/c-wiz[5]/section/div/div',
-      document,
-      null,
-      XPathResult.FIRST_ORDERED_NODE_TYPE,
-      null
-    );
+    const innovations = await page.evaluate(() => {
+      const innovationsElement = document.evaluate(
+        '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[2]/div[2]/div/div[1]/div[1]/c-wiz[5]/section/div/div',
+        document,
+        null,
+        XPathResult.FIRST_ORDERED_NODE_TYPE,
+        null
+      );
 
-    if (innovationsElement.singleNodeValue) {
-      return innovationsElement.singleNodeValue.textContent;
-    } else {
-      return "innovations not found";
-    }
-  });
+      if (innovationsElement.singleNodeValue) {
+        return innovationsElement.singleNodeValue.textContent;
+      } else {
+        return "Innovations not found";
+      }
+    });
 
     const dataSecurity = await page.evaluate(() => {
-        const dataSecurityElement = document.evaluate(
-          '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[2]/div[2]/div/div[1]/div[1]/c-wiz[3]/section/div',
-          document,
-          null,
-          XPathResult.FIRST_ORDERED_NODE_TYPE,
-          null
-        );
-    
-        if (dataSecurityElement.singleNodeValue) {
-          return dataSecurityElement.singleNodeValue.textContent;
-        } else {
-          return "data Security not found";
-        }
-      });
+      const dataSecurityElement = document.evaluate(
+        '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[2]/div[2]/div/div[1]/div[1]/c-wiz[3]/section/div',
+        document,
+        null,
+        XPathResult.FIRST_ORDERED_NODE_TYPE,
+        null
+      );
 
-  const header = await page.evaluate(() => {
-    const headerElement = document.evaluate(
-      '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[2]/div[1]/div/div/c-wiz/div[2]/div[1]/div/h1',
-      document,
-      null,
-      XPathResult.FIRST_ORDERED_NODE_TYPE,
-      null
-    );
+      if (dataSecurityElement.singleNodeValue) {
+        return dataSecurityElement.singleNodeValue.textContent;
+      } else {
+        return "Data Security not found";
+      }
+    });
 
-    if (headerElement.singleNodeValue) {
-      return headerElement.singleNodeValue.textContent;
-    } else {
-      return "header not found";
-    }
-  });
+    const header = await page.evaluate(() => {
+      const headerElement = document.evaluate(
+        '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[2]/div[1]/div/div/c-wiz/div[2]/div[1]/div/h1',
+        document,
+        null,
+        XPathResult.FIRST_ORDERED_NODE_TYPE,
+        null
+      );
+
+      if (headerElement.singleNodeValue) {
+        return headerElement.singleNodeValue.textContent;
+      } else {
+        return "Header not found";
+      }
+    });
 
     const description = await page.evaluate(() => {
       const descriptionElement = document.evaluate(
@@ -76,9 +74,20 @@ const getContact = asyncHandler(async (req, res) => {
         return "Description not found";
       }
     });
-   
 
-    res.status(200).json({ description: description,header:header,dataSecurity:dataSecurity,innovations:innovations });
+    const downloadElement = await page.$eval(".JU1wdd", (str) => str.textContent);
+    const download = downloadElement.split("m", 2)[1].split("İ", 1)[0];
+
+    const starElement = await page.$eval(".TT9eCd", (str) => str.textContent);
+    const star = starElement.split("s", 1)[0];
+
+    const logo = await page.$eval(".nm4vBd", (img) => img.src);
+
+    const images = await page.$$eval(".B5GQxf", (img) => {
+      return img.map((x) => x.src)
+    });
+
+    res.status(200).json({ description: description, header: header, dataSecurity: dataSecurity, innovations: innovations });
     console.log({ description: description,header:header,dataSecurity:dataSecurity,innovations:innovations });
 
     await browser.close();
