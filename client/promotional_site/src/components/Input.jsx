@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
@@ -35,9 +34,28 @@ const MyButton = styled(Button)({
 });
 
 const MyComponent = () => {
-  const [url, setUrl] = useState('');
   const [typedText, setTypedText] = useState('');
   const initialText = 'Enter the URL...';
+  const [inputValue, setInputValue] = useState();
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value)
+  }
+  const [response, setResponse] = useState()
+  const handleGenerate = async () => {
+
+    try {
+      console.log("Sending Value:", inputValue)
+      const response = await axios.post("http://localhost:3000/content/", {
+        data: inputValue,
+      })
+    } catch (error) {
+      console.error("Error fetching data from server!!!!!!", error)
+    }
+    console.log('Generate button clicked');
+  };
+
+
 
   useEffect(() => {
     let index = 0;
@@ -52,29 +70,10 @@ const MyComponent = () => {
     return () => clearInterval(textInterval);
   }, []);
 
-  const handleUrlChange = (event) => {
-    setUrl(event.target.value);
-  const [inputValue, setInputValue] = useState()
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value)
-  }
-  const [response, setResponse] = useState()
-  const handleGenerate = async () => {
-
-    try {
-      console.log("Sending Value:", inputValue)
-      const response = await axios.post("http://localhost:3000/content/", {
-        data:inputValue,
-      })
-    } catch (error) {
-      console.error("Error fetching data from server!!!!!!", error)
-    }
-    console.log('Generate button clicked');
-  };
 
   return (
     <Container>
-      <MyTextField variant="outlined" onChange={handleUrlChange} placeholder={typedText} />
+      <MyTextField variant="outlined" onChange={handleInputChange} placeholder={typedText} />
       <MyButton variant="contained" color="primary" onClick={handleGenerate}>
         Generate
       </MyButton>
