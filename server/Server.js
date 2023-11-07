@@ -7,20 +7,18 @@ const contentRoutes = require("./routes/contentRoutes")
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // İstemcinin çalıştığı adres
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
 };
+
 app.use(cors(corsOptions));
 
-//app.use(express.json());
+app.use(express.json());
 
 app.use(bodyParser.json());
 
-app.use("/content",contentRoutes);
-
-
+app.use("/content", contentRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
