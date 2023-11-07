@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import  { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import PromotionalSite from '../pages/PromotionalSite.jsx';
-import { createBrowserHistory } from 'history';
+import  GlobalContext  from '../context/GlobalContext.jsx';
+import { useNavigate } from "react-router-dom";
 
 const Container = styled('div')({
   display: 'flex',
@@ -36,28 +37,28 @@ const MyButton = styled(Button)({
 });
 
 const MyComponent = () => {
+  const { response,setResponse } = useContext(GlobalContext);
   const [typedText, setTypedText] = useState('');
   const initialText = 'Enter the URL...';
   const [inputValue, setInputValue] = useState('');
-  const [response, setResponse] = useState(null);
   const [renderDetail, setRenderDetail] = useState(false);
-
+  //const [responseData, setResponseData] = useState(null);
+  const navigate = useNavigate();
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
   const handleGenerate = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/content/", {
+      const res = await axios.post('http://localhost:3000/content/', {
         data: inputValue,
       });
-      setResponse(response.data);
-      console.log(response.data);
-      setRenderDetail(true);
-      window.location.href = '/promotional-site'; // Sayfa yolunu değiştirmek için yeni yola ('/promotional-site') git
 
+      setRenderDetail(true);
+      setResponse(res.data);
+      navigate( '/promotional-site');
     } catch (error) {
-      console.error("Sunucudan veri alınırken hata oluştu!!!!!!", error);
+      console.error('Sunucudan veri alınırken hata oluştu!!!!!!', error);
     }
   };
 
@@ -77,11 +78,17 @@ const MyComponent = () => {
   return (
     <div>
       <Container>
-        <MyTextField variant="outlined" onChange={handleInputChange} placeholder={typedText} />
+        <MyTextField
+          variant="outlined"
+          onChange={handleInputChange}
+          placeholder={typedText}
+        />
         <MyButton variant="contained" color="primary" onClick={handleGenerate}>
           Generate
         </MyButton>
       </Container>
+    
+      {renderDetail && <PromotionalSite responseData={response} />}
     </div>
   );
 };

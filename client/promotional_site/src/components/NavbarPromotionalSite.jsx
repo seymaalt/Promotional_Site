@@ -1,9 +1,7 @@
 import React from 'react'
 
-export default function NavbarPromotionalSite({responseData}) {
+export default function NavbarPromotionalSite({ responseData }) {
   return (
-    <div>
-      
-    </div>
+    <div>NavbarPromotionalSite {responseData.header}</div>
   )
 }

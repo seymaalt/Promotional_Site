@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function SliderPromotionalSite({responseData}) {
+export default function SliderPromotionalSite() {
   return (
-    <div>SliderPromotionalSite {responseData.header}</div>
+    <div>SliderPromotionalSite</div>
   )
 }
