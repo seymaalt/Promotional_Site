@@ -27,7 +27,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function AutoGrid() {
   return (
-    <CustomBox>
+    <CustomBox >
       <Logo />
       <Grid container spacing={3}>
         <Grid item xs={0.5}></Grid>
