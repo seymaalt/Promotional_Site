@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function LogoPromotionalSite({responseData}) {
+export default function LogoPromotionalSite() {
   return (
     <div>LogoPromotionalSite</div>
   )
