@@ -3,7 +3,7 @@ import axios from 'axios';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-
+import PromotionalSite from '../pages/PromotionalSite.jsx'
 const Container = styled('div')({
   display: 'flex',
   width: 'fit-content',
@@ -49,6 +49,9 @@ const MyComponent = () => {
       const response = await axios.post("http://localhost:3000/content/", {
         data: inputValue,
       })
+      console.log('Response from server:', response.data);
+       setResponse(response.data);
+       console.log(response.data);
     } catch (error) {
       console.error("Error fetching data from server!!!!!!", error)
     }
@@ -72,13 +75,17 @@ const MyComponent = () => {
 
 
   return (
-    <Container>
-      <MyTextField variant="outlined" onChange={handleInputChange} placeholder={typedText} />
-      <MyButton variant="contained" color="primary" onClick={handleGenerate}>
-        Generate
-      </MyButton>
-    </Container>
+    <div>
+      <Container>
+        <MyTextField variant="outlined" onChange={handleInputChange} placeholder={typedText} />
+        <MyButton variant="contained" color="primary" onClick={handleGenerate}>
+          Generate
+        </MyButton>
+      </Container>
+      {false && <PromotionalSite responseData={response.data} />}
+    </div>
   );
+  
 };
 
 export default MyComponent;

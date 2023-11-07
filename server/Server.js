@@ -7,7 +7,6 @@ const contentRoutes = require("./routes/contentRoutes")
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // İstemcinin çalıştığı adres
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
