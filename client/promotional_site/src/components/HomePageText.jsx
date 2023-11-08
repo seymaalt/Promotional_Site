@@ -4,7 +4,7 @@ export default function SearchAppBar() {
   return (
     <span className="homePageText"> {/* Assign a class name for styling */}
       <p className="firstParagraph" >Access your application promotion page with one click</p>
-      <p className="secondParagraph">Enter the URL of the application in Google Play or App Store and see the result.</p>
+      <p className="secondParagraph">Enter the URL of the application in Google Play see the result.</p>
     </span>
   );
 }

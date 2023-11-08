@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
+import  { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import PromotionalSite from '../pages/PromotionalSite.jsx'
+import PromotionalSite from '../pages/PromotionalSite.jsx';
+import  GlobalContext  from '../context/GlobalContext.jsx';
+import { useNavigate } from "react-router-dom";
+
 const Container = styled('div')({
   display: 'flex',
   width: 'fit-content',
@@ -34,31 +37,30 @@ const MyButton = styled(Button)({
 });
 
 const MyComponent = () => {
+  const { response,setResponse } = useContext(GlobalContext);
   const [typedText, setTypedText] = useState('');
   const initialText = 'Enter the URL...';
-  const [inputValue, setInputValue] = useState();
-
+  const [inputValue, setInputValue] = useState('');
+  const [renderDetail, setRenderDetail] = useState(false);
+  //const [responseData, setResponseData] = useState(null);
+  const navigate = useNavigate();
   const handleInputChange = (event) => {
-    setInputValue(event.target.value)
-  }
-  const [response, setResponse] = useState()
-  const handleGenerate = async () => {
-
-    try {
-      console.log("Sending Value:", inputValue)
-      const response = await axios.post("http://localhost:3000/content/", {
-        data: inputValue,
-      })
-      console.log('Response from server:', response.data);
-       setResponse(response.data);
-       console.log(response.data);
-    } catch (error) {
-      console.error("Error fetching data from server!!!!!!", error)
-    }
-    console.log('Generate button clicked');
+    setInputValue(event.target.value);
   };
 
+  const handleGenerate = async () => {
+    try {
+      const res = await axios.post('http://localhost:3000/content/', {
+        data: inputValue,
+      });
 
+      setRenderDetail(true);
+      setResponse(res.data);
+      navigate( '/promotional-site');
+    } catch (error) {
+      console.error('Sunucudan veri alınırken hata oluştu!!!!!!', error);
+    }
+  };
 
   useEffect(() => {
     let index = 0;
@@ -73,19 +75,22 @@ const MyComponent = () => {
     return () => clearInterval(textInterval);
   }, []);
 
-
   return (
     <div>
       <Container>
-        <MyTextField variant="outlined" onChange={handleInputChange} placeholder={typedText} />
+        <MyTextField
+          variant="outlined"
+          onChange={handleInputChange}
+          placeholder={typedText}
+        />
         <MyButton variant="contained" color="primary" onClick={handleGenerate}>
           Generate
         </MyButton>
       </Container>
-      {false && <PromotionalSite responseData={response.data} />}
+    
+      {renderDetail && <PromotionalSite responseData={response} />}
     </div>
   );
-  
 };
 
 export default MyComponent;
