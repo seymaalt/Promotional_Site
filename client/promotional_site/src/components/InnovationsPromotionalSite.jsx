@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function InnovationsPromotionalSite({responseData}) {
+export default function InnovationsPromotionalSite() {
   return (
     <div>InnovationsPromotionalSite</div>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function DataSecurityPromotionalSite({responseData}) {
+export default function DataSecurityPromotionalSite() {
   return (
     <div>DataSecurityPromotionalSite</div>
   )
