@@ -7,6 +7,8 @@ import PromotionalSite from '../pages/PromotionalSite.jsx';
 import  GlobalContext  from '../context/GlobalContext.jsx';
 import { useNavigate } from "react-router-dom";
 
+
+
 const Container = styled('div')({
   display: 'flex',
   width: 'fit-content',
@@ -50,7 +52,7 @@ const MyComponent = () => {
 
   const handleGenerate = async () => {
     try {
-      const res = await axios.post('http://localhost:3000/content/', {
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/content/`, {
         data: inputValue,
       });
 
