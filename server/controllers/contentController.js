@@ -65,7 +65,7 @@ const getContact = asyncHandler(async (req, res) => {
       const logo = await page.$eval(".nm4vBd", (img) => img.src);
 
       const images = await page.$$eval(".B5GQxf", (img) => {
-        return img.map((x) => x.src)
+        return img.map((x) => x.srcset.split(" ", 1))
       });
 
       res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images });
