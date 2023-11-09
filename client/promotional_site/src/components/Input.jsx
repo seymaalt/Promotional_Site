@@ -1,10 +1,10 @@
-import  { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import PromotionalSite from '../pages/PromotionalSite.jsx';
-import  GlobalContext  from '../context/GlobalContext.jsx';
+import GlobalContext from '../context/GlobalContext.jsx';
 import { useNavigate } from "react-router-dom";
 
 const Container = styled('div')({
@@ -37,7 +37,7 @@ const MyButton = styled(Button)({
 });
 
 const MyComponent = () => {
-  const { response,setResponse } = useContext(GlobalContext);
+  const { response, setResponse } = useContext(GlobalContext);
   const [typedText, setTypedText] = useState('');
   const initialText = 'Enter the URL...';
   const [inputValue, setInputValue] = useState('');
@@ -56,7 +56,7 @@ const MyComponent = () => {
 
       setRenderDetail(true);
       setResponse(res.data);
-      navigate( '/promotional-site');
+      navigate('/promotional-site');
     } catch (error) {
       console.error('Sunucudan veri alınırken hata oluştu!!!!!!', error);
     }
@@ -87,7 +87,7 @@ const MyComponent = () => {
           Generate
         </MyButton>
       </Container>
-    
+
       {renderDetail && <PromotionalSite responseData={response} />}
     </div>
   );
