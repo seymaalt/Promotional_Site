@@ -31,10 +31,10 @@ export default function Navbar({ responseData }) {
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll>
-        <AppBar position="fixed" style={{ background: 'white' }}>
+        <AppBar position="fixed" style={{ backgroundColor: 'white' }}>
           <Toolbar>
             <Typography variant="h2" fontWeight="fontWeightBold" fontSize="30px" lineHeight="30.24px" color="black" sx={{ margin: 'auto' }}>
-              {responseData.header.toUpperCase()}
+              {responseData.header.toUpperCase()} 
             </Typography>
           </Toolbar>
         </AppBar>

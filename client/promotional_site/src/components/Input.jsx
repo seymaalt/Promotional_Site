@@ -42,8 +42,9 @@ const MyComponent = () => {
   const initialText = 'Enter the URL...';
   const [inputValue, setInputValue] = useState('');
   const [renderDetail, setRenderDetail] = useState(false);
-  //const [responseData, setResponseData] = useState(null);
   const navigate = useNavigate();
+
+  
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
