@@ -1,13 +1,13 @@
-import  { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import PromotionalSite from '../pages/PromotionalSite.jsx';
-import  GlobalContext  from '../context/GlobalContext.jsx';
+import GlobalContext from '../context/GlobalContext.jsx';
 import { useNavigate } from "react-router-dom";
-
-
+import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from '@mui/material/Backdrop';
 
 const Container = styled('div')({
   display: 'flex',
@@ -39,18 +39,20 @@ const MyButton = styled(Button)({
 });
 
 const MyComponent = () => {
-  const { response,setResponse } = useContext(GlobalContext);
+  const { response, setResponse } = useContext(GlobalContext);
   const [typedText, setTypedText] = useState('');
+  const [loading, setLoading] = useState(false);
   const initialText = 'Enter the URL...';
   const [inputValue, setInputValue] = useState('');
   const [renderDetail, setRenderDetail] = useState(false);
-  //const [responseData, setResponseData] = useState(null);
   const navigate = useNavigate();
+
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
   const handleGenerate = async () => {
+    setLoading(true);
     try {
       const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/content/`, {
         data: inputValue,
@@ -58,9 +60,11 @@ const MyComponent = () => {
 
       setRenderDetail(true);
       setResponse(res.data);
-      navigate( '/promotional-site');
+      navigate('/promotional-site');
     } catch (error) {
-      console.error('Sunucudan veri alınırken hata oluştu!!!!!!', error);
+      console.error('Error fetching data from the server!', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -84,12 +88,20 @@ const MyComponent = () => {
           variant="outlined"
           onChange={handleInputChange}
           placeholder={typedText}
+          autoComplete="off"
+          InputProps={{ autoCapitalize: 'none' }}
         />
         <MyButton variant="contained" color="primary" onClick={handleGenerate}>
           Generate
         </MyButton>
       </Container>
-    
+
+      {loading && (
+        <Backdrop open={true} style={{ zIndex: 1, color: '#fff', backdropFilter: 'blur(4px)' }}>
+          <CircularProgress style={{ color: '#fff', width: '100px', height: '100px' }} />
+        </Backdrop>
+      )}
+
       {renderDetail && <PromotionalSite responseData={response} />}
     </div>
   );
