@@ -24,7 +24,7 @@ const FooterPromotionalSite = () => {
 
   return (
     <footer style={footerStyle}>
-      <div >
+     <div >
         <Toolbar style={{ textAlign: "left" }}>
           <Typography variant="body2" >
             <Link
@@ -38,7 +38,7 @@ const FooterPromotionalSite = () => {
             © {new Date().getFullYear()}
           </Typography>
         </Toolbar>
-      </div>
+    </div>
     </footer>
   );
 };

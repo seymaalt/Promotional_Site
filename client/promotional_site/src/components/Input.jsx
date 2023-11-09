@@ -47,6 +47,7 @@ const MyComponent = () => {
   const [renderDetail, setRenderDetail] = useState(false);
   const navigate = useNavigate();
 
+
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -96,11 +97,13 @@ const MyComponent = () => {
         </MyButton>
       </Container>
 
+
       {loading && (
         <Backdrop open={true} style={{ zIndex: 1, color: '#fff', backdropFilter: 'blur(4px)' }}>
           <CircularProgress style={{ color: '#fff', width: '100px', height: '100px' }} />
         </Backdrop>
       )}
+
 
       {renderDetail && <PromotionalSite responseData={response} />}
     </div>
