@@ -7,6 +7,10 @@ const linkLogger = createLogger({
             level: "info",
             format: format.combine(format.timestamp(), format.json())
         }),
+    ]
+})
+const linkErrorLogger = createLogger({
+    transports: [
         new transports.File({
             filename: 'logs/error.log',
             level: "error",
@@ -15,4 +19,4 @@ const linkLogger = createLogger({
     ]
 })
 
-module.exports = { linkLogger }
+module.exports = { linkLogger, linkErrorLogger }
