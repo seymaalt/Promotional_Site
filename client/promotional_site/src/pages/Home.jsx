@@ -10,7 +10,7 @@ import HomePageText from "../components/HomePageText";
 const CustomBox = styled(Box)({
   background: "linear-gradient(to right, #6C46AE, #A84DB0, #D84FB4)",
   backgroundSize: "cover",
-  height: "103vh",
+  height: "100vh",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
