@@ -1,10 +1,9 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
-import { motion } from 'framer-motion';
-import styles from '../styles';
-import { navVariants } from '../utils/motion';
 import Typography from '@mui/material/Typography';
-
+import { motion } from 'framer-motion';
+import styles from '../../styles';
+import { navVariants } from '../../utils/motion';
 import './InnovationsSite.css'
 
 const AnimatedText = ({ text }) => {
@@ -22,9 +21,7 @@ const AnimatedText = ({ text }) => {
     </div>
   );
 };
-
-export default function InnovationsPromotionalSite({ responseData }) {
-
+export default function DataSecurityPromotionalSite({ responseData }) {
   return (
     <motion.nav variants={navVariants}
       initial="hidden"
@@ -34,12 +31,12 @@ export default function InnovationsPromotionalSite({ responseData }) {
         <div className="scroll-container">
           <div className="text-box">
             <Typography variant="h2" fontWeight="fontWeightBold" fontSize="30px" lineHeight="30.24px" color="black" sx={{ margin: 'auto' }} className='text-box' >
-              YENILIKLER
+              VERI GUVENLIGI
             </Typography>
-            <AnimatedText text={responseData.innovations} />
+            <AnimatedText text={responseData.dataSecurity} />
           </div>
         </div>
       </div>
     </motion.nav>
   )
-};
+}

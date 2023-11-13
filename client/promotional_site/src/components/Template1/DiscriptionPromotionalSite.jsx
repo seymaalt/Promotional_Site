@@ -2,8 +2,8 @@ import React from 'react'
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import { motion } from 'framer-motion';
-import styles from '../styles';
-import { navVariants } from '../utils/motion';
+import styles from '../../styles';
+import { navVariants } from '../../utils/motion';
 import Grid from "@mui/material/Grid";
 import './DiscriptionPromotionalSite.css';
 
