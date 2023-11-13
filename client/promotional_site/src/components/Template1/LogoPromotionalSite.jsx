@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from 'framer-motion';
-import { navVariants } from '../utils/motion';
-import styles from '../styles';
+import { navVariants } from '../../utils/motion';
+import styles from '../../styles';
 
 export default function LogoPromotionalSite({ responseData }) {
   return (

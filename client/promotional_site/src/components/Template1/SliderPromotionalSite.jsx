@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion';
-import styles from '../styles';
-import { navVariants } from '../utils/motion';
+import styles from '../../styles';
+import { navVariants } from '../../utils/motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
