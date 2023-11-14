@@ -18,28 +18,30 @@ export default function PromotionalSite() {
       <Color src={response.logo} crossOrigin="anonymous" format="hex">
         {({ data }) => {
           return (
-            <div style={{ backgroundColor: data, height: "100vh" }}>
-              <LogoPromotionalSite responseData={response} />
-              <HeaderPromotionalSite responseData={response}></HeaderPromotionalSite>
-              <div style={{ marginTop: '1%', marginInlineStart: "20%", marginInlineEnd: "20%", justifyContent: "center" }}>
-                <DiscriptionPromotionalSite responseData={response} />
+            <div>
+              <div style={{ backgroundColor: data, minHeight: "100vh" }}>
+                <LogoPromotionalSite responseData={response} />
+                <HeaderPromotionalSite responseData={response}></HeaderPromotionalSite>
+                <div style={{ marginTop: '1%', marginInlineStart: "20%", marginInlineEnd: "20%", justifyContent: "center" }}>
+                  <DiscriptionPromotionalSite responseData={response} />
+                </div>
+                <div style={{ marginTop: '2%', marginInlineEnd: "30%", marginInlineStart: "30%" }}>
+                  <DownloadButton responseData={response}></DownloadButton>
+                </div>
               </div>
-              <div style={{ marginTop: '2%', marginInlineEnd: "30%", marginInlineStart: "30%" }}>
-                <DownloadButton responseData={response}></DownloadButton>
+              <div style={{ minHeight: "100vh" }}>
+                <GalleryPromotionalSite responseData={response} colorData={data} />
               </div>
+              <div style={{ minHeight: "100vh" }}>
+                <InnovationsPromotionalSite responseData={response} colorData={data} />
+                <div style={{ height: "60px" }}></div>
+                <DataSecurityPromotionalSite responseData={response} colorData={data} />
+              </div>
+              <FooterPromotionalSite responseData={response} />
             </div>
           );
         }}
       </Color>
-      <div style={{ height: "100vh" }}>
-        <GalleryPromotionalSite responseData={response} />
-      </div>
-      <div style={{ height: "100vh" }}>
-        <InnovationsPromotionalSite responseData={response} />
-        <DataSecurityPromotionalSite responseData={response} />
-      </div>
-      <FooterPromotionalSite responseData={response} />
-
     </div>
   );
 }
