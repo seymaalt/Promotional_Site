@@ -12,8 +12,8 @@ export default function DiscriptionPromotionalSite({ responseData }) {
     <motion.nav variants={navVariants}
       initial="hidden"
       whileInView="show">
-      <div className='container'>
-        <Grid container style={{ justifyContent: "center", color: "white" }}>
+      <div className='container2'>
+        <Grid container style={{ justifyContent: "center" }}>
           <p className='discription'>{responseData.description}</p>
         </Grid>
       </div>
