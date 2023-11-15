@@ -114,18 +114,15 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Kayıt Ol
+        <Typography component="h1" fontWeight="bold" variant="h5">
+            Register
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <FormControl sx={{ m: 1, width: "40ch" }} variant="outlined">
                   <InputLabel htmlFor="outlined-adornment-password">
-                    Kullanıcı Adı
+                    Name
                   </InputLabel>
                   <OutlinedInput
                     required
@@ -143,7 +140,7 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <FormControl sx={{ m: 1, width: "40ch" }} variant="outlined">
                   <InputLabel htmlFor="outlined-adornment-password">
-                    E-Posta
+                    Email
                   </InputLabel>
                   <OutlinedInput
                     required
@@ -160,7 +157,7 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <FormControl sx={{ m: 1, width: "40ch" }} variant="outlined">
                   <InputLabel htmlFor="outlined-adornment-password">
-                    Şifre
+                   Password
                   </InputLabel>
                   <OutlinedInput
                     required
@@ -198,16 +195,12 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              style={{ backgroundColor:'#6D46AE',fontWeight:"bold"}}
+             
             >
-              Kayıt Ol
+              Register
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="" variant="body2">
-                  Zaten bir hesabım var.
-                </Link>
-              </Grid>
-            </Grid>
+           
           </Box>
         </Box>
       </Container>

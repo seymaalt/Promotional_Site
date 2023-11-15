@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 const AuthContext = createContext({
-  isAuthenticated: false,
+  isAuthenticated: localStorage.getItem('token') || null,
   token: null,
   setToken : () => {},
   setIsAuthenticated: () => {},

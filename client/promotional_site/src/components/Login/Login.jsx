@@ -67,11 +67,14 @@ const Login = () => {
      axios.post('http://localhost:3000/user/login', { email, password })
         .then(result => {
           console.log(result)
+          const jwtToken = result.data.accessToken;
+          localStorage.setItem('token', jwtToken);      
           if (result.data == "Success") {
             console.log({
               email: data.get('email'),
               password: data.get('password'),
             });
+            
             if (rememberMe) {
               localStorage.setItem('email', email);
               localStorage.setItem('password', password);
@@ -84,7 +87,7 @@ const Login = () => {
          
           } 
            
-  setToken(result.data.accessToken);
+            setToken(result.data.accessToken);
          
            console.log("result: "+result.data.accessToken);
           // console.log("token: "+token);

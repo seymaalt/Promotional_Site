@@ -3,7 +3,7 @@ import AuthContext from "./AuthContext";
 
 const AuthProvider = ({ children }) => {
 
-  const [token, setTokenn] = useState(null);
+  const [token, setTokenn] = useState(localStorage.getItem('token') || null);
   const [isAuthenticated, setIsAuthenticatedd] = useState(false);
 
   const setToken = (token) => {
