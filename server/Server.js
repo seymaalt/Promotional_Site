@@ -1,9 +1,12 @@
 const express = require("express");
 const bodyParser = require('body-parser');
-const asyncHandler = require("express-async-handler");
+const connectDb = require('./config/dbConnect');
 const cors = require('cors')
 const dotenv = require("dotenv").config();
-const contentRoutes = require("./routes/contentRoutes")
+const contentRoutes = require("./routes/contentRoutes");
+const userRoutes = require("./routes/userRoutes");
+
+connectDb();
 const app = express();
 
 const corsOptions = {
@@ -19,6 +22,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 app.use("/content", contentRoutes);
+app.use("/user", userRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
