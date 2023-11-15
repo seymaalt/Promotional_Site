@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import axios from "axios";
+import axios from "../services/axios";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -19,6 +19,8 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Navigate, useNavigate } from "react-router-dom";
+
 const CustomBox = styled(Box)({
   background: "linear-gradient(to right, #6C46AE, #A84DB0, #D84FB4)",
   backgroundSize: "cover",
@@ -38,12 +40,12 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function AutoGrid() {
-  const { token } = useContext(AuthContext);
+  const { token ,setToken,logout } = useContext(AuthContext);
   const [user, setUser] = useState(null);
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const [isFavorite, setIsFavorite] = useState(false);
-
+ 
   const handleButtonClick = () => {
     setIsFavorite((prevIsFavorite) => !prevIsFavorite);
   };
@@ -58,6 +60,14 @@ export default function AutoGrid() {
     }
 
     setOpen(false);
+  };
+
+  
+  const handleLogout = async () => {
+    logout();
+    setOpen(false);
+    window.location.href="/";
+ 
   };
 
   function handleListKeyDown(event) {
@@ -79,39 +89,47 @@ export default function AutoGrid() {
   }, [open]);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem('token');
 
     const fetchUserProfile = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/user/current", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
+        const response = await axios.get(`${import.meta.env.VITE_PORT}/user/current`);
         setUser(response.data);
-        console.log(response.data);
       } catch (error) {
-        console.error("Error fetching user profile:", error);
+        if (axios.isAxiosError(error) && error.response?.status === 401) {
+          logout(); 
+          setToken(null); 
+        } else {
+          console.error('Error fetching user profile:', error);
+        }
       }
     };
 
     if (token && storedToken === token) {
       fetchUserProfile();
     }
-  }, [token]);
+  }, [token, logout, setToken]);
 
   return (
+  
     <CustomBox>
       <div style={{ display: "flex" }}>
         <Logo />
-        {user ? (
+        {user  ? (
           <div
-            style={{ marginTop: "15px", position: "absolute", right: "0px" }}
+            style={{ marginTop: "15px", position: "absolute", right: "0px",display:"flex" }}
           >
-            <Button
-              variant="contained"
-              style={{ backgroundColor: "white", width: "20px" }}
+            <div
+              
+              style={{
+                backgroundColor: 'white',
+                width: '30px',
+                margin: 'auto',
+                borderRadius: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
               href="#contained-buttons"
               onClick={handleButtonClick}
             >
@@ -120,9 +138,9 @@ export default function AutoGrid() {
               ) : (
                 <FavoriteBorderIcon style={{ color: "#7247AE" }} />
               )} 
-            </Button>
+            </div>
             <Button
-              style={{ fontWeight: "bold", color: "white" }}
+              style={{ fontWeight: "bold", color: "white",padding:"15px" }}
               ref={anchorRef}
               id="composition-button"
               aria-controls={open ? "composition-menu" : undefined}
@@ -130,7 +148,7 @@ export default function AutoGrid() {
               aria-haspopup="true"
               onClick={handleToggle}
             >
-              Hoşgeldin {user.username}
+              Welcome {user.username}
             </Button>
             <Popper
               open={open}
@@ -158,7 +176,7 @@ export default function AutoGrid() {
                       >
                         <MenuItem onClick={handleClose}>Profile</MenuItem>
                         <MenuItem onClick={handleClose}>My account</MenuItem>
-                        <MenuItem onClick={handleClose}>Logout</MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </MenuList>
                     </ClickAwayListener>
                   </Paper>
@@ -180,6 +198,11 @@ export default function AutoGrid() {
             </Box>
           </div>
         )}
+
+
+
+
+        
       </div>
       <Grid container spacing={3}>
         <Grid item xs={0.5}></Grid>

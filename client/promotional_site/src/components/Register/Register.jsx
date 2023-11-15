@@ -84,7 +84,7 @@ export default function SignUp() {
       });
 
 
-      axios.post('http://localhost:3000/user/register', { name, email, password })
+      axios.post(`${import.meta.env.VITE_PORT}/user/register`, { name, email, password })
 
         .then(result => {
           console.log(result)
