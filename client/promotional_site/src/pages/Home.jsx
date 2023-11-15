@@ -10,7 +10,7 @@ import HomePageText from "../components/HomePageText";
 const CustomBox = styled(Box)({
   background: "linear-gradient(to right, #6C46AE, #A84DB0, #D84FB4)",
   backgroundSize: "cover",
-  height: "103vh",
+  height: "100vh",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -27,7 +27,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function AutoGrid() {
   return (
-    <CustomBox>
+    <CustomBox >
       <Logo />
       <Grid container spacing={3}>
         <Grid item xs={0.5}></Grid>
