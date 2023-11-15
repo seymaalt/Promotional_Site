@@ -1,11 +1,13 @@
 const asyncHandler = require("express-async-handler");
 const puppeteer = require("puppeteer");
 const express = require("express");
+const { linkLogger, linkErrorLogger } = require("../controllers/logger")
 
 const getContact = asyncHandler(async (req, res) => {
   try {
     const url = req.body.data;
     if (url.split("/", 5)[2] == 'play.google.com') {
+      linkLogger.log('info', ' --Kullanıcı tarafından Google Play linki girildi.-- ')
       console.log("google play işlemleri")
       const browser = await puppeteer.launch({ headless: "new" });
       const page = await browser.newPage();
@@ -19,7 +21,6 @@ const getContact = asyncHandler(async (req, res) => {
           XPathResult.FIRST_ORDERED_NODE_TYPE,
           null
         );
-
         if (headerElement.singleNodeValue) {
           return headerElement.singleNodeValue.textContent;
         } else {
@@ -65,17 +66,18 @@ const getContact = asyncHandler(async (req, res) => {
       const logo = await page.$eval(".nm4vBd", (img) => img.src);
 
       const images = await page.$$eval(".B5GQxf", (img) => {
-        return img.map((x) => x.src)
+        return img.map((x) => x.srcset.split(" ", 1))
       });
 
-      res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images });
-      console.log({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images });
+      res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url });
+      console.log({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url });
+      linkLogger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
 
       await browser.close();
     }
     else if (url.split("/", 5)[2] == 'apps.apple.com') {
       console.log("app store işlemleri")
-
+      linkLogger.log('info', ' --Kullanıcı tarafından App Store linki girildi.-- ')
       const browser = await puppeteer.launch({ headless: "new" });
       const page = await browser.newPage();
       await page.goto(url);
@@ -155,18 +157,19 @@ const getContact = asyncHandler(async (req, res) => {
         }
       }
 
-      res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images });
-      console.log({ header: header, description: description, innovations: innovations, dataSecurity: dataSecurity, logo: logo, images: images });
-
+      res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url });
+      console.log({ header: header, description: description, innovations: innovations, dataSecurity: dataSecurity, logo: logo, images: images, url: url });
+      linkLogger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
     }
     else {
+      logger.linkErrorLogger.log('error', ' --Kullanıcı tarafından yanlış link girildi!-- ')
       console.log("Yanlış link girildi!")
     }
 
   } catch (error) {
+    linkErrorLogger.log('error', ' --Uygulama bilinmeyen bir hata ile karşılaştı-- ')
     console.error("An error occurred:", error);
     res.status(500).json({ error: error.message });
-
   }
 });
 

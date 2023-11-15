@@ -55,7 +55,7 @@ const MyComponent = () => {
   const handleGenerate = async () => {
     setLoading(true);
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/content/`, {
+      const res = await axios.post(`${import.meta.env.VITE_PORT}/content/`, {
         data: inputValue,
       });
 

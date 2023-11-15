@@ -1,17 +1,16 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion';
-import styles from '../styles';
-import { navVariants } from '../utils/motion';
+import styles from '../../styles';
+import { navVariants } from '../../utils/motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './SliderPromotionalSite.css';
+import './InnovationsSite.css';
 import Masonry from "react-responsive-masonry"
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import './DiscriptionPromotionalSite.css';
 
 export default function SliderPromotionalSite({ responseData }) {
   const images = responseData.images
@@ -25,7 +24,7 @@ export default function SliderPromotionalSite({ responseData }) {
       initial="hidden"
       whileInView="show"
       className={`${styles.xPaddings}`}>
-      <div className='container'>
+      <div className='container2'>
         <Swiper
           spaceBetween={50}
           slidesPerView={3}
@@ -54,7 +53,7 @@ export default function SliderPromotionalSite({ responseData }) {
                   <img
                     key={i}
                     src={image}
-                    style={{ width: "100%", display: "block", cursor: "pointer" }}
+                    style={{ width: "auto", height: "auto", display: "block", cursor: "pointer", marginInlineStart: "auto" }}
                     alt='image not found...'
                     onClick={() => viewImage(image, i)}
                   />
@@ -62,7 +61,6 @@ export default function SliderPromotionalSite({ responseData }) {
               ))}
             </Masonry>
           </div>
-
         </Swiper>
       </div>
 
