@@ -4,7 +4,6 @@ import DiscriptionPromotionalSite from '../components/Template1/DiscriptionPromo
 import InnovationsPromotionalSite from '../components/Template1/InnovationsPromotionalSite.jsx';
 import DataSecurityPromotionalSite from '../components/Template1/DataSecurityPromotionalSite.jsx';
 import FooterPromotionalSite from '../components/Template1/FooterPromotionalSite.jsx';
-import SliderPromotionalSite from '../components/Template1/SliderPromotionalSite.jsx';
 import GalleryPromotionalSite from '../components/Template1/GalleryPromotionalSite.jsx';
 import GlobalContext from '../context/GlobalContext.jsx';
 import HeaderPromotionalSite from '../components/Template1/Header.jsx';
