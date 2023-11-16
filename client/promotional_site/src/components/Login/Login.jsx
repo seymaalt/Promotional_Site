@@ -64,7 +64,7 @@ const Login = () => {
       alert("E-posta veya şifre eksik")
       return; // İşlemi burada sonlandır
     } else {
-     axios.post('http://localhost:3000/user/login', { email, password })
+     axios.post(`${import.meta.env.VITE_PORT}/user/login`, { email, password })
         .then(result => {
           console.log(result)
           const jwtToken = result.data.accessToken;

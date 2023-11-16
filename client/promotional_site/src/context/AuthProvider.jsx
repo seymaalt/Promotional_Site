@@ -4,24 +4,26 @@ import AuthContext from "./AuthContext";
 const AuthProvider = ({ children }) => {
 
   const [token, setTokenn] = useState(localStorage.getItem('token') || null);
-  const [isAuthenticated, setIsAuthenticatedd] = useState(false);
+ 
 
-  const setToken = (token) => {
-    setTokenn(token);
+  const setToken = async (token) => {
+      setTokenn(token);
   };
   const getToken = () => {
     return token;
   };
 
-  const setIsAuthenticated = () => {
-    setIsAuthenticatedd(isAuthenticated);
+  const logout = async () => {
+    await setTokenn(null);
+    await localStorage.removeItem('token'); 
+  
   };
+
   const values = {
     token,
-    isAuthenticated,
     getToken,
     setToken, 
-    setIsAuthenticated
+    logout
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
