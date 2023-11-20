@@ -21,31 +21,13 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Navigate, useNavigate } from "react-router-dom";
 
-const CustomBox = styled(Box)({
-  background: "linear-gradient(to right, #6C46AE, #A84DB0, #D84FB4)",
-  backgroundSize: "cover",
-  height: "100vh",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-});
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
-
 export default function AutoGrid() {
-  const { token ,setToken,logout } = useContext(AuthContext);
+  const { token, setToken, logout } = useContext(AuthContext);
   const [user, setUser] = useState(null);
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const [isFavorite, setIsFavorite] = useState(false);
- 
+
   const handleButtonClick = () => {
     setIsFavorite((prevIsFavorite) => !prevIsFavorite);
   };
@@ -62,12 +44,11 @@ export default function AutoGrid() {
     setOpen(false);
   };
 
-  
   const handleLogout = async () => {
     logout();
     setOpen(false);
-    window.location.href="/";
- 
+    window.location.href = "/";
+
   };
 
   function handleListKeyDown(event) {
@@ -97,8 +78,8 @@ export default function AutoGrid() {
         setUser(response.data);
       } catch (error) {
         if (axios.isAxiosError(error) && error.response?.status === 401) {
-          logout(); 
-          setToken(null); 
+          logout();
+          setToken(null);
         } else {
           console.error('Error fetching user profile:', error);
         }
@@ -111,25 +92,12 @@ export default function AutoGrid() {
   }, [token, logout, setToken]);
 
   return (
-  
-    <CustomBox>
-      <div style={{ display: "flex" }}>
+    <Box className="background" >
+      <div className='navbar' >
         <Logo />
-        {user  ? (
-          <div
-            style={{ marginTop: "15px", position: "absolute", right: "0px",display:"flex" }}
-          >
+        {user ? (
+          <div className="fav">
             <div
-              
-              style={{
-                backgroundColor: 'white',
-                width: '30px',
-                margin: 'auto',
-                borderRadius: '20px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
               href="#contained-buttons"
               onClick={handleButtonClick}
             >
@@ -137,10 +105,9 @@ export default function AutoGrid() {
                 <FavoriteIcon style={{ color: "#7247AE" }} />
               ) : (
                 <FavoriteBorderIcon style={{ color: "#7247AE" }} />
-              )} 
+              )}
             </div>
             <Button
-              style={{ fontWeight: "bold", color: "white",padding:"15px" }}
               ref={anchorRef}
               id="composition-button"
               aria-controls={open ? "composition-menu" : undefined}
@@ -169,6 +136,7 @@ export default function AutoGrid() {
                   <Paper>
                     <ClickAwayListener onClickAway={handleClose}>
                       <MenuList
+                        style={{ position: 'relative' }}
                         autoFocusItem={open}
                         id="composition-menu"
                         aria-labelledby="composition-button"
@@ -185,10 +153,8 @@ export default function AutoGrid() {
             </Popper>
           </div>
         ) : (
-          <div
-            style={{ marginTop: "15px", position: "absolute", right: "0px" }}
-          >
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <div className="nlNavbar">
+            <Box sx={{ display: { xs: "flex", md: "flex" } }}>
               <Button style={{ color: "#7247AE" }}>
                 <LoginModal />
               </Button>
@@ -198,37 +164,27 @@ export default function AutoGrid() {
             </Box>
           </div>
         )}
-
-
-
-
-        
       </div>
-      <Grid container spacing={3}>
-        <Grid item xs={0.5}></Grid>
-        <Grid item xs={5} style={{ marginTop: "100px" }}>
-          <HomePageText></HomePageText>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <p
-              style={{
-                marginRight: "10px",
-                color: "white",
-                fontFamily: "Roboto, sans-serif",
-                fontSize: "25px",
-              }}
-            >
-              URL
-            </p>
-            <Input style={{ flex: 1, marginLeft: "8px" }} />
+
+      <Grid container spacing={10} className="middle">
+        <Grid item xs={10} md={4}>
+          <div className="homeText" >
+            <HomePageText></HomePageText>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <p className="homeURL">
+                URL
+              </p>
+              <Input />
+            </div>
           </div>
         </Grid>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={4}>
-          <Box style={{ marginLeft: "50px" }}>
+        <Grid item xs={12} md={2}></Grid>
+        <Grid item xs={10} md={4}>
+          <div>
             <HomePageImage></HomePageImage>
-          </Box>
+          </div>
         </Grid>
       </Grid>
-    </CustomBox>
+    </Box >
   );
 }

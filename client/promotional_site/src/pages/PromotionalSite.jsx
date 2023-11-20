@@ -18,22 +18,21 @@ export default function PromotionalSite() {
         {({ data }) => {
           return (
             <div>
-              <div style={{ backgroundColor: data, minHeight: "100vh" }}>
+              <div className='part' style={{ backgroundColor: data }}>
                 <LogoPromotionalSite responseData={response} />
                 <HeaderPromotionalSite responseData={response}></HeaderPromotionalSite>
-                <div style={{ marginTop: '1%', marginInlineStart: "20%", marginInlineEnd: "20%", justifyContent: "center" }}>
+                <div className='disc' >
                   <DiscriptionPromotionalSite responseData={response} />
                 </div>
-                <div style={{ marginTop: '2%', marginInlineEnd: "30%", marginInlineStart: "30%" }}>
+                <div className='downloadButtons'>
                   <DownloadButton responseData={response}></DownloadButton>
                 </div>
               </div>
-              <div style={{ minHeight: "100vh" }}>
+              <div className='part'>
                 <GalleryPromotionalSite responseData={response} colorData={data} />
               </div>
-              <div style={{ minHeight: "100vh" }}>
+              <div className='part'>
                 <InnovationsPromotionalSite responseData={response} colorData={data} />
-                <div style={{ height: "60px" }}></div>
                 <DataSecurityPromotionalSite responseData={response} colorData={data} />
               </div>
               <FooterPromotionalSite responseData={response} />
