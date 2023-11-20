@@ -15,7 +15,7 @@ const LockIconExample = () => {
   );
 };
 
-export default function DataSecurityPromotionalSite({ responseData, colorData }) {
+export default function DataSecurityPromotionalSite({ responseData, changedData, colorData }) {
   return (
     <div>
       <motion.nav variants={slideIn('left', 'spring', 0.8, 1)}
@@ -27,7 +27,7 @@ export default function DataSecurityPromotionalSite({ responseData, colorData })
           </Grid>
           <Grid xs={12} md={8}>
             <div class="innovationsHeader" style={{ color: colorData }}>Data Security</div>
-            <div className='container'>{responseData.dataSecurity}</div>
+            <div className='container'>{changedData == null ? responseData.dataSecurity : changedData}</div>
           </Grid>
         </Grid>
       </motion.nav>

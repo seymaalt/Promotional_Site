@@ -27,7 +27,7 @@ export default function ButtonAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }} >
-      <AppBar position='fixed' style={{backgroundColor:'white',height:70}}>
+      <AppBar position='absolute' style={{ backgroundColor: 'white', height: 70 }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -39,14 +39,14 @@ export default function ButtonAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color:'black'}}>
-          <img src={Logo} className='homeLogo'></img>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'black' }}>
+            <img src={Logo} className='homeLogo'></img>
           </Typography>
-          <Button color="inherit" style={{color:'black'}}><DownloadIcon/><b>Download</b></Button>
-          <Button color="inherit" style={{color:'black'}}><FavoriteIcon/></Button>
+          <Button color="inherit" style={{ color: 'black' }}><DownloadIcon /><b>Download</b></Button>
+          <Button color="inherit" style={{ color: 'black' }}><FavoriteIcon /></Button>
         </Toolbar>
       </AppBar>
-       <TemporaryDrawer state={state} setState={setState} toggleDrawer={toggleDrawer} ></TemporaryDrawer> 
+      <TemporaryDrawer state={state} setState={setState} toggleDrawer={toggleDrawer} ></TemporaryDrawer>
     </Box>
   );
 }
