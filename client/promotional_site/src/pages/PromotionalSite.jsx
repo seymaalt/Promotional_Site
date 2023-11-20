@@ -9,15 +9,19 @@ import GlobalContext from '../context/GlobalContext.jsx';
 import HeaderPromotionalSite from '../components/Template1/Header.jsx';
 import DownloadButton from '../components/Template1/DownloadButton.jsx';
 import Color from "color-thief-react";
+import NavbarPromotionalSite from '../components/promoSiteConstants/NavbarPromotionalSite.jsx';
+import { Grid } from '@mui/material';
 
 export default function PromotionalSite() {
   const { response } = useContext(GlobalContext);
   return (
     <div>
+
       <Color src={response.logo} crossOrigin="anonymous" format="hex">
         {({ data }) => {
           return (
             <div>
+              <div style={{height:70}}><NavbarPromotionalSite /></div>
               <div className='part' style={{ backgroundColor: data }}>
                 <LogoPromotionalSite responseData={response} />
                 <HeaderPromotionalSite responseData={response}></HeaderPromotionalSite>
