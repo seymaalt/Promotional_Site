@@ -55,7 +55,7 @@ const login = asyncHandler(async (req,res) => {
             },
         },
         process.env.ACCESS_TOKEN_SECRET,
-        {expiresIn:"1m"}
+        {expiresIn:"60m"}
         );
         res.status(200).json({accessToken:accessToken, User:user});
     }else{
@@ -68,9 +68,33 @@ const login = asyncHandler(async (req,res) => {
 const current = asyncHandler(async (req,res) => {
     res.json(req.user);
 });
+const addFavorite = asyncHandler(async (req,res) => {
+    try {
+        const { url, template } = req.body;
+        const user = req.user;
 
+        if (!user) {
+            return res.status(404).json({ message: 'Kullanıcı bulunamadı' });
+        }
+
+        if (!user.favorities) {
+            user.favorities = [];
+        }
+
+        user.favorities.push({ url, template });
+
+        // Burada User modelini kullanarak save işlemini gerçekleştirmelisiniz.
+        await User.findByIdAndUpdate(user.id, { favorities: user.favorities });
+
+        res.json({ message: 'Favori eklendi', favorities: user.favorities });
+    } catch (error) {
+        console.error('Hata:', error.message);
+        res.status(500).json({ message: 'Sunucu hatası' });
+    }
+});
 module.exports = {
     login,
     register,
-    current
+    current,
+    addFavorite
 };
