@@ -16,7 +16,7 @@ const InnovationIcon = () => {
   );
 };
 
-export default function InnovationsPromotionalSite({ responseData, colorData }) {
+export default function InnovationsPromotionalSite({ responseData, changedData, colorData }) {
 
   return (
     <div>
@@ -26,7 +26,7 @@ export default function InnovationsPromotionalSite({ responseData, colorData }) 
         <Grid container>
           <Grid xs={12} md={8} spacing={2}>
             <div className='innovationsHeader' style={{ color: colorData }}>Innovations</div>
-            <div className='container' >{responseData.innovations}</div>
+            <div className='container' >{changedData == null ? responseData.innovations : changedData}</div>
           </Grid>
           <Grid xs={12} md={4}>
             <div>
