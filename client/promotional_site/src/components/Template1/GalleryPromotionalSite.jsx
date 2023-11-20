@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import './InnovationsSite.css';
 import CloseIcon from '@mui/icons-material/Close';
-import Grid from '@mui/material/Unstable_Grid2';
 import { motion } from 'framer-motion';
-import styles from '../../styles';
 import { navVariants } from '../../utils/motion';
 
 export default function GalleryPromotionalSite({ responseData, colorData }) {
@@ -23,13 +18,11 @@ export default function GalleryPromotionalSite({ responseData, colorData }) {
         firstFourImage.push(images[i]);
     }
 
-
     return (
         <div >
             <motion.nav variants={navVariants}
                 initial="hidden"
-                whileInView="show"
-                className={`${styles.xPaddings}`}>
+                whileInView="show">
                 <div className={model ? "model open" : "model"}>
                     <img src={tempImgSrc} />
                     <CloseIcon onClick={() => setModel(false)} />
@@ -37,37 +30,43 @@ export default function GalleryPromotionalSite({ responseData, colorData }) {
                 <div className='gallery' style={{ paddingTop: "5%" }}>
                     <img
                         src={images[0]}
-                        style={{ width: "250px", height: "auto", display: "block", cursor: "pointer", borderBlockColor: colorData }}
+                        className='image'
+                        style={{ borderBlockColor: colorData }}
                         alt=''
                         onClick={() => getImage(images[0])}
                     />
                     <img
                         src={images[1]}
-                        style={{ width: "250px", height: "auto", display: "block", cursor: "pointer", paddingTop: "50%", borderBlockColor: colorData }}
+                        className='singImage'
+                        style={{ borderBlockColor: colorData }}
                         alt=''
                         onClick={() => getImage(images[1])}
                     />
                     <img
                         src={images[2]}
-                        style={{ width: "250px", height: "auto", display: "block", cursor: "pointer", borderBlockColor: colorData }}
+                        className='image'
+                        style={{ borderBlockColor: colorData }}
                         alt=''
                         onClick={() => getImage(images[2])}
                     />
                     <img
                         src={images[3]}
-                        style={{ width: "250px", height: "auto", display: "block", cursor: "pointer", paddingTop: "50%", borderBlockColor: colorData }}
+                        className='singImage'
+                        style={{ borderBlockColor: colorData }}
                         alt=''
                         onClick={() => getImage(images[3])}
                     />
                     <img
                         src={images[4]}
-                        style={{ width: "250px", height: "auto", display: "block", cursor: "pointer", borderBlockColor: colorData }}
+                        className='image'
+                        style={{ borderBlockColor: colorData }}
                         alt=''
                         onClick={() => getImage(images[3])}
                     />
                     <img
                         src={images[5]}
-                        style={{ width: "250px", height: "auto", display: "block", cursor: "pointer", paddingTop: "50%", borderBlockColor: colorData }}
+                        className='singImage'
+                        style={{ borderBlockColor: colorData }}
                         alt=''
                         onClick={() => getImage(images[3])}
                     />
