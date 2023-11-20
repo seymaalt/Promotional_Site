@@ -3,11 +3,6 @@ import { Link } from "react-router-dom"; // If using React Router for navigation
 import { Typography, Toolbar, Container } from "@mui/material";
 
 const FooterPromotionalSite = () => {
-  const footerStyle = {
-    marginTop: "auto",
-    backgroundColor: "#fff",
-    borderTop: "1px solid #ddd",
-  };
 
   const linkStyle = {
     textDecoration: "none",
@@ -23,8 +18,8 @@ const FooterPromotionalSite = () => {
   };
 
   return (
-    <footer style={footerStyle}>
-     <div >
+    <footer className="footer">
+      <div >
         <Toolbar style={{ textAlign: "left" }}>
           <Typography variant="body2" >
             <Link
@@ -38,7 +33,7 @@ const FooterPromotionalSite = () => {
             © {new Date().getFullYear()}
           </Typography>
         </Toolbar>
-    </div>
+      </div>
     </footer>
   );
 };

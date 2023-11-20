@@ -8,6 +8,8 @@ import GlobalContext from '../context/GlobalContext.jsx';
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import Backdrop from '@mui/material/Backdrop';
+import '../styles/global.css'
+
 
 const Container = styled('div')({
   display: 'flex',
@@ -84,7 +86,7 @@ const MyComponent = () => {
 
   return (
     <div>
-      <Container>
+      <Container id='inputlink'>
         <MyTextField
           variant="outlined"
           onChange={handleInputChange}
@@ -99,8 +101,8 @@ const MyComponent = () => {
 
 
       {loading && (
-        <Backdrop open={true} style={{ zIndex: 1, color: '#fff', backdropFilter: 'blur(4px)' }}>
-          <CircularProgress style={{ color: '#fff', width: '100px', height: '100px' }} />
+        <Backdrop open={true} className='loading'>
+          <CircularProgress className='circular' />
         </Backdrop>
       )}
 
