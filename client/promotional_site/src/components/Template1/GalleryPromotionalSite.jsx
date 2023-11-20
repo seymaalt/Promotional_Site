@@ -12,11 +12,6 @@ export default function GalleryPromotionalSite({ responseData, colorData }) {
         setTempImgSrc(image)
         setModel(true)
     }
-    const firstFourImage = []
-
-    for (let i = 0; i < 4; i++) {
-        firstFourImage.push(images[i]);
-    }
 
     return (
         <div >
@@ -61,14 +56,14 @@ export default function GalleryPromotionalSite({ responseData, colorData }) {
                         className='image'
                         style={{ borderBlockColor: colorData }}
                         alt=''
-                        onClick={() => getImage(images[3])}
+                        onClick={() => getImage(images[4])}
                     />
                     <img
                         src={images[5]}
                         className='singImage'
                         style={{ borderBlockColor: colorData }}
                         alt=''
-                        onClick={() => getImage(images[3])}
+                        onClick={() => getImage(images[5])}
                     />
                 </div>
             </motion.nav>
