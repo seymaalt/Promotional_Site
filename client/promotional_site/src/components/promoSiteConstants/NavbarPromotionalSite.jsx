@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React  from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,8 +10,34 @@ import TemporaryDrawer from './SidebarPromotionalSite'
 import DownloadIcon from '@mui/icons-material/Download';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Logo from '../../assets/logosiyah.png'
+import axios from "axios";
+import  {useContext} from 'react';
+import AuthContext from '../../context/AuthContext';
+import { styled } from '@mui/material/styles';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import CloseIcon from '@mui/icons-material/Close';
 
-export default function ButtonAppBar() {
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialogContent-root': {
+    padding: theme.spacing(2),
+  },
+  '& .MuiDialogActions-root': {
+    padding: theme.spacing(1),
+  },
+}));
+
+export default function ButtonAppBar({responseData}) {
+  const { token, setToken, logout } = useContext(AuthContext);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const [state, setState] = React.useState({
     left: false
@@ -24,6 +50,27 @@ export default function ButtonAppBar() {
 
     setState({ ...state, [anchor]: open });
   };
+
+  const handleAddFavorite = async () => {
+    try {
+      const data = {
+        url: responseData.url,
+        template: 'temp1',
+      };
+
+      const response = await axios.post('http://localhost:3000/user/addFavorite', data, {
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      });
+      handleClickOpen();
+      console.log(response.data);
+    
+    } catch (error) {
+      console.error('Favori eklerken hata oluştu:', error);
+    }
+  };
+
 
   return (
     <Box sx={{ flexGrow: 1 }} >
@@ -43,7 +90,30 @@ export default function ButtonAppBar() {
             <img src={Logo} className='homeLogo'></img>
           </Typography>
           <Button color="inherit" style={{ color: 'black' }}><DownloadIcon /><b>Download</b></Button>
-          <Button color="inherit" style={{ color: 'black' }}><FavoriteIcon /></Button>
+          <Button color="inherit" style={{ color: 'black' }} onClick={handleAddFavorite}><FavoriteIcon /></Button>
+          <BootstrapDialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+      >
+        <DialogTitle sx={{ m: 4, p: 2 }} id="customized-dialog-title">
+        Added to favorites
+        </DialogTitle>
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+  
+     
+      </BootstrapDialog>
         </Toolbar>
       </AppBar>
       <TemporaryDrawer state={state} setState={setState} toggleDrawer={toggleDrawer} ></TemporaryDrawer>

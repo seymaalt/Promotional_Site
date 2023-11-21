@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import axios from "../services/axios";
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Input from "../components/Input";
 import Logo from "../components/Logo";
@@ -12,53 +10,35 @@ import Button from "@mui/material/Button";
 import LoginModal from "../components/Login/LoginModal.jsx";
 import RegisterModal from "../components/Register/RegisterModal.jsx";
 import AuthContext from "../context/AuthContext.jsx";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import Grow from "@mui/material/Grow";
-import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
-import MenuList from "@mui/material/MenuList";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Navigate, useNavigate } from "react-router-dom";
+
+import Menu from '@mui/material/Menu';
 
 export default function AutoGrid() {
   const { token, setToken, logout } = useContext(AuthContext);
   const [user, setUser] = useState(null);
-  const [open, setOpen] = useState(false);
+ // const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsFavorite((prevIsFavorite) => !prevIsFavorite);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
 
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
 
-    setOpen(false);
   };
 
   const handleLogout = async () => {
     logout();
-    setOpen(false);
     window.location.href = "/";
 
   };
 
-  function handleListKeyDown(event) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    } else if (event.key === "Escape") {
-      setOpen(false);
-    }
-  }
 
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
@@ -97,60 +77,32 @@ export default function AutoGrid() {
         <Logo />
         {user ? (
           <div className="fav">
-            <div
-              href="#contained-buttons"
-              onClick={handleButtonClick}
-            >
-              {isFavorite ? (
-                <FavoriteIcon style={{ color: "#7247AE" }} />
-              ) : (
-                <FavoriteBorderIcon style={{ color: "#7247AE" }} />
-              )}
-            </div>
+        
             <Button
               ref={anchorRef}
-              id="composition-button"
-              aria-controls={open ? "composition-menu" : undefined}
-              aria-expanded={open ? "true" : undefined}
+              variant="contained"
+              style={{marginRight:"10px",backgroundColor:"white",color:"#7247AE",height:"40px",fontWeight:"600"}}
+              id="basic-button"
+              aria-controls={open ? 'basic-menu' : undefined}
               aria-haspopup="true"
-              onClick={handleToggle}
+              aria-expanded={open ? 'true' : undefined}
+              onClick={handleClick}
             >
-              Welcome {user.username}
+               {user.username}
             </Button>
-            <Popper
-              open={open}
-              anchorEl={anchorRef.current}
-              role={undefined}
-              placement="bottom-start"
-              transition
-              disablePortal
-            >
-              {({ TransitionProps, placement }) => (
-                <Grow
-                  {...TransitionProps}
-                  style={{
-                    transformOrigin:
-                      placement === "bottom-start" ? "left top" : "left bottom",
-                  }}
-                >
-                  <Paper>
-                    <ClickAwayListener onClickAway={handleClose}>
-                      <MenuList
-                        style={{ position: 'relative' }}
-                        autoFocusItem={open}
-                        id="composition-menu"
-                        aria-labelledby="composition-button"
-                        onKeyDown={handleListKeyDown}
-                      >
-                        <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleClose}>My account</MenuItem>
-                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                      </MenuList>
-                    </ClickAwayListener>
-                  </Paper>
-                </Grow>
-              )}
-            </Popper>
+            <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>Favorites</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      </Menu>
           </div>
         ) : (
           <div className="nlNavbar">
