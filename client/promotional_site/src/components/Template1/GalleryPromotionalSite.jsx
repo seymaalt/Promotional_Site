@@ -12,12 +12,6 @@ export default function GalleryPromotionalSite({ responseData, colorData }) {
         setTempImgSrc(image)
         setModel(true)
     }
-    const firstFourImage = []
-
-    for (let i = 0; i < 4; i++) {
-        firstFourImage.push(images[i]);
-    }
-
     return (
         <div >
             <motion.nav variants={navVariants}
@@ -27,51 +21,21 @@ export default function GalleryPromotionalSite({ responseData, colorData }) {
                     <img src={tempImgSrc} />
                     <CloseIcon onClick={() => setModel(false)} />
                 </div>
-                <div className='gallery' style={{ paddingTop: "5%" }}>
-                    <img
-                        src={images[0]}
-                        className='image'
-                        style={{ borderBlockColor: colorData }}
-                        alt=''
-                        onClick={() => getImage(images[0])}
-                    />
-                    <img
-                        src={images[1]}
-                        className='singImage'
-                        style={{ borderBlockColor: colorData }}
-                        alt=''
-                        onClick={() => getImage(images[1])}
-                    />
-                    <img
-                        src={images[2]}
-                        className='image'
-                        style={{ borderBlockColor: colorData }}
-                        alt=''
-                        onClick={() => getImage(images[2])}
-                    />
-                    <img
-                        src={images[3]}
-                        className='singImage'
-                        style={{ borderBlockColor: colorData }}
-                        alt=''
-                        onClick={() => getImage(images[3])}
-                    />
-                    <img
-                        src={images[4]}
-                        className='image'
-                        style={{ borderBlockColor: colorData }}
-                        alt=''
-                        onClick={() => getImage(images[3])}
-                    />
-                    <img
-                        src={images[5]}
-                        className='singImage'
-                        style={{ borderBlockColor: colorData }}
-                        alt=''
-                        onClick={() => getImage(images[3])}
-                    />
+                <div className={images.length < 4 ? 'galleryth' : images.length == 4 ? 'galleryfr' : images.length == 5 ? 'galleryfv' : 'gallery'}>
+                    {images.map((image, i) => {
+                        if (i < 6)
+                            return (
+                                image == null ? <></> : <img
+                                    src={images[i]}
+                                    className={i % 2 == 0 ? 'image' : 'singImage'}
+                                    style={{ borderBlockColor: colorData }}
+                                    alt=''
+                                    onClick={() => getImage(images[i])}
+                                />
+                            )
+                    })}
                 </div>
-            </motion.nav>
+            </motion.nav >
         </div >
     )
 }

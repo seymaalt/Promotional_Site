@@ -6,14 +6,16 @@ import DataSecurityPromotionalSite from '../components/Template1/DataSecurityPro
 import FooterPromotionalSite from '../components/Template1/FooterPromotionalSite.jsx';
 import GalleryPromotionalSite from '../components/Template1/GalleryPromotionalSite.jsx';
 import GlobalContext from '../context/GlobalContext.jsx';
+import TextContext from '../context/TextContext.jsx';
 import HeaderPromotionalSite from '../components/Template1/Header.jsx';
 import DownloadButton from '../components/Template1/DownloadButton.jsx';
 import Color from "color-thief-react";
 import NavbarPromotionalSite from '../components/promoSiteConstants/NavbarPromotionalSite.jsx';
-import { Grid } from '@mui/material';
 
 export default function PromotionalSite() {
   const { response } = useContext(GlobalContext);
+  const { header, discription, innovations, dataSecurity } = useContext(TextContext);
+
   return (
     <div>
 
@@ -21,12 +23,12 @@ export default function PromotionalSite() {
         {({ data }) => {
           return (
             <div>
-              <div style={{height:70}}><NavbarPromotionalSite /></div>
-              <div className='part' style={{ backgroundColor: data }}>
+              <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>
+                <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} /></div>
                 <LogoPromotionalSite responseData={response} />
-                <HeaderPromotionalSite responseData={response}></HeaderPromotionalSite>
+                <HeaderPromotionalSite responseData={response} changedData={header}></HeaderPromotionalSite>
                 <div className='disc' >
-                  <DiscriptionPromotionalSite responseData={response} />
+                  <DiscriptionPromotionalSite responseData={response} changedData={discription} />
                 </div>
                 <div className='downloadButtons'>
                   <DownloadButton responseData={response}></DownloadButton>
@@ -36,8 +38,8 @@ export default function PromotionalSite() {
                 <GalleryPromotionalSite responseData={response} colorData={data} />
               </div>
               <div className='part'>
-                <InnovationsPromotionalSite responseData={response} colorData={data} />
-                <DataSecurityPromotionalSite responseData={response} colorData={data} />
+                <InnovationsPromotionalSite responseData={response} changedData={innovations} colorData={data} />
+                <DataSecurityPromotionalSite responseData={response} changedData={dataSecurity} colorData={data} />
               </div>
               <FooterPromotionalSite responseData={response} />
             </div>
@@ -47,4 +49,3 @@ export default function PromotionalSite() {
     </div>
   );
 }
-

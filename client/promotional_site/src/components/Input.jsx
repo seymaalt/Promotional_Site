@@ -8,6 +8,7 @@ import GlobalContext from '../context/GlobalContext.jsx';
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import Backdrop from '@mui/material/Backdrop';
+import TextContext from '../context/TextContext.jsx'
 import '../styles/global.css'
 
 
@@ -42,6 +43,7 @@ const MyButton = styled(Button)({
 
 const MyComponent = () => {
   const { response, setResponse } = useContext(GlobalContext);
+  const { setHeader, setDiscription, setInnovations, setDataSecurity } = useContext(TextContext);
   const [typedText, setTypedText] = useState('');
   const [loading, setLoading] = useState(false);
   const initialText = 'Enter the URL...';
@@ -60,6 +62,11 @@ const MyComponent = () => {
       const res = await axios.post(`${import.meta.env.VITE_PORT}/content/`, {
         data: inputValue,
       });
+
+      setHeader(null)
+      setDiscription(null)
+      setInnovations(null)
+      setDataSecurity(null)
 
       setRenderDetail(true);
       setResponse(res.data);
