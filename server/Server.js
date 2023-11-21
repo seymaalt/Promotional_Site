@@ -9,13 +9,8 @@ const userRoutes = require("./routes/userRoutes");
 connectDb();
 const app = express();
 
-const corsOptions = {
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 app.use(bodyParser.json());
