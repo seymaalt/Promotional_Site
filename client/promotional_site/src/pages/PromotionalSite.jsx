@@ -23,8 +23,10 @@ export default function PromotionalSite() {
         {({ data }) => {
           return (
             <div>
+              <div style={{ height: '70px' }}>
+                <div><NavbarPromotionalSite /></div>
+              </div>
               <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>
-                <div style={{ height: 70 }}><NavbarPromotionalSite /></div>
                 <LogoPromotionalSite responseData={response} />
                 <HeaderPromotionalSite responseData={response} changedData={header}></HeaderPromotionalSite>
                 <div className='disc' >

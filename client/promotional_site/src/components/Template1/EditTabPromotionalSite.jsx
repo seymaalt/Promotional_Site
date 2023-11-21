@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import TextField from "@mui/material/TextField";
 import TextContext from '../../context/TextContext'
 
-
-
 const EditTabPromotionalSite = ({ responseData }) => {
     const { setHeader, setDiscription, setInnovations, setDataSecurity } = useContext(TextContext);
 
