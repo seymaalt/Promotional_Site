@@ -60,7 +60,7 @@ const ButtonAppBar = ({ responseData }) => {
         template: 'temp1',
       };
 
-      const response = await axios.post('http://localhost:3000/user/addFavorite', data, {
+      const response = await axios.post(`${import.meta.env.VITE_PORT}/user/addFavorite`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
