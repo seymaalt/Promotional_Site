@@ -6,13 +6,12 @@ const { linkLogger, linkErrorLogger } = require("../controllers/logger")
 const getContact = asyncHandler(async (req, res) => {
   try {
     const url = req.body.data;
+    const browser = await puppeteer.launch({ headless: "new" });
+    const page = await browser.newPage();
     if (url.split("/", 5)[2] == 'play.google.com') {
       linkLogger.log('info', ' --Kullanıcı tarafından Google Play linki girildi.-- ')
       console.log("google play işlemleri")
-      const browser = await puppeteer.launch({ headless: "new" });
-      const page = await browser.newPage();
       await page.goto(url);
-
       const header = await page.evaluate(() => {
         const headerElement = document.evaluate(
           '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[2]/div[1]/div/div/c-wiz/div[2]/div[1]/div/h1',
@@ -78,8 +77,6 @@ const getContact = asyncHandler(async (req, res) => {
     else if (url.split("/", 5)[2] == 'apps.apple.com') {
       console.log("app store işlemleri")
       linkLogger.log('info', ' --Kullanıcı tarafından App Store linki girildi.-- ')
-      const browser = await puppeteer.launch({ headless: "new" });
-      const page = await browser.newPage();
       await page.goto(url);
 
       const header = await page.evaluate(() => {
