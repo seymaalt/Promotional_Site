@@ -23,12 +23,10 @@ const UserSchema =  mongoose.Schema(
             {
                 url: {
                     type: String,
-                    //required: [true, "Please add the URL"],
                   },
                   template: {
                     type: String,
                     enum: ["temp1", "temp2", "temp3"],
-//required: [true, "Please add the template"],
                   },
             }
           ],

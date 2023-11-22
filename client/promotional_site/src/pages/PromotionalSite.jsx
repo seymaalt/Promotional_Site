@@ -6,35 +6,40 @@ import DataSecurityPromotionalSite from '../components/Template1/DataSecurityPro
 import FooterPromotionalSite from '../components/Template1/FooterPromotionalSite.jsx';
 import GalleryPromotionalSite from '../components/Template1/GalleryPromotionalSite.jsx';
 import GlobalContext from '../context/GlobalContext.jsx';
+import TextContext from '../context/TextContext.jsx';
 import HeaderPromotionalSite from '../components/Template1/Header.jsx';
 import DownloadButton from '../components/Template1/DownloadButton.jsx';
 import Color from "color-thief-react";
+import NavbarPromotionalSite from '../components/promoSiteConstants/NavbarPromotionalSite.jsx';
 
 export default function PromotionalSite() {
   const { response } = useContext(GlobalContext);
+  const { header, discription, innovations, dataSecurity } = useContext(TextContext);
+
   return (
     <div>
+
       <Color src={response.logo} crossOrigin="anonymous" format="hex">
         {({ data }) => {
           return (
             <div>
-              <div style={{ backgroundColor: data, minHeight: "100vh" }}>
+              <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>
+                <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} /></div>
                 <LogoPromotionalSite responseData={response} />
-                <HeaderPromotionalSite responseData={response}></HeaderPromotionalSite>
-                <div style={{ marginTop: '1%', marginInlineStart: "20%", marginInlineEnd: "20%", justifyContent: "center" }}>
-                  <DiscriptionPromotionalSite responseData={response} />
+                <HeaderPromotionalSite responseData={response} changedData={header}></HeaderPromotionalSite>
+                <div className='disc' >
+                  <DiscriptionPromotionalSite responseData={response} changedData={discription} />
                 </div>
-                <div style={{ marginTop: '2%', marginInlineEnd: "30%", marginInlineStart: "30%" }}>
+                <div className='downloadButtons'>
                   <DownloadButton responseData={response}></DownloadButton>
                 </div>
               </div>
-              <div style={{ minHeight: "100vh" }}>
+              <div className='part'>
                 <GalleryPromotionalSite responseData={response} colorData={data} />
               </div>
-              <div style={{ minHeight: "100vh" }}>
-                <InnovationsPromotionalSite responseData={response} colorData={data} />
-                <div style={{ height: "60px" }}></div>
-                <DataSecurityPromotionalSite responseData={response} colorData={data} />
+              <div className='part'>
+                <InnovationsPromotionalSite responseData={response} changedData={innovations} colorData={data} />
+                <DataSecurityPromotionalSite responseData={response} changedData={dataSecurity} colorData={data} />
               </div>
               <FooterPromotionalSite responseData={response} />
             </div>
@@ -44,4 +49,3 @@ export default function PromotionalSite() {
     </div>
   );
 }
-

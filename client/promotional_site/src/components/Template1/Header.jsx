@@ -1,17 +1,14 @@
 import React from "react";
 import { motion } from 'framer-motion';
 import { navVariants } from '../../utils/motion';
-import styles from '../../styles';
-import './InnovationsSite.css'
 
-export default function HeaderPromotionalSite({ responseData }) {
+export default function HeaderPromotionalSite({ responseData, changedData }) {
     return (
         <motion.nav variants={navVariants}
             initial="hidden"
-            whileInView="show"
-            className={`${styles.xPaddings} py-8 relative`}>
-            <div style={{ textAlign: 'center', marginTop: '1%', color: "white" }} >
-                <h1 style={{ textTransform: "uppercase" }}>{responseData.header}</h1>
+            whileInView="show">
+            <div className="header" >
+                <h1>{changedData == null ? responseData.header : changedData}</h1>
             </div>
         </motion.nav >
     );
