@@ -6,7 +6,8 @@ const { linkLogger, linkErrorLogger } = require("../controllers/logger")
 const getContact = asyncHandler(async (req, res) => {
   try {
     const url = req.body.data;
-    const browser = await puppeteer.launch({ headless: "new" });
+    //const browser = await puppeteer.launch({ headless: "new"}); localde bu çalışır
+    const browser = await puppeteer.launch({ headless: "new", args: ['--no-sandbox'], executablePath: '/usr/bin/chromium-browser' });
     const page = await browser.newPage();
     if (url.split("/", 5)[2] == 'play.google.com') {
       linkLogger.log('info', ' --Kullanıcı tarafından Google Play linki girildi.-- ')
