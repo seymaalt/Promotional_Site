@@ -13,14 +13,17 @@ import RegisterModal from "../components/Register/RegisterModal.jsx";
 import AuthContext from "../context/AuthContext.jsx";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from '@mui/material/Menu';
+import { useNavigate } from "react-router-dom";
 
 export default function AutoGrid() {
   const { token, setToken, logout } = useContext(AuthContext);
   const [user, setUser] = useState(null);
- // const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
+
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -32,6 +35,15 @@ export default function AutoGrid() {
     }
 
   };
+  
+  const handleCloseFavorites = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    navigate("/favorites");
+
+  };
+  
 
   const handleLogout = async () => {
     logout();
@@ -100,7 +112,7 @@ export default function AutoGrid() {
         }}
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>Favorites</MenuItem>
+        <MenuItem onClick={handleCloseFavorites}>Favorites</MenuItem>
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
           </div>
