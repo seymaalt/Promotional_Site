@@ -6,7 +6,7 @@ import GlobalContext from '../../context/GlobalContext.jsx';
 
 
 
-export default function TemporaryDrawer({ state, setState, toggleDrawer }) {
+export default function TemporaryDrawer({ state, setState, toggleDrawer, colorData }) {
   const { response } = useContext(GlobalContext);
 
   const list = (anchor) => (
@@ -30,7 +30,7 @@ export default function TemporaryDrawer({ state, setState, toggleDrawer }) {
           >
             {list(anchor)}
             <div>
-              <EditTabPromotionalSite responseData={response}></EditTabPromotionalSite>
+              <EditTabPromotionalSite responseData={response} colorData={colorData}></EditTabPromotionalSite>
             </div>
           </Drawer>
         </React.Fragment>
