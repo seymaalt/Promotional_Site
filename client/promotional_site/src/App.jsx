@@ -6,7 +6,7 @@ import Register from './components/Register/Register.jsx';
 import GlobalProvider from "./context/GlobalProvider.jsx";
 import AuthProvider from './context/AuthProvider.jsx'
 import TextProvider from "./context/TextProvider.jsx";
-
+import Favorites from './pages/Favorites.jsx'
 function App() {
   return (
     <AuthProvider>
@@ -16,6 +16,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/promotional-site" element={<PromotionalSite />} />
+              <Route path="/favorites" element={<Favorites />} />
               <Route path="/Login" element={<Login />} />
               <Route path="/Register" element={<Register />} />
             </Routes>

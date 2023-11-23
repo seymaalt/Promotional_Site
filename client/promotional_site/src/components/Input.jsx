@@ -67,7 +67,6 @@ const MyComponent = () => {
       setDiscription(null)
       setInnovations(null)
       setDataSecurity(null)
-
       setRenderDetail(true);
       setResponse(res.data);
       navigate('/promotional-site');
