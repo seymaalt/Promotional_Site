@@ -1,4 +1,5 @@
-import * as React  from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,7 +12,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Logo from '../../assets/logosiyah.png'
 import axios from "axios";
-import  {useContext} from 'react';
+import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
@@ -28,7 +29,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function ButtonAppBar({responseData}) {
+const ButtonAppBar = ({ responseData }) => {
   const { token, setToken, logout } = useContext(AuthContext);
   const [open, setOpen] = React.useState(false);
 
@@ -38,10 +39,11 @@ export default function ButtonAppBar({responseData}) {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     left: false
   });
+
+  const [isNavbarVisible, setNavbarVisibility] = useState(true);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -58,23 +60,40 @@ export default function ButtonAppBar({responseData}) {
         template: 'temp1',
       };
 
-      const response = await axios.post('http://localhost:3000/user/addFavorite', data, {
+      const response = await axios.post(`${import.meta.env.VITE_PORT}/user/addFavorite`, data, {
         headers: {
-          Authorization: `Bearer ${token}`, 
+          Authorization: `Bearer ${token}`,
         },
       });
       handleClickOpen();
       console.log(response.data);
-    
+
     } catch (error) {
       console.error('Favori eklerken hata oluştu:', error);
     }
   };
+  useEffect(() => {
+    let prevScrollPos = window.pageYOffset;
 
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isScrollingDown = currentScrollPos > prevScrollPos;
+
+      setNavbarVisibility(!isScrollingDown || currentScrollPos < 50);
+
+      prevScrollPos = currentScrollPos;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <Box sx={{ flexGrow: 1 }} >
-      <AppBar position='absolute' style={{ backgroundColor: 'white', height: 70 }}>
+      <AppBar position='fixed' style={{ backgroundColor: 'white', height: 70, display: isNavbarVisible ? 'block' : 'none' }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -92,31 +111,31 @@ export default function ButtonAppBar({responseData}) {
           <Button color="inherit" style={{ color: 'black' }}><DownloadIcon /><b>Download</b></Button>
           <Button color="inherit" style={{ color: 'black' }} onClick={handleAddFavorite}><FavoriteIcon /></Button>
           <BootstrapDialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={open}
-      >
-        <DialogTitle sx={{ m: 4, p: 2 }} id="customized-dialog-title">
-        Added to favorites
-        </DialogTitle>
-        <IconButton
-          aria-label="close"
-          onClick={handleClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-  
-     
-      </BootstrapDialog>
+            onClose={handleClose}
+            aria-labelledby="customized-dialog-title"
+            open={open}
+          >
+            <DialogTitle sx={{ m: 4, p: 2 }} id="customized-dialog-title">
+              Added to favorites
+            </DialogTitle>
+            <IconButton
+              onClick={handleClose}
+              aria-label="close"
+              sx={{
+                position: 'absolute',
+                right: 8,
+                top: 8,
+                color: (theme) => theme.palette.grey[500],
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </BootstrapDialog>
         </Toolbar>
       </AppBar>
       <TemporaryDrawer state={state} setState={setState} toggleDrawer={toggleDrawer} ></TemporaryDrawer>
     </Box>
   );
 }
+
+export default ButtonAppBar;

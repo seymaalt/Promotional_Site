@@ -1,28 +1,41 @@
-import { useContext } from 'react';
+import { useContext, useRef, useEffect } from 'react';
+import Color from 'color-thief-react';
+import GlobalContext from '../context/GlobalContext.jsx';
+import TextContext from '../context/TextContext.jsx';
+import NavbarPromotionalSite from '../components/promoSiteConstants/NavbarPromotionalSite.jsx';
 import LogoPromotionalSite from '../components/Template1/LogoPromotionalSite.jsx';
+import HeaderPromotionalSite from '../components/Template1/Header.jsx';
 import DiscriptionPromotionalSite from '../components/Template1/DiscriptionPromotionalSite.jsx';
+import DownloadButton from '../components/Template1/DownloadButton.jsx';
+import GalleryPromotionalSite from '../components/Template1/GalleryPromotionalSite.jsx';
 import InnovationsPromotionalSite from '../components/Template1/InnovationsPromotionalSite.jsx';
 import DataSecurityPromotionalSite from '../components/Template1/DataSecurityPromotionalSite.jsx';
 import FooterPromotionalSite from '../components/Template1/FooterPromotionalSite.jsx';
-import GalleryPromotionalSite from '../components/Template1/GalleryPromotionalSite.jsx';
-import GlobalContext from '../context/GlobalContext.jsx';
-import TextContext from '../context/TextContext.jsx';
-import HeaderPromotionalSite from '../components/Template1/Header.jsx';
-import DownloadButton from '../components/Template1/DownloadButton.jsx';
-import Color from "color-thief-react";
-import NavbarPromotionalSite from '../components/promoSiteConstants/NavbarPromotionalSite.jsx';
 
 export default function PromotionalSite() {
   const { response } = useContext(GlobalContext);
   const { header, discription, innovations, dataSecurity } = useContext(TextContext);
+  const myHtmlRef = useRef(null);
+
+  const handleClick = () => {
+    const htmlContent = myHtmlRef.current.innerHTML;
+    console.log(htmlContent);
+
+    // Dışarıdan bir fonksiyon ya da script ile sayfa içeriğini alabilirsiniz
+    // Örnek: window.printScript içinde bir fonksiyonunuz varsa
+    const javascriptKodu = window.printScript ? window.printScript() : '';
+    console.log('JavaScript Kodları:', javascriptKodu);
+
+    const computedStyle = window.getComputedStyle(myHtmlRef.current);
+    console.log('Stil bilgisi:', computedStyle);
+  };
 
   return (
     <div>
-
       <Color src={response.logo} crossOrigin="anonymous" format="hex">
-        {({ data }) => {
-          return (
-            <div>
+        {({ data }) => (
+          <div>
+            <div ref={myHtmlRef} id="sayfaIcerigi">
               <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>
                 <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} /></div>
                 <LogoPromotionalSite responseData={response} />
@@ -42,11 +55,11 @@ export default function PromotionalSite() {
                 <DataSecurityPromotionalSite responseData={response} changedData={dataSecurity} colorData={data} />
               </div>
               <FooterPromotionalSite responseData={response} />
+              <button onClick={handleClick}>Logla</button>
             </div>
-          );
-        }}
+          </div>
+        )}
       </Color>
     </div>
   );
 }
-

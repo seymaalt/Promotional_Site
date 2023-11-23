@@ -1,10 +1,7 @@
 import { useState, useContext } from "react";
 import TextContext from "./TextContext";
-import GlobalContext from "./GlobalContext";
 
 const TextProvider = ({ children }) => {
-    const { response } = useContext(GlobalContext);
-    console.log(response)
     const [header, setHeaderr] = useState(null);
     const [discription, setDiscriptionn] = useState(null);
     const [innovations, setInnovationss] = useState(null);
