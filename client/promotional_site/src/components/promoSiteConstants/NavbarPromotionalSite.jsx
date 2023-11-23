@@ -29,7 +29,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const ButtonAppBar = ({ responseData }) => {
+const ButtonAppBar = ({ responseData, colorData }) => {
   const { token, setToken, logout } = useContext(AuthContext);
   const [open, setOpen] = React.useState(false);
 
@@ -92,21 +92,21 @@ const ButtonAppBar = ({ responseData }) => {
   }, []);
 
   return (
-    <Box sx={{ flexGrow: 1 }} >
-      <AppBar position='fixed' style={{ backgroundColor: 'white', height: 70, display: isNavbarVisible ? 'block' : 'none' }}>
+    <Box style={{ innerWidth: '40px' }} >
+      <AppBar className='appbar' position='fixed' style={{ backgroundColor: 'white', height: 70, width: '100 %', display: isNavbarVisible ? 'block' : 'none' }}>
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
             color="black"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            xs={1}
             onClick={toggleDrawer("left", true)}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'black' }}>
-            <img src={Logo} className='homeLogo'></img>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, minWidth: 300 }}>
+            <img src={Logo} className='navbarLogo'></img>
           </Typography>
           <Button color="inherit" style={{ color: 'black' }}><DownloadIcon /><b>Download</b></Button>
           <Button color="inherit" style={{ color: 'black' }} onClick={handleAddFavorite}><FavoriteIcon /></Button>
@@ -133,7 +133,7 @@ const ButtonAppBar = ({ responseData }) => {
           </BootstrapDialog>
         </Toolbar>
       </AppBar>
-      <TemporaryDrawer state={state} setState={setState} toggleDrawer={toggleDrawer} ></TemporaryDrawer>
+      <TemporaryDrawer state={state} setState={setState} toggleDrawer={toggleDrawer} colorData={colorData}></TemporaryDrawer>
     </Box>
   );
 }
