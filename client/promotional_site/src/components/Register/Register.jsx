@@ -19,6 +19,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { IconButton } from "@mui/material";
 import  { useState } from "react";
 import axios from 'axios'
+import LoginGoogle from '../../assets/google.png'
 
 const defaultTheme = createTheme();
 
@@ -32,6 +33,12 @@ export default function SignUp() {
     email: '',
     password: ''
   })
+  const googleAuth = ( )=> {
+    window.open(
+        `${import.meta.env.VITE_PORT}/auth/google/callback`,
+        "_self"
+    );
+  };
 
   const [errors, setErrors] = useState({})
   const handleChange = (e) => {
@@ -200,7 +207,20 @@ export default function SignUp() {
             >
               Register
             </Button>
-           
+            <p style={{textAlign:"center"}}> or </p>
+            <Button
+              onClick={googleAuth}
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              style={{ background:'white',fontWeight:"bold",color:"gray"}}
+              startIcon={<img src={LoginGoogle} alt="Google Logo" style={{ width: '24px', marginRight: '8px' }} />}
+
+             
+            >
+                Signed in with Google
+            </Button>
+         
           </Box>
         </Box>
       </Container>
