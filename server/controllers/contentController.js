@@ -6,8 +6,10 @@ const { linkLogger, linkErrorLogger } = require("../controllers/logger")
 const getContact = asyncHandler(async (req, res) => {
   try {
     const url = req.body.data;
-    const browser = await puppeteer.launch({ headless: "new"}); 
-   // const browser = await puppeteer.launch({ headless: "new", args: ['--no-sandbox'], executablePath: '/usr/bin/chromium-browser' });
+
+    //const browser = await puppeteer.launch({ headless: "new" }); //localde bu çalışır
+    const browser = await puppeteer.launch({ headless: "new", args: ['--no-sandbox'], executablePath: '/usr/bin/chromium-browser' });
+
     const page = await browser.newPage();
     if (url.split("/", 5)[2] == 'play.google.com') {
       linkLogger.log('info', ' --Kullanıcı tarafından Google Play linki girildi.-- ')
@@ -176,8 +178,8 @@ const getContactFAV = asyncHandler(async (req, res) => {
   try {
     const url = req.body.data;
     console.log(url);
-    const browser = await puppeteer.launch({ headless: "new"}); 
-   // const browser = await puppeteer.launch({ headless: "new", args: ['--no-sandbox'], executablePath: '/usr/bin/chromium-browser' });
+    //const browser = await puppeteer.launch({ headless: "new" });
+    const browser = await puppeteer.launch({ headless: "new", args: ['--no-sandbox'], executablePath: '/usr/bin/chromium-browser' });
     const page = await browser.newPage();
     if (url.split("/", 5)[2] == 'play.google.com') {
       linkLogger.log('info', ' --Kullanıcı tarafından Google Play linki girildi.-- ')
@@ -199,10 +201,10 @@ const getContactFAV = asyncHandler(async (req, res) => {
         }
       });
 
-      
+
       const logo = await page.$eval(".nm4vBd", (img) => img.src);
 
- 
+
       res.status(200).json({ header: header, logo: logo, url: url });
       linkLogger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
 
@@ -229,7 +231,7 @@ const getContactFAV = asyncHandler(async (req, res) => {
         }
       });
 
-     
+
       const logo = await page.$eval(".we-artwork--ios-app-icon source", (img) => img.srcset.split(" ", 2)[0]);
 
       res.status(200).json({ header: header, logo: logo, images: images, url: url });

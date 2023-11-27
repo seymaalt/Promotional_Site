@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import TextField from "@mui/material/TextField";
+import { TextareaAutosize } from '@mui/base';
 import TextContext from '../../context/TextContext'
 
-const EditTabPromotionalSite = ({ responseData }) => {
+const EditTabPromotionalSite = ({ responseData, colorData }) => {
     const { setHeader, setDiscription, setInnovations, setDataSecurity } = useContext(TextContext);
 
     function changeHeader(event) {
@@ -19,65 +19,52 @@ const EditTabPromotionalSite = ({ responseData }) => {
     }
 
     return (
-        <div>
+        <div className="editPage">
             <div className='mgtop20'>
                 <div>
                     <label>Header</label>
-                    <div >
-                        <TextField
-                            style={{ width: '90%', marginLeft: '15px' }}
-                            id="header"
-                            name="header"
-                            onChange={(e) => changeHeader(e.target.value)}
-                            multiline
-                            rows={2}
-                            defaultValue={responseData.header}
-                        />
-                    </div>
+                    <TextareaAutosize
+                        style={{ '--border-color': colorData }}
+                        className="textArea"
+                        id="header"
+                        name="header"
+                        onChange={(e) => changeHeader(e.target.value)}
+                        defaultValue={responseData.header}
+                    />
                 </div>
                 <div className='mgtop20'>
                     <label>Discription</label>
-                    <div >
-                        <TextField
-                            style={{ width: '90%', marginLeft: '15px' }}
-                            id="discription"
-                            name="discription"
-                            onChange={(e) => changeDiscription(e.target.value)}
-                            multiline
-                            rows={8}
-                            defaultValue={responseData.description}
-                        />
-                    </div>
+                    <TextareaAutosize
+                        style={{ '--border-color': colorData }}
+                        className="textArea"
+                        id="discription"
+                        name="discription"
+                        onChange={(e) => changeDiscription(e.target.value)}
+                        defaultValue={responseData.description}
+                    />
                 </div>
             </div>
             <div className='mgtop20'>
                 <label>Innovations</label>
-                <div>
-                    <TextField
-                        style={{ width: '90%', marginLeft: '15px' }}
-
-                        id="innovations"
-                        name="innovations"
-                        onChange={(e) => changeInnovations(e.target.value)}
-                        multiline
-                        rows={8}
-                        defaultValue={responseData.innovations}
-                    />
-                </div>
+                <TextareaAutosize
+                    style={{ '--border-color': colorData }}
+                    className="textArea"
+                    id="innovations"
+                    name="innovations"
+                    onChange={(e) => changeInnovations(e.target.value)}
+                    defaultValue={responseData.innovations}
+                />
             </div>
             <div className='mgtop20'>
                 <label>Data Security</label>
-                <div >
-                    <TextField
-                        style={{ width: '90%', marginLeft: '15px' }}
-                        id="dataSecurity"
-                        name="dataSecurity"
-                        onChange={(e) => changeDataSecurity(e.target.value)}
-                        multiline
-                        rows={8}
-                        defaultValue={responseData.dataSecurity}
-                    />
-                </div>
+                <TextareaAutosize
+                    style={{ '--border-color': colorData }}
+                    className="textArea"
+                    id="dataSecurity"
+                    name="dataSecurity"
+                    onChange={(e) => changeDataSecurity(e.target.value)}
+                    defaultValue={responseData.dataSecurity}
+                />
             </div>
         </div>
     );
