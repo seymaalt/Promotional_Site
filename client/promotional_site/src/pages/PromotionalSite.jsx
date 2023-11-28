@@ -35,13 +35,14 @@ export default function PromotionalSite() {
       <Color src={response.logo} crossOrigin="anonymous" format="hex">
         {({ data }) => (
           <div>
-            <div ref={myHtmlRef} id="sayfaIcerigi">
-              <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>
-                <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} /></div>
-                <LogoPromotionalSite responseData={response} />
-                <HeaderPromotionalSite responseData={response} changedData={header}></HeaderPromotionalSite>
-                <div className='disc' >
-                  <DiscriptionPromotionalSite responseData={response} changedData={discription} />
+
+            {/* <div ref={myHtmlRef} id="sayfaIcerigi"> */}
+            <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} colorData={data} /></div>
+            <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>
+              <LogoPromotionalSite responseData={response} />
+              <HeaderPromotionalSite responseData={response} changedData={header}></HeaderPromotionalSite>
+              <div className='disc' >
+                <DiscriptionPromotionalSite responseData={response} changedData={discription} />
                 </div>
                 <div className='downloadButtons'>
                   <DownloadButton responseData={response}></DownloadButton>
