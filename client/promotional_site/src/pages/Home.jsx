@@ -23,6 +23,24 @@ export default function AutoGrid() {
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
+	const logoutt = () => {
+		window.open(`${import.meta.env.VITE_PORT}/auth/logout`, "_self");
+	};
+
+  const getUser = async () => {
+		try {
+			const url = `${import.meta.env.VITE_PORT}/auth/login/success`;
+			const { data } = await axios.get(url, { withCredentials: true });
+			setUser(data.user._json);
+      console.log(data.user._json);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	useEffect(() => {
+		getUser();
+	}, []);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -47,6 +65,8 @@ export default function AutoGrid() {
 
   const handleLogout = async () => {
     logout();
+    window.open(`${import.meta.env.VITE_PORT}/auth/logout`, "_self");
+
     window.location.href = "/";
 
   };
@@ -100,7 +120,7 @@ export default function AutoGrid() {
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClick}
             >
-              {user.username}
+               {user.username || user.name}
             </Button>
             <Menu
               id="basic-menu"

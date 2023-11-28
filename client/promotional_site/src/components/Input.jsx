@@ -69,7 +69,7 @@ const MyComponent = () => {
       setDataSecurity(null)
       setRenderDetail(true);
       setResponse(res.data);
-      navigate('/promotional-site');
+      navigate('/promotional-site2');
     } catch (error) {
       console.error('Error fetching data from the server!', error);
     } finally {
