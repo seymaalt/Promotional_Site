@@ -17,18 +17,6 @@ export default function PromotionalSite() {
   const { header, discription, innovations, dataSecurity } = useContext(TextContext);
   const myHtmlRef = useRef(null);
 
-  const handleClick = () => {
-    const htmlContent = myHtmlRef.current.innerHTML;
-    console.log(htmlContent);
-
-    // Dışarıdan bir fonksiyon ya da script ile sayfa içeriğini alabilirsiniz
-    // Örnek: window.printScript içinde bir fonksiyonunuz varsa
-    const javascriptKodu = window.printScript ? window.printScript() : '';
-    console.log('JavaScript Kodları:', javascriptKodu);
-
-    const computedStyle = window.getComputedStyle(myHtmlRef.current);
-    console.log('Stil bilgisi:', computedStyle);
-  };
 
   return (
     <div>
@@ -55,7 +43,6 @@ export default function PromotionalSite() {
                 <DataSecurityPromotionalSite responseData={response} changedData={dataSecurity} colorData={data} />
               </div>
               <FooterPromotionalSite responseData={response} />
-              <button onClick={handleClick}>Logla</button>
             </div>
           </div>
         )}
