@@ -15,7 +15,7 @@ import FooterPromotionalSite from '../components/Template1/FooterPromotionalSite
 export default function PromotionalSite() {
   const { response } = useContext(GlobalContext);
   const { header, discription, innovations, dataSecurity } = useContext(TextContext);
-  const myHtmlRef = useRef(null);
+  // const myHtmlRef = useRef(null);
 
 
   return (
@@ -23,20 +23,16 @@ export default function PromotionalSite() {
       <Color src={response.logo} crossOrigin="anonymous" format="hex">
         {({ data }) => (
           <div>
-            <div ref={myHtmlRef} id="sayfaIcerigi">
-              <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>
-                <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} /></div>
-                <LogoPromotionalSite responseData={response} />
-                <HeaderPromotionalSite responseData={response} changedData={header}></HeaderPromotionalSite>
-                <div className='disc' >
-                  <DiscriptionPromotionalSite responseData={response} changedData={discription} />
-                </div>
-                <div className='downloadButtons'>
-                  <DownloadButton responseData={response}></DownloadButton>
-                </div>
+            {/* <div ref={myHtmlRef} id="sayfaIcerigi"> */}
+            <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>
+              <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} colorData={data} /></div>
+              <LogoPromotionalSite responseData={response} />
+              <HeaderPromotionalSite responseData={response} changedData={header}></HeaderPromotionalSite>
+              <div className='disc' >
+                <DiscriptionPromotionalSite responseData={response} changedData={discription} />
               </div>
-              <div className='part'>
-                <GalleryPromotionalSite responseData={response} colorData={data} />
+              <div className='downloadButtons'>
+                <DownloadButton responseData={response}></DownloadButton>
               </div>
               <div className='part'>
                 <InnovationsPromotionalSite responseData={response} changedData={innovations} colorData={data} />
@@ -44,6 +40,16 @@ export default function PromotionalSite() {
               </div>
               <FooterPromotionalSite responseData={response} />
             </div>
+            <div className='part'>
+              <GalleryPromotionalSite responseData={response} colorData={data} />
+            </div>
+            <div className='part'>
+              <InnovationsPromotionalSite responseData={response} changedData={innovations} colorData={data} />
+              <DataSecurityPromotionalSite responseData={response} changedData={dataSecurity} colorData={data} />
+            </div>
+            <FooterPromotionalSite responseData={response} />
+            {/* <button onClick={handleClick}>Logla</button> */}
+            {/* </div> */}
           </div>
         )}
       </Color>
