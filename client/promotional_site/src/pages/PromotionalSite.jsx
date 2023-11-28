@@ -36,8 +36,8 @@ export default function PromotionalSite() {
         {({ data }) => (
           <div>
             {/* <div ref={myHtmlRef} id="sayfaIcerigi"> */}
+            <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} colorData={data} /></div>
             <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>
-              <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} colorData={data} /></div>
               <LogoPromotionalSite responseData={response} />
               <HeaderPromotionalSite responseData={response} changedData={header}></HeaderPromotionalSite>
               <div className='disc' >

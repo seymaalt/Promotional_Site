@@ -91,7 +91,7 @@ const MyComponent = () => {
   }, []);
 
   return (
-    <div>
+    <div className='inputBar'>
       <Container id='inputlink'>
         <MyTextField
           variant="outlined"
