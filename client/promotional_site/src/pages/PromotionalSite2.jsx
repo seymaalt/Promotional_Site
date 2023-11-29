@@ -22,7 +22,7 @@ export default function PromotionalSite2() {
         <Grid item xs={1}></Grid>
         <Grid item xs={10}>
           <div className="part" >
-            <div style={{ height: 70 }}>
+            <div >
               <div className="part" style={{ marginTop: "70px" }}>
                 <Head responseData={response} />
               </div>
