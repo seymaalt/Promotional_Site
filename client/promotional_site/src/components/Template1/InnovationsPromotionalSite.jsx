@@ -6,11 +6,11 @@ import { slideIn } from '../../utils/motion';
 
 const InnovationIcon = () => {
   return (
-    <div>
+    <div className='dataInvIconDiv'>
       <img
         src="https://i.ibb.co/ggtZGLV/Pngtree-artificial-intelligence-robot-innovation-technology-6447009.png"
         alt="Innovations Icon"
-        style={{ width: '400px', marginRight: '20%' }}
+        className='dataInvIcon'
       />
     </div>
   );
@@ -20,7 +20,7 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
 
   return (
     <div>
-      <motion.nav variants={slideIn('right', 'spring', 0.8, 1)}
+      <motion.nav variants={slideIn('left', 'spring', 0.8, 1.2)}
         initial="hidden"
         whileInView="show">
         <Grid container>

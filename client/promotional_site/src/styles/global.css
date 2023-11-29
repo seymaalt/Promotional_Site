@@ -21,16 +21,15 @@
 }
 
 .logo {
-  border-radius: 30%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 185px;
-  margin-top: 1%;
-  border: solid 3px white;
+    border-radius: 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: auto;
+    margin-top: 1%;
+    border: solid 3px white
 }
 
 h1 {
-  margin-top: 2%;
-  font-size: 48px;
+    font-size: 48px;
 }
 
 body {
@@ -44,10 +43,9 @@ body {
 }
 
 .disc {
-  margin-top: 1%;
-  margin-inline-start: 20%;
-  margin-inline-end: 20%;
-  justify-content: center;
+    margin-inline-start: 20%;
+    margin-inline-end: 20%;
+    justify-content: center;
 }
 
 .downloadButtons {
@@ -68,10 +66,9 @@ body {
 }
 
 .header {
-  margin-top: 3%;
-  text-align: center;
-  color: white;
-  text-transform: uppercase;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
 }
 
 .innovationsHeader {
@@ -83,18 +80,12 @@ body {
 }
 
 .discription {
-  margin-left: 7%;
-  font-family: "Roboto", sans-serif;
-  text-align: center;
-  color: white;
-  font-weight: 75px;
-  font-size: 25px;
-  white-space: pre-wrap;
+    color: white;
+    font-size: 25px;
+    white-space: pre-wrap;
 }
 
 .discription2 {
-  margin-left: 7%;
-  font-family: "Roboto", sans-serif;
   color: black;
   font-weight: 75px;
   font-size: 25px;
@@ -147,53 +138,50 @@ body {
 }
 
 .image {
-  -webkit-transition: all 350mx ease;
-  transition: all 350mx ease;
-  cursor: pointer;
-  margin-bottom: 12px;
-  border-block-end: solid 3px red;
-  width: 250px;
-  height: auto;
-  display: block;
-  cursor: pointer;
+    -webkit-transition: all 350mx ease;
+    transition: all 350mx ease;
+    cursor: pointer;
+    border-block-end: solid 3px red;
+    width: 250px;
+    height: auto;
+    display: block;
+    cursor: pointer;
 }
 
 .singImage {
-  -webkit-transition: all 350mx ease;
-  transition: all 350mx ease;
-  cursor: pointer;
-  margin-bottom: 12px;
-  border-block-end: solid 3px red;
-  width: 250px;
-  height: auto;
-  display: block;
-  cursor: pointer;
-  padding-top: 50%;
+    -webkit-transition: all 350mx ease;
+    transition: all 350mx ease;
+    cursor: pointer;
+    border-block-end: solid 3px red;
+    width: 250px;
+    height: auto;
+    display: block;
+    cursor: pointer;
+    padding-top: 50%;
 }
 
-.gallery img:hover {
-  filter: opacity(0.8);
+.gallery .img:hover {
+    filter: opacity(.8);
 }
 
 /*model*/
 
 .model {
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #061317;
-  transition: opacity 0.2s ease, visibility 0.2s ease,
-    transform 0.3s ease-in-out;
-  visibility: hidden;
-  opacity: 0;
-  transform: scale(0);
-  overflow: hidden;
-  z-index: 999;
+    width: 100%;
+    height: 100dvh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #061317;
+    transition: opacity .2s ease, visibility .2s ease, transform .3s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+    overflow: hidden;
+    z-index: 999;
 }
 
 .model.open {
@@ -206,7 +194,6 @@ body {
   width: 500px;
   max-width: 500px;
   height: auto;
-  display: block;
   line-height: 0;
   box-sizing: border-box;
   padding: 20px 0 20px;
@@ -276,8 +263,9 @@ body {
 }
 
 .navbar {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+    width: 100px;
 }
 
 .fav {
@@ -303,9 +291,10 @@ body {
 }
 
 .nlNavbar {
-  margin-top: 15px;
-  position: absolute;
-  right: 10px;
+    margin-top: 15px;
+    position: absolute;
+    right: 10px;
+    padding-bottom: 15px;
 }
 
 .loading {
@@ -325,10 +314,10 @@ body {
 }
 
 .homeLogo {
-  width: 240px;
-  height: 50px;
-  padding: 15px;
-  align-items: center;
+    width: 240%;
+    height: auto;
+    padding: 15px;
+    align-items: center;
 }
 
 .navbarLogo {
@@ -366,10 +355,6 @@ label {
   margin-left: 5%;
 }
 
-.appbar {
-  width: 10%;
-}
-
 .editPage {
   background-color: #d1d1d1;
   padding-inline: 10%;
@@ -403,184 +388,217 @@ label {
   outline: 0;
 }
 
-@media screen and (max-width: 1200px) {
-  .gallery {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: 3;
-    -webkit-column-width: 25%;
-    -moz-column-width: 25%;
-    column-width: 25%;
-    margin: 50px;
-  }
-
-  .downloadButtons {
-    margin-inline: 100px;
-    justify-content: center;
-  }
-
-  .background {
-    background: linear-gradient(to right, #6c46ae, #a84db0, #d84fb4);
-    background-size: cover;
-    min-height: 100vh;
+.icons {
     display: flex;
-    flex-direction: column;
+    color: black;
+}
+
+.dataInvIcon {
+    width: 400px;
+}
+
+.dataInvIconDiv {
+    display: flex;
     align-items: center;
-  }
+    justify-content: center;
+}
+
+.logined {
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 1200px) {
+    .gallery {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+
+    .downloadButtons {
+        margin-inline: 100px;
+        margin-top: 25%;
+        justify-content: center;
+    }
+
+    .background {
+        background: linear-gradient(to right, #6C46AE, #A84DB0, #D84FB4);
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .discription {
+        font-size: 24px;
+    }
+
+    .disc {
+        margin-inline-start: 0%;
+        margin-inline-end: 0%;
+    }
+
+    .image {
+        padding-top: 7%;
+        width: 250px;
+    }
+
+    .singImage {
+        padding-top: 7%;
+        width: 250px;
+    }
 }
 
 @media screen and (max-width: 600px) {
-  .gallery {
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2;
-  }
+    .gallery {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
 
-  .background {
-    background: linear-gradient(to right, #6c46ae, #a84db0, #d84fb4);
-    background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    .galleryfr {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
 
-  .downloadButtons {
-    justify-content: center;
-  }
+    .galleryth {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
 
-  .innovationsHeader {
-    font-size: 48px;
-  }
+    .galleryfv {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
 
-  .container {
-    font-size: 24px;
-  }
+    .background {
+        background: linear-gradient(to right, #6C46AE, #A84DB0, #D84FB4);
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .downloadbutton .grid {
-    display: flex;
-    margin-inline: 50px;
-  }
+    .downloadButtons {
+        justify-content: center;
+    }
 
-  .downloadbutton .grid img {
-    height: 45px;
-  }
+    .innovationsHeader {
+        font-size: 28px;
+    }
 
-  .image {
-    width: 150px;
-  }
+    .container {
+        font-size: 16px;
+        padding: 5%;
+    }
 
-  .singImage {
-    width: 150px;
-  }
+    .downloadbutton .grid {
+        display: flex;
+        margin-inline: 50px;
+    }
 
-  #inputlink {
-    width: 275px;
-  }
+    .downloadbutton .grid img {
+        height: 45px;
+    }
 
-  .homeImage {
-    height: 200px;
-    width: 300px;
-  }
+    .image {
+        padding-top: 30%;
+        width: 100%;
+    }
 
-  .homeLogo {
-    margin-left: 60px;
-    margin-top: 10px;
-    height: 40px;
-    width: 150px;
-    margin-right: 250px;
-  }
+    .singImage {
+        padding-top: 30%;
+        width: 100%;
+    }
 
-  .navbarLogo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 5vh;
-    max-width: 100%;
-    padding: 15px;
-  }
+    #inputlink {
+        width: 275px;
+    }
 
-  .model {
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #061317;
-    transition: opacity 0.2s ease, visibility 0.2s ease,
-      transform 0.3s ease-in-out;
-    visibility: hidden;
-    opacity: 0;
-    transform: scale(0);
-    overflow: hidden;
-    z-index: 999;
-  }
+    .homeImage {
+        height: auto;
+        width: 275px;
+    }
 
-  .model.open {
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
-  }
+    .homeLogo {
+        margin-left: 50%;
+        margin-top: 10px;
+        height: auto;
+        width: 160%;
+        margin-right: 200%;
+    }
 
-  .appbar {
-    position: relative;
-    width: 40px;
-  }
+    .navbarLogo {
+        margin-top: 5%;
+        width: 110%;
+        margin-left: -10px;
+    }
+
+    .appbar {
+        position: relative;
+        width: 40px;
+    }
+
+    .logo {
+        width: 40%;
+        margin-top: 15%;
+    }
+
+    .header h1 {
+        font-size: 32px;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .icons {
+        padding-right: 3%;
+    }
+
+    .icon {
+        padding-right: 5%;
+    }
+
+    .discription {
+        font-size: 16px;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .disc {
+        margin-inline-start: 0%;
+        margin-inline-end: 0%;
+    }
+
+    .dataInvIcon {
+        width: 165px;
+    }
+
+    .icon button {
+        margin-left: 40%;
+        padding: 0px;
+    }
+
+    .fav {
+        margin-top: 5%;
+    }
+
+    .homeURL {
+        font-size: 18px;
+    }
+
+    .firstParagraph {
+        font-size: 36px;
+    }
+
+    .secondParagraph {
+        font-size: 18px;
+    }
+
+    .nlNavbar {
+        right: 0;
+    }
 }
-
-.headerHead {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 8%;
-  margin-bottom: 8%;
-  color: #000;
-  font-style: normal;
-  font-family: DM Sans;
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 83px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
-.headDis {
-  font-family: DM Sans;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 31px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
-.titleStyle {
-  font-family: DM Sans;
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 47px;
-  letter-spacing: 0em;
-  text-align: center;
-  padding:20px;
-}
-
-.DataSecP {
-  font-family: DM Sans;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 31px;
-  letter-spacing: 0em;
-  text-align: center;
-  padding: 15px;
-}
-
- .divStyle {
-
-    width: 590px;
-    height: 360px;
-    border-radius: 30px;
-    background: #F1F1F1;
-
-  }
