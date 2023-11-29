@@ -62,8 +62,60 @@ const getContact = asyncHandler(async (req, res) => {
         }
       });
 
-      const descriptionElement = await page.$eval(".bARER", (str) => str.innerHTML);
-      const description = descriptionElement.split("<", 1)[0]
+      // const descriptionElement = await page.$eval(".bARER", (str) => str.textContent);
+      // const description = descriptionElement
+
+      const description = await page.evaluate(() => {
+        const descriptionElement = document.evaluate(
+          '/html/body/c-wiz[2]/div/div/div[2]/div[2]/div/div[1]/div[1]/c-wiz[2]/div/section/div/div[1]',
+          document,
+          null,
+          XPathResult.FIRST_ORDERED_NODE_TYPE,
+          null
+        );
+
+        if (descriptionElement.singleNodeValue) {
+          return descriptionElement.singleNodeValue.textContent;
+        } else {
+          return "descriptionElement not found";
+        }
+      });
+
+      const developerElement = await page.$eval(".auoIOc", (str) => str.textContent);
+      const developer = developerElement
+
+      const star = await page.$eval(".jILTFe", (str) => str.textContent);
+
+      const ratingElement = await page.$eval(".EHUI5b", (str) => str.textContent);
+      const rating = ratingElement.split(" ", 1)[0]
+
+      // const develope2r = await page.evaluate(() => {
+      //   const developerElement = document.evaluate(
+      //     '/html/body/c-wiz[5]/div/div/div[2]/div[2]/div/div[1]/div[1]/c-wiz[4]/section/header/div/div[2]/button',
+      //     document,
+      //     null,
+      //     XPathResult.FIRST_ORDERED_NODE_TYPE,
+      //     null
+      //   );
+
+      //   if (developerElement.singleNodeValue) {
+      //     return developerElement.singleNodeValue.textContent;
+      //   } else {
+      //     return "developerElement not found";
+      //   }
+      // });
+      // console.log(develope2r)
+
+      // await page.waitForXPath('//*[@id="ow9599"]/section/div/div[2]/div[5]/div/div/button/span')
+      // const developer3 = await page.$x('//*[@id="ow9599"]/section/header/div/div[2]/button');
+      // console.log(developer3)
+
+      const allTextContents = await page.$$eval('.VfPpkd-vQzf8d', (elements) => elements.map((el) => el));
+      console.log(allTextContents)
+
+      const comments = await page.$$eval(".h3YV2d", (str) => {
+        return str.map((x) => x.textContent)
+      });
 
       const logo = await page.$eval(".nm4vBd", (img) => img.src);
 
@@ -71,8 +123,8 @@ const getContact = asyncHandler(async (req, res) => {
         return img.map((x) => x.srcset.split(" ", 1))
       });
 
-      res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url });
-      console.log({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url });
+      res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
+      console.log({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
       linkLogger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
 
       await browser.close();
