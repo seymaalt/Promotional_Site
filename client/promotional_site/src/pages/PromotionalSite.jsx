@@ -43,20 +43,19 @@ export default function PromotionalSite() {
               <HeaderPromotionalSite responseData={response} changedData={header}></HeaderPromotionalSite>
               <div className='disc' >
                 <DiscriptionPromotionalSite responseData={response} changedData={discription} />
-                </div>
-                <div className='downloadButtons'>
-                  <DownloadButton responseData={response}></DownloadButton>
-                </div>
               </div>
-              <div className='part'>
-                <GalleryPromotionalSite responseData={response} colorData={data} />
+              <div className='downloadButtons'>
+                <DownloadButton responseData={response}></DownloadButton>
               </div>
-              <div className='part'>
-                <InnovationsPromotionalSite responseData={response} changedData={innovations} colorData={data} />
-                <DataSecurityPromotionalSite responseData={response} changedData={dataSecurity} colorData={data} />
-              </div>
-              <FooterPromotionalSite responseData={response} />
             </div>
+            <div className='part'>
+              <GalleryPromotionalSite responseData={response} colorData={data} />
+            </div>
+            <div className='part'>
+              <InnovationsPromotionalSite responseData={response} changedData={innovations} colorData={data} />
+              <DataSecurityPromotionalSite responseData={response} changedData={dataSecurity} colorData={data} />
+            </div>
+            <FooterPromotionalSite responseData={response} />
           </div>
         )}
       </Color>

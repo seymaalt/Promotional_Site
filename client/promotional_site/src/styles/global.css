@@ -21,15 +21,15 @@
 }
 
 .logo {
-    border-radius: 30%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    height: auto;
-    margin-top: 1%;
-    border: solid 3px white
+  border-radius: 30%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  height: auto;
+  margin-top: 1%;
+  border: solid 3px white
 }
 
 h1 {
-    font-size: 48px;
+  font-size: 48px;
 }
 
 body {
@@ -43,9 +43,9 @@ body {
 }
 
 .disc {
-    margin-inline-start: 20%;
-    margin-inline-end: 20%;
-    justify-content: center;
+  margin-inline-start: 20%;
+  margin-inline-end: 20%;
+  justify-content: center;
 }
 
 .downloadButtons {
@@ -66,9 +66,9 @@ body {
 }
 
 .header {
-    text-align: center;
-    color: white;
-    text-transform: uppercase;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
 }
 
 .innovationsHeader {
@@ -80,9 +80,9 @@ body {
 }
 
 .discription {
-    color: white;
-    font-size: 25px;
-    white-space: pre-wrap;
+  color: white;
+  font-size: 25px;
+  white-space: pre-wrap;
 }
 
 .discription2 {
@@ -138,50 +138,50 @@ body {
 }
 
 .image {
-    -webkit-transition: all 350mx ease;
-    transition: all 350mx ease;
-    cursor: pointer;
-    border-block-end: solid 3px red;
-    width: 250px;
-    height: auto;
-    display: block;
-    cursor: pointer;
+  -webkit-transition: all 350mx ease;
+  transition: all 350mx ease;
+  cursor: pointer;
+  border-block-end: solid 3px red;
+  width: 250px;
+  height: auto;
+  display: block;
+  cursor: pointer;
 }
 
 .singImage {
-    -webkit-transition: all 350mx ease;
-    transition: all 350mx ease;
-    cursor: pointer;
-    border-block-end: solid 3px red;
-    width: 250px;
-    height: auto;
-    display: block;
-    cursor: pointer;
-    padding-top: 50%;
+  -webkit-transition: all 350mx ease;
+  transition: all 350mx ease;
+  cursor: pointer;
+  border-block-end: solid 3px red;
+  width: 250px;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  padding-top: 50%;
 }
 
 .gallery .img:hover {
-    filter: opacity(.8);
+  filter: opacity(.8);
 }
 
 /*model*/
 
 .model {
-    width: 100%;
-    height: 100dvh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #061317;
-    transition: opacity .2s ease, visibility .2s ease, transform .3s ease-in-out;
-    visibility: hidden;
-    opacity: 0;
-    transform: scale(0);
-    overflow: hidden;
-    z-index: 999;
+  width: 100%;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #061317;
+  transition: opacity .2s ease, visibility .2s ease, transform .3s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+  overflow: hidden;
+  z-index: 999;
 }
 
 .model.open {
@@ -263,9 +263,9 @@ body {
 }
 
 .navbar {
-    display: flex;
-    justify-content: center;
-    width: 100px;
+  display: flex;
+  justify-content: center;
+  width: 100px;
 }
 
 .fav {
@@ -291,10 +291,10 @@ body {
 }
 
 .nlNavbar {
-    margin-top: 15px;
-    position: absolute;
-    right: 10px;
-    padding-bottom: 15px;
+  margin-top: 15px;
+  position: absolute;
+  right: 10px;
+  padding-bottom: 15px;
 }
 
 .loading {
@@ -314,10 +314,10 @@ body {
 }
 
 .homeLogo {
-    width: 240%;
-    height: auto;
-    padding: 15px;
-    align-items: center;
+  width: 240%;
+  height: auto;
+  padding: 15px;
+  align-items: center;
 }
 
 .navbarLogo {
@@ -389,216 +389,375 @@ label {
 }
 
 .icons {
-    display: flex;
-    color: black;
+  display: flex;
+  color: black;
 }
 
 .dataInvIcon {
-    width: 400px;
+  width: 400px;
 }
 
 .dataInvIconDiv {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logined {
-    margin-top: 25px;
+  margin-top: 25px;
+}
+
+.ratingDiv h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 8%;
+  margin-bottom: 8%;
+  color: #000;
+  font-family: DM Sans;
+  font-size: 5.118rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.ratingCard {
+  width: 100%;
+  height: 25.875rem;
+  border-radius: 1.875rem;
+  background-color: #F1F1F1;
+  flex-shrink: 0;
+}
+
+.star {
+  text-align: center;
+  padding-top: 84px;
+}
+
+.vector {
+  text-align: center;
+  padding-top: 75px;
+}
+
+.starRating {
+  font-family: DM Sans;
+  padding-top: 70px;
+  text-align: center;
+  color: #000;
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.starText {
+  font-family: DM Sans;
+  padding-top: 50px;
+  text-align: center;
+  color: #000;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.commentCard {
+  width: 23.375rem;
+  height: auto;
+  padding-bottom: 15%;
+  flex-shrink: 0;
+  border-radius: 1.875rem;
+  background: #EBEBEB;
+  white-space: pre-wrap;
+}
+
+.commentDiv {
+  padding-top: 15%;
+  padding-left: 15%;
+}
+
+.comment {
+  margin-top: 6%;
+  max-width: 30dvh;
+  max-height: 200dvh;
+  flex-shrink: 0;
+  color: #1B1A1A;
+  font-family: DM Sans;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  white-space: pre-wrap;
+}
+
+.temp2Gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-count: 3;
+}
+
+.temp2Image {
+  width: auto;
+  height: 90dvh;
+  margin-inline: 2%;
+  border-radius: 16px;
+}
+
+.headerHead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8%;
+  margin-bottom: 8%;
+  color: #000;
+  font-style: normal;
+  font-family: DM Sans;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 83px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.headDisDiv {
+  width: 100%;
+  padding-bottom: 10%;
+}
+
+.headDis {
+  font-family: DM Sans;
+  font-size: 24px;
+  height: 500px;
+  width: 100%;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: 0em;
+  text-align: left;
+  overflow: hidden;
+  overflow: auto;
+}
+
+.titleStyle {
+  font-family: DM Sans;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 47px;
+  letter-spacing: 0em;
+  text-align: center;
+  padding-top: 10%;
+}
+
+.DataSecP {
+  font-family: DM Sans;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: 0em;
+  text-align: center;
+  padding: 15px;
+}
+
+.divStyle {
+  width: 100%;
+  height: 140%;
+  border-radius: 30px;
+  background: #F1F1F1;
 }
 
 @media screen and (max-width: 1200px) {
-    .gallery {
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-    }
+  .gallery {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
 
-    .downloadButtons {
-        margin-inline: 100px;
-        margin-top: 25%;
-        justify-content: center;
-    }
+  .downloadButtons {
+    margin-inline: 100px;
+    margin-top: 25%;
+    justify-content: center;
+  }
 
-    .background {
-        background: linear-gradient(to right, #6C46AE, #A84DB0, #D84FB4);
-        background-size: cover;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .background {
+    background: linear-gradient(to right, #6C46AE, #A84DB0, #D84FB4);
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .discription {
-        font-size: 24px;
-    }
+  .discription {
+    font-size: 24px;
+  }
 
-    .disc {
-        margin-inline-start: 0%;
-        margin-inline-end: 0%;
-    }
+  .disc {
+    margin-inline-start: 0%;
+    margin-inline-end: 0%;
+  }
 
-    .image {
-        padding-top: 7%;
-        width: 250px;
-    }
+  .image {
+    padding-top: 7%;
+    width: 250px;
+  }
 
-    .singImage {
-        padding-top: 7%;
-        width: 250px;
-    }
+  .singImage {
+    padding-top: 7%;
+    width: 250px;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .gallery {
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-    }
+  .gallery {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
 
-    .galleryfr {
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-    }
+  .galleryfr {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
 
-    .galleryth {
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-    }
+  .galleryth {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
 
-    .galleryfv {
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-    }
+  .galleryfv {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
 
-    .background {
-        background: linear-gradient(to right, #6C46AE, #A84DB0, #D84FB4);
-        background-size: cover;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .background {
+    background: linear-gradient(to right, #6C46AE, #A84DB0, #D84FB4);
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .downloadButtons {
-        justify-content: center;
-    }
+  .downloadButtons {
+    justify-content: center;
+  }
 
-    .innovationsHeader {
-        font-size: 28px;
-    }
+  .innovationsHeader {
+    font-size: 28px;
+  }
 
-    .container {
-        font-size: 16px;
-        padding: 5%;
-    }
+  .container {
+    font-size: 16px;
+    padding: 5%;
+  }
 
-    .downloadbutton .grid {
-        display: flex;
-        margin-inline: 50px;
-    }
+  .downloadbutton .grid {
+    display: flex;
+    margin-inline: 50px;
+  }
 
-    .downloadbutton .grid img {
-        height: 45px;
-    }
+  .downloadbutton .grid img {
+    height: 45px;
+  }
 
-    .image {
-        padding-top: 30%;
-        width: 100%;
-    }
+  .image {
+    padding-top: 30%;
+    width: 100%;
+  }
 
-    .singImage {
-        padding-top: 30%;
-        width: 100%;
-    }
+  .singImage {
+    padding-top: 30%;
+    width: 100%;
+  }
 
-    #inputlink {
-        width: 275px;
-    }
+  #inputlink {
+    width: 275px;
+  }
 
-    .homeImage {
-        height: auto;
-        width: 275px;
-    }
+  .homeImage {
+    height: auto;
+    width: 275px;
+  }
 
-    .homeLogo {
-        margin-left: 50%;
-        margin-top: 10px;
-        height: auto;
-        width: 160%;
-        margin-right: 200%;
-    }
+  .homeLogo {
+    margin-left: 50%;
+    margin-top: 10px;
+    height: auto;
+    width: 160%;
+    margin-right: 200%;
+  }
 
-    .navbarLogo {
-        margin-top: 5%;
-        width: 110%;
-        margin-left: -10px;
-    }
+  .navbarLogo {
+    margin-top: 5%;
+    width: 110%;
+    margin-left: -10px;
+  }
 
-    .appbar {
-        position: relative;
-        width: 40px;
-    }
+  .appbar {
+    position: relative;
+    width: 40px;
+  }
 
-    .logo {
-        width: 40%;
-        margin-top: 15%;
-    }
+  .logo {
+    width: 40%;
+    margin-top: 15%;
+  }
 
-    .header h1 {
-        font-size: 32px;
-        padding-left: 10%;
-        padding-right: 10%;
-    }
+  .header h1 {
+    font-size: 32px;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 
-    .icons {
-        padding-right: 3%;
-    }
+  .icons {
+    padding-right: 3%;
+  }
 
-    .icon {
-        padding-right: 5%;
-    }
+  .icon {
+    padding-right: 5%;
+  }
 
-    .discription {
-        font-size: 16px;
-        padding-left: 10%;
-        padding-right: 10%;
-    }
+  .discription {
+    font-size: 16px;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 
-    .disc {
-        margin-inline-start: 0%;
-        margin-inline-end: 0%;
-    }
+  .disc {
+    margin-inline-start: 0%;
+    margin-inline-end: 0%;
+  }
 
-    .dataInvIcon {
-        width: 165px;
-    }
+  .dataInvIcon {
+    width: 165px;
+  }
 
-    .icon button {
-        margin-left: 40%;
-        padding: 0px;
-    }
+  .icon button {
+    margin-left: 40%;
+    padding: 0px;
+  }
 
-    .fav {
-        margin-top: 5%;
-    }
+  .fav {
+    margin-top: 5%;
+  }
 
-    .homeURL {
-        font-size: 18px;
-    }
+  .homeURL {
+    font-size: 18px;
+  }
 
-    .firstParagraph {
-        font-size: 36px;
-    }
+  .firstParagraph {
+    font-size: 36px;
+  }
 
-    .secondParagraph {
-        font-size: 18px;
-    }
+  .secondParagraph {
+    font-size: 18px;
+  }
 
-    .nlNavbar {
-        right: 0;
-    }
+  .nlNavbar {
+    right: 0;
+  }
 }

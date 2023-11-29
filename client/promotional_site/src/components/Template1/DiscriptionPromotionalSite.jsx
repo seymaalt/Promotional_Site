@@ -12,8 +12,8 @@ export default function DiscriptionPromotionalSite({ responseData, changedData }
       initial="hidden"
       whileInView="show">
       <div className='container'>
-        <Grid container style={{ justifyContent: "center" }}>
-          <div className='discription'>{changedData == null ? responseData.description : changedData}</div>
+        <Grid container>
+          <p className='discription' style={{ justifyContent: 'center' }}>{changedData == null ? responseData.description : changedData}</p>
         </Grid>
       </div>
     </motion.nav>

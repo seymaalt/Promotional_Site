@@ -21,7 +21,7 @@ export default function Head({ responseData, changedData }) {
 
   return (
     <div style={{ display: "flex" }}>
-      <Grid container  spacing={2}>
+      <Grid container spacing={2}>
         <Grid item xs={7}>
           <div className="left">
             <div className="header">
@@ -30,16 +30,18 @@ export default function Head({ responseData, changedData }) {
                 Bu Uygulama Hakkında
               </h1>
             </div>
-            <div
-              className="headDis "
-              style={{
-                padding: "40px",
-                width: "717px",
-                height: "580px",
-                marginTop: "20px",
-              }}
-            >
-              {responseData.description}
+            <div className="headDisDiv">
+              <div
+                className="headDis "
+                style={{
+                  padding: "40px",
+                  maxwidth: "717px",
+                  maxHeight: "580px",
+                  marginTop: "20px",
+                }}
+              >
+                {responseData.description}
+              </div>
             </div>
             <div className="buton">
               <div className="downloadbutton">
@@ -97,6 +99,7 @@ export default function Head({ responseData, changedData }) {
                   width: "486px",
                   height: "783px",
                   borderRadius: "16px",
+
                 }}
                 alt="Image"
               />

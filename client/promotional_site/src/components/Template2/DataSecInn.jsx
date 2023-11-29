@@ -7,14 +7,16 @@ export default function DataSecInn({ responseData }) {
   return (
     <div>
       <Grid container spacing={2}>
-      <Grid item xs={1}></Grid>
+        <Grid item xs={0.15}></Grid>
+
         <Grid item xs={5}>
           <Innovation responseData={responseData}></Innovation>
         </Grid>
+        <Grid item xs={1.7}></Grid>
         <Grid item xs={5}>
           <DataSecurity responseData={responseData}></DataSecurity>
         </Grid>
-        <Grid item xs={1}></Grid>
+        <Grid item xs={0.15}></Grid>
 
       </Grid>
     </div>

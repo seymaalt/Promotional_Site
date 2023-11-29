@@ -7,7 +7,7 @@ const DataSecurity = ({ responseData }) => {
   return (
     <div className='divStyle'>
       <div className='titleStyle'>Veri Güvenliği</div>
-     <p className='DataSecP'> {responseData.dataSecurity}</p>
+      <p className='DataSecP'> {responseData.dataSecurity}</p>
     </div>
   );
 }
