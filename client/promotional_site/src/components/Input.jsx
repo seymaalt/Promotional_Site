@@ -69,7 +69,7 @@ const MyComponent = () => {
       setDataSecurity(null)
       setRenderDetail(true);
       setResponse(res.data);
-      navigate('/promotional-site2');
+      navigate('/ChooseTemplate');
     } catch (error) {
       console.error('Error fetching data from the server!', error);
     } finally {
@@ -91,7 +91,7 @@ const MyComponent = () => {
   }, []);
 
   return (
-    <div className='inputBar'>
+    <div>
       <Container id='inputlink'>
         <MyTextField
           variant="outlined"
