@@ -18,7 +18,7 @@ export default function GalleryPromotionalSite({ responseData }) {
         setModel(true)
     }
     return (
-        <div >
+        <div className='swiperSlide'>
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                 slidesPerView={3}>
@@ -28,9 +28,7 @@ export default function GalleryPromotionalSite({ responseData }) {
                 </div >
                 <div className='temp2Gallery'>
                     {images.map((image, i) => {
-
-                        if (i > 0 && i < 4)
-
+                        if (i > 0)
                             return (
                                 <SwiperSlide>{
                                     image == null ? <></> : <img

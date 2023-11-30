@@ -29,7 +29,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const ButtonAppBar = ({ responseData, colorData }) => {
+const ButtonAppBar = ({ responseData }) => {
   const { token, setToken, logout } = useContext(AuthContext);
   const [open, setOpen] = React.useState(false);
 
@@ -141,7 +141,7 @@ const ButtonAppBar = ({ responseData, colorData }) => {
       </Toolbar>
       </AppBar>
       <div>
-        <TemporaryDrawer state={state} setState={setState} toggleDrawer={toggleDrawer} colorData={colorData}></TemporaryDrawer>
+        <TemporaryDrawer state={state} setState={setState} toggleDrawer={toggleDrawer}></TemporaryDrawer>
       </div>
     </Box>
   );

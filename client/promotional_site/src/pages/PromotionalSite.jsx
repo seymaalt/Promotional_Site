@@ -15,29 +15,13 @@ import FooterPromotionalSite from '../components/Template1/FooterPromotionalSite
 export default function PromotionalSite() {
   const { response } = useContext(GlobalContext);
   const { header, discription, innovations, dataSecurity } = useContext(TextContext);
-  const myHtmlRef = useRef(null);
-
-  const handleClick = () => {
-    const htmlContent = myHtmlRef.current.innerHTML;
-    console.log(htmlContent);
-
-    // Dışarıdan bir fonksiyon ya da script ile sayfa içeriğini alabilirsiniz
-    // Örnek: window.printScript içinde bir fonksiyonunuz varsa
-    const javascriptKodu = window.printScript ? window.printScript() : '';
-    console.log('JavaScript Kodları:', javascriptKodu);
-
-    const computedStyle = window.getComputedStyle(myHtmlRef.current);
-    console.log('Stil bilgisi:', computedStyle);
-  };
 
   return (
     <div>
       <Color src={response.logo} crossOrigin="anonymous" format="hex">
         {({ data }) => (
           <div>
-
-            {/* <div ref={myHtmlRef} id="sayfaIcerigi"> */}
-            <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} colorData={data} /></div>
+            <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} /></div>
             <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>
               <LogoPromotionalSite responseData={response} />
               <HeaderPromotionalSite responseData={response} changedData={header}></HeaderPromotionalSite>
