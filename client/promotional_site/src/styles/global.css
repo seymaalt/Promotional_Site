@@ -2,11 +2,6 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.discription {
-    font-size: 24px;
-    text-align: center;
-}
-
 .downloadbutton .grid {
     justify-content: center;
     position: relative;
@@ -66,6 +61,7 @@ body {
     display: flex;
     position: relative;
     font-size: 30px;
+    white-space: pre-wrap;
 }
 
 .header {
@@ -90,6 +86,7 @@ body {
     color: white;
     font-weight: 75px;
     font-size: 25px;
+    white-space: pre-wrap;
 }
 
 .galleryth {
