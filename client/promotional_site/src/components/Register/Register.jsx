@@ -20,6 +20,7 @@ import { IconButton } from "@mui/material";
 import  { useState } from "react";
 import axios from 'axios'
 import LoginGoogle from '../../assets/google.png'
+import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
@@ -27,6 +28,7 @@ export default function SignUp() {
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     username: '',
@@ -98,7 +100,7 @@ export default function SignUp() {
           if (result.data == "Bu Email Zaten Mevcut!!!") {
             alert("Bu E-Posta Zaten Mevcut!")
           } else {
-            alert("Form başarıyla gönderildi")
+            window.location.href="/";
           }
         })
         .catch(err => console.log(err))
