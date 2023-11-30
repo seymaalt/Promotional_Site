@@ -4,16 +4,16 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 
 export default function Template2Component() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleGenerate = async () => {
-       
-          navigate('/promotional-site2');
-      
-      };
+  const handleGenerate = async () => {
+
+    navigate('/promotional-site2');
+
+  };
   return (
     <div style={{ boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", borderRadius: "8px" }}>
-      <div style={{ display: "flex", height: "500px" }}>
+      <div style={{ display: "flex", height: "52dvh" }}>
         <div style={{ marginRight: "auto", overflowY: "auto" }}>
           <img
             src={Template2}
@@ -37,12 +37,12 @@ export default function Template2Component() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-         
+
         }}
       >
-      
+
         <div>
-          <Button variant="contained" style={{ backgroundColor: "black", width: " 350px" }}  onClick={handleGenerate} disableElevation>
+          <Button variant="contained" style={{ backgroundColor: "black", width: " 350px" }} onClick={handleGenerate} disableElevation>
             Choose Template
           </Button>
         </div>
