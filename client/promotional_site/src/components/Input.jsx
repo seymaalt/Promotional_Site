@@ -69,7 +69,7 @@ const MyComponent = () => {
       setDataSecurity(null)
       setRenderDetail(true);
       setResponse(res.data);
-      navigate('/promotional-site');
+      navigate('/ChooseTemplate');
     } catch (error) {
       console.error('Error fetching data from the server!', error);
     } finally {
@@ -108,7 +108,7 @@ const MyComponent = () => {
 
       {loading && (
         <Backdrop open={true} className='loading'>
-          <CircularProgress className='circular' />
+          <CircularProgress style={{ width: '10dvh', height: '10dvh' }} className='circular' />
         </Backdrop>
       )}
 

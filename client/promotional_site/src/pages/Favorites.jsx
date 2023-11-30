@@ -24,7 +24,7 @@ export default function Favorites() {
         const response = await axios.get(
           `${import.meta.env.VITE_PORT}/user/current`,
           config
-        ).then(data=>setFavorites(data.data.favorities));
+        ).then(data => setFavorites(data.data.favorities));
       } catch (error) {
         console.error("Error fetching user profile:", error);
         setError("Error fetching user profile");
@@ -35,12 +35,14 @@ export default function Favorites() {
 
     fetchData();
   }, [token]);
-  useEffect(()=>(console.log(favorites)));
+  useEffect(() => (console.log(favorites)));
 
   return (
     <div>
       <Box className="background">
-        <Logo />
+        <div className="favoriteHomeLogo">
+          <Logo />
+        </div>
         <div style={{ maxWidth: "100%", padding: "0 20px" }}>
           <FavText />
 

@@ -83,7 +83,6 @@ const addFavorite = asyncHandler(async (req,res) => {
 
         user.favorities.push({ url, template });
 
-        // Burada User modelini kullanarak save işlemini gerçekleştirmelisiniz.
         await User.findByIdAndUpdate(user.id, { favorities: user.favorities });
 
         res.json({ message: 'Favori eklendi', favorities: user.favorities });

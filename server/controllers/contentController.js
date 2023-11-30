@@ -7,10 +7,15 @@ const getContact = asyncHandler(async (req, res) => {
   try {
     const url = req.body.data;
 
-    //const browser = await puppeteer.launch({ headless: "new" }); //localde bu çalışır
-    const browser = await puppeteer.launch({ headless: "new", args: ['--no-sandbox'], executablePath: '/usr/bin/chromium-browser' });
+    const browser = await puppeteer.launch({ headless: "new" }); //localde bu çalışır
+    //const browser = await puppeteer.launch({ headless: "new", args: ['--no-sandbox'], executablePath: '/usr/bin/chromium-browser' });
 
     const page = await browser.newPage();
+    await page.setViewport({
+      width: 1920,
+      height: 1080,
+      deviceScaleFactor: 1,
+    });
     if (url.split("/", 5)[2] == 'play.google.com') {
       linkLogger.log('info', ' --Kullanıcı tarafından Google Play linki girildi.-- ')
       console.log("google play işlemleri")
@@ -62,8 +67,33 @@ const getContact = asyncHandler(async (req, res) => {
         }
       });
 
-      const descriptionElement = await page.$eval(".bARER", (str) => str.innerHTML);
-      const description = descriptionElement.split("<", 1)[0]
+      const description = await page.evaluate(() => {
+        const descriptionElement = document.evaluate(
+          '/html/body/c-wiz[2]/div/div/div[2]/div[2]/div/div[1]/div[1]/c-wiz[2]/div/section/div/div[1]',
+          document,
+          null,
+          XPathResult.FIRST_ORDERED_NODE_TYPE,
+          null
+        );
+
+        if (descriptionElement.singleNodeValue) {
+          return descriptionElement.singleNodeValue.textContent;
+        } else {
+          return "descriptionElement not found";
+        }
+      });
+
+      const developerElement = await page.$eval(".auoIOc", (str) => str.textContent);
+      const developer = developerElement
+
+      const star = await page.$eval(".jILTFe", (str) => str.textContent);
+
+      const ratingElement = await page.$eval(".EHUI5b", (str) => str.textContent);
+      const rating = ratingElement.split(" ", 1)[0]
+
+      const comments = await page.$$eval(".h3YV2d", (str) => {
+        return str.map((x) => x.textContent)
+      });
 
       const logo = await page.$eval(".nm4vBd", (img) => img.src);
 
@@ -71,8 +101,8 @@ const getContact = asyncHandler(async (req, res) => {
         return img.map((x) => x.srcset.split(" ", 1))
       });
 
-      res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url });
-      console.log({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url });
+      res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
+      console.log({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
       linkLogger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
 
       await browser.close();
@@ -146,6 +176,18 @@ const getContact = asyncHandler(async (req, res) => {
         }
       });
 
+      const developerElement = await page.$eval(".information-list__item__definition", (str) => str.textContent);
+      const developer = developerElement
+
+      const star = await page.$eval(".we-customer-ratings__averages__display", (str) => str.textContent);
+
+      const ratingElement = await page.$eval(".we-customer-ratings__count", (str) => str.textContent);
+      const rating = ratingElement.split(" ", 1)[0]
+
+      const comments = await page.$$eval(".we-customer-review__body", (str) => {
+        return str.map((x) => x.textContent.slice(15).split(" daha fazla", 2)[0])
+      });
+
       const logo = await page.$eval(".we-artwork--ios-app-icon source", (img) => img.srcset.split(" ", 2)[0]);
 
       const images = await page.$$eval(".we-artwork--screenshot-orientation-portrait source", (img) => {
@@ -157,8 +199,8 @@ const getContact = asyncHandler(async (req, res) => {
         }
       }
 
-      res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url });
-      console.log({ header: header, description: description, innovations: innovations, dataSecurity: dataSecurity, logo: logo, images: images, url: url });
+      res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
+      console.log({ header: header, description: description, innovations: innovations, dataSecurity: dataSecurity, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
       linkLogger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
     }
     else {
@@ -178,8 +220,8 @@ const getContactFAV = asyncHandler(async (req, res) => {
   try {
     const url = req.body.data;
     console.log(url);
-    //const browser = await puppeteer.launch({ headless: "new" });
-    const browser = await puppeteer.launch({ headless: "new", args: ['--no-sandbox'], executablePath: '/usr/bin/chromium-browser' });
+    const browser = await puppeteer.launch({ headless: "new" });
+    //const browser = await puppeteer.launch({ headless: "new", args: ['--no-sandbox'], executablePath: '/usr/bin/chromium-browser' });
     const page = await browser.newPage();
     if (url.split("/", 5)[2] == 'play.google.com') {
       linkLogger.log('info', ' --Kullanıcı tarafından Google Play linki girildi.-- ')
