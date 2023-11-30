@@ -44,7 +44,7 @@ export default function FavList({ favorites }) {
       setInnovations(null)
       setDataSecurity(null)
       setResponse(res.data);
-      navigate('/promotional-site');
+      navigate('/ChooseTemplate');
     } catch (error) {
       console.error('Error fetching data from the server!', error);
     } finally {
@@ -74,18 +74,15 @@ export default function FavList({ favorites }) {
                   newUrl: item.url,
                 };
 
-                // Log the newData to console (optional, for debugging)
-                console.log("New Data:", newData);
 
                 return newData;
               } catch (error) {
                 console.error("Error fetching data for", item.url, ":", error);
-                return null; // or handle the error in a way that suits your application
+                return null;
               }
             })
           );
 
-          // Filter out null values (in case of errors)
           const filteredProcessedData = processed.filter((data) => data !== null);
 
           setProcessedData(filteredProcessedData);
@@ -109,21 +106,19 @@ export default function FavList({ favorites }) {
         {processedData.map((item) => (
           <ListItem key={item._id} disableGutters>
             <div style={{ display: "flex", alignItems: "center" }}>
-              {/* Logo */}
+
               {item.logo && <img src={item.logo} alt="Logo" style={{ marginRight: "10px", width: "50px", borderRadius: "10px" }} />}
 
-              {/* Header */}
               <p
                 style={{
                   color: "white",
-                  fontFamily: "", // You can specify the font family here
+                  fontFamily: "",
                   fontSize: "30px",
                 }}
               >
                 {item.header}
               </p>
 
-              {/* Button */}
               <MyButton variant="contained" color="primary" onClick={() => handleGenerate(item.url)}>
                 Generate
               </MyButton>
