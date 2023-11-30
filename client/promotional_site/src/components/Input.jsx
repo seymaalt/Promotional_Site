@@ -108,7 +108,7 @@ const MyComponent = () => {
 
       {loading && (
         <Backdrop open={true} className='loading'>
-          <CircularProgress className='circular' />
+          <CircularProgress style={{ width: '10dvh', height: '10dvh' }} className='circular' />
         </Backdrop>
       )}
 

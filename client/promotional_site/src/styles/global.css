@@ -5,8 +5,9 @@
 * {
   font-family: "Roboto", sans-serif;
 }
+
 .backgroundtemp {
-   
+
   background-color: #F9FAFB;
   background-size: cover;
   min-height: 100vh;
@@ -314,8 +315,6 @@ body {
 
 .loading .circular {
   color: white;
-  height: 300px;
-  width: 300px;
 }
 
 #inputlink {
@@ -326,6 +325,15 @@ body {
   width: 240%;
   height: auto;
   padding: 15px;
+  align-items: center;
+}
+
+.favoriteHomeLogo {
+  width: 10%;
+  height: auto;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 

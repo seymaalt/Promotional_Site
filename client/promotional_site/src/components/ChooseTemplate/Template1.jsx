@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function Template1Component() {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleGenerate = async () => {
-       
-          navigate('/promotional-site');
-      
-      };
+  const handleGenerate = async () => {
+
+    navigate('/promotional-site');
+
+  };
 
   return (
     <div style={{ boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", borderRadius: "8px" }}>
@@ -39,10 +39,9 @@ export default function Template1Component() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-         
         }}
       >
-      
+
         <div>
           <Button variant="contained" style={{ backgroundColor: "black", width: " 350px" }} onClick={handleGenerate} disableElevation>
             Choose Template
