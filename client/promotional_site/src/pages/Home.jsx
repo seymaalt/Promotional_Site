@@ -66,9 +66,6 @@ export default function AutoGrid() {
   const handleLogout = async () => {
     logout();
     window.open(`${import.meta.env.VITE_PORT}/auth/logout`, "_self");
-
-    window.location.href = "/";
-
   };
 
 
