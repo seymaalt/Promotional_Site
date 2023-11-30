@@ -48,10 +48,7 @@ export default function AutoGrid() {
 
 
   const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-
+    setAnchorEl(false)
   };
 
   const handleCloseFavorites = (event) => {
@@ -116,6 +113,7 @@ export default function AutoGrid() {
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClick}
+
             >
               {user.username || user.name}
             </Button>
