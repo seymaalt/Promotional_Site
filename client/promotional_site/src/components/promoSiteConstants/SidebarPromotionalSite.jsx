@@ -4,7 +4,7 @@ import Drawer from '@mui/material/Drawer';
 import EditTabPromotionalSite from '../Template1/EditTabPromotionalSite';
 import GlobalContext from '../../context/GlobalContext.jsx';
 
-export default function TemporaryDrawer({ state, setState, toggleDrawer, colorData }) {
+export default function TemporaryDrawer({ state, setState, toggleDrawer }) {
   const { response } = useContext(GlobalContext);
 
   const list = (anchor) => (
@@ -29,7 +29,7 @@ export default function TemporaryDrawer({ state, setState, toggleDrawer, colorDa
             >
               {list(anchor)}
               <div>
-                <EditTabPromotionalSite responseData={response} colorData={colorData}></EditTabPromotionalSite>
+                <EditTabPromotionalSite responseData={response}></EditTabPromotionalSite>
               </div>
             </Drawer>
           </React.Fragment>

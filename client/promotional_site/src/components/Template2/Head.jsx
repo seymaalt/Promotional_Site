@@ -23,57 +23,48 @@ export default function Head({ responseData, changedData }) {
     <div style={{ display: "flex" }}>
       <Grid container spacing={2}>
         <Grid item xs={7}>
-          <div className="left">
-            <div className="header">
-              <h1 className="headerHead" style={{ color: "black" }}>
-                {" "}
-                Bu Uygulama Hakkında
-              </h1>
+          <div className="temp2Header">
+            <h1 className="headerHead">
+              Bu Uygulama Hakkında
+            </h1>
+          </div>
+          <div className="headDisDiv">
+            <div
+              className="headDis"
+            >
+              {responseData.description}
             </div>
-            <div className="headDisDiv">
-              <div
-                className="headDis "
-                style={{
-                  padding: "40px",
-                  maxwidth: "717px",
-                  maxHeight: "580px",
-                  marginTop: "20px",
-                }}
-              >
-                {responseData.description}
-              </div>
-            </div>
-            <div className="buton">
-              <div className="downloadbutton">
-                <Grid container>
-                  <Grid
-                    item
-                    xs={6}
-                    className="grid"
-                    style={{ marginBottom: 0 }}
-                  >
-                    <a href={appStoreLink}>
-                      <img
-                        src="https://i.ibb.co/T1kqnWp/App-Store-hemen-indir-button-logo-icon-transparan-PNG-gorseli-1.png"
-                        alt="Logo"
-                      />
-                    </a>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                    className="grid"
-                    style={{ marginBottom: 0 }}
-                  >
-                    <a href={googleStoreLink}>
-                      <img
-                        src="https://i.ibb.co/xMJKQ5j/Google-Play-hemen-indir-button-logo-icon-transparan-PNG-gorseli-1.png"
-                        alt="Logo"
-                      />
-                    </a>
-                  </Grid>
+          </div>
+          <div className="buton">
+            <div className="downloadbutton">
+              <Grid container>
+                <Grid
+                  item
+                  xs={6}
+                  className="grid"
+                  style={{ marginBottom: 0 }}
+                >
+                  <a href={appStoreLink}>
+                    <img
+                      src="https://i.ibb.co/T1kqnWp/App-Store-hemen-indir-button-logo-icon-transparan-PNG-gorseli-1.png"
+                      alt="Logo"
+                    />
+                  </a>
                 </Grid>
-              </div>
+                <Grid
+                  item
+                  xs={6}
+                  className="grid"
+                  style={{ marginBottom: 0 }}
+                >
+                  <a href={googleStoreLink}>
+                    <img
+                      src="https://i.ibb.co/xMJKQ5j/Google-Play-hemen-indir-button-logo-icon-transparan-PNG-gorseli-1.png"
+                      alt="Logo"
+                    />
+                  </a>
+                </Grid>
+              </Grid>
             </div>
           </div>
         </Grid>
@@ -90,17 +81,12 @@ export default function Head({ responseData, changedData }) {
               className="logoo"
               style={{ marginTop: "20px", marginBottom: "20px" }}
             >
-              <img className="logo" src={responseData.logo} alt="Logo" />
+              <img className="temp2Logo" src={responseData.logo} alt="Logo" />
             </div>
-            <div className="Image">
+            <div >
               <img
                 src={responseData.images[0]}
-                style={{
-                  width: "486px",
-                  height: "783px",
-                  borderRadius: "16px",
-
-                }}
+                className="temp2Image"
                 alt="Image"
               />
             </div>

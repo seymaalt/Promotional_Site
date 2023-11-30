@@ -5,8 +5,9 @@
 * {
   font-family: "Roboto", sans-serif;
 }
+
 .backgroundtemp {
-   
+
   background-color: #F9FAFB;
   background-size: cover;
   min-height: 100vh;
@@ -14,7 +15,6 @@
   flex-direction: column;
   align-items: center;
 }
-
 .downloadbutton .grid {
   justify-content: center;
   position: relative;
@@ -314,8 +314,6 @@ body {
 
 .loading .circular {
   color: white;
-  height: 300px;
-  width: 300px;
 }
 
 #inputlink {
@@ -326,6 +324,15 @@ body {
   width: 240%;
   height: auto;
   padding: 15px;
+  align-items: center;
+}
+
+.favoriteHomeLogo {
+  width: 10%;
+  height: auto;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -441,12 +448,13 @@ label {
 
 .star {
   text-align: center;
-  padding-top: 84px;
+  padding-top: 18%;
 }
+
 
 .vector {
   text-align: center;
-  padding-top: 75px;
+  padding-top: 18%;
 }
 
 .starRating {
@@ -472,7 +480,7 @@ label {
 }
 
 .commentCard {
-  width: 23.375rem;
+  width: 100%;
   height: auto;
   padding-bottom: 15%;
   flex-shrink: 0;
@@ -482,22 +490,24 @@ label {
 }
 
 .commentDiv {
-  padding-top: 15%;
-  padding-left: 15%;
+  padding-top: 12%;
+  padding-left: 12%;
+  padding-right: 8%;
 }
 
 .comment {
   margin-top: 6%;
-  max-width: 30dvh;
   max-height: 200dvh;
-  flex-shrink: 0;
   color: #1B1A1A;
   font-family: DM Sans;
-  font-size: 1rem;
-  font-style: normal;
+  font-size: 1.2rem;
   font-weight: 400;
   line-height: normal;
   white-space: pre-wrap;
+}
+
+.dataSecInn {
+  padding-top: 5%;
 }
 
 .temp2Gallery {
@@ -508,26 +518,22 @@ label {
 }
 
 .temp2Image {
-  width: auto;
-  height: 90dvh;
-  margin-inline: 2%;
+  width: 45dvh;
+  height: auto;
+  margin-inline: 5%;
   border-radius: 16px;
 }
 
+.temp2Header {
+  text-align: center;
+}
+
 .headerHead {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 8%;
   margin-bottom: 8%;
   color: #000;
-  font-style: normal;
   font-family: DM Sans;
   font-size: 64px;
   font-weight: 700;
-  line-height: 83px;
-  letter-spacing: 0em;
-  text-align: left;
 }
 
 .headDisDiv {
@@ -538,22 +544,23 @@ label {
 .headDis {
   font-family: DM Sans;
   font-size: 24px;
-  height: 500px;
+  height: 60dvh;
   width: 100%;
   font-weight: 400;
-  line-height: 31px;
-  letter-spacing: 0em;
   text-align: left;
   overflow: hidden;
   overflow: auto;
+  padding: "40px";
+  max-width: "717px";
+  max-height: "580px";
+  margin-top: "20px";
+  padding: 4%;
 }
 
 .titleStyle {
   font-family: DM Sans;
   font-size: 36px;
   font-weight: 700;
-  line-height: 47px;
-  letter-spacing: 0em;
   text-align: center;
   padding-top: 10%;
 }
@@ -562,17 +569,25 @@ label {
   font-family: DM Sans;
   font-size: 24px;
   font-weight: 400;
-  line-height: 31px;
-  letter-spacing: 0em;
+  height: auto;
   text-align: center;
-  padding: 15px;
+  padding: 3%;
 }
 
 .divStyle {
   width: 100%;
-  height: 140%;
+  height: 150%;
   border-radius: 30px;
   background: #F1F1F1;
+}
+
+.temp2Logo {
+  width: 14.8125rem;
+  border-radius: 1rem;
+}
+
+.dataSecBox {
+  height: 100%;
 }
 
 @media screen and (max-width: 1200px) {
@@ -768,5 +783,93 @@ label {
 
   .nlNavbar {
     right: 0;
+  }
+
+  .ratingDiv h1 {
+    font-size: 2.559rem;
+  }
+
+  .headerHead {
+    font-size: 30px;
+  }
+
+  .temp2Logo {
+    width: 6rem;
+    margin-top: 15%;
+  }
+
+  .headDis {
+    height: 28dvh;
+    font-size: 10px;
+  }
+
+  .commentCard {
+    margin-left: 7%;
+    width: 80%;
+    padding-bottom: 15%;
+  }
+
+  .comment {
+    font-size: 0.6rem;
+    font-weight: 400;
+    line-height: normal;
+    white-space: pre-wrap;
+  }
+
+  .ratingCard {
+    margin-left: 10%;
+    width: 75%;
+    height: auto;
+  }
+
+  .starRating {
+    font-size: 1.75rem;
+    padding-bottom: 20%;
+  }
+
+  .starText {
+    font-size: 1.55rem;
+    padding-bottom: 20%;
+  }
+
+  .star {
+    padding-top: 10%;
+  }
+
+  .vector {
+    padding-top: 10%;
+  }
+
+  .part {
+    min-height: 10vh;
+  }
+
+  .swiperSlide {
+    margin-top: 10%;
+  }
+
+  .temp2Gallery {
+    width: 100px;
+    column-count: 1;
+  }
+
+  .temp2Image {
+    margin-top: 15%;
+    width: 100px;
+    height: auto;
+  }
+
+  .titleStyle {
+    font-size: 28px;
+  }
+
+  .DataSecP {
+    font-size: 16px;
+  }
+
+  .divStyle {
+    margin-left: 12%;
+    width: 80%;
+    height: 100%;
   }
 }

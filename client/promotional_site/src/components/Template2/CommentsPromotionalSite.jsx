@@ -23,7 +23,7 @@ export default function CommentsPromotionalSite({ responseData }) {
                 <Grid container spacing={{ xs: 4, md: 12 }}>
                     {responseData.comments.map((comment) =>
                         // <SwiperSlide>
-                        <Grid item xs={12} sm={12} md={4}>
+                        <Grid item xs={12} md={4}>
                             <div className="commentCard">
                                 <div className="commentDiv">
                                     <div className="nail">
