@@ -29,7 +29,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const ButtonAppBar = ({ responseData }) => {
+const ButtonAppBar = ({ responseData, colorData }) => {
   const { token, setToken, logout } = useContext(AuthContext);
   const [open, setOpen] = React.useState(false);
 
@@ -60,7 +60,7 @@ const ButtonAppBar = ({ responseData }) => {
         template: 'temp1',
       };
 
-      const response = await axios.post('http://localhost:3000/user/addFavorite', data, {
+      const response = await axios.post(`${import.meta.env.VITE_PORT}/user/addFavorite`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -92,48 +92,57 @@ const ButtonAppBar = ({ responseData }) => {
   }, []);
 
   return (
-    <Box sx={{ flexGrow: 1 }} >
-      <AppBar position='fixed' style={{ backgroundColor: 'white', height: 70, display: isNavbarVisible ? 'block' : 'none' }}>
-        <Toolbar>
+    <Box style={{ innerWidth: '40px' }} >
+      <AppBar className='appbar' position='fixed' style={{ backgroundColor: 'white', height: 70, width: '100 %', display: isNavbarVisible ? 'block' : 'none' }}>        <Toolbar>
+        <IconButton
+          size="large"
+          edge="start"
+          color="black"
+          aria-label="menu"
+          xs={1}
+          onClick={toggleDrawer("left", true)}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, }}>
+          <img src={Logo} className='navbarLogo'></img>
+        </Typography>
+        <div className='icons'>
+          <div className='icon'>
+            <Button color="inherit" ><DownloadIcon /><b>Download</b></Button>
+          </div>
+          <div className='icon'>
+            <Button color="inherit" onClick={handleAddFavorite}><FavoriteIcon /></Button>
+          </div>
+
+        </div>
+
+        <BootstrapDialog
+          onClose={handleClose}
+          aria-labelledby="customized-dialog-title"
+          open={open}
+        >
+          <DialogTitle sx={{ m: 4, p: 2 }} id="customized-dialog-title">
+            Added to favorites
+          </DialogTitle>
           <IconButton
-            size="large"
-            edge="start"
-            color="black"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            onClick={toggleDrawer("left", true)}
+            onClick={handleClose}
+            aria-label="close"
+            sx={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+              color: (theme) => theme.palette.grey[500],
+            }}
           >
-            <MenuIcon />
+            <CloseIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'black' }}>
-            <img src={Logo} className='homeLogo'></img>
-          </Typography>
-          <Button color="inherit" style={{ color: 'black' }}><DownloadIcon /><b>Download</b></Button>
-          <Button color="inherit" style={{ color: 'black' }} onClick={handleAddFavorite}><FavoriteIcon /></Button>
-          <BootstrapDialog
-            onClose={handleClose}
-            aria-labelledby="customized-dialog-title"
-            open={open}
-          >
-            <DialogTitle sx={{ m: 4, p: 2 }} id="customized-dialog-title">
-              Added to favorites
-            </DialogTitle>
-            <IconButton
-              onClick={handleClose}
-              aria-label="close"
-              sx={{
-                position: 'absolute',
-                right: 8,
-                top: 8,
-                color: (theme) => theme.palette.grey[500],
-              }}
-            >
-              <CloseIcon />
-            </IconButton>
-          </BootstrapDialog>
-        </Toolbar>
+        </BootstrapDialog>
+      </Toolbar>
       </AppBar>
-      <TemporaryDrawer state={state} setState={setState} toggleDrawer={toggleDrawer} ></TemporaryDrawer>
+      <div>
+        <TemporaryDrawer state={state} setState={setState} toggleDrawer={toggleDrawer} colorData={colorData}></TemporaryDrawer>
+      </div>
     </Box>
   );
 }

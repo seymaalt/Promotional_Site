@@ -7,11 +7,11 @@ import { slideIn } from '../../utils/motion';
 
 const LockIconExample = () => {
   return (
-    <div>
+    <div className='dataInvIconDiv'>
       <img
         src="https://i.ibb.co/qyr4Ts8/Pngtree-cartoon-hand-drawn-network-information-5049321.png"
         alt="Sample GIF"
-        style={{ width: '400px', marginLeft: '20%' }}
+        className='dataInvIcon'
       />
     </div>
   );
@@ -81,7 +81,7 @@ export default function DataSecurityPromotionalSite({ responseData, changedData,
 
   return (
     <div>
-      <motion.nav variants={slideIn('left', 'spring', 0.8, 1)}
+      <motion.nav variants={slideIn('left', 'spring', 0.8, 1.2)}
         initial="hidden"
         whileInView="show">
         <Grid container  >

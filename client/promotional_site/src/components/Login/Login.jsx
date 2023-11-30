@@ -11,8 +11,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState, useEffect,useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
-
-
+import LoginGoogle from '../../assets/google.png'
 const defaultTheme = createTheme();
 
 const Login = () => {
@@ -23,6 +22,14 @@ const Login = () => {
   const [location, setLocation] = useState("/");
   const {token,setToken,isAuthenticated,setIsAuthenticated}= useContext(AuthContext);
   const [users, setUsers] = useState([]);
+
+  const googleAuth = ( )=> {
+    window.open(
+        `${import.meta.env.VITE_PORT}/auth/google/callback`,
+        "_self"
+    );
+  };
+
 
   useEffect(() => {
     // Sayfa yüklendiğinde LocalStorage'dan verileri kontrol et
@@ -161,6 +168,17 @@ const Login = () => {
              
             >
               Login
+            </Button>
+            <p style={{textAlign:"center"}}> or </p>
+            <Button
+              onClick={googleAuth}
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              style={{ background:'white',fontWeight:"bold",color:"gray"}}
+              startIcon={<img src={LoginGoogle} alt="Google Logo" style={{ width: '24px', marginRight: '8px' }} />}
+            >
+                Login with Google
             </Button>
          
           </Box>

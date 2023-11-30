@@ -13,14 +13,35 @@ import RegisterModal from "../components/Register/RegisterModal.jsx";
 import AuthContext from "../context/AuthContext.jsx";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from '@mui/material/Menu';
+import { useNavigate } from "react-router-dom";
 
 export default function AutoGrid() {
   const { token, setToken, logout } = useContext(AuthContext);
   const [user, setUser] = useState(null);
- // const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
+
+	const logoutt = () => {
+		window.open(`${import.meta.env.VITE_PORT}/auth/logout`, "_self");
+	};
+
+  const getUser = async () => {
+		try {
+			const url = `${import.meta.env.VITE_PORT}/auth/login/success`;
+			const { data } = await axios.get(url, { withCredentials: true });
+			setUser(data.user._json);
+      console.log(data.user._json);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	useEffect(() => {
+		getUser();
+	}, []);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -33,8 +54,19 @@ export default function AutoGrid() {
 
   };
 
+  const handleCloseFavorites = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    navigate("/favorites");
+
+  };
+
+
   const handleLogout = async () => {
     logout();
+    window.open(`${import.meta.env.VITE_PORT}/auth/logout`, "_self");
+
     window.location.href = "/";
 
   };
@@ -77,32 +109,32 @@ export default function AutoGrid() {
         <Logo />
         {user ? (
           <div className="fav">
-        
             <Button
               ref={anchorRef}
               variant="contained"
-              style={{marginRight:"10px",backgroundColor:"white",color:"#7247AE",height:"40px",fontWeight:"600"}}
+              className="logged"
+              style={{ marginRight: "10px", backgroundColor: "white", color: "#7247AE", fontWeight: "600" }}
               id="basic-button"
               aria-controls={open ? 'basic-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClick}
             >
-               {user.username}
+               {user.username || user.name}
             </Button>
             <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>Favorites</MenuItem>
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
-      </Menu>
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleCloseFavorites}>Favorites</MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            </Menu>
           </div>
         ) : (
           <div className="nlNavbar">
@@ -131,7 +163,7 @@ export default function AutoGrid() {
           </div>
         </Grid>
         <Grid item xs={12} md={2}></Grid>
-        <Grid item xs={10} md={4}>
+        <Grid item xs={9} md={4}>
           <div>
             <HomePageImage></HomePageImage>
           </div>
