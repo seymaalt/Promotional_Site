@@ -14,7 +14,7 @@ export default function CommentsPromotionalSite({ responseData }) {
     const [metinnn, setMetinnn] = useState()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-    const [fontSize, setFontSize] = useState(16);
+    const [fontSize, setFontSize] = useState();
     const [color, setColor] = useState('#1B1A1A');
     const [selectedFont, setSelectedFont] = useState('DM Sans');
     const [textAlign, setTextAlign] = useState("left");

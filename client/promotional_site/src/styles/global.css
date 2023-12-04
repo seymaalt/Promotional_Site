@@ -548,10 +548,6 @@ label {
   text-align: left;
   overflow: hidden;
   overflow: auto;
-  padding: "40px";
-  max-width: "717px";
-  max-height: "580px";
-  margin-top: "20px";
   padding: 4%;
 }
 
@@ -741,7 +737,7 @@ label {
 
   .navbarLogo {
     margin-top: 5%;
-    width: 110%;
+    width: 90%;
     margin-left: -10px;
   }
 
