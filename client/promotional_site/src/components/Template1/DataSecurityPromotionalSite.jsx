@@ -25,7 +25,7 @@ export default function DataSecurityPromotionalSite({ responseData, changedData,
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [fontSize, setFontSize] = useState(30);
+  const [fontSize, setFontSize] = useState();
   const [color, setColor] = useState('black');
   const [selectedFont, setSelectedFont] = useState('Roboto, sans-serif');
   const [textAlign, setTextAlign] = useState("center");
@@ -80,7 +80,7 @@ export default function DataSecurityPromotionalSite({ responseData, changedData,
     x = (x + modalWidth) <= window.innerWidth ? x : window.innerWidth - modalWidth;
     y = (y + modalHeight) <= window.innerHeight ? y : window.innerHeight - modalHeight;
 
-    return{top:y, left:x};
+    return { top: y, left: x };
   };
 
   return (

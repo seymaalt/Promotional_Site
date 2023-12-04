@@ -15,6 +15,7 @@ import AuthContext from '../../context/AuthContext';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useNavigate } from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -29,6 +30,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 const ButtonAppBar = ({ responseData }) => {
   const { token, setToken, logout } = useContext(AuthContext);
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -92,7 +94,9 @@ const ButtonAppBar = ({ responseData }) => {
     <Box style={{ innerWidth: '40px' }} >
       <AppBar className='appbar' position='fixed' style={{ backgroundColor: 'white', height: 70, width: '100 %', display: isNavbarVisible ? 'block' : 'none' }}>        <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, }}>
-          <img src={Logo} className='navbarLogo'></img>
+          <Button onClick={() => navigate('/')}>
+            <img src={Logo} className='navbarLogo'></img>
+          </Button>
         </Typography>
         <div className='icons'>
           <div className='icon'>
