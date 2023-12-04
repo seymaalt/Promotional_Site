@@ -9,7 +9,7 @@ const Innovation = ({ responseData }) => {
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [fontSize, setFontSize] = useState(24);
+  const [fontSize, setFontSize] = useState();
   const [color, setColor] = useState('black');
   const [selectedFont, setSelectedFont] = useState('Roboto, sans-serif');
   const [textAlign, setTextAlign] = useState("center");

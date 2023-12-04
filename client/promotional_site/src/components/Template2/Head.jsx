@@ -6,20 +6,12 @@ import { useContext, useState } from "react";
 import { Modal, Button, TextareaAutosize } from '@mui/material';
 import TextContext from "../../context/TextContext";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
-
 export default function Head({ responseData, changedData }) {
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const { discription, setDiscription } = useContext(TextContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [fontSize, setFontSize] = useState(24);
+  const [fontSize, setFontSize] = useState();
   const [color, setColor] = useState('black');
   const [selectedFont, setSelectedFont] = useState('DM Sans');
   const [textAlign, setTextAlign] = useState("left");
@@ -87,13 +79,11 @@ export default function Head({ responseData, changedData }) {
     <div style={{ display: "flex" }}>
       <Grid container spacing={2}>
         <Grid item xs={7}>
-          <div className="left">
-            <div className="header">
-              <h1 className="headerHead" style={{ color: "black" }}>
-                {" "}
-                Bu Uygulama Hakkında
-              </h1>
-            </div>
+        <div className="temp2Header">
+            <h1 className="headerHead">
+              Bu Uygulama Hakkında
+            </h1>
+          </div>
             <div className="headDisDiv">
               {duzenlemeModu ? (
                 <TextareaAutosize
@@ -113,10 +103,6 @@ export default function Head({ responseData, changedData }) {
                       fontSize: `${fontSize}px`,
                       color: `${color}`,
                       fontFamily: selectedFont,
-                      padding: "40px",
-                      maxwidth: "717px",
-                      maxHeight: "580px",
-                      marginTop: "20px",
                     }}
                   >
                     {discription== null ? responseData.description : discription}
@@ -157,7 +143,6 @@ export default function Head({ responseData, changedData }) {
                 </Grid>
               </div>
             </div>
-          </div>
         </Grid>
         <Grid item xs={5}>
           <div
@@ -172,17 +157,12 @@ export default function Head({ responseData, changedData }) {
               className="logoo"
               style={{ marginTop: "20px", marginBottom: "20px" }}
             >
-              <img className="logo" src={responseData.logo} alt="Logo" />
+              <img className="temp2Logo" src={responseData.logo} alt="Logo" />
             </div>
-            <div className="Image">
+            <div>
               <img
                 src={responseData.images[0]}
-                style={{
-                  width: "486px",
-                  height: "783px",
-                  borderRadius: "16px",
-
-                }}
+                className="temp2Image"
                 alt="Image"
               />
             </div>
