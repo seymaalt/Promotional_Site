@@ -6,8 +6,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import TemporaryDrawer from './SidebarPromotionalSite'
 import DownloadIcon from '@mui/icons-material/Download';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Logo from '../../assets/logosiyah.png'
@@ -17,7 +15,7 @@ import AuthContext from '../../context/AuthContext';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
+import { useNavigate } from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -32,6 +30,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 const ButtonAppBar = ({ responseData }) => {
   const { token, setToken, logout } = useContext(AuthContext);
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -94,18 +93,10 @@ const ButtonAppBar = ({ responseData }) => {
   return (
     <Box style={{ innerWidth: '40px' }} >
       <AppBar className='appbar' position='fixed' style={{ backgroundColor: 'white', height: 70, width: '100 %', display: isNavbarVisible ? 'block' : 'none' }}>        <Toolbar>
-        <IconButton
-          size="large"
-          edge="start"
-          color="black"
-          aria-label="menu"
-          xs={1}
-          onClick={toggleDrawer("left", true)}
-        >
-          <MenuIcon />
-        </IconButton>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, }}>
-          <img src={Logo} className='navbarLogo'></img>
+          <Button onClick={() => navigate('/')}>
+            <img src={Logo} className='navbarLogo'></img>
+          </Button>
         </Typography>
         <div className='icons'>
           <div className='icon'>
@@ -140,9 +131,6 @@ const ButtonAppBar = ({ responseData }) => {
         </BootstrapDialog>
       </Toolbar>
       </AppBar>
-      <div>
-        <TemporaryDrawer state={state} setState={setState} toggleDrawer={toggleDrawer}></TemporaryDrawer>
-      </div>
     </Box>
   );
 }

@@ -46,8 +46,8 @@ export default function HeaderPromotionalSite({ responseData, changedData, color
 
   const handleDivClick = (event) => {
     const rect = event.target.getBoundingClientRect();
-    const middleX = rect.left + rect.width / 2;
-    const middleY = rect.top + rect.height / 2;
+    const middleX = event.clientX;
+    const middleY = event.clientY;
 
 
     setModalPosition(calculateModalPosition(middleX, middleY));
@@ -73,7 +73,7 @@ export default function HeaderPromotionalSite({ responseData, changedData, color
       <div className="header" onDoubleClick={openModal} >
       {duzenlemeModu ? (
         <TextareaAutosize
-          style={{  marginTop: "0%",textTransform:"uppercase", resize: "none", border: "0px", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: "center", color: `${color}`, background: (colorData == null ? 'black' : colorData) }}
+          style={{  marginTop: "0%",textTransform:"uppercase",paddingLeft:"10%",paddingRight:"10%", resize: "none", border: "0px", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: "center", color: `${color}`, background: (colorData == null ? 'black' : colorData) }}
           id="header"
           name="header"
           multiline
@@ -86,52 +86,7 @@ export default function HeaderPromotionalSite({ responseData, changedData, color
         </div>
         )}
       </div>
-      <Modal open={isModalOpen} onClose={closeModal} BackdropProps={{ style: { backgroundColor: 'rgba(0, 0, 0, 0)' } }}>
-        <div style={{ position: 'absolute', top: modalPosition.top, left: modalPosition.left, backgroundColor: "#1F2937", color: "white" }}>
-          <div style={{ border: '1px', margin: "7px", padding: '5px', fontSize: "15px" }}>
-            <label style={{ display: 'block', fontSize: "15px", textAlign: "left", margin: "9px" }} >
-              <b>Size:</b>
-              <input type="number" value={fontSize} style={{
-                backgroundColor: "#9CA3AF",
-                width: '100%',
-                boxSizing: 'border-box',
-                padding: '8px',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-              }} onChange={(e) => handleFontSizeChange(e.target.value)} />
-            </label >
-            <label style={{ display: 'block', fontSize: "15px", textAlign: "left", margin: "9px" }}>
-              <b>Color:</b>
-              <input type="color" value={color}
-                style={{
-                  backgroundColor: "#9CA3AF",
-                  width: '100%',
-                  height: "50px",
-                  boxSizing: 'border-box',
-                  padding: '8px',
-                  borderRadius: '5px',
-                  border: '1px solid #ccc',
-                }} onChange={(e) => handleColorChange(e.target.value)} />
-            </label>
-            <label style={{ display: 'block', fontSize: "15px", textAlign: "left", margin: "9px" }} >
-              <b>Font:</b>
-              <select value={selectedFont}
-                style={{
-                  backgroundColor: "#9CA3AF",
-                  width: '100%',
-                  boxSizing: 'border-box',
-                  padding: '8px',
-                  borderRadius: '5px',
-                  border: '1px solid #ccc',
-                }} onChange={handleFontChange}>
-                <option value="'Roboto, sans-serif'">Roboto</option>
-                <option value="Dosis, sans-serif">Dosis</option>
-                <option value="Nova Square, sans-serif">Nova Square</option>
-              </select>
-            </label>
-          </div>
-        </div>
-      </Modal>
+      <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition}/>
     </motion.nav >
   );
 }
