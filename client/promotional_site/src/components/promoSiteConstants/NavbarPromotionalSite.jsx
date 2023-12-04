@@ -94,16 +94,6 @@ const ButtonAppBar = ({ responseData }) => {
   return (
     <Box style={{ innerWidth: '40px' }} >
       <AppBar className='appbar' position='fixed' style={{ backgroundColor: 'white', height: 70, width: '100 %', display: isNavbarVisible ? 'block' : 'none' }}>        <Toolbar>
-        <IconButton
-          size="large"
-          edge="start"
-          color="black"
-          aria-label="menu"
-          xs={1}
-          onClick={toggleDrawer("left", true)}
-        >
-          <MenuIcon />
-        </IconButton>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, }}>
           <img src={Logo} className='navbarLogo'></img>
         </Typography>
