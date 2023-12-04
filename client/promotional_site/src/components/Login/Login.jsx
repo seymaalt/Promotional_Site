@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState, useEffect,useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
 import LoginGoogle from '../../assets/google.png'
@@ -20,13 +20,13 @@ const Login = () => {
   const [password, setPassword] = useState()
   const [rememberMe, setRememberMe] = useState(false);
   const [location, setLocation] = useState("/");
-  const {token,setToken,isAuthenticated,setIsAuthenticated}= useContext(AuthContext);
+  const { token, setToken, isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
 
-  const googleAuth = ( )=> {
+  const googleAuth = () => {
     window.open(
-        `${import.meta.env.VITE_PORT}/auth/google/callback`,
-        "_self"
+      `${import.meta.env.VITE_PORT}/auth/google/callback`,
+      "_self"
     );
   };
 
@@ -71,17 +71,17 @@ const Login = () => {
       alert("E-posta veya şifre eksik")
       return; // İşlemi burada sonlandır
     } else {
-     axios.post(`${import.meta.env.VITE_PORT}/user/login`, { email, password })
+      axios.post(`${import.meta.env.VITE_PORT}/user/login`, { email, password })
         .then(result => {
           console.log(result)
           const jwtToken = result.data.accessToken;
-          localStorage.setItem('token', jwtToken);      
+          localStorage.setItem('token', jwtToken);
           if (result.data == "Success") {
             console.log({
               email: data.get('email'),
               password: data.get('password'),
             });
-            
+
             if (rememberMe) {
               localStorage.setItem('email', email);
               localStorage.setItem('password', password);
@@ -91,17 +91,17 @@ const Login = () => {
               localStorage.removeItem('password');
               localStorage.removeItem('rememberMe');
             }
-         
-          } 
-           
-            setToken(result.data.accessToken);
-         
-           console.log("result: "+result.data.accessToken);
+
+          }
+
+          setToken(result.data.accessToken);
+
+          console.log("result: " + result.data.accessToken);
           // console.log("token: "+token);
-          
+
         })
         .catch(err => console.log(err));
-      
+
     }
   }
 
@@ -111,6 +111,7 @@ const Login = () => {
 
 
   return (
+
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -122,14 +123,14 @@ const Login = () => {
             alignItems: 'center',
           }}
         >
-          
+
           <Typography component="h1" fontWeight="bold" variant="h5">
             Login
-          
+
           </Typography>
           <Typography variant="subtitle2" fontWeight="400" padding="5px" gutterBottom>
-            Login to track your favorite promotional site easily 
-      </Typography>
+            Login to track your favorite promotional site easily
+          </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
@@ -152,35 +153,34 @@ const Login = () => {
               autoComplete="current-password"
             />
             <FormControlLabel
-              control={<Checkbox value="remember" style={{color:"#6D46AE"}} type="checkbox" checked={rememberMe} onChange={handleCheckboxChange} />}
+              style={{ marginTop: "3%" }}
+              control={<Checkbox value="remember" style={{ color: "#6D46AE" }} type="checkbox" checked={rememberMe} onChange={handleCheckboxChange} />}
               label="
               Remember me"
             />
-            <Link href="#" variant="body2" underline="none" style={{color:"black",marginLeft:"17px",fontWeight:"bold"}}>
-                Forgot your password?
-                </Link>
+            <Link href="#" variant="body2" underline="none" style={{ color: "black", marginLeft: "17px", fontWeight: "bold" }}>
+              Forgot your password?
+            </Link>
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              style={{ backgroundColor:'#6D46AE',fontWeight:"bold"}}
-             
+              style={{ backgroundColor: '#6D46AE', fontWeight: "bold" }}
             >
               Login
             </Button>
-            <p style={{textAlign:"center"}}> or </p>
+            <p style={{ textAlign: "center" }}> or </p>
             <Button
               onClick={googleAuth}
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              style={{ background:'white',fontWeight:"bold",color:"gray"}}
+              style={{ background: 'white', fontWeight: "bold", color: "gray" }}
               startIcon={<img src={LoginGoogle} alt="Google Logo" style={{ width: '24px', marginRight: '8px' }} />}
             >
-                Login with Google
+              Login with Google
             </Button>
-         
           </Box>
         </Box>
       </Container>

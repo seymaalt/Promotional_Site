@@ -15,6 +15,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .downloadbutton .grid {
   justify-content: center;
   position: relative;
@@ -274,7 +275,7 @@ body {
 .navbar {
   display: flex;
   justify-content: center;
-  width: 100px;
+  width: 125px;
 }
 
 .fav {
@@ -328,12 +329,9 @@ body {
 }
 
 .favoriteHomeLogo {
-  width: 10%;
+  width: 25%;
   height: auto;
   padding: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .navbarLogo {
@@ -590,6 +588,33 @@ label {
   height: 100%;
 }
 
+.favText {
+  margin-top: 120px;
+  color: white;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.favListHeader {
+  color: white;
+  font-size: 30px;
+  margin-right: 20%;
+}
+
+.favBackground {
+  background: linear-gradient(to right, #6c46ae, #a84db0, #d84fb4);
+  min-height: 100vh;
+}
+
+.chooseHeader h1 {
+  color: #111827;
+  font-size: 48px;
+  line-height: 48px;
+  vertical-align: baseline;
+  text-align: center;
+  margin-top: 120px;
+}
+
 @media screen and (max-width: 1200px) {
   .gallery {
     -webkit-column-count: 2;
@@ -708,11 +733,10 @@ label {
   }
 
   .homeLogo {
-    margin-left: 50%;
-    margin-top: 10px;
-    height: auto;
-    width: 160%;
-    margin-right: 200%;
+    margin-left: 45%;
+    margin-top: 5%;
+    width: 150%;
+    margin-right: 190%;
   }
 
   .navbarLogo {
@@ -871,5 +895,37 @@ label {
     margin-left: 12%;
     width: 80%;
     height: 100%;
+  }
+
+  .favoriteHomeLogo {
+    width: 80%;
+    height: auto;
+  }
+
+  .favListHeader {
+    color: white;
+    font-size: 16px;
+  }
+
+  .favText {
+    margin-top: 60px;
+    font-size: 38px;
+  }
+
+  .chooseHeader h1 {
+    color: #111827;
+    font-size: 40px;
+    line-height: 40px;
+    vertical-align: baseline;
+    letter-spacing: normal;
+    text-align: center;
+    margin-top: 120px;
+  }
+
+  .chooseTemp1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20%;
   }
 }
