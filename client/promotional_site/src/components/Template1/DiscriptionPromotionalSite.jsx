@@ -9,7 +9,7 @@ import TextContext from '../../context/TextContext';
 
 
 export default function DiscriptionPromotionalSite({ responseData, changedData, colorData }) {
-  const { discription,setDiscription } = useContext(TextContext);
+  const { discription, setDiscription } = useContext(TextContext);
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
@@ -83,17 +83,17 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
         ) : (
           <div onClick={duzenlemeModunuToggle}>
             <Grid container style={{ justifyContent: "center", color: `${color}`, fontSize: `${fontSize}px`, font: `${selectedFont}` }}>
-              <p className='discription' style={{ justifyContent: "center", color: `${color}`, fontSize: `${fontSize}px`, fontFamily: selectedFont }}>{changedData == null ? responseData.description : changedData}</p>
+              <div className='discription' style={{ color: `${color}`, fontSize: `${fontSize}px`, fontFamily: selectedFont }}>{changedData == null ? responseData.description : changedData}</div>
             </Grid>
           </div>
         )}
         <Modal open={isModalOpen} onClose={closeModal} BackdropProps={{ style: { backgroundColor: 'rgba(0, 0, 0, 0)' } }} >
           <div style={{ position: 'absolute', top: modalPosition.top, left: modalPosition.left, backgroundColor: "#1F2937", color: "white" }}>
-            <div style={{ border: '1px',margin:"7px", padding: '5px', fontSize: "15px"}}>
-              <label style={{ display: 'block', fontSize: "15px", textAlign:"left",margin:"9px"}} >
+            <div style={{ border: '1px', margin: "7px", padding: '5px', fontSize: "15px" }}>
+              <label style={{ display: 'block', fontSize: "15px", textAlign: "left", margin: "9px" }} >
                 <b>Size:</b>
-                <input type="number" value={fontSize}  style={{
-                  backgroundColor:"#9CA3AF",
+                <input type="number" value={fontSize} style={{
+                  backgroundColor: "#9CA3AF",
                   width: '100%',
                   boxSizing: 'border-box',
                   padding: '8px',
@@ -101,30 +101,30 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
                   border: '1px solid #ccc', // Kenarlık rengi
                 }} onChange={(e) => handleFontSizeChange(e.target.value)} />
               </label >
-              <label  style={{ display: 'block', fontSize: "15px", textAlign:"left",margin:"9px" }}>
+              <label style={{ display: 'block', fontSize: "15px", textAlign: "left", margin: "9px" }}>
                 <b>Color:</b>
-                <input type="color" value={color} 
-                 style={{
-                  backgroundColor:"#9CA3AF",
-                  width: '100%',
-                  height:"50px",
-                  boxSizing: 'border-box',
-                  padding: '8px',
-                  borderRadius: '5px', // Köşeleri yuvarlak yapmak için
-                  border: '1px solid #ccc', // Kenarlık rengi
-                }} onChange={(e) => handleColorChange(e.target.value)} />
+                <input type="color" value={color}
+                  style={{
+                    backgroundColor: "#9CA3AF",
+                    width: '100%',
+                    height: "50px",
+                    boxSizing: 'border-box',
+                    padding: '8px',
+                    borderRadius: '5px', // Köşeleri yuvarlak yapmak için
+                    border: '1px solid #ccc', // Kenarlık rengi
+                  }} onChange={(e) => handleColorChange(e.target.value)} />
               </label>
-              <label style={{ display: 'block', fontSize: "15px", textAlign:"left",margin:"9px"}} >
+              <label style={{ display: 'block', fontSize: "15px", textAlign: "left", margin: "9px" }} >
                 <b>Font:</b>
-                <select value={selectedFont} 
-                style={{
-                  backgroundColor:"#9CA3AF",
-                  width: '100%',
-                  boxSizing: 'border-box',
-                  padding: '8px',
-                  borderRadius: '5px', // Köşeleri yuvarlak yapmak için
-                  border: '1px solid #ccc', // Kenarlık rengi
-                }} onChange={handleFontChange}>
+                <select value={selectedFont}
+                  style={{
+                    backgroundColor: "#9CA3AF",
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    padding: '8px',
+                    borderRadius: '5px', // Köşeleri yuvarlak yapmak için
+                    border: '1px solid #ccc', // Kenarlık rengi
+                  }} onChange={handleFontChange}>
                   <option value="'Roboto, sans-serif'">Roboto</option>
                   <option value="Dosis, sans-serif">Dosis</option>
                   <option value="Nova Square, sans-serif">Nova Square</option>

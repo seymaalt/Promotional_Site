@@ -8,14 +8,12 @@ export default function ChooseTemplate() {
   return (
     <div className="backgroundtemp">
       <Header></Header>
-      <div style={{ display: "flex", gap: "50px" }}>
+      <div>
         <Grid container spacing={8}>
-          <Grid item xs={12} md={6}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Template1></Template1>
-            </div>
+          <Grid item xs={10} md={6}>
+            <Template1></Template1>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={10} md={6}>
             <Template2></Template2>
           </Grid>
         </Grid>

@@ -14,7 +14,7 @@ export default function Template1Component() {
   };
 
   return (
-    <div>
+    <div className="chooseTemp1">
       <div style={{ boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", borderRadius: "8px" }}>
         <div style={{ display: "flex", height: "52dvh" }}>
           <div style={{ overflowY: "auto" }}>
@@ -29,22 +29,18 @@ export default function Template1Component() {
             />
           </div>
         </div>
-
         <div
           style={{
             backgroundColor: "white",
-            height: "80px",
-            width: "450px",
             borderRadius: "8px",
-            padding: "1rem",
+            padding: "2rem",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-
           <div>
-            <Button variant="contained" style={{ backgroundColor: "black", width: " 350px" }} onClick={handleGenerate} disableElevation>
+            <Button variant="contained" style={{ backgroundColor: "black", width: "350px" }} onClick={handleGenerate} disableElevation>
               Choose Template
             </Button>
           </div>

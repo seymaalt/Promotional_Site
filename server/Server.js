@@ -19,18 +19,17 @@ app.use(
     secret: "cyberwolve",
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 24 * 60 * 60 * 1000 }, 
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
   })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(
-	cors({
-		origin: "http://localhost:5173",
-		methods: "GET,POST,PUT,DELETE",
-		credentials: true,
-	})
+  cors({
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
 );
 app.use(express.json());
 app.use(bodyParser.json());
