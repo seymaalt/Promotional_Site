@@ -10,7 +10,7 @@ import ChangeText from './ChangeText'
 
 
 export default function DiscriptionPromotionalSite({ responseData, changedData, colorData }) {
-  const { discription,setDiscription } = useContext(TextContext);
+  const { discription, setDiscription } = useContext(TextContext);
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
@@ -56,7 +56,7 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
 
   const handleDivClick = (event) => {
     const rect = event.target.getBoundingClientRect();
-    const middleX =event.clientX;
+    const middleX = event.clientX;
     const middleY = event.clientY;
 
 
@@ -94,12 +94,12 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
         ) : (
           <div onClick={duzenlemeModunuToggle}>
             <Grid container style={{ justifyContent: "center", color: `${color}`, fontSize: `${fontSize}px`, font: `${selectedFont}` }}>
-              <p className='discription' style={{ justifyContent: "center", textAlign: `${textAlign}`, color: `${color}`, fontSize: `${fontSize}px`, fontFamily: selectedFont }}>{changedData == null ? responseData.description : changedData}</p>
+              <div className='discription' style={{ color: `${color}`, fontSize: `${fontSize}px`, fontFamily: selectedFont }}>{changedData == null ? responseData.description : changedData}</div>
             </Grid>
           </div>
         )}
-         <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
       </div>
+      <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
     </motion.nav>
   )
 }

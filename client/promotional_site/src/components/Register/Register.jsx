@@ -17,9 +17,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { IconButton } from "@mui/material";
-import  { useState } from "react";
+import { useState } from "react";
 import axios from 'axios'
 import LoginGoogle from '../../assets/google.png'
+import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
@@ -27,16 +28,17 @@ export default function SignUp() {
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: ''
   })
-  const googleAuth = ( )=> {
+  const googleAuth = () => {
     window.open(
-        `${import.meta.env.VITE_PORT}/auth/google/callback`,
-        "_self"
+      `${import.meta.env.VITE_PORT}/auth/google/callback`,
+      "_self"
     );
   };
 
@@ -85,20 +87,13 @@ export default function SignUp() {
       const email = formData.email
       const password = formData.password
 
-      console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-      });
-
-
       axios.post(`${import.meta.env.VITE_PORT}/user/register`, { name, email, password })
 
         .then(result => {
-          console.log(result)
           if (result.data == "Bu Email Zaten Mevcut!!!") {
             alert("Bu E-Posta Zaten Mevcut!")
           } else {
-            alert("Form başarıyla gönderildi")
+            window.location.href = "/";
           }
         })
         .catch(err => console.log(err))
@@ -121,7 +116,7 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
-        <Typography component="h1" fontWeight="bold" variant="h5">
+          <Typography component="h1" fontWeight="bold" variant="h5">
             Register
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -164,7 +159,7 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <FormControl sx={{ m: 1, width: "40ch" }} variant="outlined">
                   <InputLabel htmlFor="outlined-adornment-password">
-                   Password
+                    Password
                   </InputLabel>
                   <OutlinedInput
                     required
@@ -194,7 +189,7 @@ export default function SignUp() {
                 {errors.password && <span>{errors.password}</span>}
               </Grid>
               <Grid item xs={12}>
-               
+
               </Grid>
             </Grid>
             <Button
@@ -202,25 +197,25 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              style={{ backgroundColor:'#6D46AE',fontWeight:"bold"}}
-             
+              style={{ backgroundColor: '#6D46AE', fontWeight: "bold" }}
+
             >
               Register
             </Button>
-            <p style={{textAlign:"center"}}> or </p>
+            <p style={{ textAlign: "center" }}> or </p>
             <Button
               onClick={googleAuth}
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              style={{ background:'white',fontWeight:"bold",color:"gray"}}
+              style={{ background: 'white', fontWeight: "bold", color: "gray" }}
               startIcon={<img src={LoginGoogle} alt="Google Logo" style={{ width: '24px', marginRight: '8px' }} />}
 
-             
+
             >
-                Signed in with Google
+              Signed in with Google
             </Button>
-         
+
           </Box>
         </Box>
       </Container>
