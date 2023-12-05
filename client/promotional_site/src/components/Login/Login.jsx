@@ -12,6 +12,7 @@ import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
 import LoginGoogle from '../../assets/google.png'
+import ForgotPasswordModal from '../ForgotPassword/ForgotPasswordModal';
 const defaultTheme = createTheme();
 
 const Login = () => {
@@ -68,7 +69,7 @@ const Login = () => {
     const password = data.get('password')
     if (!email || !password) {
       //res.status(400).json("E-posta veya şifre eksik");
-      alert("E-posta veya şifre eksik")
+      //alert("E-posta veya şifre eksik")
       return; // İşlemi burada sonlandır
     } else {
       axios.post(`${import.meta.env.VITE_PORT}/user/login`, { email, password })
@@ -131,7 +132,7 @@ const Login = () => {
           <Typography variant="subtitle2" fontWeight="400" padding="5px" gutterBottom>
             Login to track your favorite promotional site easily
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit}   noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -158,10 +159,12 @@ const Login = () => {
               label="
               Remember me"
             />
-            <Link href="#" variant="body2" underline="none" style={{ color: "black", marginLeft: "17px", fontWeight: "bold" }}>
-              Forgot your password?
-            </Link>
+            <Button href="#" variant="body2" underline="none" style={{ color: "black", marginLeft: "17px", fontWeight: "bold" }}>
+              <ForgotPasswordModal/>
+            </Button>
+
             <Button
+              
               type="submit"
               fullWidth
               variant="contained"

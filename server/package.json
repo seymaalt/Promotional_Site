@@ -21,6 +21,7 @@
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.1",
+    "nodemailer": "^6.9.7",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "puppeteer": "^21.4.1",
