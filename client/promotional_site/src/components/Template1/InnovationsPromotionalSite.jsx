@@ -5,6 +5,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import '../../styles/global.css'
 import { motion } from 'framer-motion';
 import { slideIn } from '../../utils/motion';
+import TextContext from '../../context/TextContext';
+import ChangeText from './ChangeText'
 
 const InnovationIcon = () => {
   return (
@@ -19,13 +21,15 @@ const InnovationIcon = () => {
 };
 
 export default function InnovationsPromotionalSite({ responseData, changedData, colorData }) {
+  const { innovations, setInnovations } = React.useContext(TextContext);
   const [metin, setMetin] = useState(responseData.innovations);
   const [metinHeader, setMetinHeader] = useState("INNOVATIONS");
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [fontSize, setFontSize] = useState(30);
+  const [fontSize, setFontSize] = useState();
   const [color, setColor] = useState('black');
+  const [textAlign, setTextAlign] = useState("center");
   const [selectedFont, setSelectedFont] = useState('Roboto, sans-serif');
 
   const openModal = () => {
@@ -45,12 +49,16 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
     setColor(newColor);
   };
 
+  const handleTextAlignChange = (e) => {
+    setTextAlign(e);
+  }
+
   const handleFontChange = (e) => {
     setSelectedFont(e.target.value);
   };
 
   const metniGuncelle = (e) => {
-    setMetin(e.target.value);
+    setInnovations(e.target.value);
   };
 
   const metniGuncelleHeader = (e) => {
@@ -66,8 +74,8 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
 
   const handleDivClick = (event) => {
     const rect = event.target.getBoundingClientRect();
-    const middleX = rect.left + rect.width / 2;
-    const middleY = rect.top + rect.height / 2;
+    const middleX = event.clientX;
+    const middleY = event.clientY;
 
 
     setModalPosition(calculateModalPosition(middleX, middleY));
@@ -104,20 +112,20 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
                   type="text" value={metinHeader} onChange={metniGuncelleHeader} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle1} autoFocus /></div>
               ) : (
                 <div onClick={duzenlemeModunuToggle1}> */}
-                  <div className='innovationsHeader' style={{ color: colorData }}>{metinHeader}</div>
-                {/* </div>
+            <div className='innovationsHeader' style={{ color: colorData }}>{metinHeader}</div>
+            {/* </div>
               )}
             </div> */}
             {duzenlemeModu ? (
               <div className='container'><TextareaAutosize
-                style={{ width: '100%', padding: "0px", resize: "none", border: "0px", fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: "center" }}
+                style={{ width: '100%', padding: "0px", resize: "none", border: "0px", fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: `${textAlign}` }}
                 multiline
                 rows={15}
-                defaultValue={metin}
-                type="text" value={metin} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus /></div>
+                defaultValue={responseData.innovations}
+                type="text" value={innovations} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus /></div>
             ) : (
               <div onClick={duzenlemeModunuToggle}>
-                <div className='container' style={{ fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }} >{changedData == null ? responseData.innovations : changedData}</div>
+                <div className='container' style={{ textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }} >{changedData == null ? responseData.innovations : changedData}</div>
               </div>
             )}
           </Grid>
@@ -127,56 +135,7 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
             </div>
           </Grid>
         </Grid>
-
-        <Modal open={isModalOpen} onClose={closeModal} BackdropProps={{ style: { backgroundColor: 'rgba(0, 0, 0, 0)' } }}>
-          <div style={{ position: 'absolute', top: modalPosition.top, left: modalPosition.left, backgroundColor: "#1F2937", color: "white" }}>
-            <div style={{ border: '1px', margin: "7px", padding: '5px', fontSize: "15px" }}>
-              <label style={{ display: 'block', fontSize: "15px", textAlign: "left", margin: "9px" }} >
-                <b>Size:</b>
-                <input type="number" value={fontSize} style={{
-                  backgroundColor: "#9CA3AF",
-                  width: '100%',
-                  boxSizing: 'border-box',
-                  padding: '8px',
-                  borderRadius: '5px', // Köşeleri yuvarlak yapmak için
-                  border: '1px solid #ccc', // Kenarlık rengi
-                }} onChange={(e) => handleFontSizeChange(e.target.value)} />
-              </label >
-              <label style={{ display: 'block', fontSize: "15px", textAlign: "left", margin: "9px" }}>
-                <b>Color:</b>
-                <input type="color" value={color}
-                  style={{
-                    backgroundColor: "#9CA3AF",
-                    width: '100%',
-                    height: "50px",
-                    boxSizing: 'border-box',
-                    padding: '8px',
-                    borderRadius: '5px', // Köşeleri yuvarlak yapmak için
-                    border: '1px solid #ccc', // Kenarlık rengi
-                  }} onChange={(e) => handleColorChange(e.target.value)} />
-              </label>
-              <label style={{ display: 'block', fontSize: "15px", textAlign: "left", margin: "9px" }} >
-                <b>Font:</b>
-                <select value={selectedFont}
-                  style={{
-                    backgroundColor: "#9CA3AF",
-                    width: '100%',
-                    boxSizing: 'border-box',
-                    padding: '8px',
-                    borderRadius: '5px', // Köşeleri yuvarlak yapmak için
-                    border: '1px solid #ccc', // Kenarlık rengi
-                  }} onChange={handleFontChange}>
-                  <option value="'Roboto, sans-serif'">Roboto</option>
-                  <option value="Dosis, sans-serif">Dosis</option>
-                  <option value="Nova Square, sans-serif">Nova Square</option>
-                  {/* İhtiyacınıza göre fontları ekleyebilirsiniz */}
-                </select>
-              </label>
-            </div>
-          </div>
-        </Modal>
-
-
+        <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
       </motion.nav>
     </div>
   )

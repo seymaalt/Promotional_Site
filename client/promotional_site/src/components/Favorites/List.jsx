@@ -9,6 +9,7 @@ import GlobalContext from '../../context/GlobalContext.jsx';
 import TextContext from '../../context/TextContext.jsx';
 import CircularProgress from '@mui/material/CircularProgress';
 import Backdrop from '@mui/material/Backdrop';
+import Grid from '@mui/material/Grid';
 import '../../styles/global.css';
 
 const MyButton = styled(Button)({
@@ -96,8 +97,8 @@ export default function FavList({ favorites }) {
   }, [favorites]);
 
   return (
-    <div style={{ width: "1800px" }}>
-      <List sx={{ width: "1800px", color: "white" }}>
+    <div style={{ width: "%100" }}>
+      <List sx={{ width: "%100", color: "white" }}>
         {loadinglist && (
           <Backdrop open={true} className='loading'>
             <CircularProgress style={{ width: '10dvh', height: '10dvh' }} className='circular' />
@@ -109,13 +110,7 @@ export default function FavList({ favorites }) {
 
               {item.logo && <img src={item.logo} alt="Logo" style={{ marginRight: "10px", width: "50px", borderRadius: "10px" }} />}
 
-              <p
-                style={{
-                  color: "white",
-                  fontFamily: "",
-                  fontSize: "30px",
-                }}
-              >
+              <p className="favListHeader">
                 {item.header}
               </p>
 
