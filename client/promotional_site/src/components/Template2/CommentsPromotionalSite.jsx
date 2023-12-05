@@ -74,8 +74,8 @@ export default function CommentsPromotionalSite({ responseData }) {
         const modalHeight = 300;
         x = (x + modalWidth) <= window.innerWidth ? x : window.innerWidth - modalWidth;
         y = (y + modalHeight) <= window.innerHeight ? y : window.innerHeight - modalHeight;
-    
-        return{top:y, left:x};
+
+        return { top: y, left: x };
 
     };
     return (
@@ -98,14 +98,14 @@ export default function CommentsPromotionalSite({ responseData }) {
                                     {duzenlemeModu ? (
                                         <TextareaAutosize
                                             style={{
-                                                width: '100%', background: "#EBEBEB", padding: "40px", marginTop: "0px", maxHeight: "580px", justifyContent: "center", padding: "0px", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
+                                                width: '100%', background: "#EBEBEB", padding: "40px", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
                                             }}
                                             multiline
                                             rows={15}
                                             defaultValue={responseData.comments[0]}
                                             type="text" value={metin} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus />
                                     ) : (
-                                        <div onClick={duzenlemeModunuToggle} style={{textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }}>
+                                        <div onClick={duzenlemeModunuToggle} style={{ textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }}>
                                             {metin == null ? responseData.comments[0] : metin}
                                         </div>
                                     )}
@@ -130,14 +130,14 @@ export default function CommentsPromotionalSite({ responseData }) {
                                     {duzenlemeModuu ? (
                                         <TextareaAutosize
                                             style={{
-                                                width: '100%', background: "#EBEBEB", padding: "40px", marginTop: "0px", maxHeight: "580px", justifyContent: "center", padding: "0px", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont,textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
+                                                width: '100%', background: "#EBEBEB", padding: "40px", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
                                             }}
                                             multiline
                                             rows={15}
                                             defaultValue={responseData.comments[1]}
                                             type="text" value={metinn} onChange={metniGuncelle1} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle1} autoFocus />
                                     ) : (
-                                        <div onClick={duzenlemeModunuToggle1} style={{textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }} >
+                                        <div onClick={duzenlemeModunuToggle1} style={{ textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }} >
                                             {metinn == null ? responseData.comments[1] : metinn}
                                         </div>
                                     )}
@@ -161,14 +161,14 @@ export default function CommentsPromotionalSite({ responseData }) {
                                     {duzenlemeModuuu ? (
                                         <TextareaAutosize
                                             style={{
-                                                width: '100%', background: "#EBEBEB", padding: "40px", marginTop: "0px", maxHeight: "580px", justifyContent: "center", padding: "0px", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
+                                                width: '100%', background: "#EBEBEB", padding: "40px", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
                                             }}
                                             multiline
                                             rows={15}
                                             defaultValue={responseData.comments[2]}
                                             type="text" value={metinnn} onChange={metniGuncelle2} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle2} autoFocus />
                                     ) : (
-                                        <div onClick={duzenlemeModunuToggle2} style={{textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }} >
+                                        <div onClick={duzenlemeModunuToggle2} style={{ textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }} >
                                             {metinnn == null ? responseData.comments[2] : metinnn}
                                         </div>
                                     )}

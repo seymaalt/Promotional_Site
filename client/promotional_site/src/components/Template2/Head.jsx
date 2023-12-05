@@ -56,93 +56,94 @@ export default function Head({ responseData, changedData }) {
     ? (googleStoreLink = url)
     : (appStoreLink = url);
 
-    const handleDivClick = (event) => {
-      const rect = event.target.getBoundingClientRect();
-      const middleX = event.clientX;
-      const middleY = event.clientY;
-  
-      setModalPosition(calculateModalPosition(middleX, middleY));
-      setIsModalOpen(true);
-    };
-    const calculateModalPosition = (x, y) => {
-      const modalWidth = 300;
-      const modalHeight = 200; 
-  
-      if (x + modalWidth <= window.innerWidth) {
-        return { top: y, left: x };
-      } else {
-  
-        return { top: y, left: x - modalWidth };
-      }
-    };
+  const handleDivClick = (event) => {
+    const rect = event.target.getBoundingClientRect();
+    const middleX = event.clientX;
+    const middleY = event.clientY;
+
+    setModalPosition(calculateModalPosition(middleX, middleY));
+    setIsModalOpen(true);
+  };
+  const calculateModalPosition = (x, y) => {
+    const modalWidth = 300;
+    const modalHeight = 200;
+
+    if (x + modalWidth <= window.innerWidth) {
+      return { top: y, left: x };
+    } else {
+
+      return { top: y, left: x - modalWidth };
+    }
+  };
   return (
     <div style={{ display: "flex" }}>
       <Grid container spacing={2}>
         <Grid item xs={7}>
-        <div className="temp2Header">
+          <div className="temp2Header">
             <h1 className="headerHead">
               Bu Uygulama Hakkında
             </h1>
           </div>
-            <div className="headDisDiv">
-              {duzenlemeModu ? (
-                <TextareaAutosize
+          <div className="headDisDiv">
+            {duzenlemeModu ? (
+              <TextareaAutosize
+                style={{
+                  width: '100%', padding: "40px", maxwidth: "717px", maxHeight: "580px", marginTop: "20px", height: "500px", justifyContent: "center", resize: "none", border: "0px", lineHeight: "31px", letterSpacing: "0em", overflow: "hidden", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`, background: "white"
+                }}
+                multiline
+                rows={15}
+                defaultValue={responseData.description}
+                type="text" value={discription} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus />
+            ) : (
+              <div onClick={duzenlemeModunuToggle}>
+                <div
+                  className="headDis "
                   style={{
-                    width: '100%', padding: "40px", maxwidth: "717px", maxHeight: "580px", marginTop: "20px", height: "500px",justifyContent: "center",  resize: "none", border: "0px",lineHeight:"31px",letterSpacing:"0em",overflow:"hidden", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`, background: "white"
+                    textAlign: `${textAlign}`,
+                    fontSize: `${fontSize}px`,
+                    color: `${color}`,
+                    fontFamily: selectedFont,
+
                   }}
-                  multiline
-                  rows={15}
-                  defaultValue={responseData.description}
-                  type="text" value={discription} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus />
-              ) : (
-                <div onClick={duzenlemeModunuToggle}>
-                  <div
-                    className="headDis "
-                    style={{
-                     textAlign: `${textAlign}`,
-                      fontSize: `${fontSize}px`,
-                      color: `${color}`,
-                      fontFamily: selectedFont,
-                    }}
-                  >
-                    {discription== null ? responseData.description : discription}
-                  </div>
+                >
+                  {discription == null ? responseData.description : discription}
                 </div>
-              )}
-            </div>
-            <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
-            <div className="buton">
-              <div className="downloadbutton">
-                <Grid container>
-                  <Grid
-                    item
-                    xs={6}
-                    className="grid"
-                    style={{ marginBottom: 0 }}
-                  >
-                    <a href={appStoreLink}>
-                      <img
-                        src="https://i.ibb.co/T1kqnWp/App-Store-hemen-indir-button-logo-icon-transparan-PNG-gorseli-1.png"
-                        alt="Logo"
-                      />
-                    </a>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                    className="grid"
-                    style={{ marginBottom: 0 }}
-                  >
-                    <a href={googleStoreLink}>
-                      <img
-                        src="https://i.ibb.co/xMJKQ5j/Google-Play-hemen-indir-button-logo-icon-transparan-PNG-gorseli-1.png"
-                        alt="Logo"
-                      />
-                    </a>
-                  </Grid>
-                </Grid>
               </div>
+            )}
+          </div>
+          <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
+          <div className="buton">
+            <div className="downloadbutton">
+              <Grid container>
+                <Grid
+                  item
+                  xs={6}
+                  className="grid"
+                  style={{ marginBottom: 0 }}
+                >
+                  <a href={appStoreLink}>
+                    <img
+                      src="https://i.ibb.co/T1kqnWp/App-Store-hemen-indir-button-logo-icon-transparan-PNG-gorseli-1.png"
+                      alt="Logo"
+                    />
+                  </a>
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                  className="grid"
+                  style={{ marginBottom: 0 }}
+                >
+                  <a href={googleStoreLink}>
+                    <img
+                      src="https://i.ibb.co/xMJKQ5j/Google-Play-hemen-indir-button-logo-icon-transparan-PNG-gorseli-1.png"
+                      alt="Logo"
+                    />
+                  </a>
+                </Grid>
+              </Grid>
             </div>
+          </div>
         </Grid>
         <Grid item xs={5}>
           <div

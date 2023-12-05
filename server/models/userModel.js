@@ -19,6 +19,8 @@ const UserSchema =  mongoose.Schema(
             type:String,
             required:[true,"Please add the password"],
         },
+        isVerified:{type:Boolean,default:false},
+        emailToken:{type:String},
         favorities: [
             {
                 url: {

@@ -21,7 +21,6 @@ import { useState } from "react";
 import axios from 'axios'
 import LoginGoogle from '../../assets/google.png'
 import { useNavigate } from "react-router-dom";
-
 const defaultTheme = createTheme();
 
 export default function SignUp() {
@@ -93,7 +92,9 @@ export default function SignUp() {
           if (result.data == "Bu Email Zaten Mevcut!!!") {
             alert("Bu E-Posta Zaten Mevcut!")
           } else {
-            window.location.href = "/";
+             window.location.href="/";
+            alert("Success! check your email ");
+           
           }
         })
         .catch(err => console.log(err))

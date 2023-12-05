@@ -21,13 +21,13 @@ const InnovationIcon = () => {
 };
 
 export default function InnovationsPromotionalSite({ responseData, changedData, colorData }) {
-  const { innovations,setInnovations } = React.useContext(TextContext);
+  const { innovations, setInnovations } = React.useContext(TextContext);
   const [metin, setMetin] = useState(responseData.innovations);
   const [metinHeader, setMetinHeader] = useState("INNOVATIONS");
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [fontSize, setFontSize] = useState(30);
+  const [fontSize, setFontSize] = useState();
   const [color, setColor] = useState('black');
   const [textAlign, setTextAlign] = useState("center");
   const [selectedFont, setSelectedFont] = useState('Roboto, sans-serif');
@@ -112,8 +112,8 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
                   type="text" value={metinHeader} onChange={metniGuncelleHeader} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle1} autoFocus /></div>
               ) : (
                 <div onClick={duzenlemeModunuToggle1}> */}
-                  <div className='innovationsHeader' style={{ color: colorData }}>{metinHeader}</div>
-                {/* </div>
+            <div className='innovationsHeader' style={{ color: colorData }}>{metinHeader}</div>
+            {/* </div>
               )}
             </div> */}
             {duzenlemeModu ? (
@@ -125,7 +125,7 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
                 type="text" value={innovations} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus /></div>
             ) : (
               <div onClick={duzenlemeModunuToggle}>
-                <div className='container' style={{textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }} >{changedData == null ? responseData.innovations : changedData}</div>
+                <div className='container' style={{ textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }} >{changedData == null ? responseData.innovations : changedData}</div>
               </div>
             )}
           </Grid>
