@@ -56,7 +56,13 @@ export default function AutoGrid() {
       return;
     }
     navigate("/favorites");
+  };
 
+  const handleProfile = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    navigate("/profile");
   };
 
 
@@ -126,7 +132,7 @@ export default function AutoGrid() {
                 'aria-labelledby': 'basic-button',
               }}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleProfile}>Profile</MenuItem>
               <MenuItem onClick={handleCloseFavorites}>Favorites</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
