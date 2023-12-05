@@ -86,23 +86,28 @@ const login = asyncHandler(async (req, res) => {
   }
 
   const user = await User.findOne({ email });
-  if (user && (await bcrypt.compare(password, user.passwordHash))) {
-    const accessToken = jwt.sign(
-      {
-        user: {
-          username: user.name,
-          email: user.email,
-          id: user.id,
-          favorities: user.favorities,
+  if (user.isVerified) {
+    if (user && (await bcrypt.compare(password, user.passwordHash))) {
+      const accessToken = jwt.sign(
+        {
+          user: {
+            username: user.name,
+            email: user.email,
+            id: user.id,
+            favorities: user.favorities,
+          },
         },
-      },
-      process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "60m" }
-    );
-    res.status(200).json({ accessToken: accessToken, User: user });
+        process.env.ACCESS_TOKEN_SECRET,
+        { expiresIn: "60m" }
+      );
+      res.status(200).json({ accessToken: accessToken, User: user });
+    } else {
+      res.status(401);
+      throw new Error("email or password is not valid");
+    }
   } else {
     res.status(401);
-    throw new Error("email or password is not valid");
+      throw new Error("Email account not confirmed");
   }
 });
 
@@ -135,24 +140,24 @@ const addFavorite = asyncHandler(async (req, res) => {
 });
 
 const EmailVerified = asyncHandler(async (req, res) => {
-    let { emailToken } = req.params;
-  
-    emailToken = emailToken.trim();
-  
-    console.log("EmailToken from request:", emailToken);
-  
-    const user = await User.findOne({ emailToken });
-    console.log(user);
-    if (user) {
-      console.log("User found in the database:", user);
-  
-      if (!user.isVerified) {
-        user.isVerified = true;
-      }
-  
-      await user.save();
-  
-      res.status(200).send(`
+  let { emailToken } = req.params;
+
+  emailToken = emailToken.trim();
+
+  console.log("EmailToken from request:", emailToken);
+
+  const user = await User.findOne({ emailToken });
+  console.log(user);
+  if (user) {
+    console.log("User found in the database:", user);
+
+    if (!user.isVerified) {
+      user.isVerified = true;
+    }
+
+    await user.save();
+
+    res.status(200).send(`
         <html>
           <head>
             <title>Email Verification Successful</title>
@@ -166,8 +171,8 @@ const EmailVerified = asyncHandler(async (req, res) => {
           </body>
         </html>
       `);
-    } else {
-      res.status(404).send(`
+  } else {
+    res.status(404).send(`
         <html>
           <head>
             <title>Email Verification Failed</title>
@@ -181,10 +186,9 @@ const EmailVerified = asyncHandler(async (req, res) => {
           </body>
         </html>
       `);
-    }
-  });
-  
-  
+  }
+});
+
 module.exports = {
   login,
   register,
