@@ -9,6 +9,8 @@ import TextProvider from "./context/TextProvider.jsx";
 import Favorites from './pages/Favorites.jsx'
 import PromotionalSite2 from "./pages/PromotionalSite2.jsx";
 import ChooseTemplate from "./pages/ChooseTemplate.jsx";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
+import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx"
 function App() {
   return (
     <AuthProvider>
@@ -23,6 +25,8 @@ function App() {
               <Route path="/ChooseTemplate" element={<ChooseTemplate />} />
               <Route path="/Login" element={<Login />} />
               <Route path="/Register" element={<Register />} />
+              <Route path="/ForgotPassword" element={<ForgotPassword />} />
+              <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
             </Routes>
           </BrowserRouter>
         </GlobalProvider>
