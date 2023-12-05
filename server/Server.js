@@ -37,7 +37,9 @@ app.use(bodyParser.json());
 app.use("/content", contentRoutes);
 app.use("/user", userRoutes);
 app.use("/auth", authRoutes);
-
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', message: 'Health check passed' });
+});
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
