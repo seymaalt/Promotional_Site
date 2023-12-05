@@ -69,7 +69,7 @@ const Login = () => {
     const password = data.get('password')
     if (!email || !password) {
       //res.status(400).json("E-posta veya şifre eksik");
-      //alert("E-posta veya şifre eksik")
+      alert("E-posta veya şifre eksik")
       return; // İşlemi burada sonlandır
     } else {
       axios.post(`${import.meta.env.VITE_PORT}/user/login`, { email, password })
@@ -159,9 +159,7 @@ const Login = () => {
               label="
               Remember me"
             />
-            <Button href="#" variant="body2" underline="none" style={{ color: "black", marginLeft: "17px", fontWeight: "bold" }}>
-              <ForgotPasswordModal/>
-            </Button>
+
 
             <Button
               
@@ -185,6 +183,9 @@ const Login = () => {
               Login with Google
             </Button>
           </Box>
+          <Button href="#" variant="body2" underline="none" style={{ color: "black", marginLeft: "17px", fontWeight: "bold" }}>
+              <ForgotPasswordModal/>
+            </Button>
         </Box>
       </Container>
     </ThemeProvider>
