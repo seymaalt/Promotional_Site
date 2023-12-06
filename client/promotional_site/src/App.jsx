@@ -12,6 +12,7 @@ import PromotionalSite2 from "./pages/PromotionalSite2.jsx";
 import ChooseTemplate from "./pages/ChooseTemplate.jsx";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
 import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx"
+import EmailVerified from "./EmailVerified/EmailVerified.jsx";
 function App() {
   return (
     <AuthProvider>
@@ -29,6 +30,7 @@ function App() {
               <Route path="/Register" element={<Register />} />
               <Route path="/ForgotPassword" element={<ForgotPassword />} />
               <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
+              <Route path="/verify-email/:emailToken" element={<EmailVerified />} />
             </Routes>
           </BrowserRouter>
         </GlobalProvider>
