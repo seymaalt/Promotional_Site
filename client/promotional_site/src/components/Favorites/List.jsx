@@ -70,8 +70,8 @@ export default function FavList({ favorites }) {
                   _id: item._id,
                   template: item.template,
                   url: item.url,
-                  logo: response.data.logo,
-                  header: response.data.header,
+                  logo: item.logo,
+                  header: item.header,
                   newUrl: item.url,
                 };
 

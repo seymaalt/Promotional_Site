@@ -57,6 +57,8 @@ const ButtonAppBar = ({ responseData }) => {
       const data = {
         url: responseData.url,
         template: 'temp1',
+        header: responseData.header,
+        logo: responseData.logo
       };
 
       const response = await axios.post(`${import.meta.env.VITE_PORT}/user/addFavorite`, data, {
