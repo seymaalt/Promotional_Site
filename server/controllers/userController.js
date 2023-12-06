@@ -117,7 +117,7 @@ const current = asyncHandler(async (req, res) => {
 
 const addFavorite = asyncHandler(async (req, res) => {
   try {
-    const { url, template } = req.body;
+    const { url, template,header,logo } = req.body;
     const user = req.user;
 
     if (!user) {
@@ -128,11 +128,22 @@ const addFavorite = asyncHandler(async (req, res) => {
       user.favorities = [];
     }
 
-    user.favorities.push({ url, template });
+    user.favorities.push({ url, template,header,logo });
 
     await User.findByIdAndUpdate(user.id, { favorities: user.favorities });
-
-    res.json({ message: "Favori eklendi", favorities: user.favorities });
+    const accessToken = jwt.sign(
+      {
+        user: {
+          username: user.username,
+          email: user.email,
+          id: user.id,
+          favorities: user.favorities,
+        },
+      },
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: "60m" }
+    );
+    res.json({  favorities: user.favorities,accessToken: accessToken});
   } catch (error) {
     console.error("Hata:", error.message);
     res.status(500).json({ message: "Sunucu hatası" });

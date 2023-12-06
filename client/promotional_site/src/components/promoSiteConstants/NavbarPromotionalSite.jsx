@@ -57,6 +57,8 @@ const ButtonAppBar = ({ responseData }) => {
       const data = {
         url: responseData.url,
         template: 'temp1',
+        header: responseData.header,
+        logo: responseData.logo
       };
 
       const response = await axios.post(`${import.meta.env.VITE_PORT}/user/addFavorite`, data, {
@@ -65,7 +67,13 @@ const ButtonAppBar = ({ responseData }) => {
         },
       });
       handleClickOpen();
-      console.log(response.data);
+      
+      setToken(response.data.accessToken);
+     localStorage.setItem('token', response.data.accessToken);
+
+
+
+
 
     } catch (error) {
       console.error('Favori eklerken hata oluştu:', error);
