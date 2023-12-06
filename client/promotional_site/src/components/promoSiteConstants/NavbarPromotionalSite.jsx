@@ -67,7 +67,13 @@ const ButtonAppBar = ({ responseData }) => {
         },
       });
       handleClickOpen();
-      console.log(response.data);
+      
+      setToken(response.data.accessToken);
+     localStorage.setItem('token', response.data.accessToken);
+
+
+
+
 
     } catch (error) {
       console.error('Favori eklerken hata oluştu:', error);

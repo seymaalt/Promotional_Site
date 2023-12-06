@@ -5,12 +5,11 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 import { styled } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
-import GlobalContext from '../../context/GlobalContext.jsx';
 import TextContext from '../../context/TextContext.jsx';
 import CircularProgress from '@mui/material/CircularProgress';
 import Backdrop from '@mui/material/Backdrop';
-import Grid from '@mui/material/Grid';
 import '../../styles/global.css';
+import AuthContext from "../../context/AuthContext.jsx";
 
 const MyButton = styled(Button)({
   background: 'linear-gradient(to right, #8e2de2, #4a00e0)',
@@ -29,9 +28,8 @@ export default function FavList({ favorites }) {
   const { setHeader, setDiscription, setInnovations, setDataSecurity } = useContext(TextContext);
   const [loading, setLoading] = useState(false);
   const [loadinglist, setLoadinglist] = useState(false);
-  const { response, setResponse } = useContext(GlobalContext);
-  const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
+  const { token ,setToken} = useContext(AuthContext);
 
   const handleGenerate = async (url) => {
     setLoading(true);
@@ -44,7 +42,7 @@ export default function FavList({ favorites }) {
       setDiscription(null)
       setInnovations(null)
       setDataSecurity(null)
-      setResponse(res.data);
+      //setResponse(res.data);
       navigate('/ChooseTemplate');
     } catch (error) {
       console.error('Error fetching data from the server!', error);
@@ -54,6 +52,7 @@ export default function FavList({ favorites }) {
   };
 
   useEffect(() => {
+   
     if (favorites && favorites.length > 0) {
       const fetchData = async () => {
         setLoadinglist(true);
