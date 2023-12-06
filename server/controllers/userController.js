@@ -57,7 +57,7 @@ const register = asyncHandler(async (req, res) => {
     emailToken: emailToken,
   });
 
-  const confirmationLink = `http://localhost:${process.env.EMAIL_PORT}/user/verify-email/${emailToken}`;
+  const confirmationLink = `${process.env.CLIENT_URL}verify-email/${emailToken}`;
 
   const mailOptions = {
     from: process.env.EMAIL,
@@ -151,13 +151,13 @@ const forgotPassword = asyncHandler(async (req, res) => {
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'krgn.bayram@gmail.com',
-                    pass: 'fynneymqctipfyyg'
+                    user: process.env.EMAIL,
+                    pass: process.env.EMAIL_PASSWORD
                 }
             });
 
             var mailOptions = {
-                from: 'krgn.bayram@gmail.com',
+                from: process.env.EMAIL,
                 to: `${email}`,
                 subject: 'Reset Your Password',
                 text: `http://localhost:5173/reset-password/${user._id}/${token}`
@@ -214,35 +214,9 @@ const EmailVerified = asyncHandler(async (req, res) => {
 
     await user.save();
 
-    res.status(200).send(`
-        <html>
-          <head>
-            <title>Email Verification Successful</title>
-          </head>
-          <body style="text-align: center;">
-            <h1>Email verification successful</h1>
-            <p>Your email has been verified.</p>
-            <button style="padding: 10px; background-color: #7247AE; color: white; border: none; border-radius: 5px;">
-              <a href="${process.env.CLIENT_URL}" style="text-decoration: none; color: white;">Return to the application</a>
-            </button>
-          </body>
-        </html>
-      `);
+    res.status(200).send(`Success`);
   } else {
-    res.status(404).send(`
-        <html>
-          <head>
-            <title>Email Verification Failed</title>
-          </head>
-          <body style="text-align: center;">
-            <h1>Email verification failed</h1>
-            <p>Invalid token. Please check your email verification link.</p>
-            <button style="padding: 10px; background-color: #7247AE; color: white; border: none; border-radius: 5px;">
-              <a href="${process.env.CLIENT_URL}" style="text-decoration: none; color: white;">Return to the application</a>
-            </button>
-          </body>
-        </html>
-      `);
+    res.status(404).send(`failure`);
   }
 });
 
