@@ -103,6 +103,7 @@ export default function Head({ responseData, changedData }) {
                     fontSize: `${fontSize}px`,
                     color: `${color}`,
                     fontFamily: selectedFont,
+
                   }}
                 >
                   {discription == null ? responseData.description : discription}
