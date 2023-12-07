@@ -12,11 +12,13 @@ import Logo from '../../assets/logosiyah.png'
 import axios from "axios";
 import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
+import NavbarContext from '../../context/NavbarContext';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
+import zIndex from '@mui/material/styles/zIndex';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -29,6 +31,9 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 const ButtonAppBar = ({ responseData }) => {
   const { token, setToken, logout } = useContext(AuthContext);
+  // const [ isNavbarVisible, setNavbarVisibility ] = useContext(NavbarContext);
+  const [navbarVisible, setNavbarVisible] = useState(true);
+
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
@@ -41,8 +46,6 @@ const ButtonAppBar = ({ responseData }) => {
   const [state, setState] = useState({
     left: false
   });
-
-  const [isNavbarVisible, setNavbarVisibility] = useState(true);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -76,10 +79,10 @@ const ButtonAppBar = ({ responseData }) => {
 
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      const isScrollingDown = currentScrollPos > prevScrollPos;
+      const isScrollingDown = currentScrollPos < prevScrollPos;
 
-      setNavbarVisibility(!isScrollingDown || currentScrollPos < 50);
-
+      setNavbarVisible(!isScrollingDown || currentScrollPos < 50);
+      console.log(navbarVisible)
       prevScrollPos = currentScrollPos;
     };
 
@@ -91,8 +94,8 @@ const ButtonAppBar = ({ responseData }) => {
   }, []);
 
   return (
-    <Box style={{ innerWidth: '40px' }} >
-      <AppBar className='appbar' position='fixed' style={{ backgroundColor: 'white', height: 70, width: '100 %', display: isNavbarVisible ? 'block' : 'none' }}>        <Toolbar>
+    <Box >
+      <div className='appbar' style={{ backgroundColor: 'white', height: 70, width: '100%', top: 0 }}>       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, }}>
           <Button onClick={() => navigate('/')}>
             <img src={Logo} className='navbarLogo'></img>
@@ -130,7 +133,7 @@ const ButtonAppBar = ({ responseData }) => {
           </IconButton>
         </BootstrapDialog>
       </Toolbar>
-      </AppBar>
+      </div>
     </Box>
   );
 }

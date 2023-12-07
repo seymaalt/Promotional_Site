@@ -4,6 +4,7 @@ import ChangeText from '../Template1/ChangeText'
 import Grid from '@mui/material/Grid';
 import { TextareaAutosize } from "@mui/material";
 import { Modal } from "@mui/base";
+import './style/template2.css'
 
 export default function CommentsPromotionalSite({ responseData }) {
     const [duzenlemeModu, setDuzenlemeModu] = useState(false);

@@ -7,6 +7,7 @@ import GlobalProvider from "./context/GlobalProvider.jsx";
 import AuthProvider from './context/AuthProvider.jsx'
 import TextProvider from "./context/TextProvider.jsx";
 import Favorites from './pages/Favorites.jsx'
+import Profile from "./pages/Profile.jsx";
 import PromotionalSite2 from "./pages/PromotionalSite2.jsx";
 import ChooseTemplate from "./pages/ChooseTemplate.jsx";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
@@ -20,6 +21,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/promotional-site" element={<PromotionalSite />} />
               <Route path="/promotional-site2" element={<PromotionalSite2 />} />
               <Route path="/favorites" element={<Favorites />} />

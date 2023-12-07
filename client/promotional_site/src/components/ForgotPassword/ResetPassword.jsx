@@ -31,8 +31,6 @@ const ResetPassword = () => {
                 }
             })
             .catch(err => console.log(err));
-
-
     }
 
 
@@ -45,9 +43,9 @@ const ResetPassword = () => {
             <ThemeProvider theme={defaultTheme}>
                 <Container component="main" maxWidth="xs" >
 
-                    <CssBaseline  />
+                    <CssBaseline />
                     <Box
-                    style={{backgroundColor:'white', padding:'30px', borderRadius:'16px'}}
+                        style={{ backgroundColor: 'white', padding: '30px', borderRadius: '16px' }}
                         sx={{
                             marginTop: 8,
                             display: 'flex',

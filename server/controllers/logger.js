@@ -1,6 +1,6 @@
 const { createLogger, transports, format } = require("winston");
 
-const linkLogger = createLogger({
+const Logger = createLogger({
     transports: [
         new transports.File({
             filename: "logs/info.log",
@@ -9,7 +9,7 @@ const linkLogger = createLogger({
         }),
     ]
 })
-const linkErrorLogger = createLogger({
+const ErrorLogger = createLogger({
     transports: [
         new transports.File({
             filename: 'logs/error.log',
@@ -19,4 +19,5 @@ const linkErrorLogger = createLogger({
     ]
 })
 
-module.exports = { linkLogger, linkErrorLogger }
+
+module.exports = { Logger, ErrorLogger }

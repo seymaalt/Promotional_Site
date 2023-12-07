@@ -30,6 +30,12 @@ const UserSchema =  mongoose.Schema(
                     type: String,
                     enum: ["temp1", "temp2", "temp3"],
                   },
+                  header: {
+                    type: String,
+                  },
+                  logo: {
+                    type: String,
+                  },
             }
           ],
     },

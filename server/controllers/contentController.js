@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const puppeteer = require("puppeteer");
 const express = require("express");
-const { linkLogger, linkErrorLogger } = require("../controllers/logger")
+const { Logger, ErrorLogger } = require("../controllers/logger")
 
 const getContact = asyncHandler(async (req, res) => {
   try {
@@ -17,7 +17,7 @@ const getContact = asyncHandler(async (req, res) => {
       deviceScaleFactor: 1,
     });
     if (url.split("/", 5)[2] == 'play.google.com') {
-      linkLogger.log('info', ' --Kullanıcı tarafından Google Play linki girildi.-- ')
+      Logger.log('info', ' --Kullanıcı tarafından Google Play linki girildi.-- ')
       console.log("google play işlemleri")
       await page.goto(url);
       const header = await page.evaluate(() => {
@@ -103,13 +103,13 @@ const getContact = asyncHandler(async (req, res) => {
 
       res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
       console.log({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
-      linkLogger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
+      Logger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
 
       await browser.close();
     }
     else if (url.split("/", 5)[2] == 'apps.apple.com') {
       console.log("app store işlemleri")
-      linkLogger.log('info', ' --Kullanıcı tarafından App Store linki girildi.-- ')
+      Logger.log('info', ' --Kullanıcı tarafından App Store linki girildi.-- ')
       await page.goto(url);
 
       const header = await page.evaluate(() => {
@@ -201,15 +201,15 @@ const getContact = asyncHandler(async (req, res) => {
 
       res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
       console.log({ header: header, description: description, innovations: innovations, dataSecurity: dataSecurity, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
-      linkLogger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
+      Logger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
     }
     else {
-      logger.linkErrorLogger.log('error', ' --Kullanıcı tarafından yanlış link girildi!-- ')
+      ErrorLogger.log('error', ' --Kullanıcı tarafından yanlış link girildi!-- ')
       console.log("Yanlış link girildi!")
     }
 
   } catch (error) {
-    linkErrorLogger.log('error', ' --Uygulama bilinmeyen bir hata ile karşılaştı-- ')
+    ErrorLogger.log('error', ' --Uygulama bilinmeyen bir hata ile karşılaştı-- ')
     console.error("An error occurred:", error);
     res.status(500).json({ error: error.message });
   }
@@ -218,74 +218,11 @@ const getContact = asyncHandler(async (req, res) => {
 
 const getContactFAV = asyncHandler(async (req, res) => {
   try {
-    const url = req.body.data;
-    console.log(url);
-    const browser = await puppeteer.launch({ headless: "new" });
-    //const browser = await puppeteer.launch({ headless: "new", args: ['--no-sandbox'], executablePath: '/usr/bin/chromium-browser' });
-    const page = await browser.newPage();
-    if (url.split("/", 5)[2] == 'play.google.com') {
-      linkLogger.log('info', ' --Kullanıcı tarafından Google Play linki girildi.-- ')
-      console.log("google play işlemleri")
-      await page.goto(url);
-
-      const header = await page.evaluate(() => {
-        const headerElement = document.evaluate(
-          '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[2]/div[1]/div/div/c-wiz/div[2]/div[1]/div/h1',
-          document,
-          null,
-          XPathResult.FIRST_ORDERED_NODE_TYPE,
-          null
-        );
-        if (headerElement.singleNodeValue) {
-          return headerElement.singleNodeValue.textContent;
-        } else {
-          return "Header not found";
-        }
-      });
-
-
-      const logo = await page.$eval(".nm4vBd", (img) => img.src);
-
-
-      res.status(200).json({ header: header, logo: logo, url: url });
-      linkLogger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
-
-      await browser.close();
-    }
-    else if (url.split("/", 5)[2] == 'apps.apple.com') {
-      console.log("app store işlemleri")
-      linkLogger.log('info', ' --Kullanıcı tarafından App Store linki girildi.-- ')
-      await page.goto(url);
-
-      const header = await page.evaluate(() => {
-        const headerElement = document.evaluate(
-          '/html/body/div[3]/main/div[2]/section[1]/div/div[2]/header/h1',
-          document,
-          null,
-          XPathResult.FIRST_ORDERED_NODE_TYPE,
-          null
-        );
-
-        if (headerElement.singleNodeValue) {
-          return headerElement.singleNodeValue.textContent.split("\n", 2)[1];
-        } else {
-          return "Header not found";
-        }
-      });
-
-
-      const logo = await page.$eval(".we-artwork--ios-app-icon source", (img) => img.srcset.split(" ", 2)[0]);
-
-      res.status(200).json({ header: header, logo: logo, images: images, url: url });
-      linkLogger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
-    }
-    else {
-      logger.linkErrorLogger.log('error', ' --Kullanıcı tarafından yanlış link girildi!-- ')
-      console.log("Yanlış link girildi!")
-    }
+    const data = req.body;
+    res.status(200).json({ header: data.header, logo: data.logo, images: data.images, url: data.url });
 
   } catch (error) {
-    linkErrorLogger.log('error', ' --Uygulama bilinmeyen bir hata ile karşılaştı-- ')
+    ErrorLogger.log('error', ' --Uygulama bilinmeyen bir hata ile karşılaştı-- ')
     console.error("An error occurred:", error);
     res.status(500).json({ error: error.message });
   }
