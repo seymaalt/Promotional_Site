@@ -256,6 +256,14 @@ body {
   justify-content: center;
 }
 
+.middle2 {
+  padding-top: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
 .homeURL {
   margin-right: 2%;
   color: white;

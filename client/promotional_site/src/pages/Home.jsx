@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import Input from "../components/Input";
 import Logo from "../components/Logo";
 import HomePageImage from "../components/HomePageImage";
+import EditPageImage from "../components/EditPageImage.jsx"
 import HomePageText from "../components/HomePageText";
 import Button from "@mui/material/Button";
 import LoginModal from "../components/Login/LoginModal.jsx";
@@ -164,6 +165,26 @@ export default function AutoGrid() {
           </div>
         </Grid>
       </Grid>
+
+      <div className="middle" style={{ marginBottom: "150px" }}>
+        <Grid container spacing={10} className="middle2">
+          <Grid item xs={10} md={4}>
+            <div className="homeText">
+              <span className="homePageText">
+                <p className="firstParagraph" >Edit Text Easily with Double Click!</p>
+                <p className="secondParagraph">Welcome to our user-friendly platform that makes text editing a breeze. With our intuitive interface, you can now effortlessly update your text content by simply double-clicking on the text you want to modify.</p>
+              </span>
+
+            </div>
+          </Grid>
+          <Grid item xs={12} md={2}></Grid>
+          <Grid item xs={9} md={4}>
+            <div>
+              <EditPageImage></EditPageImage>
+            </div>
+          </Grid>
+        </Grid>
+      </div>
     </Box >
   );
 }

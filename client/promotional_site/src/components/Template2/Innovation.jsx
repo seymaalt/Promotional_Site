@@ -78,7 +78,7 @@ const Innovation = ({ responseData }) => {
         <div className='titleStyle'>Yenilikler</div>
         {duzenlemeModu ? (
           <div className='container'><TextareaAutosize
-            style={{ width: '150%',placeItems:"center",whiteSpace:"pre-wrap",marginTop:"0px",display:"flex", padding: "0px",fontWeight:"400", resize: "none",backgroundColor:"#F1F1F1", border: "0px", fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: `${textAlign}` }}
+            style={{ width: '100%',placeItems:"center",whiteSpace:"pre-wrap",marginTop:"0px",display:"flex", padding: "0px",fontWeight:"400", resize: "none",backgroundColor:"#F1F1F1", border: "0px", fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: `${textAlign}` }}
             defaultValue={responseData.innovations}
             type="text" value={innovations} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus /></div>
         ) : (
