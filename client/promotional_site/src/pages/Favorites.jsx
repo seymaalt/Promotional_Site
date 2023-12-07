@@ -39,7 +39,7 @@ export default function Favorites() {
 
     fetchData();
   }, [token]);
-  useEffect(() => (console.log(favorites)));
+  
 
   return (
     <div>

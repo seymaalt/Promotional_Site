@@ -88,6 +88,7 @@ export default function AutoGrid() {
       try {
         const response = await axios.get(`${import.meta.env.VITE_PORT}/user/current`);
         setUser(response.data);
+        console.log(user);
       } catch (error) {
         if (axios.isAxiosError(error) && error.response?.status === 401) {
           logout();
@@ -102,7 +103,8 @@ export default function AutoGrid() {
       fetchUserProfile();
     }
   }, [token, logout, setToken]);
-
+useEffect(()=>{        console.log(user);
+});
   return (
     <Box className="background" >
       <div className='navbar' >

@@ -57,7 +57,7 @@ const register = asyncHandler(async (req, res) => {
     emailToken: emailToken,
   });
 
-  const confirmationLink = `http://localhost:${process.env.EMAIL_PORT}/user/verify-email/${emailToken}`;
+  const confirmationLink = `${process.env.CLIENT_URL}verify-email/${emailToken}`;
 
   const mailOptions = {
     from: process.env.EMAIL,
@@ -117,7 +117,7 @@ const current = asyncHandler(async (req, res) => {
 
 const addFavorite = asyncHandler(async (req, res) => {
   try {
-    const { url, template } = req.body;
+    const { url, template,header,logo } = req.body;
     const user = req.user;
 
     if (!user) {
@@ -128,11 +128,22 @@ const addFavorite = asyncHandler(async (req, res) => {
       user.favorities = [];
     }
 
-    user.favorities.push({ url, template });
+    user.favorities.push({ url, template,header,logo });
 
     await User.findByIdAndUpdate(user.id, { favorities: user.favorities });
-
-    res.json({ message: "Favori eklendi", favorities: user.favorities });
+    const accessToken = jwt.sign(
+      {
+        user: {
+          username: user.username,
+          email: user.email,
+          id: user.id,
+          favorities: user.favorities,
+        },
+      },
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: "60m" }
+    );
+    res.json({  favorities: user.favorities,accessToken: accessToken});
   } catch (error) {
     console.error("Hata:", error.message);
     res.status(500).json({ message: "Sunucu hatası" });
@@ -141,18 +152,47 @@ const addFavorite = asyncHandler(async (req, res) => {
 
 
 const forgotPassword = asyncHandler(async (req, res) => {
-  const { email } = req.body;
-  User.findOne({ email })
-    .then(user => {
-      if (!user) {
-        return res.send({ Status: "User not exist" })
-      }
-      const token = jwt.sign({ id: user._id }, "jwt_secret_key", { expiresIn: "1d" })
-      var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'krgn.bayram@gmail.com',
-          pass: 'fynneymqctipfyyg'
+    const { email } = req.body;
+    User.findOne({ email })
+        .then(user => {
+            if (!user) {
+                return res.send({ Status: "User not exist" })
+            }
+            const token = jwt.sign({ id: user._id }, "jwt_secret_key", { expiresIn: "1d" })
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: process.env.EMAIL,
+                    pass: process.env.EMAIL_PASSWORD
+                }
+            });
+
+            var mailOptions = {
+                from: process.env.EMAIL,
+                to: `${email}`,
+                subject: 'Reset Your Password',
+                text: `http://localhost:5173/reset-password/${user._id}/${token}`
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    return  res.send("Success")
+                }
+            });
+        })
+});
+
+const resetPassword = asyncHandler(async (req, res) => {
+    const { id, token } = req.params
+    const { password } = req.body
+    const saltRounds = 10;
+    const salt = await bcrypt.genSalt(saltRounds);
+
+    jwt.verify(token, "jwt_secret_key", (err, decoded) => {
+        if (err) {
+            return res.json({ Status: "Error with token" })
         }
       });
 
@@ -250,35 +290,9 @@ const EmailVerified = asyncHandler(async (req, res) => {
 
     await user.save();
 
-    res.status(200).send(`
-        <html>
-          <head>
-            <title>Email Verification Successful</title>
-          </head>
-          <body style="text-align: center;">
-            <h1>Email verification successful</h1>
-            <p>Your email has been verified.</p>
-            <button style="padding: 10px; background-color: #7247AE; color: white; border: none; border-radius: 5px;">
-              <a href="${process.env.CLIENT_URL}" style="text-decoration: none; color: white;">Return to the application</a>
-            </button>
-          </body>
-        </html>
-      `);
+    res.status(200).send(`Success`);
   } else {
-    res.status(404).send(`
-        <html>
-          <head>
-            <title>Email Verification Failed</title>
-          </head>
-          <body style="text-align: center;">
-            <h1>Email verification failed</h1>
-            <p>Invalid token. Please check your email verification link.</p>
-            <button style="padding: 10px; background-color: #7247AE; color: white; border: none; border-radius: 5px;">
-              <a href="${process.env.CLIENT_URL}" style="text-decoration: none; color: white;">Return to the application</a>
-            </button>
-          </body>
-        </html>
-      `);
+    res.status(404).send(`failure`);
   }
 });
 
