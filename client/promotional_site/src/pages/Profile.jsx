@@ -235,15 +235,15 @@ export default function Profile() {
                                             <div className="profileModalLabel">
                                                 Old
                                             </div>
-                                            <TextField id="oldPassword" name="oldPassword" className='profileInput' />
+                                            <TextField id="oldPassword" name="oldPassword" className='profileInput' type="password"/>
                                             <div className="profileModalLabel">
                                                 New
                                             </div>
-                                            <TextField id="newPassword" name="newPassword" className='profileInput' />
+                                            <TextField id="newPassword" name="newPassword" className='profileInput' type="password"/>
                                             <div className="profileModalLabel">
                                                 Confirm
                                             </div>
-                                            <TextField id="confirmPassword" name="confirmPassword" className='profileInput' />
+                                            <TextField id="confirmPassword" name="confirmPassword" className='profileInput' type="password"/>
                                             <Button type="submit" variant="contained" size="medium" id="profileModalButton">
                                                 Done
                                             </Button>
