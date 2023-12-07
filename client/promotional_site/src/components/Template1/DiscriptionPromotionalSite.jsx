@@ -14,7 +14,7 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [fontSize, setFontSize] = useState(25);
+  const [fontSize, setFontSize] = useState();
   const [color, setColor] = useState('white');
   const [selectedFont, setSelectedFont] = useState('Roboto, sans-serif');
   const [textAlign, setTextAlign] = useState("center");
@@ -94,7 +94,7 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
         ) : (
           <div onClick={duzenlemeModunuToggle}>
             <Grid container style={{ justifyContent: "center", color: `${color}`, fontSize: `${fontSize}px`, font: `${selectedFont}` }}>
-              <div className='discription' style={{ color: `${color}`, fontSize: `${fontSize}px`, fontFamily: selectedFont }}>{changedData == null ? responseData.description : changedData}</div>
+              <div className='discription' style={{ textAlign:`${textAlign}`, color: `${color}`, fontSize: `${fontSize}px`, fontFamily: selectedFont }}>{changedData == null ? responseData.description : changedData}</div>
             </Grid>
           </div>
         )}
