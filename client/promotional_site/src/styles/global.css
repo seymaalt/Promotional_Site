@@ -5,6 +5,7 @@
 * {
   font-family: "Roboto", sans-serif;
 }
+
 .middle {
   padding-top: 12%;
   display: flex;
@@ -400,6 +401,11 @@ body {
   width: 15%;
 }
 
+.appbar {
+  padding-bottom: 1%;
+  border-bottom: 1px solid rgb(165, 165, 165);
+}
+
 @media screen and (max-width: 1200px) {
   .gallery {
     -webkit-column-count: 2;
@@ -464,11 +470,6 @@ body {
     margin-left: -10px;
   }
 
-  .appbar {
-    position: relative;
-    width: 40px;
-  }
-
   .header h1 {
     font-size: 32px;
     padding-left: 10%;
@@ -523,10 +524,7 @@ body {
     right: 0;
   }
 
-  .temp2Logo {
-    width: 6rem;
-    margin-top: 15%;
-  }
+  
 
   .ratingCard {
     margin-left: 10%;

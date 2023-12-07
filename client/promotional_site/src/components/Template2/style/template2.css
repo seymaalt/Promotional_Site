@@ -249,4 +249,9 @@
     .downloadbutton .grid img {
         height: 45px;
     }
+
+    .temp2Logo {
+        width: 6rem;
+        margin-top: 15%;
+    }
 }
