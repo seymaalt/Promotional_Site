@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const puppeteer = require("puppeteer");
 const express = require("express");
-const { linkLogger, linkErrorLogger } = require("../controllers/logger")
+const { Logger, ErrorLogger } = require("../controllers/logger")
 
 const getContact = asyncHandler(async (req, res) => {
   try {
@@ -17,7 +17,7 @@ const getContact = asyncHandler(async (req, res) => {
       deviceScaleFactor: 1,
     });
     if (url.split("/", 5)[2] == 'play.google.com') {
-      linkLogger.log('info', ' --Kullanıcı tarafından Google Play linki girildi.-- ')
+      Logger.log('info', ' --Kullanıcı tarafından Google Play linki girildi.-- ')
       console.log("google play işlemleri")
       await page.goto(url);
       const header = await page.evaluate(() => {
@@ -103,13 +103,13 @@ const getContact = asyncHandler(async (req, res) => {
 
       res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
       console.log({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
-      linkLogger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
+      Logger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
 
       await browser.close();
     }
     else if (url.split("/", 5)[2] == 'apps.apple.com') {
       console.log("app store işlemleri")
-      linkLogger.log('info', ' --Kullanıcı tarafından App Store linki girildi.-- ')
+      Logger.log('info', ' --Kullanıcı tarafından App Store linki girildi.-- ')
       await page.goto(url);
 
       const header = await page.evaluate(() => {
@@ -201,15 +201,15 @@ const getContact = asyncHandler(async (req, res) => {
 
       res.status(200).json({ header: header, description: description, dataSecurity: dataSecurity, innovations: innovations, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
       console.log({ header: header, description: description, innovations: innovations, dataSecurity: dataSecurity, logo: logo, images: images, url: url, star: star, rating: rating, developer: developer, comments: comments });
-      linkLogger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
+      Logger.log('info', ` --${header} uygulamasının bilgileri alındı ve sayfaya yönlendirildi!-- `)
     }
     else {
-      logger.linkErrorLogger.log('error', ' --Kullanıcı tarafından yanlış link girildi!-- ')
+      ErrorLogger.log('error', ' --Kullanıcı tarafından yanlış link girildi!-- ')
       console.log("Yanlış link girildi!")
     }
 
   } catch (error) {
-    linkErrorLogger.log('error', ' --Uygulama bilinmeyen bir hata ile karşılaştı-- ')
+    ErrorLogger.log('error', ' --Uygulama bilinmeyen bir hata ile karşılaştı-- ')
     console.error("An error occurred:", error);
     res.status(500).json({ error: error.message });
   }
@@ -219,10 +219,10 @@ const getContact = asyncHandler(async (req, res) => {
 const getContactFAV = asyncHandler(async (req, res) => {
   try {
     const data = req.body;
-      res.status(200).json({ header: data.header, logo: data.logo, images: data.images, url: data.url });
-   
+    res.status(200).json({ header: data.header, logo: data.logo, images: data.images, url: data.url });
+
   } catch (error) {
-    linkErrorLogger.log('error', ' --Uygulama bilinmeyen bir hata ile karşılaştı-- ')
+    ErrorLogger.log('error', ' --Uygulama bilinmeyen bir hata ile karşılaştı-- ')
     console.error("An error occurred:", error);
     res.status(500).json({ error: error.message });
   }

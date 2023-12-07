@@ -6,6 +6,7 @@ const User = require("../models/userModel");
 const crypto = require("crypto");
 const userModel = require("../models/userModel");
 const nodemailer = require("nodemailer");
+const { Logger, ErrorLogger } = require("../controllers/logger")
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -24,6 +25,8 @@ const transporter = nodemailer.createTransport({
 });
 
 const register = asyncHandler(async (req, res) => {
+  Logger.log('info', ' --Kayıt olma işlemi başlatıldı.-- ')
+
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -40,6 +43,7 @@ const register = asyncHandler(async (req, res) => {
   const userAvailable = await User.findOne({ email });
 
   if (userAvailable) {
+    ErrorLogger.log('error', ' --Kayıtlı kullanıcı bulunmakta.-- ')
     res.status(400).json({ message: "User already registered" });
     throw new Error("User already registered");
   }
@@ -70,14 +74,18 @@ const register = asyncHandler(async (req, res) => {
     if (error) {
       console.error("Error sending email:", error);
       res.status(500).json({ message: "Error sending confirmation email" });
+      ErrorLogger.log('error', ' --Email gönderilirken hata oluştu!-- ')
     } else {
       console.log("Email sent:", info.response);
       res.json({ message: `${user}`, emailVerificationSent: true });
+      Logger.log('info', ' --Email başarıyla gönderildi.-- ')
     }
   });
 });
 
 const login = asyncHandler(async (req, res) => {
+
+  Logger.log('info', ' --Üye girişi işlemi başlatıldı.-- ')
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -101,13 +109,16 @@ const login = asyncHandler(async (req, res) => {
         { expiresIn: "60m" }
       );
       res.status(200).json({ accessToken: accessToken, User: user });
+      Logger.log('info', ' --Kullanıcı başarıyla giriş yaptı.-- ')
     } else {
       res.status(401);
       throw new Error("email or password is not valid");
     }
   } else {
+    ErrorLogger.log('error', ' --Giriş yapma işlemi başarısız!-- ')
     res.status(401);
     throw new Error("Email account not confirmed");
+
   }
 });
 
@@ -121,6 +132,7 @@ const addFavorite = asyncHandler(async (req, res) => {
     const user = req.user;
 
     if (!user) {
+      ErrorLogger.log('error', ' --Favorilere ekleme sırasında kullanıcı bulunamadı!-- ')
       return res.status(404).json({ message: "Kullanıcı bulunamadı" });
     }
 
@@ -143,6 +155,7 @@ const addFavorite = asyncHandler(async (req, res) => {
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "60m" }
     );
+    Logger.log('info', ' --Favorilere ekleme işlemi başarılı.-- ')
     res.json({ favorities: user.favorities, accessToken: accessToken });
   } catch (error) {
     console.error("Hata:", error.message);
@@ -152,10 +165,12 @@ const addFavorite = asyncHandler(async (req, res) => {
 
 
 const forgotPassword = asyncHandler(async (req, res) => {
+  Logger.log('info', ' --Şifremi unuttum işlemi başlatıldı.-- ')
   const { email } = req.body;
   User.findOne({ email })
     .then(user => {
       if (!user) {
+        ErrorLogger.log('error', ' --Kullanıcı bulunamadı!-- ')
         return res.send({ Status: "User not exist" })
       }
       const token = jwt.sign({ id: user._id }, "jwt_secret_key", { expiresIn: "1d" })
@@ -176,8 +191,10 @@ const forgotPassword = asyncHandler(async (req, res) => {
 
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
+          ErrorLogger.log('error', ' --Şifre yenileme Maili gönderilemedi!-- ')
           console.log(error);
         } else {
+          Logger.log('info', ' --Şifre yenileme Maili başarıyla gönderildi.-- ')
           return res.send("Success")
         }
       });
@@ -192,9 +209,11 @@ const resetPassword = asyncHandler(async (req, res) => {
 
   jwt.verify(token, "jwt_secret_key", (err, decoded) => {
     if (err) {
+      ErrorLogger.log('error', ' --Şifre yenileme işlemi başarısız!-- ')
       return res.json({ Status: "Error with token" })
     }
     else {
+      Logger.log('info', ' --Şifre yenileme işlemi başarılı.-- ')
       bcrypt.hash(password, salt)
         .then(hash => {
           User.findByIdAndUpdate({ _id: id }, { passwordSalt: salt, passwordHash: hash })
@@ -220,10 +239,12 @@ const profile = asyncHandler(async (req, res) => {
         User.findByIdAndUpdate({ _id: user.id }, { passwordSalt: salt, passwordHash: hash })
           .then(u => res.send("Success"))
           .catch(err => res.send({ Status: err }))
+        Logger.log('info', ' --Şifre yenileme işlemi başarılı.-- ')
       })
       .catch(err => res.send({ Status: err }))
   }
   else {
+    ErrorLogger.log('error', ' --Şifre yenileme işlemi başarısız!-- ')
     res.status(200).json('wrongOldPassword');
   }
 }
@@ -231,7 +252,6 @@ const profile = asyncHandler(async (req, res) => {
 
 const changeName = asyncHandler(async (req, res) => {
   const { name, user } = req.body;
-
 
   console.log(user)
 
@@ -249,7 +269,7 @@ const changeName = asyncHandler(async (req, res) => {
     { expiresIn: "60m" }
   );
   res.json({ accessToken: accessToken, message: "Success" })
-
+  Logger.log('info', ' --İsim değiştirme işlemi başarılı.-- ')
 }
 )
 
@@ -272,8 +292,10 @@ const EmailVerified = asyncHandler(async (req, res) => {
     await user.save();
 
     res.status(200).send(`Success`);
+    Logger.log('info', ' --Doğrulama maili gönderildi.-- ')
   } else {
     res.status(404).send(`failure`);
+    ErrorLogger.log('error', ' --Doğrulama maili gönderilemedi!-- ')
   }
 });
 
