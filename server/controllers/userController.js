@@ -57,7 +57,7 @@ const register = asyncHandler(async (req, res) => {
     emailToken: emailToken,
   });
 
-  const confirmationLink = `http://localhost:${process.env.EMAIL_PORT}/user/verify-email/${emailToken}`;
+  const confirmationLink = `${process.env.CLIENT_URL}verify-email/${emailToken}`;
 
   const mailOptions = {
     from: process.env.EMAIL,
@@ -107,7 +107,7 @@ const login = asyncHandler(async (req, res) => {
     }
   } else {
     res.status(401);
-      throw new Error("Email account not confirmed");
+    throw new Error("Email account not confirmed");
   }
 });
 
@@ -162,13 +162,13 @@ const forgotPassword = asyncHandler(async (req, res) => {
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'krgn.bayram@gmail.com',
-                    pass: 'fynneymqctipfyyg'
+                    user: process.env.EMAIL,
+                    pass: process.env.EMAIL_PASSWORD
                 }
             });
 
             var mailOptions = {
-                from: 'krgn.bayram@gmail.com',
+                from: process.env.EMAIL,
                 to: `${email}`,
                 subject: 'Reset Your Password',
                 text: `http://localhost:5173/reset-password/${user._id}/${token}`
@@ -194,18 +194,83 @@ const resetPassword = asyncHandler(async (req, res) => {
         if (err) {
             return res.json({ Status: "Error with token" })
         }
-        else {
-            bcrypt.hash(password, salt)
-                .then(hash => {
-                    User.findByIdAndUpdate({ _id: id }, {passwordSalt:salt, passwordHash: hash })
-                    .then(u => res.send("Success"))
-                    .catch(err => res.send({Status : err}))
-                })
-                .catch(err => res.send({Status : err}))
+      });
+
+      var mailOptions = {
+        from: 'krgn.bayram@gmail.com',
+        to: `${email}`,
+        subject: 'Reset Your Password',
+        text: `http://localhost:5173/reset-password/${user._id}/${token}`
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          return res.send("Success")
         }
+      });
     })
+});
+
+const resetPassword = asyncHandler(async (req, res) => {
+  const { id, token } = req.params
+  const { password } = req.body
+  const saltRounds = 10;
+  const salt = await bcrypt.genSalt(saltRounds);
+
+  jwt.verify(token, "jwt_secret_key", (err, decoded) => {
+    if (err) {
+      return res.json({ Status: "Error with token" })
+    }
+    else {
+      bcrypt.hash(password, salt)
+        .then(hash => {
+          User.findByIdAndUpdate({ _id: id }, { passwordSalt: salt, passwordHash: hash })
+            .then(u => res.send("Success"))
+            .catch(err => res.send({ Status: err }))
+        })
+        .catch(err => res.send({ Status: err }))
+    }
+  })
 
 })
+
+const profile = asyncHandler(async (req, res) => {
+  const { confirmPassword, oldPassword, userEmail } = req.body;
+  const saltRounds = 10;
+  const salt = await bcrypt.genSalt(saltRounds);
+
+  const user = await User.findOne({ userEmail });
+
+  if (await bcrypt.compare(oldPassword, user.passwordHash)) {
+    bcrypt.hash(confirmPassword, salt)
+      .then(hash => {
+        User.findByIdAndUpdate({ _id: user.id }, { passwordSalt: salt, passwordHash: hash })
+          .then(u => res.send("Success"))
+          .catch(err => res.send({ Status: err }))
+      })
+      .catch(err => res.send({ Status: err }))
+  }
+  else {
+    res.status(200).json('wrongOldPassword');
+  }
+}
+)
+
+const changeName = asyncHandler(async (req, res) => {
+  const { name, user } = req.body;
+
+  console.log(name)
+
+
+  User.findByIdAndUpdate({ _id: user.id }, { name: name })
+    .then(u => res.send("Success"))
+    .catch(err => res.send({ Status: err }))
+
+
+}
+)
 
 const EmailVerified = asyncHandler(async (req, res) => {
   let { emailToken } = req.params;
@@ -225,40 +290,16 @@ const EmailVerified = asyncHandler(async (req, res) => {
 
     await user.save();
 
-    res.status(200).send(`
-        <html>
-          <head>
-            <title>Email Verification Successful</title>
-          </head>
-          <body style="text-align: center;">
-            <h1>Email verification successful</h1>
-            <p>Your email has been verified.</p>
-            <button style="padding: 10px; background-color: #7247AE; color: white; border: none; border-radius: 5px;">
-              <a href="${process.env.CLIENT_URL}" style="text-decoration: none; color: white;">Return to the application</a>
-            </button>
-          </body>
-        </html>
-      `);
+    res.status(200).send(`Success`);
   } else {
-    res.status(404).send(`
-        <html>
-          <head>
-            <title>Email Verification Failed</title>
-          </head>
-          <body style="text-align: center;">
-            <h1>Email verification failed</h1>
-            <p>Invalid token. Please check your email verification link.</p>
-            <button style="padding: 10px; background-color: #7247AE; color: white; border: none; border-radius: 5px;">
-              <a href="${process.env.CLIENT_URL}" style="text-decoration: none; color: white;">Return to the application</a>
-            </button>
-          </body>
-        </html>
-      `);
+    res.status(404).send(`failure`);
   }
 });
 
 module.exports = {
   login,
+  profile,
+  changeName,
   forgotPassword,
   resetPassword,
   register,

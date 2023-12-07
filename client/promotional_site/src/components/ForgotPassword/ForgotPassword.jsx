@@ -12,31 +12,11 @@ const defaultTheme = createTheme();
 
 const ForgotPassword = () => {
 
-//   const [email, setEmail] = useState()
-//   const [location, setLocation] = useState("/");
-//   const [users, setUsers] = useState([]);
-
-
-
-//   useEffect(() => {
-//     // Sayfa yüklendiğinde LocalStorage'dan verileri kontrol et
-//     const storedemail = localStorage.getItem('email');
-
-//     if (storedemail) {
-//       setEmail(storedemail);
-//     }
-
-//   }, []);
-
-
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get('email')
     if (!email) {
-      //res.status(400).json("E-posta veya şifre eksik");
       alert("E-posta eksik")
       return; // İşlemi burada sonlandır
     } else {
@@ -46,10 +26,8 @@ const ForgotPassword = () => {
           const jwtToken = result.data.accessToken;
           localStorage.setItem('token', jwtToken);
           if (result.data == "Success") {
-            // navigate("/")
-            // alert("Başarıyla Gönderildi")
+             alert("Başarıyla Gönderildi")
           }
-          // console.log("token: "+token);
 
         })
         .catch(err => console.log(err));
