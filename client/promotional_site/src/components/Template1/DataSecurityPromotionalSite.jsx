@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { slideIn } from '../../utils/motion';
 import TextContext from '../../context/TextContext';
 import ChangeText from './ChangeText'
+import './style/template1.css'
 
 const LockIconExample = () => {
   return (

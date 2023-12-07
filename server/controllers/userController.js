@@ -117,7 +117,7 @@ const current = asyncHandler(async (req, res) => {
 
 const addFavorite = asyncHandler(async (req, res) => {
   try {
-    const { url, template,header,logo } = req.body;
+    const { url, template, header, logo } = req.body;
     const user = req.user;
 
     if (!user) {
@@ -128,7 +128,7 @@ const addFavorite = asyncHandler(async (req, res) => {
       user.favorities = [];
     }
 
-    user.favorities.push({ url, template,header,logo });
+    user.favorities.push({ url, template, header, logo });
 
     await User.findByIdAndUpdate(user.id, { favorities: user.favorities });
     const accessToken = jwt.sign(
@@ -143,7 +143,7 @@ const addFavorite = asyncHandler(async (req, res) => {
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "60m" }
     );
-    res.json({  favorities: user.favorities,accessToken: accessToken});
+    res.json({ favorities: user.favorities, accessToken: accessToken });
   } catch (error) {
     console.error("Hata:", error.message);
     res.status(500).json({ message: "Sunucu hatası" });
@@ -152,52 +152,23 @@ const addFavorite = asyncHandler(async (req, res) => {
 
 
 const forgotPassword = asyncHandler(async (req, res) => {
-    const { email } = req.body;
-    User.findOne({ email })
-        .then(user => {
-            if (!user) {
-                return res.send({ Status: "User not exist" })
-            }
-            const token = jwt.sign({ id: user._id }, "jwt_secret_key", { expiresIn: "1d" })
-            var transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user: process.env.EMAIL,
-                    pass: process.env.EMAIL_PASSWORD
-                }
-            });
-
-            var mailOptions = {
-                from: process.env.EMAIL,
-                to: `${email}`,
-                subject: 'Reset Your Password',
-                text: `http://localhost:5173/reset-password/${user._id}/${token}`
-            };
-
-            transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    return  res.send("Success")
-                }
-            });
-        })
-});
-
-const resetPassword = asyncHandler(async (req, res) => {
-    const { id, token } = req.params
-    const { password } = req.body
-    const saltRounds = 10;
-    const salt = await bcrypt.genSalt(saltRounds);
-
-    jwt.verify(token, "jwt_secret_key", (err, decoded) => {
-        if (err) {
-            return res.json({ Status: "Error with token" })
+  const { email } = req.body;
+  User.findOne({ email })
+    .then(user => {
+      if (!user) {
+        return res.send({ Status: "User not exist" })
+      }
+      const token = jwt.sign({ id: user._id }, "jwt_secret_key", { expiresIn: "1d" })
+      var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.EMAIL,
+          pass: process.env.EMAIL_PASSWORD
         }
       });
 
       var mailOptions = {
-        from: 'krgn.bayram@gmail.com',
+        from: process.env.EMAIL,
         to: `${email}`,
         subject: 'Reset Your Password',
         text: `http://localhost:5173/reset-password/${user._id}/${token}`
@@ -261,13 +232,23 @@ const profile = asyncHandler(async (req, res) => {
 const changeName = asyncHandler(async (req, res) => {
   const { name, user } = req.body;
 
-  console.log(name)
 
+  console.log(user)
 
-  User.findByIdAndUpdate({ _id: user.id }, { name: name })
-    .then(u => res.send("Success"))
-    .catch(err => res.send({ Status: err }))
-
+  await User.findByIdAndUpdate({ _id: user.id }, { name: name })
+  const accessToken = jwt.sign(
+    {
+      user: {
+        username: name,
+        email: user.email,
+        id: user.id,
+        favorities: user.favorities,
+      },
+    },
+    process.env.ACCESS_TOKEN_SECRET,
+    { expiresIn: "60m" }
+  );
+  res.json({ accessToken: accessToken, message: "Success" })
 
 }
 )
