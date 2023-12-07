@@ -5,6 +5,12 @@
 * {
   font-family: "Roboto", sans-serif;
 }
+.middle {
+  padding-top: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .backgroundtemp {
 
