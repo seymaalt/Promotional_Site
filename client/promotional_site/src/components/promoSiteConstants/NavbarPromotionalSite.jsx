@@ -17,6 +17,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
+import zIndex from '@mui/material/styles/zIndex';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {

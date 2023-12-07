@@ -46,7 +46,7 @@ function a11yProps(index) {
 }
 
 export default function Profile() {
-    const { token } = useContext(AuthContext);
+    const { token, setToken } = useContext(AuthContext);
     const [user, setUser] = useState([]);
     const [name, setName] = useState(null);
     const [value, setValue] = React.useState(0);
@@ -93,8 +93,10 @@ export default function Profile() {
             axios.post(`${import.meta.env.VITE_PORT}/user/changeName/`, { name, user })
                 .then(result => {
                     console.log(result)
-                    if (result.data == "Success") {
+                    if (result.data.message == "Success") {
                         alert('İsim değiştirildi!')
+                        setToken(result.data.accessToken)
+                        localStorage.setItem('token', result.data.accessToken)
                         navigate("/")
                     }
                     else {
