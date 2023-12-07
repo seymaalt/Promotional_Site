@@ -112,7 +112,7 @@ export default function Head({ responseData, changedData }) {
             )}
           </div>
           <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
-          <div className="buton">
+          <div>
             <div className="downloadbutton">
               <Grid container>
                 <Grid
@@ -148,15 +148,9 @@ export default function Head({ responseData, changedData }) {
         <Grid item xs={5}>
           <div
             className="right"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
           >
             <div
               className="logoo"
-              style={{ marginTop: "20px", marginBottom: "20px" }}
             >
               <img className="temp2Logo" src={responseData.logo} alt="Logo" />
             </div>

@@ -221,13 +221,23 @@ const profile = asyncHandler(async (req, res) => {
 const changeName = asyncHandler(async (req, res) => {
   const { name, user } = req.body;
 
-  console.log(name)
 
+  console.log(user)
 
-  User.findByIdAndUpdate({ _id: user.id }, { name: name })
-    .then(u => res.send("Success"))
-    .catch(err => res.send({ Status: err }))
-
+  await User.findByIdAndUpdate({ _id: user.id }, { name: name })
+  const accessToken = jwt.sign(
+    {
+      user: {
+        username: name,
+        email: user.email,
+        id: user.id,
+        favorities: user.favorities,
+      },
+    },
+    process.env.ACCESS_TOKEN_SECRET,
+    { expiresIn: "60m" }
+  );
+  res.json({ accessToken: accessToken, message: "Success" })
 
 }
 )
