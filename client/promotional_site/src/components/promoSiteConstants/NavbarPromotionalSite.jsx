@@ -12,13 +12,11 @@ import Logo from '../../assets/logosiyah.png'
 import axios from "axios";
 import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
-import NavbarContext from '../../context/NavbarContext';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
-import zIndex from '@mui/material/styles/zIndex';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -31,9 +29,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 const ButtonAppBar = ({ responseData }) => {
   const { token, setToken, logout } = useContext(AuthContext);
-  // const [ isNavbarVisible, setNavbarVisibility ] = useContext(NavbarContext);
   const [navbarVisible, setNavbarVisible] = useState(true);
-
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
@@ -74,24 +70,6 @@ const ButtonAppBar = ({ responseData }) => {
       console.error('Favori eklerken hata oluştu:', error);
     }
   };
-  useEffect(() => {
-    let prevScrollPos = window.pageYOffset;
-
-    const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      const isScrollingDown = currentScrollPos < prevScrollPos;
-
-      setNavbarVisible(!isScrollingDown || currentScrollPos < 50);
-      console.log(navbarVisible)
-      prevScrollPos = currentScrollPos;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <Box >

@@ -88,7 +88,7 @@ export default function Head({ responseData, changedData }) {
             {duzenlemeModu ? (
               <TextareaAutosize
                 style={{
-                  width: '100%', padding: "40px", maxwidth: "717px", maxHeight: "580px", marginTop: "20px", height: "500px", justifyContent: "center", resize: "none", border: "0px", lineHeight: "31px", letterSpacing: "0em", overflow: "hidden", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`, background: "white"
+                  width: '100%', padding: "4%", maxwidth: "717px", maxHeight: "60dvh", justifyContent: "center", resize: "none", border: "0px",   overflow: "hidden", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`, background: "white"
                 }}
                 multiline
                 rows={15}

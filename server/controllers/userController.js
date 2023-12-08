@@ -44,8 +44,7 @@ const register = asyncHandler(async (req, res) => {
 
   if (userAvailable) {
     ErrorLogger.log('error', ' --Kayıtlı kullanıcı bulunmakta.-- ')
-    res.status(400).json({ message: "User already registered" });
-    throw new Error("User already registered");
+    res.json("User already registered");
   }
 
   const saltRounds = 10;
@@ -94,7 +93,11 @@ const login = asyncHandler(async (req, res) => {
   }
 
   const user = await User.findOne({ email });
-  if (user.isVerified) {
+
+  if (!user) {
+    res.json("Wrong Email")
+  }
+  else if (user.isVerified) {
     if (user && (await bcrypt.compare(password, user.passwordHash))) {
       const accessToken = jwt.sign(
         {
@@ -110,15 +113,15 @@ const login = asyncHandler(async (req, res) => {
       );
       res.status(200).json({ accessToken: accessToken, User: user });
       Logger.log('info', ' --Kullanıcı başarıyla giriş yaptı.-- ')
-    } else {
-      res.status(401);
-      throw new Error("email or password is not valid");
     }
-  } else {
-    ErrorLogger.log('error', ' --Giriş yapma işlemi başarısız!-- ')
-    res.status(401);
-    throw new Error("Email account not confirmed");
-
+    else {
+      ErrorLogger.log('error', ' --Giriş yapma işlemi başarısız!-- ')
+      res.json("Password is incorrect")
+    }
+  }
+  else 
+  {
+    res.json("Email not verified")
   }
 });
 
