@@ -15,6 +15,7 @@ import AuthContext from "../context/AuthContext.jsx";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from '@mui/material/Menu';
 import { useNavigate } from "react-router-dom";
+import KeyboardDoubleArrowDownRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowDownRounded';
 
 export default function AutoGrid() {
   const { token, setToken, logout } = useContext(AuthContext);
@@ -23,10 +24,8 @@ export default function AutoGrid() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
+  const [buttonVisible, setButtonVisible] = useState(true);
 
-  const logoutt = () => {
-    window.open(`${import.meta.env.VITE_PORT}/auth/logout`, "_self");
-  };
 
   const getUser = async () => {
     try {
@@ -82,6 +81,11 @@ export default function AutoGrid() {
     prevOpen.current = open;
   }, [open]);
 
+  const handleButtonClick = () => {
+    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    setButtonVisible(false);
+  };
+
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
 
@@ -104,8 +108,26 @@ export default function AutoGrid() {
       fetchUserProfile();
     }
   }, [token, logout, setToken]);
-useEffect(()=>{        console.log(user);
-});
+
+  useEffect(() => {
+    console.log(user);
+  });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setButtonVisible(false);
+      } else {
+        setButtonVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <Box className="background" >
       <div className='navbar' >
@@ -174,7 +196,7 @@ useEffect(()=>{        console.log(user);
         </Grid>
       </Grid>
 
-      <div className="middle" style={{ marginBottom: "150px" }}>
+      <div className="middle2" >
         <Grid container spacing={10} className="middle2">
           <Grid item xs={10} md={4}>
             <div className="homeText">
@@ -187,11 +209,18 @@ useEffect(()=>{        console.log(user);
           </Grid>
           <Grid item xs={12} md={2}></Grid>
           <Grid item xs={9} md={4}>
-            <div>
+            <div className="imageHome">
               <EditPageImage></EditPageImage>
             </div>
           </Grid>
         </Grid>
+        <div style={{ alignItems: 'flex-start', height: '78vh', marginRight: '3%' }}>
+          {buttonVisible && (
+            <Button style={{ color: 'white' }} onClick={handleButtonClick}>
+              <KeyboardDoubleArrowDownRoundedIcon fontSize="large" style={{ color: 'white' }} />
+            </Button>
+          )}
+        </div>
       </div>
     </Box >
   );
