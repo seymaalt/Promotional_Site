@@ -68,13 +68,12 @@ const Login = () => {
     const email = data.get('email')
     const password = data.get('password')
     if (!email || !password) {
-      //res.status(400).json("E-posta veya şifre eksik");
-      alert("E-posta veya şifre eksik")
-      return; // İşlemi burada sonlandır
-    } else {
+      alert("Email or password is missing")
+      return;
+    }
+    else {
       axios.post(`${import.meta.env.VITE_PORT}/user/login`, { email, password })
         .then(result => {
-          console.log(result)
           const jwtToken = result.data.accessToken;
           localStorage.setItem('token', jwtToken);
           if (result.data == "Success") {
@@ -94,12 +93,23 @@ const Login = () => {
             }
 
           }
+          else if (result.data == "Password is incorrect") {
+            alert("Incorrect Password")
+          }
+          else if (result.data == "Wrong Email") {
+            alert("Wrong Email")
+          }
+          else if (result.data == "Email not verified")
+          {
+            alert("Email Not Verified")
+          }
+          else {
+            alert("Login Successful")
+          }
 
           setToken(result.data.accessToken);
 
           console.log("result: " + result.data.accessToken);
-          // console.log("token: "+token);
-
         })
         .catch(err => console.log(err));
 
@@ -132,7 +142,7 @@ const Login = () => {
           <Typography variant="subtitle2" fontWeight="400" padding="5px" gutterBottom>
             Login to track your favorite promotional site easily
           </Typography>
-          <Box component="form" onSubmit={handleSubmit}   noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -162,7 +172,7 @@ const Login = () => {
 
 
             <Button
-              
+
               type="submit"
               fullWidth
               variant="contained"
@@ -184,8 +194,8 @@ const Login = () => {
             </Button>
           </Box>
           <Button href="#" variant="body2" underline="none" style={{ color: "black", marginLeft: "17px", fontWeight: "bold" }}>
-              <ForgotPasswordModal/>
-            </Button>
+            <ForgotPasswordModal />
+          </Button>
         </Box>
       </Container>
     </ThemeProvider>

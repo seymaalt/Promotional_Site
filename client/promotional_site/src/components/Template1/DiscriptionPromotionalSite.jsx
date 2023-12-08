@@ -84,7 +84,7 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
       <div className='container'>
         {duzenlemeModu ? (
           <TextareaAutosize
-            style={{ width: '100%', margin: "7%", justifyContent: "center", padding: "0px", resize: "none", border: "0px", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "75px", color: `${color}`, background: (colorData == null ? 'black' : colorData) }}
+            style={{ width: '100%', justifyContent: "center", padding: "0px", resize: "none", border: "0px", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "75px", color: `${color}`, background: (colorData == null ? 'black' : colorData) }}
             id="header"
             name="header"
             multiline

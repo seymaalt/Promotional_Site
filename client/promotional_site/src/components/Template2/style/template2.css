@@ -71,6 +71,8 @@
     height: auto;
     text-align: center;
     padding: 3%;
+    padding-bottom: 10%;
+    min-height: 50dvh;
 }
 
 .model {
