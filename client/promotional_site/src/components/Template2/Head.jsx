@@ -88,7 +88,7 @@ export default function Head({ responseData, changedData }) {
             {duzenlemeModu ? (
               <TextareaAutosize
                 style={{
-                  width: '100%', padding: "40px", maxwidth: "717px", maxHeight: "580px", marginTop: "20px", height: "500px", justifyContent: "center", resize: "none", border: "0px", lineHeight: "31px", letterSpacing: "0em", overflow: "hidden", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`, background: "white"
+                  width: '100%', padding: "4%", maxwidth: "717px", maxHeight: "60dvh", justifyContent: "center", resize: "none", border: "0px",   overflow: "hidden", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`, background: "white"
                 }}
                 multiline
                 rows={15}
@@ -103,6 +103,7 @@ export default function Head({ responseData, changedData }) {
                     fontSize: `${fontSize}px`,
                     color: `${color}`,
                     fontFamily: selectedFont,
+
                   }}
                 >
                   {discription == null ? responseData.description : discription}
@@ -111,7 +112,7 @@ export default function Head({ responseData, changedData }) {
             )}
           </div>
           <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
-          <div className="buton">
+          <div>
             <div className="downloadbutton">
               <Grid container>
                 <Grid
@@ -147,15 +148,9 @@ export default function Head({ responseData, changedData }) {
         <Grid item xs={5}>
           <div
             className="right"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
           >
             <div
               className="logoo"
-              style={{ marginTop: "20px", marginBottom: "20px" }}
             >
               <img className="temp2Logo" src={responseData.logo} alt="Logo" />
             </div>

@@ -52,7 +52,7 @@ const Innovation = ({ responseData }) => {
   };
   const handleDivClick = (event) => {
     const rect = event.target.getBoundingClientRect();
-    const middleX =event.clientX;
+    const middleX = event.clientX;
     const middleY = event.clientY;
 
 
@@ -77,10 +77,12 @@ const Innovation = ({ responseData }) => {
       <div className='divStyle'>
         <div className='titleStyle'>Yenilikler</div>
         {duzenlemeModu ? (
-          <div className='container'><TextareaAutosize
-            style={{ width: '150%',placeItems:"center",whiteSpace:"pre-wrap",marginTop:"0px",display:"flex", padding: "0px",fontWeight:"400", resize: "none",backgroundColor:"#F1F1F1", border: "0px", fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: `${textAlign}` }}
-            defaultValue={responseData.innovations}
-            type="text" value={innovations} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus /></div>
+          <div className='container'>
+            <TextareaAutosize
+              style={{ width: '150%', placeItems: "center", whiteSpace: "pre-wrap", display: "flex", fontWeight: "400", resize: "none", backgroundColor: "#F1F1F1", border: "0px", fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: `${textAlign}` }}
+              defaultValue={responseData.innovations}
+              type="text" value={innovations} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus />
+          </div>
         ) : (
           <div onClick={duzenlemeModunuToggle} >
             <p className='DataSecP' style={{ fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: `${textAlign}` }} > {innovations == null ? responseData.innovations : innovations}</p>
@@ -88,7 +90,7 @@ const Innovation = ({ responseData }) => {
         )}
 
       </div>
-      <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange}  />
+      <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
     </div>
   );
 }

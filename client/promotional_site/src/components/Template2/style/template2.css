@@ -1,0 +1,259 @@
+.ratingDiv h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 8%;
+    margin-bottom: 8%;
+    color: #000;
+    font-family: DM Sans;
+    font-size: 5.118rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.commentCard {
+    width: 100%;
+    height: auto;
+    padding-bottom: 15%;
+    flex-shrink: 0;
+    border-radius: 1.875rem;
+    background: #EBEBEB;
+    white-space: pre-wrap;
+}
+
+.commentDiv {
+    padding-top: 12%;
+    padding-left: 12%;
+    padding-right: 8%;
+}
+
+.comment {
+    margin-top: 6%;
+    max-height: 200dvh;
+    color: #1B1A1A;
+    font-family: DM Sans;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: normal;
+    white-space: pre-wrap;
+}
+
+
+.dataSecInn {
+    padding-top: 5%;
+}
+
+.dataSecBox {
+    min-height: 100%;
+}
+
+.divStyle {
+    width: 100%;
+    height: 150%;
+    border-radius: 30px;
+    background: #F1F1F1;
+}
+
+.titleStyle {
+    font-family: DM Sans;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 10%;
+}
+
+.DataSecP {
+    font-family: DM Sans;
+    font-size: 24px;
+    font-weight: 400;
+    height: auto;
+    text-align: center;
+    padding: 3%;
+    padding-bottom: 10%;
+    min-height: 50dvh;
+}
+
+.model {
+    width: 100%;
+    height: 100dvh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #061317;
+    transition: opacity .2s ease, visibility .2s ease, transform .3s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+    overflow: hidden;
+    z-index: 999;
+}
+
+.model.open {
+    z-index: 2;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.model img {
+    width: 500px;
+    max-width: 500px;
+    height: auto;
+    line-height: 0;
+    box-sizing: border-box;
+    padding: 20px 0 20px;
+    margin: 0 auto;
+}
+
+.model.open svg {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 2rem;
+    height: 2rem;
+    padding: 5px;
+    background-color: black;
+    color: white;
+}
+
+.temp2Image {
+    width: 45dvh;
+    height: auto;
+    margin-inline: 5%;
+    border-radius: 16px;
+}
+
+.temp2Header {
+    text-align: center;
+}
+
+.headerHead {
+    margin-bottom: 8%;
+    color: #000;
+    font-family: DM Sans;
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.headDisDiv {
+    width: 100%;
+    padding-bottom: 10%;
+}
+
+.headDis {
+    font-family: DM Sans;
+    font-size: 24px;
+    height: 60dvh;
+    width: 100%;
+    font-weight: 400;
+    text-align: left;
+    overflow: hidden;
+    overflow: auto;
+    padding: 4%;
+}
+
+.downloadbutton .grid {
+    justify-content: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.downloadbutton .grid img {
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: 85px;
+    border: solid 3px white;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logoo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.temp2Logo {
+    width: 14.8125rem;
+    border-radius: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+    .ratingDiv h1 {
+        font-size: 2.559rem;
+    }
+
+    .commentCard {
+        margin-left: 7%;
+        width: 80%;
+        padding-bottom: 15%;
+    }
+
+    .comment {
+        font-size: 0.6rem;
+        font-weight: 400;
+        line-height: normal;
+        white-space: pre-wrap;
+    }
+
+    .divStyle {
+        margin-left: 12%;
+        width: 80%;
+        height: 100%;
+    }
+
+    .titleStyle {
+        font-size: 28px;
+    }
+
+    .DataSecP {
+        font-size: 16px;
+    }
+
+    .swiperSlide {
+        margin-top: 10%;
+    }
+
+    .temp2Gallery {
+        width: 100px;
+        column-count: 1;
+    }
+
+    .temp2Image {
+        margin-top: 15%;
+        width: 100px;
+        height: auto;
+    }
+
+    .headerHead {
+        font-size: 30px;
+    }
+
+    .headDis {
+        height: 28dvh;
+        font-size: 10px;
+    }
+
+    .downloadbutton .grid {
+        display: flex;
+        margin-inline: 50px;
+    }
+
+    .downloadbutton .grid img {
+        height: 45px;
+    }
+
+    .temp2Logo {
+        width: 6rem;
+        margin-top: 15%;
+    }
+}

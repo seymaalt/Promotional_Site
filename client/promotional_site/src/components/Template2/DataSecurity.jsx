@@ -57,8 +57,6 @@ const DataSecurity = ({ responseData }) => {
     const middleX = event.clientX;
     const middleY = event.clientY;
 
-
-
     setIsModalOpen(true);
     setModalPosition(calculateModalPosition(middleX, middleY));
   };
@@ -80,14 +78,14 @@ const DataSecurity = ({ responseData }) => {
       <div className='titleStyle'>Veri Güvenliği</div>
       {duzenlemeModu ? (
         <div className='container'><TextareaAutosize
-          style={{width: '100%',placeItems:"center",margin:"0px",display:"flex", padding: "0px",lineHeight:"31px",fontWeight:"400", resize: "none",backgroundColor:"#F1F1F1", border: "0px", fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign:`${textAlign}` }}
+          style={{ width: '100%', placeItems: "center", margin: "0px", display: "flex", padding: "0px", lineHeight: "31px", fontWeight: "400", resize: "none", backgroundColor: "#F1F1F1", border: "0px", fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: `${textAlign}` }}
           multiline
           rows={15}
           defaultValue={responseData.dataSecurity}
           type="text" value={dataSecurity} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus /></div>
       ) : (
         <div onClick={duzenlemeModunuToggle} >
-          <div className='DataSecP' style={{ fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign:`${textAlign}` }} > {dataSecurity == null ? responseData.dataSecurity : dataSecurity}</div>
+          <div className='DataSecP' style={{ fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: `${textAlign}` }} > {dataSecurity == null ? responseData.dataSecurity : dataSecurity}</div>
         </div>
       )}
       <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />

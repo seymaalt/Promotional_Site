@@ -19,6 +19,8 @@ const UserSchema =  mongoose.Schema(
             type:String,
             required:[true,"Please add the password"],
         },
+        isVerified:{type:Boolean,default:false},
+        emailToken:{type:String},
         favorities: [
             {
                 url: {
@@ -27,6 +29,12 @@ const UserSchema =  mongoose.Schema(
                   template: {
                     type: String,
                     enum: ["temp1", "temp2", "temp3"],
+                  },
+                  header: {
+                    type: String,
+                  },
+                  logo: {
+                    type: String,
                   },
             }
           ],

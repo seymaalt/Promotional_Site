@@ -21,7 +21,6 @@ import { useState } from "react";
 import axios from 'axios'
 import LoginGoogle from '../../assets/google.png'
 import { useNavigate } from "react-router-dom";
-
 const defaultTheme = createTheme();
 
 export default function SignUp() {
@@ -56,7 +55,6 @@ export default function SignUp() {
     const email = data.get('email')
     const password = data.get('password')
 
-
     const validationErrors = {}
     if (!name.trim()) {
       validationErrors.username = "Kullanıcı adı gerekli"
@@ -90,15 +88,15 @@ export default function SignUp() {
       axios.post(`${import.meta.env.VITE_PORT}/user/register`, { name, email, password })
 
         .then(result => {
-          if (result.data == "Bu Email Zaten Mevcut!!!") {
-            alert("Bu E-Posta Zaten Mevcut!")
-          } else {
+          if (result.data == "User already registered") {
+            alert("User already exists with Email!")
+          }
+          else {
             window.location.href = "/";
+            alert("Success! check your email ");
           }
         })
         .catch(err => console.log(err))
-
-
     }
   };
 
@@ -198,7 +196,6 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               style={{ backgroundColor: '#6D46AE', fontWeight: "bold" }}
-
             >
               Register
             </Button>

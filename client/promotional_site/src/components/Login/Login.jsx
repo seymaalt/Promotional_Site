@@ -12,6 +12,7 @@ import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
 import LoginGoogle from '../../assets/google.png'
+import ForgotPasswordModal from '../ForgotPassword/ForgotPasswordModal';
 const defaultTheme = createTheme();
 
 const Login = () => {
@@ -67,13 +68,12 @@ const Login = () => {
     const email = data.get('email')
     const password = data.get('password')
     if (!email || !password) {
-      //res.status(400).json("E-posta veya şifre eksik");
-      alert("E-posta veya şifre eksik")
-      return; // İşlemi burada sonlandır
-    } else {
+      alert("Email or password is missing")
+      return;
+    }
+    else {
       axios.post(`${import.meta.env.VITE_PORT}/user/login`, { email, password })
         .then(result => {
-          console.log(result)
           const jwtToken = result.data.accessToken;
           localStorage.setItem('token', jwtToken);
           if (result.data == "Success") {
@@ -93,12 +93,23 @@ const Login = () => {
             }
 
           }
+          else if (result.data == "Password is incorrect") {
+            alert("Incorrect Password")
+          }
+          else if (result.data == "Wrong Email") {
+            alert("Wrong Email")
+          }
+          else if (result.data == "Email not verified")
+          {
+            alert("Email Not Verified")
+          }
+          else {
+            alert("Login Successful")
+          }
 
           setToken(result.data.accessToken);
 
           console.log("result: " + result.data.accessToken);
-          // console.log("token: "+token);
-
         })
         .catch(err => console.log(err));
 
@@ -158,10 +169,10 @@ const Login = () => {
               label="
               Remember me"
             />
-            <Link href="#" variant="body2" underline="none" style={{ color: "black", marginLeft: "17px", fontWeight: "bold" }}>
-              Forgot your password?
-            </Link>
+
+
             <Button
+
               type="submit"
               fullWidth
               variant="contained"
@@ -182,6 +193,9 @@ const Login = () => {
               Login with Google
             </Button>
           </Box>
+          <Button href="#" variant="body2" underline="none" style={{ color: "black", marginLeft: "17px", fontWeight: "bold" }}>
+            <ForgotPasswordModal />
+          </Button>
         </Box>
       </Container>
     </ThemeProvider>
