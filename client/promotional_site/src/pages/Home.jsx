@@ -216,8 +216,8 @@ export default function AutoGrid() {
         </Grid>
         <div style={{ alignItems: 'flex-start', height: '78vh', marginRight: '3%' }}>
           {buttonVisible && (
-            <Button style={{ color: 'white' }} onClick={handleButtonClick}>
-              <KeyboardDoubleArrowDownRoundedIcon fontSize="large" style={{ color: 'white' }} />
+            <Button className="scrollButton" style={{ color: 'white' }} onClick={handleButtonClick}>
+              <KeyboardDoubleArrowDownRoundedIcon fontSize="large" />
             </Button>
           )}
         </div>

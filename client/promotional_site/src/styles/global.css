@@ -279,28 +279,6 @@ body {
   padding-top: 18%;
 }
 
-.starRating {
-  font-family: DM Sans;
-  padding-top: 70px;
-  text-align: center;
-  color: #000;
-  font-size: 2.25rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-
-.starText {
-  font-family: DM Sans;
-  padding-top: 50px;
-  text-align: center;
-  color: #000;
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-
 .temp2Gallery {
   display: flex;
   align-items: center;
@@ -416,6 +394,7 @@ body {
 }
 
 @media screen and (max-width: 1200px) {
+
   .gallery {
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -441,6 +420,33 @@ body {
     margin-inline-start: 0%;
     margin-inline-end: 0%;
   }
+
+  .homeImage {
+    height: auto;
+    width: 100%;
+  }
+
+  .homeURL {
+    font-size: 18px;
+  }
+
+  #inputlink {
+    width: 80%;
+  }
+
+  .firstParagraph {
+    font-size: 150%;
+  }
+
+  .secondParagraph {
+    font-size: 90%;
+  }
+
+  .scrollButton {
+    visibility: hidden;
+  }
+
+
 }
 
 @media screen and (max-width: 600px) {
@@ -458,12 +464,12 @@ body {
   }
 
   #inputlink {
-    width: 275px;
+    width: 35dvh;
   }
 
   .homeImage {
     height: auto;
-    width: 275px;
+    width: 35dvh;
   }
 
   .homeLogo {
@@ -474,8 +480,8 @@ body {
   }
 
   .navbarLogo {
-    margin-top: 5%;
-    width: 90%;
+    max-height: 5dvh;
+    width: 110%;
     margin-left: -10px;
   }
 
@@ -533,22 +539,10 @@ body {
     right: 0;
   }
 
-
-
   .ratingCard {
     margin-left: 10%;
     width: 75%;
     height: auto;
-  }
-
-  .starRating {
-    font-size: 1.75rem;
-    padding-bottom: 20%;
-  }
-
-  .starText {
-    font-size: 1.55rem;
-    padding-bottom: 20%;
   }
 
   .star {
@@ -596,6 +590,6 @@ body {
   }
 
   .imageHome {
-    margin-top: -40dvh;
+    margin-top: -30dvh;
   }
 }
