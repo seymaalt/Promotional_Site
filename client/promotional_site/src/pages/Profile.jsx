@@ -12,39 +12,6 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useNavigate, useParams } from "react-router-dom";
 
-function CustomTabPanel(props) {
-    const { children, value, index, ...other } = props;
-
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
-            {value === index && (
-                <Box sx={{ p: 3 }}>
-                    <Typography>{children}</Typography>
-                </Box>
-            )}
-        </div>
-    );
-}
-
-CustomTabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
-
 export default function Profile() {
     const { token, setToken } = useContext(AuthContext);
     const [user, setUser] = useState([]);
@@ -69,6 +36,7 @@ export default function Profile() {
             } catch (error) {
                 console.error("Error fetching user profile:", error);
             }
+
         };
 
 
@@ -235,15 +203,15 @@ export default function Profile() {
                                             <div className="profileModalLabel">
                                                 Old
                                             </div>
-                                            <TextField id="oldPassword" name="oldPassword" className='profileInput' type="password"/>
+                                            <TextField id="oldPassword" name="oldPassword" className='profileInput' type="password" />
                                             <div className="profileModalLabel">
                                                 New
                                             </div>
-                                            <TextField id="newPassword" name="newPassword" className='profileInput' type="password"/>
+                                            <TextField id="newPassword" name="newPassword" className='profileInput' type="password" />
                                             <div className="profileModalLabel">
                                                 Confirm
                                             </div>
-                                            <TextField id="confirmPassword" name="confirmPassword" className='profileInput' type="password"/>
+                                            <TextField id="confirmPassword" name="confirmPassword" className='profileInput' type="password" />
                                             <Button type="submit" variant="contained" size="medium" id="profileModalButton">
                                                 Done
                                             </Button>
