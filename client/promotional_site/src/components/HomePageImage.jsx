@@ -1,4 +1,4 @@
-import HomePageImage from '../assets/HomePageImage.png';
+import HomePageImage from '../assets/homePageImage.png';
 
 
 export default function SearchAppBar() {
