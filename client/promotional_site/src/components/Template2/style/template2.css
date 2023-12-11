@@ -187,15 +187,73 @@
     border-radius: 1rem;
 }
 
+.starRating {
+    font-family: DM Sans;
+    padding-top: 70px;
+    text-align: center;
+    color: #000;
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.starText {
+    font-family: DM Sans;
+    padding-top: 50px;
+    text-align: center;
+    color: #000;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+@media screen and (max-width: 1200px) {
+    .temp2Image {
+        width: 25dvh;
+        height: auto;
+        margin-right: -40px;
+    }
+
+    .downloadbutton .grid {
+        display: flex;
+        margin-inline: 10dvh;
+    }
+
+    .downloadbutton .grid img {
+        height: 10dvh;
+    }
+
+    .starRating {
+        font-size: 1.25rem;
+        padding-bottom: 20%;
+    }
+
+    .starText {
+        font-size: 1rem;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .ratingDiv h1 {
-        font-size: 2.559rem;
+        font-size: 2.75rem;
     }
 
     .commentCard {
         margin-left: 7%;
         width: 80%;
         padding-bottom: 15%;
+    }
+
+    .starRating {
+        font-size: 1.25rem;
+        padding-bottom: 2%;
+    }
+
+    .starText {
+        font-size: 0.95rem;
+        padding-bottom: 20%;
     }
 
     .comment {
@@ -256,4 +314,6 @@
         width: 6rem;
         margin-top: 15%;
     }
+
+
 }
