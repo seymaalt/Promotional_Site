@@ -9,6 +9,7 @@ import TextProvider from "./context/TextProvider.jsx";
 import Favorites from './pages/Favorites.jsx'
 import Profile from "./pages/Profile.jsx";
 import PromotionalSite2 from "./pages/PromotionalSite2.jsx";
+import PromotionalSite3 from "./pages/PromotionalSite3.jsx";
 import ChooseTemplate from "./pages/ChooseTemplate.jsx";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
 import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx"
@@ -24,6 +25,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/promotional-site" element={<PromotionalSite />} />
               <Route path="/promotional-site2" element={<PromotionalSite2 />} />
+              <Route path="/promotional-site3" element={<PromotionalSite3 />} />
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/ChooseTemplate" element={<ChooseTemplate />} />
               <Route path="/Login" element={<Login />} />
