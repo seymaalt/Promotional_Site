@@ -99,7 +99,7 @@ export default function CommentsPromotionalSite({ responseData }) {
                                     {duzenlemeModu ? (
                                         <TextareaAutosize
                                             style={{
-                                                width: '100%', background: "#EBEBEB", padding: "40px", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
+                                                width: '100%', background: "#EBEBEB", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
                                             }}
                                             multiline
                                             rows={15}
@@ -131,7 +131,7 @@ export default function CommentsPromotionalSite({ responseData }) {
                                     {duzenlemeModuu ? (
                                         <TextareaAutosize
                                             style={{
-                                                width: '100%', background: "#EBEBEB", padding: "40px", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
+                                                width: '100%', background: "#EBEBEB", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
                                             }}
                                             multiline
                                             rows={15}
@@ -162,7 +162,7 @@ export default function CommentsPromotionalSite({ responseData }) {
                                     {duzenlemeModuuu ? (
                                         <TextareaAutosize
                                             style={{
-                                                width: '100%', background: "#EBEBEB", padding: "40px", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
+                                                width: '100%', background: "#EBEBEB", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
                                             }}
                                             multiline
                                             rows={15}
