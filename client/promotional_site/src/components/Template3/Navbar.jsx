@@ -7,7 +7,7 @@ const Template3Navbar = () => {
 
 
     return (
-        <div className='navbar'>
+        <div className='temp3Navbar'>
             <Grid container >
                 <Grid item xs={2}></Grid>
                 <Grid item xs={8}>
