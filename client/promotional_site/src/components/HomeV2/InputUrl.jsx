@@ -1,8 +1,15 @@
-import React from 'react';
 
 export default function InputUrl() {
   return (
     <div style={{ position: 'relative', width: '600px', display: 'flex', alignItems: 'center' }}>
+       <p  style={{
+            backgroundImage: "linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)",
+            backgroundClip: "text",
+            color: "transparent",
+            fontSize:"24px",
+            padding:"15px"
+          }}>URL</p>
+        
       <input
         type="text"
         style={{
