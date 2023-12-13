@@ -26,9 +26,11 @@ const ForgotPassword = () => {
           const jwtToken = result.data.accessToken;
           localStorage.setItem('token', jwtToken);
           if (result.data == "Success") {
-             alert("Başarıyla Gönderildi")
+            alert("Email sent.")
           }
-
+          else {
+            alert("User not exist!")
+          }
         })
         .catch(err => console.log(err));
 
@@ -56,9 +58,9 @@ const ForgotPassword = () => {
 
           </Typography>
           <Typography variant="subtitle2" fontWeight="400" padding="5px" gutterBottom>
-            Enter Your Email 
+            Enter Your Email
           </Typography>
-          <Box component="form" onSubmit={handleSubmit}  noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required

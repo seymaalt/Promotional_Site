@@ -5,6 +5,7 @@
 * {
   font-family: "Roboto", sans-serif;
 }
+
 .middle {
   padding-top: 12%;
   display: flex;
@@ -85,10 +86,19 @@ body {
   justify-content: center;
 }
 
+
+.middle2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
 .centerColumn {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .homeURL {
@@ -269,28 +279,6 @@ body {
   padding-top: 18%;
 }
 
-.starRating {
-  font-family: DM Sans;
-  padding-top: 70px;
-  text-align: center;
-  color: #000;
-  font-size: 2.25rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-
-.starText {
-  font-family: DM Sans;
-  padding-top: 50px;
-  text-align: center;
-  color: #000;
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-
 .temp2Gallery {
   display: flex;
   align-items: center;
@@ -400,7 +388,13 @@ body {
   width: 15%;
 }
 
+.appbar {
+  padding-bottom: 1%;
+  border-bottom: 1px solid rgb(165, 165, 165);
+}
+
 @media screen and (max-width: 1200px) {
+
   .gallery {
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -426,6 +420,33 @@ body {
     margin-inline-start: 0%;
     margin-inline-end: 0%;
   }
+
+  .homeImage {
+    height: auto;
+    width: 100%;
+  }
+
+  .homeURL {
+    font-size: 18px;
+  }
+
+  #inputlink {
+    width: 80%;
+  }
+
+  .firstParagraph {
+    font-size: 150%;
+  }
+
+  .secondParagraph {
+    font-size: 90%;
+  }
+
+  .scrollButton {
+    visibility: hidden;
+  }
+
+
 }
 
 @media screen and (max-width: 600px) {
@@ -443,12 +464,12 @@ body {
   }
 
   #inputlink {
-    width: 275px;
+    width: 35dvh;
   }
 
   .homeImage {
     height: auto;
-    width: 275px;
+    width: 35dvh;
   }
 
   .homeLogo {
@@ -459,14 +480,9 @@ body {
   }
 
   .navbarLogo {
-    margin-top: 5%;
-    width: 90%;
+    max-height: 5dvh;
+    width: 110%;
     margin-left: -10px;
-  }
-
-  .appbar {
-    position: relative;
-    width: 40px;
   }
 
   .header h1 {
@@ -523,25 +539,10 @@ body {
     right: 0;
   }
 
-  .temp2Logo {
-    width: 6rem;
-    margin-top: 15%;
-  }
-
   .ratingCard {
     margin-left: 10%;
     width: 75%;
     height: auto;
-  }
-
-  .starRating {
-    font-size: 1.75rem;
-    padding-bottom: 20%;
-  }
-
-  .starText {
-    font-size: 1.55rem;
-    padding-bottom: 20%;
   }
 
   .star {
@@ -586,5 +587,9 @@ body {
     align-items: center;
     justify-content: center;
     margin-left: 20%;
+  }
+
+  .imageHome {
+    margin-top: -30dvh;
   }
 }

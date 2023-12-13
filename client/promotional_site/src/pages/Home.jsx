@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import Input from "../components/Input";
 import Logo from "../components/Logo";
 import HomePageImage from "../components/HomePageImage";
+import EditPageImage from "../components/EditPageImage.jsx"
 import HomePageText from "../components/HomePageText";
 import Button from "@mui/material/Button";
 import LoginModal from "../components/Login/LoginModal.jsx";
@@ -14,6 +15,7 @@ import AuthContext from "../context/AuthContext.jsx";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from '@mui/material/Menu';
 import { useNavigate } from "react-router-dom";
+import KeyboardDoubleArrowDownRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowDownRounded';
 
 export default function AutoGrid() {
   const { token, setToken, logout } = useContext(AuthContext);
@@ -22,10 +24,8 @@ export default function AutoGrid() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
+  const [buttonVisible, setButtonVisible] = useState(true);
 
-  const logoutt = () => {
-    window.open(`${import.meta.env.VITE_PORT}/auth/logout`, "_self");
-  };
 
   const getUser = async () => {
     try {
@@ -81,6 +81,11 @@ export default function AutoGrid() {
     prevOpen.current = open;
   }, [open]);
 
+  const handleButtonClick = () => {
+    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    setButtonVisible(false);
+  };
+
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
 
@@ -103,8 +108,26 @@ export default function AutoGrid() {
       fetchUserProfile();
     }
   }, [token, logout, setToken]);
-useEffect(()=>{        console.log(user);
-});
+
+  useEffect(() => {
+    console.log(user);
+  });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setButtonVisible(false);
+      } else {
+        setButtonVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <Box className="background" >
       <div className='navbar' >
@@ -172,6 +195,33 @@ useEffect(()=>{        console.log(user);
           </div>
         </Grid>
       </Grid>
+
+      <div className="middle2" >
+        <Grid container spacing={10} className="middle2">
+          <Grid item xs={10} md={4}>
+            <div className="homeText">
+              <span className="homePageText">
+                <p className="firstParagraph" >Edit Text Easily with Double Click!</p>
+                <p className="secondParagraph">Welcome to our user-friendly platform that makes text editing a breeze. With our intuitive interface, you can now effortlessly update your text content by simply double-clicking on the text you want to modify.</p>
+              </span>
+
+            </div>
+          </Grid>
+          <Grid item xs={12} md={2}></Grid>
+          <Grid item xs={9} md={4}>
+            <div className="imageHome">
+              <EditPageImage></EditPageImage>
+            </div>
+          </Grid>
+        </Grid>
+        <div style={{ alignItems: 'flex-start', height: '78vh', marginRight: '3%' }}>
+          {buttonVisible && (
+            <Button className="scrollButton" style={{ color: 'white' }} onClick={handleButtonClick}>
+              <KeyboardDoubleArrowDownRoundedIcon fontSize="large" />
+            </Button>
+          )}
+        </div>
+      </div>
     </Box >
   );
 }

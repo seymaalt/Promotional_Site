@@ -57,8 +57,6 @@ const DataSecurity = ({ responseData }) => {
     const middleX = event.clientX;
     const middleY = event.clientY;
 
-
-
     setIsModalOpen(true);
     setModalPosition(calculateModalPosition(middleX, middleY));
   };
@@ -79,7 +77,7 @@ const DataSecurity = ({ responseData }) => {
     <div className='divStyle'>
       <div className='titleStyle'>Veri Güvenliği</div>
       {duzenlemeModu ? (
-        <div ><TextareaAutosize
+        <div className='container'><TextareaAutosize
           style={{ width: '100%', placeItems: "center", margin: "0px", display: "flex", padding: "0px", lineHeight: "31px", fontWeight: "400", resize: "none", backgroundColor: "#F1F1F1", border: "0px", fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: `${textAlign}` }}
           multiline
           rows={15}
