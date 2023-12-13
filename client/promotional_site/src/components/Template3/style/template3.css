@@ -2,9 +2,12 @@
     min-height: 100vh;
     position: relative;
     margin: auto;
+    display: grid;
+    place-items: center;
+
 }
 
-.navbar {
+.temp3Navbar {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,7 +102,7 @@
     margin-top: 10%;
     border-radius: 2rem;
     width: 40%;
-    box-shadow: #1E45BF 5px 5px, #1E45BF 10px 10px;
+    box-shadow: #6f5af7 5px 5px, #1E45BF 10px 10px;
 }
 
 .entranceImage2 {
@@ -107,15 +110,145 @@
     margin-top: 2%;
     border-radius: 2rem;
     width: 85%;
-    box-shadow: #1E45BF 5px 5px, #1E45BF 10px 10px;
+    box-shadow: #6f5af7 5px 5px, #ded9fc 10px 10px;
 }
 
 .entranceImage3 {
     margin-top: 2%;
     border-radius: 2rem;
     width: 50%;
-    box-shadow: #1E45BF 5px 5px, #1E45BF 10px 10px;
+    box-shadow: #6f5af7 5px 5px, #ded9fc 10px 10px;
+}
 
+.servicesHeader {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.servicesDisc {
+    width: 85%;
+    color: #6b7280;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
+    padding: 2rem;
+}
+
+.servicesBox {
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+    background-color: #E5E7EB;
+    border-radius: 2rem;
+    height: auto;
+    overflow: hidden;
+}
+
+.servicesImage {
+    border-radius: 1rem;
+    margin-top: 2rem;
+    object-fit: cover;
+    max-width: 90%;
+    height: 18rem;
+    display: block;
+}
+
+.servicesBoxHeader {
+    padding: 2rem;
+    padding-bottom: 0rem;
+    font-size: 1.45rem;
+    font-weight: bold;
+}
+
+.servicesBoxDisc {
+    padding: 2rem;
+    font-size: 1.15rem;
+    float: left;
+}
+
+.contactDiv {
+    height: auto;
+    width: 72rem;
+    padding: 6rem;
+    background-color: rgb(30, 64, 175);
+    border-radius: 2rem;
+}
+
+.contactDiv h1 {
+    color: white;
+}
+
+.temp3Submit {
+    background-color: white;
+    border: 0;
+    border-radius: 0.65rem;
+    border-bottom-right-radius: 0;
+    box-shadow: rgba(255, 245, 245, 0.2) 0 15px 30px -5px;
+    font-size: 1.35rem;
+    justify-content: center;
+    line-height: 1em;
+    padding: 1.25rem;
+
+    cursor: pointer;
+}
+
+.temp3Footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: #1E45BF;
+}
+
+.footerName {
+    font-size: 1.45rem;
+    font-weight: bold;
+    color: white;
+}
+
+.footerleft {
+    margin-top: 2.15rem;
+    font-size: 1.15rem;
+    color: white;
+}
+
+.footerNavigate {
+    text-align: center;
+}
+
+.footerNavigation {
+    font-size: 1.15rem;
+    padding-inline: 3rem;
+    text-decoration: inherit;
+    color: #e7e7e7;
+}
+
+.socialMedia {
+    text-align: center;
+}
+
+.socialMediaIcon {
+    color: white;
+    position: relative;
+    list-style: none;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+ul li a {
+    text-decoration: none;
+}
+
+ul li a .fa-brands {
+    font-size: 6em;
+    color: #222;
+}
+
+ul li a::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 6em;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
 }
 
 @media (min-width: 768px) {
