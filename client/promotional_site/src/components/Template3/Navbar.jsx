@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import Grid from "@mui/material/Grid";
 import './style/template3.css'
+import GlobalContext from '../../context/GlobalContext'; 
 
 
 const Template3Navbar = () => {
-
+   
+    const { response } = useContext(GlobalContext);
 
     return (
         <div className='temp3Navbar'>
@@ -13,7 +15,7 @@ const Template3Navbar = () => {
                 <Grid item xs={8}>
                     <Grid container >
                         <Grid item xs={3} className='companyName'>
-                            COMPANY NAME
+                        {response && response.businessName ? response.businessName : 'COMPANY NAME'}
                         </Grid>
                         <Grid item xs={6} className='navigation'>
                             <a href='#' className='navigationButton'>Services</a>
