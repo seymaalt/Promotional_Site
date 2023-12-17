@@ -17,7 +17,6 @@ import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
 import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx";
 import LoginPage from './pages/LoginV2.jsx';
 import EmailVerified from "./EmailVerified/EmailVerified.jsx";
-import HomeV2 from "../src/pages/HomeV2"
 
 function App() {
   return (
