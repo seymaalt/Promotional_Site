@@ -1,4 +1,3 @@
-
 export default function Text() {
   return (
     <div>
@@ -9,6 +8,7 @@ export default function Text() {
             backgroundImage: "linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)",
             backgroundClip: "text",
             color: "transparent",
+            WebkitBackgroundClip: "text",
           }}
         >
            {" "}one click

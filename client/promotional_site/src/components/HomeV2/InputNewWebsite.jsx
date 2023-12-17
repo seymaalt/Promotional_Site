@@ -36,7 +36,7 @@ export default function InputUrl() {
             color: "transparent",
             fontSize:"24px"
           }}>DESCRIPTION</p>
-      <input
+      <textarea
         type="text"
         style={{
           borderRadius: "30px",

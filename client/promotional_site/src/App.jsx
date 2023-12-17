@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import HomeV2 from "../src/pages/HomeV2"
 import PromotionalSite from "./pages/PromotionalSite";
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
@@ -11,7 +12,8 @@ import Profile from "./pages/Profile.jsx";
 import PromotionalSite2 from "./pages/PromotionalSite2.jsx";
 import ChooseTemplate from "./pages/ChooseTemplate.jsx";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
-import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx"
+import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx";
+import LoginPage from './pages/LoginV2.jsx';
 import EmailVerified from "./EmailVerified/EmailVerified.jsx";
 function App() {
   return (
@@ -20,13 +22,14 @@ function App() {
         <GlobalProvider>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<HomeV2 />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/promotional-site" element={<PromotionalSite />} />
               <Route path="/promotional-site2" element={<PromotionalSite2 />} />
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/ChooseTemplate" element={<ChooseTemplate />} />
               <Route path="/Login" element={<Login />} />
+              <Route path="/LoginPage" element={<LoginPage />} />
               <Route path="/Register" element={<Register />} />
               <Route path="/ForgotPassword" element={<ForgotPassword />} />
               <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
