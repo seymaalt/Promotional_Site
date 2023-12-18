@@ -1,5 +1,5 @@
 import Spline from "@splinetool/react-spline";
-import  { useRef } from 'react';
+import { useRef } from 'react';
 import "../styles/home2.css";
 import NavBar from "../components/HomeV2/Navbar";
 import Text from "../components/HomeV2/Text";
@@ -20,33 +20,21 @@ export default function HomeV2() {
   const div3Ref = useRef(null);
 
   const handleBuildButtonClick = () => {
-    // Scroll to div2-homev2 when BuildButton is clicked
     if (div2Ref.current) {
       div2Ref.current.scrollIntoView({ behavior: 'smooth' });
     }
-   
+
   };
 
   const handleClick = () => {
-
-    
     if (div3Ref.current) {
       div3Ref.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
   return (
-    <div  style={{
-      backgroundColor: "#161417",
-     
-    }}>
-      <div
-        className="div1-homev2"
-        style={{
-          backgroundColor: "#161417",
-          height: "110vh",
-        }}
-      >
-        <NavBar onClick={handleClick}/>
+    <div className="homePage">
+      <div className="part2">
+        <NavBar onClick={handleClick} />
         <div style={{ marginTop: "75px" }}>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
@@ -56,7 +44,7 @@ export default function HomeV2() {
                   {" "}
                   <Text></Text>
                   <div style={{ padding: "20px" }}>
-                  <BuildButton onClick={handleBuildButtonClick} />
+                    <BuildButton onClick={handleBuildButtonClick} />
                   </div>
                 </div>
               </Grid>
@@ -75,18 +63,10 @@ export default function HomeV2() {
           </Box>
         </div>
       </div>
-      
-      <div
-        ref={div2Ref}
-        className="div2-homev2"
-        style={{
-          backgroundColor: "#161417",
-          height: "100vh",
-          marginTop: "50px"
-        }}
-      >
+
+      <div ref={div2Ref} className="part2">
         <BuildText></BuildText>
-        <Box sx={{ flexGrow: 1 }} style={{ marginTop: "100px" ,display:"flex"}}>
+        <Box sx={{ flexGrow: 1 }} style={{ marginTop: "100px", display: "flex" }}>
           <Grid container spacing={2}>
             <Grid item xs={0.5}></Grid>
             <Grid item xs={5.5}>
@@ -107,15 +87,12 @@ export default function HomeV2() {
           </Grid>
         </Box>
       </div>
-    
-       <div  ref={div3Ref} className="div3-homev2"  style={{
-          backgroundColor: "#161417",
-          height: "90vh",
-        }}>
-            <HowItWorksText></HowItWorksText>
-            <HowItWorks></HowItWorks>
-        </div>
-    
+
+      <div ref={div3Ref} className='part2'>
+        <HowItWorksText></HowItWorksText>
+        <HowItWorks></HowItWorks>
+      </div>
+
     </div>
   );
 }

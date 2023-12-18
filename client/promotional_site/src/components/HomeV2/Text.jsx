@@ -1,4 +1,3 @@
-
 export default function Text() {
   return (
     <div>
@@ -6,12 +5,13 @@ export default function Text() {
         Create your website in seconds with
         <span
           style={{
-            backgroundImage: "linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)",
+            WebkitBackgroundClip: "text",
             backgroundClip: "text",
             color: "transparent",
+            backgroundImage: "linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)",
           }}
         >
-           {" "}one click
+          {" "}one click
         </span>
       </p>
     </div>

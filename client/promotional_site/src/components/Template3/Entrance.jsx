@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+
+import React, { useState ,useContext} from 'react';
 import Grid from "@mui/material/Grid";
 import './style/template3.css'
+import GlobalContext from '../../context/GlobalContext'
 import EditableText from './EditableText';
 import ChangeDesign from './ChangeDesign';
 import ChangeImage from './ChangeImage'
+
 
 const Template3Navbar = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,6 +49,9 @@ const Template3Navbar = () => {
     const handleFontSizeChange = (newFontSize) => {
         setFontSize(newFontSize);
     };
+
+
+    const { response } = useContext(GlobalContext);
 
     const handleColorChange = (newColor) => {
         setColor(newColor);

@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import Grid from "@mui/material/Grid";
 import './style/template3.css'
+import GlobalContext from '../../context/GlobalContext'; 
 import { TextareaAutosize } from '@mui/material';
 import EditableText from './EditableText';
 import ChangeDesign from './ChangeDesign';
 
 
 const Template3Navbar = () => {
+      const { response } = useContext(GlobalContext);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
 
