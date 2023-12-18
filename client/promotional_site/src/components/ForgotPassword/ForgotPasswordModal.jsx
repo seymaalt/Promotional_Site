@@ -19,7 +19,7 @@ export default function TransitionsModal() {
         variant="body2"
         onClick={handleOpen}
         underline="none"
-        style={{ color: "black", fontWeight: "bold", fontSize: "12px" }}
+        style={{ fontFamily:"poppins",fontSize:"20px",color:"white" }}
       >
         Forgot Password?
       </Link>
