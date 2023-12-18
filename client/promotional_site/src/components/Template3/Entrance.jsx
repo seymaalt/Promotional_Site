@@ -91,8 +91,7 @@ const Template3Navbar = () => {
                     </div>
                     <ChangeDesign open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
                     <h3>
-                        {/* We leverage advanced technologies to transform your ideas into functional and innovative software applications. */}
-                        <EditableText initialValue=' We leverage advanced technologies to transform your ideas into functional and innovative software applications.' className='entranceDisc' backColor='white' />
+                        <EditableText initialValue={response && response.descriptionName ? response.descriptionName : ' We leverage advanced technologies to transform your ideas into functional and innovative software applications.'} className='entranceDisc' backColor='white' />
 
                     </h3>
                     <div className='entranceButtons'>

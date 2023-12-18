@@ -11,9 +11,7 @@ export default function InputUrl() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(response.businessName);
-  }, [response]); // Log whenever the response state changes
+
 
   const handleGenerate = async () => {
     setLoading(true);
