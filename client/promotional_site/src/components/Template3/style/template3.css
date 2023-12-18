@@ -120,6 +120,8 @@
     box-shadow: #6f5af7 5px 5px, #ded9fc 10px 10px;
 }
 
+/* Services */
+
 .servicesHeader {
     font-size: 4rem;
     font-weight: bold;
@@ -157,39 +159,186 @@
     padding-bottom: 0rem;
     font-size: 1.45rem;
     font-weight: bold;
+    min-height: 5rem;
 }
 
 .servicesBoxDisc {
     padding: 2rem;
     font-size: 1.15rem;
     float: left;
-}
-
-.contactDiv {
-    height: auto;
-    width: 72rem;
-    padding: 6rem;
-    background-color: rgb(30, 64, 175);
-    border-radius: 2rem;
+    min-height: 5rem;
 }
 
 .contactDiv h1 {
     color: white;
 }
 
-.temp3Submit {
-    background-color: white;
-    border: 0;
+.image-container {
+    height: 100%;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Contact  */
+
+.contactDiv {
+    max-width: 1100px;
+    width: 100%;
+    background: rgb(30, 64, 175);
+    border-radius: 1rem;
+    padding: 6rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contactDiv .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contactDiv .content .left-side {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    position: relative;
+}
+
+.content .left-side::before {
+    content: "";
+    position: absolute;
+    height: 70%;
+    width: 2px;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #d6d6d8;
+}
+
+.content .left-side .details {
+    margin: 14px;
+    text-align: center;
+}
+
+.content .left-side .details .topic {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.content .left-side .details .text-one {
+    font-size: 14px;
+    color: #e4e4e4;
+}
+
+.contactDiv .content .right-side {
+    width: 75%;
+    margin-left: 75px;
+}
+
+.content .right-side .topic-text {
+    font-size: 36px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.right-side .input-box {
+    height: 55px;
+    width: 100%;
+    margin: 12px 0;
+}
+
+.right-side .input-box input,
+.right-side .input-box textarea {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: #f0f1f8;
+    border-radius: 6px;
+    padding: 0 15px;
+    resize: none;
+}
+
+.right-side .message-box {
+    min-height: 110px;
+}
+
+.right-side .input-box textarea {
+    padding-top: 6px;
+}
+
+.right-side .button {
+    display: inline-block;
+    margin-top: 12px;
+}
+
+.right-side .button input[type="button"] {
+    color: #152c70;
+    font-size: 1.35rem;
+    outline: none;
+    border: none;
+    padding: 10px 16px;
     border-radius: 0.65rem;
     border-bottom-right-radius: 0;
-    box-shadow: rgba(255, 245, 245, 0.2) 0 15px 30px -5px;
-    font-size: 1.35rem;
-    justify-content: center;
-    line-height: 1em;
-    padding: 1.25rem;
-
+    box-shadow: rgba(184, 184, 184, 0.2) 0 15px 30px 5px;
+    background-color: white;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
+
+.button input[type="button"]:hover {
+    background-color: rgb(226, 226, 226);
+}
+
+@media (max-width: 950px) {
+    .contactDiv {
+        width: 90%;
+        padding: 30px 40px 40px 35px;
+    }
+
+    .contactDiv .content .right-side {
+        width: 75%;
+        margin-left: 55px;
+    }
+}
+
+@media (max-width: 820px) {
+    .contactDiv {
+        margin: 40px 0;
+        height: 100%;
+    }
+
+    .contactDiv .content {
+        flex-direction: column-reverse;
+    }
+
+    .contactDiv .content .left-side {
+        width: 100%;
+        flex-direction: row;
+        margin-top: 40px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .contactDiv .content .left-side::before {
+        display: none;
+    }
+
+    .contactDiv .content .right-side {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* Footer */
 
 .temp3Footer {
     padding-top: 3rem;
@@ -255,5 +404,34 @@ ul li a::before {
     .button-63 {
         font-size: 24px;
         min-width: 196px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .part {
+        min-height: 70vh;
+        position: relative;
+        margin: auto;
+        display: grid;
+        place-items: center;
+    
+    }
+    .navigationButton {
+        display: none;
+    }
+    .footerNavigation {
+        display: none;
+    }
+    .entranceHead {
+        padding: 1rem;
+        font-size: 2rem;
+    }
+    .entranceDisc {
+        padding-left: 1rem;
+        font-size: 0.825rem;
+    }
+    .entranceButtons {
+        padding-top: 0rem;
+        margin: 1rem;
     }
 }
