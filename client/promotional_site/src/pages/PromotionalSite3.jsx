@@ -17,13 +17,13 @@ export default function PromotionalSite3() {
         <div>
             <Navbar></Navbar>
             <Grid container >
-                <Grid item xs={2}></Grid>
-                <Grid item xs={8}>
+                <Grid item md={2}></Grid>
+                <Grid item md={8}>
                     <Entrance></Entrance>
                     <Services></Services>
                     <Contact></Contact>
                 </Grid>
-                <Grid item xs={2}></Grid>
+                <Grid item md={2}></Grid>
             </Grid>
             <Footer></Footer>
         </div>

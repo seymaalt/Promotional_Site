@@ -38,8 +38,8 @@ export default function HomeV2() {
         <div style={{ marginTop: "75px" }}>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
-              <Grid item xs={0.5}></Grid>
-              <Grid item xs={6}>
+              <Grid item md={0.5} xs={0}></Grid>
+              <Grid item md={6} xs={12}>
                 <div style={{ marginTop: "150px" }}>
                   {" "}
                   <Text></Text>
@@ -48,7 +48,7 @@ export default function HomeV2() {
                   </div>
                 </div>
               </Grid>
-              <Grid item xs={5.5}>
+              <Grid item md={5.5} xs={12}>
                 <div
                   style={{
                     width: "800px",
