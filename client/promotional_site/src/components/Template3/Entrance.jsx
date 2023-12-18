@@ -12,7 +12,7 @@ const Template3Navbar = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
     const [modalPositionImage, setModalPositionImage] = useState({ top: 0, left: 0 });
-    const [fontSize, setFontSize] = useState();
+    const [fontSize, setFontSize] = useState(64);
     const [color, setColor] = useState('#1B1A1A');
     const [selectedFont, setSelectedFont] = useState('DM Sans');
     const [textAlign, setTextAlign] = useState("left");
@@ -87,9 +87,9 @@ const Template3Navbar = () => {
             <Grid container >
                 <Grid item xs={6}>
                     <div onDoubleClick={handleDivClick}>
-                        <EditableText initialValue='Transforming Ideas Into Solutions' className='entranceHead' backColor='white' />
+                        <EditableText initialValue='Transforming Ideas Into Solutions' className='entranceHead' backColor='white'  fontSize={fontSize} selectedFont={selectedFont} color={color} textAlign={textAlign}   />
                     </div>
-                    <ChangeDesign open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
+                    <ChangeDesign open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} textAlign={textAlign} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
                     <h3>
                         {/* We leverage advanced technologies to transform your ideas into functional and innovative software applications. */}
                         <EditableText initialValue=' We leverage advanced technologies to transform your ideas into functional and innovative software applications.' className='entranceDisc' backColor='white' />
@@ -106,19 +106,19 @@ const Template3Navbar = () => {
                     <div>
                         <img
                             src={selectedImage}
-                            className="entranceImage"
+                            className="changeImage entranceImage"
                             alt="Image"
                             onClick={handleImageClick}
                         />
                         <ChangeImage isOpen={isImageUploaderOpen} onImageChange={handleImageChange} onClose={handleImageUploaderClose} modalPosition={modalPositionImage}/>
                         <img
                             src="https://images.unsplash.com/photo-1619410283995-43d9134e7656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzEzMzd8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMERldmVsb3BtZW50fGVufDB8MHx8fDE3MDIzNjI3NzR8MA&ixlib=rb-4.0.3&q=80&w=1920"
-                            className="entranceImage2"
+                            className="changeImage entranceImage2"
                             alt="Image"
                         />
                         <img
                             src="https://images.unsplash.com/photo-1619410283995-43d9134e7656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzEzMzd8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMERldmVsb3BtZW50fGVufDB8MHx8fDE3MDIzNjI3NzR8MA&ixlib=rb-4.0.3&q=80&w=1920"
-                            className="entranceImage3"
+                            className="changeImage entranceImage3"
                             alt="Image"
                         />
                     </div>

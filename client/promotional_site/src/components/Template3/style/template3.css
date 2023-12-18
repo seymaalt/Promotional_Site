@@ -7,12 +7,12 @@
 
 }
 
-<<<<<<< HEAD
+
 a {
     text-decoration: none;
 }
 
-img:hover {
+.changeImage:hover {
     outline: #84CC16 solid 2px;
 }
 
@@ -26,10 +26,7 @@ img:hover {
     border: 1px solid #ccc;
 }
 
-.navbar {
-=======
 .temp3Navbar {
->>>>>>> 2fef41c0a94480c79ae6fe98038cbd6562327429
     display: flex;
     align-items: center;
     justify-content: center;
