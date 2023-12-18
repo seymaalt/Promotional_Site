@@ -4,6 +4,9 @@ import { useContext, useRef, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Navbar from "../components/Template3/Navbar.jsx";
 import Entrance from "../components/Template3/Entrance.jsx";
+import Services from "../components/Template3/Services.jsx";
+import Contact from "../components/Template3/Contact.jsx";
+import Footer from "../components/Template3/Footer.jsx";
 
 
 export default function PromotionalSite3() {
@@ -17,31 +20,12 @@ export default function PromotionalSite3() {
                 <Grid item xs={2}></Grid>
                 <Grid item xs={8}>
                     <Entrance></Entrance>
-                    <div style={{ height: '100dvh', backgroundColor: 'green' }}>Hizmetlerimiz 3 adet </div>
-                    <div style={{ height: '100dvh', backgroundColor: 'yellow' }}>Mail gönderme</div>
+                    <Services></Services>
+                    <Contact></Contact>
                 </Grid>
                 <Grid item xs={2}></Grid>
             </Grid>
-            <div style={{ height: '60dvh', backgroundColor: 'grey' }}>
-                <Grid container >
-                    <Grid item xs={2}></Grid>
-                    <Grid item xs={8}>
-                        <Grid container >
-                            <Grid item xs={4}>
-                                ADI , SOSYAL MEDYA
-                            </Grid>
-                            <Grid item xs={4}>
-                                YONLENDIRME BUTONLARI
-                            </Grid>
-                            <Grid item xs={4}>
-                                MAIL ADRES
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                    <Grid item xs={2}></Grid>
-                </Grid>
-            </div>
-
+            <Footer></Footer>
         </div>
     );
 }
