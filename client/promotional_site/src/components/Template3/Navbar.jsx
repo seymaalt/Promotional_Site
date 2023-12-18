@@ -113,7 +113,7 @@ const Template3Navbar = () => {
                 <Grid item xs={8}>
                     <Grid container >
                         <Grid item xs={3} className='companyName' id={1} onDoubleClick={handleDivClick}>
-                            <EditableText className='companyName' initialValue='Company Name' backColor="#FAF8F4" fontSize={fontSize} selectedFont={selectedFont} color={color} textAlign={textAlign} />
+                            <EditableText className='companyName' initialValue= {response && response.businessName ? response.businessName : 'COMPANY NAME'} backColor="#FAF8F4" fontSize={fontSize} selectedFont={selectedFont} color={color} textAlign={textAlign} />
                             <ChangeDesign open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
                         </Grid>
                         <Grid item xs={6} className='navigation'>
