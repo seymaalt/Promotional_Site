@@ -7,7 +7,29 @@
 
 }
 
+<<<<<<< HEAD
+a {
+    text-decoration: none;
+}
+
+img:hover {
+    outline: #84CC16 solid 2px;
+}
+
+.box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.navbar {
+=======
 .temp3Navbar {
+>>>>>>> 2fef41c0a94480c79ae6fe98038cbd6562327429
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,6 +49,12 @@
     color: hsl(225, 73%, 43%);
 }
 
+.companyName:hover {
+    padding: 0px;
+    border: 1px solid #ccc;
+    outline: #84CC16 solid 2px;
+}
+
 .navigation {
     display: flex;
     align-items: center;
@@ -41,6 +69,7 @@
 }
 
 .navigationButton:hover {
+    outline: #84CC16 solid 2px;
     color: rgb(51, 51, 51);
 }
 
@@ -78,18 +107,31 @@
 .button-63:hover {
     background-image: linear-gradient(144deg, #b95afd, #6f5af7 50%, #19eefd);
     outline: 0;
+    outline: #84CC16 solid 2px;
 }
 
 
 .entranceHead {
+    font-weight: bold;
     padding: 3rem;
     font-size: 4rem;
 }
 
+.entranceHead:hover {
+    outline: #84CC16 solid 2px;
+
+}
+
 .entranceDisc {
+    position: relative;
+    font-weight: bold;
     color: #7a7a7a;
     padding-left: 3rem;
     font-size: 1.325rem;
+}
+
+.entranceDisc:hover {
+    outline: #84CC16 solid 2px;
 }
 
 .entranceButtons {
