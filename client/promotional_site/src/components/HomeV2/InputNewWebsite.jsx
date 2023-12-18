@@ -11,8 +11,6 @@ export default function InputUrl() {
 
   const navigate = useNavigate();
 
-
-
   const handleGenerate = async () => {
     setLoading(true);
     try {
