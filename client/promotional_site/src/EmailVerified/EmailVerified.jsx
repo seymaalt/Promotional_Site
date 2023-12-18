@@ -23,8 +23,7 @@ function EmailVerified() {
                 <h1>Email verification successful</h1>
                 <p>Your email has been verified.</p>
                 <button style={{ padding: "10px", backgroundColor: "#7247AE", color: "white", border: "none", borderRadius: "5px" }}>
-                    <a href="/" style={{textDecoration: "none", color: "white"}}>Return to the application</a>
-                    
+                    <a href="/" style={{textDecoration: "none", color: "white"}}>Return to the application</a>      
                 </button>
             </body>
 
