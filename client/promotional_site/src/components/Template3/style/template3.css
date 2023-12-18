@@ -7,7 +7,6 @@
 
 }
 
-
 a {
     text-decoration: none;
 }
@@ -26,7 +25,10 @@ a {
     border: 1px solid #ccc;
 }
 
+
+
 .temp3Navbar {
+
     display: flex;
     align-items: center;
     justify-content: center;
