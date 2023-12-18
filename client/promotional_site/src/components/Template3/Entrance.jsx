@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext} from 'react';
 import Grid from "@mui/material/Grid";
 import './style/template3.css'
-
+import GlobalContext from '../../context/GlobalContext'
 
 const Template3Navbar = () => {
+
+    const { response } = useContext(GlobalContext);
 
 
     return (
@@ -14,7 +16,8 @@ const Template3Navbar = () => {
                         Transforming Ideas Into Solutions
                     </h1>
                     <h3 className='entranceDisc'>
-                        We leverage advanced technologies to transform your ideas into functional and innovative software applications.
+                    {response && response.descriptionName ? response.descriptionName : 'We leverage advanced technologies to transform your ideas into functional and innovative software applications.'}
+                        
                     </h3>
                     <div className='entranceButtons'>
                         <a href='#' className='button-63'>
