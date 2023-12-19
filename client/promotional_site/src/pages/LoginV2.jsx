@@ -22,15 +22,11 @@ export default function BasicGrid() {
               <Grid xs={6}>
                 <div><Login /></div>
               </Grid>
-              <Grid xs={6}>      
+              <Grid xs={6} className="loginPageImage">      
                   <img
                     src={image}
                     alt="Background"
-                    style={{
-                      width: '100%',
-                      height: "100%",
-                      borderRadius: '0px 30px 30px 0px', 
-                    }}
+                    className="loginPageImage"
                   /> 
               </Grid>
             </Grid>
