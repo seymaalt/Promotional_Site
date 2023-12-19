@@ -38,7 +38,7 @@ function App() {
               <Route path="/Register" element={<Register />} />
               <Route path="/ForgotPassword" element={<ForgotPassword />} />
               <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
-              <Route path="/verify-email/:emailToken" element={<EmailVerified />} />
+              <Route path="/user/verify-email/:emailToken" element={<EmailVerified />} />
             </Routes>
           </BrowserRouter>
         </GlobalProvider>
