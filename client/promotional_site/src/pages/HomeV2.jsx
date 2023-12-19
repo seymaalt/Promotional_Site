@@ -9,6 +9,7 @@ import InputUrl from "../components/HomeV2/InputUrl";
 import TextNewWebsite from "../components/HomeV2/TextNewWebsite";
 import InputNewWebsite from "../components/HomeV2/InputNewWebsite";
 import BuildButton from "../components/HomeV2/BuildButton";
+import Footer from "../components/HomeV2/Footer";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import BuildText from "../components/HomeV2/BuildText";
@@ -87,6 +88,9 @@ export default function HomeV2() {
       <div ref={div3Ref} className='part2'>
         <HowItWorksText></HowItWorksText>
         <HowItWorks></HowItWorks>
+      </div>
+      <div >
+        <Footer onClick={{handleClick,handleBuildButtonClick}}/>
       </div>
 
     </div>

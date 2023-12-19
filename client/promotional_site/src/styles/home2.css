@@ -67,20 +67,20 @@
     text-decoration: none;
 }
 
-.homeLoginButton{
+.homeLoginButton {
     color: white;
-    font-size:20px; 
-    margin: 0 30px 0 0; 
+    font-size: 20px;
+    margin: 0 30px 0 0;
     text-decoration: none;
 }
 
-.homeRegisterButton{
+.homeRegisterButton {
     color: #161417;
-    font-size:20px; 
-    margin: 0 0px 0 0; 
+    font-size: 20px;
+    margin: 0 0px 0 0;
     text-decoration: none;
-    padding:8px 15px;
-    border-radius:30px;
+    padding: 8px 15px;
+    border-radius: 30px;
 }
 
 .chooseHeader2 h1 {
@@ -165,12 +165,35 @@
     box-shadow: 0px 0px 54px 21px rgba(144, 106, 215, 0.6);
 }
 
+.footerDiv {
+    display: flex;
+    align-items: center;
+    height: 30vh;
+    background-color: #2F2D30;
+}
+
+.footerLogo {
+    padding: 5%;
+    width: 70%;
+}
+
+.footerNavigate{
+    text-align: center;
+    color: white;
+    font-size: 1.15rem;
+}
+
+.footerCopyright{
+    padding: 2rem;
+    color: white;
+}
 /* Choose Screen */
 
 .chooseImage {
     height: auto;
     width: 28rem;
 }
+
 
 .chooseButton { 
         border-radius: 30px;
@@ -181,6 +204,7 @@
         font-size: 16px;
         cursor: pointer;
         height: 50px;
+
 }
 
 
@@ -261,7 +285,7 @@
         width: 100%;
     }
 
-    .homeInputBussinessDiv{
+    .homeInputBussinessDiv {
         text-align: center;
     }
 
@@ -284,14 +308,15 @@
         padding-left: 5%;
     }
 
-    .homeLoginButton{
-        font-size:12px; 
+    .homeLoginButton {
+        font-size: 12px;
     }
-    
-    .homeRegisterButton{
-        font-size:12px; 
+
+    .homeRegisterButton {
+        font-size: 12px;
     }
-    .homeLoginRegister{
+
+    .homeLoginRegister {
         margin-left: 14vw;
     }
 }
