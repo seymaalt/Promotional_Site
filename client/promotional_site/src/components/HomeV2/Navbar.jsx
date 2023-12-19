@@ -151,7 +151,7 @@ export default function Navbar({ onClick }) {
             </Menu>
           </div>
         ) : (
-          <div>
+          <div className='homeLoginRegister'>
           <a href='/LoginPage' className='homeLoginButton'>Login </a>
           <button onClick={handleRegisterClick}  className='homeRegisterButton' >
            Register
