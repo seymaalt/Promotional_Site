@@ -1,16 +1,9 @@
 export default function Text() {
   return (
-    <div>
-      <p style={{ color: "white", fontSize: "52px", width: "900px" }}>
+    <div className="homePageTextDiv">
+      <p className="homePageText">
         Create your website in seconds with
-        <span
-          style={{
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-            backgroundImage: "linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)",
-          }}
-        >
+        <span className="coloredText">
           {" "}one click
         </span>
       </p>

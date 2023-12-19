@@ -30,13 +30,11 @@ export default function InputUrl() {
   };
 
   return (
-    <div style={{ position: 'relative', width: '400px', alignItems: 'center' }}>
-      <div>
+    <div className='homeInputBussiness' >
+      <div className='homeInputBussinessDiv'>
         <p
+        className='coloredText'
           style={{
-            backgroundImage: 'linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)',
-            backgroundClip: 'text',
-            color: 'transparent',
             fontSize: '24px',
           }}
         >
@@ -58,12 +56,10 @@ export default function InputUrl() {
           onChange={(e) => setBusinessName(e.target.value)}
         />
       </div>
-      <div>
+      <div className='homeInputBussinessDiv'>
         <p
+        className='coloredText'
           style={{
-            backgroundImage: 'linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)',
-            backgroundClip: 'text',
-            color: 'transparent',
             fontSize: '24px',
           }}
         >

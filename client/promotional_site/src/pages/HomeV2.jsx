@@ -35,27 +35,21 @@ export default function HomeV2() {
     <div className="homePage">
       <div className="part2">
         <NavBar onClick={handleClick} />
-        <div style={{ marginTop: "75px" }}>
-          <Box sx={{ flexGrow: 1 }}>
+        <div className='mgtop4' >
+          <Box >
             <Grid container spacing={2}>
               <Grid item md={0.5} xs={0}></Grid>
               <Grid item md={6} xs={12}>
-                <div style={{ marginTop: "150px" }}>
+                <div className="mgtop15">
                   {" "}
                   <Text></Text>
-                  <div style={{ padding: "20px" }}>
+                  <div className="padding2">
                     <BuildButton onClick={handleBuildButtonClick} />
                   </div>
                 </div>
               </Grid>
               <Grid item md={5.5} xs={12}>
-                <div
-                  style={{
-                    width: "800px",
-                    height: "630px",
-                    marginRight: "50px",
-                  }}
-                >
+                <div className="homeSpline">
                   <Spline scene="https://prod.spline.design/eiDBaP-xGcRYBWVk/scene.splinecode" />
                 </div>
               </Grid>
@@ -66,24 +60,24 @@ export default function HomeV2() {
 
       <div ref={div2Ref} className="part2">
         <BuildText></BuildText>
-        <Box sx={{ flexGrow: 1 }} style={{ marginTop: "100px", display: "flex" }}>
+        <Box sx={{ flexGrow: 1 }} style={{ marginTop: "5%" }}>
           <Grid container spacing={2}>
-            <Grid item xs={0.5}></Grid>
-            <Grid item xs={5.5}>
-              <div className="url">
+            <Grid item md={0.5}></Grid>
+            <Grid item md={5.5}>
+              <div className="homeUrlInput">
                 <TextUrl></TextUrl>
                 <InputUrl></InputUrl>
               </div>
             </Grid>
-            <Grid item xs={0.5} >
+            <Grid item md={0.5} >
             </Grid>
-            <Grid item xs={5.5}>
-              <div className="new">
+            <Grid item md={5.5}>
+              <div className="homeUrlInput">
                 <TextNewWebsite></TextNewWebsite>
                 <InputNewWebsite></InputNewWebsite>
               </div>
             </Grid>
-            <Grid item xs={0.5}></Grid>
+            <Grid item md={0.5}></Grid>
           </Grid>
         </Box>
       </div>
