@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Logo from '../../assets/logo.png';
 import { useNavigate } from "react-router-dom";
 import { useRef,useEffect,useState,useContext } from 'react';
@@ -10,16 +9,14 @@ import Menu from '@mui/material/Menu';
 
 export default function Navbar({ onClick }) {
 
-<<<<<<< HEAD
+
   const { token, setToken, logout } = useContext(AuthContext);
   const [user, setUser] = useState(null);
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const [buttonVisible, setButtonVisible] = useState(true);
-=======
 
->>>>>>> c2354adf58c9b6f1f8773fb4c5f58c778432b9f5
   const navigate = useNavigate();
 
   const getUser = async () => {
