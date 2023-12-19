@@ -1,13 +1,6 @@
 export default function InputUrl({ onClick }) {
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "600px",
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
+    <div className="buildButtonDiv">
       <button
         onClick={onClick}
         style={{

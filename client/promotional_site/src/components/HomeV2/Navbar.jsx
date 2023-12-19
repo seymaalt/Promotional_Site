@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Logo from '../../assets/logo.png';
 import { useNavigate } from "react-router-dom";
 import { useRef,useEffect,useState,useContext } from 'react';
@@ -8,6 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from '@mui/material/Menu';
 
 export default function Navbar({ onClick }) {
+
 
   const { token, setToken, logout } = useContext(AuthContext);
   const [user, setUser] = useState(null);
@@ -72,98 +74,21 @@ export default function Navbar({ onClick }) {
   const handleRegisterClick = () => {
     navigate("/RegisterPage");
   };
-  useEffect(() => {
-    const storedToken = localStorage.getItem('token');
-
-    const fetchUserProfile = async () => {
-      try {
-        const response = await axios.get(`${import.meta.env.VITE_PORT}/user/current`);
-        setUser(response.data);
-        console.log(user);
-      } catch (error) {
-        if (axios.isAxiosError(error) && error.response?.status === 401) {
-          logout();
-          setToken(null);
-        } else {
-          console.error('Error fetching user profile:', error);
-        }
-      }
-    };
-
-    if (token && storedToken === token) {
-      fetchUserProfile();
-    }
-  }, [token, logout, setToken]);
-
-  useEffect(() => {
-    console.log(user);
-  });
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setButtonVisible(false);
-      } else {
-        setButtonVisible(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
-    <div  style={{ height: "80px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 40px", backgroundColor: "#161417" }}>
+    <div className='homeNavbar'>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <img src={Logo} style={{ width: "250px", marginRight: "10px" }} alt="Logo" />
+        <img src={Logo} className='homeNavbarLogo' alt="Logo" />
       </div>
-      <div style={{ display: "flex", flexGrow: 1, marginLeft: "550px" }}>
-        <a href="#" onClick={onClick} style={{ color: "white", fontSize: "20px", margin: "0 40px 0 0", textDecoration: "none" }}>How it Works</a>
-        <a href="#" style={{ color: "white", fontSize: "20px", margin: "0 40px 0 0", textDecoration: "none" }}>Pricing</a>
+      <div className='homeNavbarP2'>
+        <a href="#" onClick={onClick} className='homeNavbarNavigate'>How it Works</a>
+        <a href="#" className='homeNavbarNavigate'>Pricing</a>
       </div>
       <div>
-      {user ? (
-          <div className="fav">
-            <Button
-              ref={anchorRef}
-              variant="contained"
-              className="logged"
-              style={{ marginRight: "10px", backgroundColor: "white", color: "#7247AE", fontWeight: "600" }}
-              id="basic-button"
-              aria-controls={open ? 'basic-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined}
-              onClick={handleClick}
-
-            >
-              {user.username || user.name}
-            </Button>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                'aria-labelledby': 'basic-button',
-              }}
-            >
-              <MenuItem onClick={handleProfile}>Profile</MenuItem>          
-              <MenuItem onClick={handleLogout}>Logout</MenuItem>
-            </Menu>
-          </div>
-        ) : (
-          <div>
-          <a href='/LoginPage' style={{ color: "white",fontSize:"20px", margin: "0 30px 0 0", textDecoration: "none" }}>Login </a>
-          <button onClick={handleRegisterClick} style={{ color: "#161417", fontSize: "20px", margin: "0 0px 0 0", textDecoration: "none", padding: "8px 15px", borderRadius: "30px" }}>
+        <a href='/LoginPage' style={{ color: "white",fontSize:"20px", margin: "0 30px 0 0", textDecoration: "none" }}>Login </a>
+        <button onClick={handleRegisterClick} style={{ color: "#161417", fontSize: "20px", margin: "0 0px 0 0", textDecoration: "none", padding: "8px 15px", borderRadius: "30px" }}>
            Register
         </button>
-        </div>
-        )}
-
-        
       </div>
     </div>
 
