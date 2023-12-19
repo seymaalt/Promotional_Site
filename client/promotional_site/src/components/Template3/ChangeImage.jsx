@@ -6,8 +6,6 @@ import axios from 'axios'
 const ImageUploader = ({ isOpen, onImageChange, onClose, modalPosition }) => {
     const [selectedImage, setSelectedImage] = useState(null);
 
-
-
     // Resmi sunucuya yükleme fonksiyonu
     const uploadImageToServer = async (imageData) => {
         try {
