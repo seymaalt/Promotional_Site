@@ -54,7 +54,6 @@ export default function HomeV2() {
               </Grid>
               <Grid item md={5.5} xs={12}>
                 <div className="homeSpline">
-                  <Spline scene="https://prod.spline.design/eiDBaP-xGcRYBWVk/scene.splinecode" />
                 </div>
               </Grid>
             </Grid>
