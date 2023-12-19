@@ -27,7 +27,7 @@
 .backgroundtemp2 {
     background-color: #161417;
     background-size: cover;
-    min-height: 100vh;
+    min-height: 90.8vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -196,30 +196,19 @@
     width: 28rem;
 }
 
-#chooseButton {
-    --glow-color: #7040e2;
-    --glow-spread-color: #906ad7;
-    --enhanced-glow-color: #ad92cb;
-    --btn-color: rgb(100, 61, 136);
-    border: .05em solid var(--glow-color);
-    padding: 0.5em 2em;
-    color: #8e61f7;
-    font-size: 1.05rem;
-    background-color: var(--btn-color);
-    border-radius: 0.65em;
-    outline: none;
-    box-shadow: 0 0 0.2em .05em var(--glow-color),
-        0 0 1.15em 0.08em var(--glow-spread-color),
-        inset 0 0 .15em .05em var(--glow-color);
-    position: relative;
-    transition: all 0.3s;
-}
 
-#chooseButton:hover {
-    color: var(--btn-color);
-    background-color: var(--glow-color);
+.chooseButton { 
+        border-radius: 30px;
+        padding: 10px 20px;
+        background-image: linear-gradient(45deg, #7040e2, #906ad7, #ad92cb);
+        color: white;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        height: 50px;
 
 }
+
 
 .chooseShadow {
     border-radius: 1.65rem;
