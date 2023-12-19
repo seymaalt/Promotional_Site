@@ -123,6 +123,7 @@ const Template3Navbar = () => {
                         {/* We leverage advanced technologies to transform your ideas into functional and innovative software applications. */}
                         <EditableText initialValue={response && response.descriptionName ? response.descriptionName : ' We leverage advanced technologies to transform your ideas into functional and innovative software applications.'} className='editHover entranceDisc' backColor='white' />
 
+
                     </h3>
                     <div className='entranceButtons'>
                         <a href='#'>
