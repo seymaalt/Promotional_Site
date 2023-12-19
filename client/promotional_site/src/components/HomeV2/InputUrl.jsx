@@ -46,11 +46,8 @@ export default function InputUrl() {
   };
 
   return (
-    <div style={{ position: 'relative', width: '600px', display: 'flex', alignItems: 'center' }}>
-       <p  style={{
-            backgroundImage: "linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)",
-            backgroundClip: "text",
-            color: "transparent",
+    <div className='homeInputLink'>
+       <p className='coloredText' style={{
             fontSize:"24px",
             padding:"15px"
           }}>URL</p>
@@ -82,7 +79,6 @@ export default function InputUrl() {
           fontSize: '16px',
           cursor: 'pointer',
           height: '50px',
-          
           top: '50%', // Center vertically
           transform: 'translateY(-50%)',
         }}
