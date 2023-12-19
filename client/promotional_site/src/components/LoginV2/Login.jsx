@@ -147,7 +147,7 @@ const Login = () => {
          
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 5 }}>
             <TextField
-           
+             
               margin="normal"
               required
               fullWidth
@@ -181,8 +181,8 @@ const Login = () => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              style={{  backgroundImage: "linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)", borderRadius:"30px" }}
-            >
+              style={{  backgroundImage: "linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)", borderRadius:"30px",fontFamily:"poppins",fontWeight:"500" }}
+              >
               Login
             </Button>
             <p style={{ textAlign: "center" ,fontFamily:"poppins",fontSize:"20px",color:"white"}}> or </p>

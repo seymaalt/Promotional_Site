@@ -1,7 +1,16 @@
 import Logo from '../../assets/logo.png';
 import Grid from "@mui/material/Grid";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar({ onClick }) {
+
+  const navigate = useNavigate();
+
+  
+  const handleRegisterClick = () => {
+    navigate("/RegisterPage");
+  };
+
   return (
     <div  style={{ height: "80px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 40px", backgroundColor: "#161417" }}>
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -13,7 +22,9 @@ export default function Navbar({ onClick }) {
       </div>
       <div>
         <a href='/LoginPage' style={{ color: "white",fontSize:"20px", margin: "0 30px 0 0", textDecoration: "none" }}>Login </a>
-        <button href="#"  style={{ color: "#161417",fontSize:"20px", margin: "0 0px 0 0", textDecoration: "none",padding:"8px 15px",borderRadius:"30px"}}>Register</button>
+        <button onClick={handleRegisterClick} style={{ color: "#161417", fontSize: "20px", margin: "0 0px 0 0", textDecoration: "none", padding: "8px 15px", borderRadius: "30px" }}>
+           Register
+        </button>
       </div>
     </div>
 
