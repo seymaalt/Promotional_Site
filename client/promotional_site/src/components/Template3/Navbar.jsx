@@ -109,14 +109,14 @@ const Template3Navbar = () => {
     return (
         <div className='temp3Navbar'>
             <Grid container >
-                <Grid item xs={2}></Grid>
-                <Grid item xs={8}>
+                <Grid item md={2} xs={0}></Grid>
+                <Grid item md={8}>
                     <Grid container >
                         <Grid item xs={3} className='companyName' id={1} onDoubleClick={handleDivClick}>
                             <EditableText className='editHover companyName' initialValue={response && response.businessName ? response.businessName : 'COMPANY NAME'} backColor="#FAF8F4" fontSize={fontSize} selectedFont={selectedFont} color={color} textAlign={textAlign} />
                             <ChangeDesign open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} textAlign={textAlign} />
                         </Grid>
-                        <Grid item xs={6} className='navigation'>
+                        <Grid item md={6} xs={0} className='navigation'>
 
                             <a href='#' onDoubleClick={handleDivClickNav1} ><EditableText className='editHover navigationButton' initialValue='Services' backColor="#FAF8F4" fontSize={fontSizeNav1} selectedFont={selectedFontNav1} color={colorNav1} textAlign={textAlignNav1} /></a>
                             <ChangeDesign open={isModalOpenNav1} onClose={closeModal} handleFontChange={handleFontNav1Change} handleFontSizeChange={handleFontSizeNav1Change} handleColorChange={handleColorNav1Change} fontSize={fontSizeNav1} selectedFont={selectedFontNav1} color={colorNav1} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignNav1Change} />
@@ -126,7 +126,7 @@ const Template3Navbar = () => {
                             <a href='#'><EditableText className='editHover navigationButton' initialValue='Contact' backColor='#FAF8F4' /></a>
 
                         </Grid>
-                        <Grid item xs={3} className='contact'>
+                        <Grid item  md={3} xs={6}className='contact'>
                             <a href='#'>
                                 <EditableText className='editHover button-63' initialValue='Get Started' backColor="#FAF8F4" />
                                 {/* Get Started */}
@@ -134,7 +134,7 @@ const Template3Navbar = () => {
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={2}></Grid>
+                <Grid item md={2} xs={0}></Grid>
             </Grid>
         </div>
     );

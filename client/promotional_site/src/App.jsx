@@ -17,6 +17,9 @@ import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
 import ResetPassword from "./components/ForgotPassword/ResetPassword.jsx";
 import LoginPage from './pages/LoginV2.jsx';
 import EmailVerified from "./EmailVerified/EmailVerified.jsx";
+import RegisterPage from './pages/RegisterV2.jsx';
+import LoginV2 from './components/LoginV2/Login.jsx';
+import RegisterV2 from './components/RegisterV2/Register.jsx';
 
 function App() {
   return (
@@ -33,12 +36,13 @@ function App() {
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/ChooseTemplate" element={<ChooseTemplate />} />
               <Route path="/ChooseTemplate2" element={<ChooseTemplateV2 />} />
-              <Route path="/Login" element={<Login />} />
+              <Route path="/Login" element={<LoginV2 />} />
               <Route path="/LoginPage" element={<LoginPage />} />
-              <Route path="/Register" element={<Register />} />
+              <Route path="/RegisterPage" element={<RegisterPage />} />
+              <Route path="/Register" element={<RegisterV2 />} />
               <Route path="/ForgotPassword" element={<ForgotPassword />} />
               <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
-              <Route path="/verify-email/:emailToken" element={<EmailVerified />} />
+              <Route path="/user/verify-email/:emailToken" element={<EmailVerified />} />
             </Routes>
           </BrowserRouter>
         </GlobalProvider>

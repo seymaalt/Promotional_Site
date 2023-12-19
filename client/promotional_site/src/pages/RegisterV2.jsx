@@ -1,4 +1,4 @@
-import Login from "../components/LoginV2/Login";
+import Register from "../components/RegisterV2/Register";
 import Grid from "@mui/material/Grid";
 import image from '../assets/3443.jpg';
 
@@ -20,13 +20,17 @@ export default function BasicGrid() {
           }}>
             <Grid container sx={{ flexGrow: 1 }}>
               <Grid xs={6}>
-                <div><Login /></div>
+                <div><Register /></div>
               </Grid>
-              <Grid xs={6} className="loginPageImage">      
+              <Grid xs={6}>      
                   <img
                     src={image}
                     alt="Background"
-                    className="loginPageImage"
+                    style={{
+                      width: '100%',
+                      height: "100%",
+                      borderRadius: '0px 30px 30px 0px', 
+                    }}
                   /> 
               </Grid>
             </Grid>

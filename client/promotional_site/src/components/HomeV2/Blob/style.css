@@ -1,0 +1,9 @@
+.blobContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    overflow: hidden;
+    font-family: "Montserrat", sans-serif;
+}

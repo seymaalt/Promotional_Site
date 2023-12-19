@@ -7,17 +7,21 @@ import TextUrl from "../components/HomeV2/TextUrl";
 import InputUrl from "../components/HomeV2/InputUrl";
 import TextNewWebsite from "../components/HomeV2/TextNewWebsite";
 import InputNewWebsite from "../components/HomeV2/InputNewWebsite";
+import BlobAnimation from "../components/HomeV2/BlobAnimation";
 import BuildButton from "../components/HomeV2/BuildButton";
+import Footer from "../components/HomeV2/Footer";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import BuildText from "../components/HomeV2/BuildText";
-import HowItWorksText from '../components/HomeV2/HowItWorksText'
-import HowItWorks from '../components/HomeV2/HowItWorks'
+import HowItWorksText from '../components/HomeV2/HowItWorksText';
+import HowItWorks from '../components/HomeV2/HowItWorks';
+
 
 export default function HomeV2() {
 
   const div2Ref = useRef(null);
   const div3Ref = useRef(null);
+
 
   const handleBuildButtonClick = () => {
     if (div2Ref.current) {
@@ -35,29 +39,21 @@ export default function HomeV2() {
     <div className="homePage">
       <div className="part2">
         <NavBar onClick={handleClick} />
-        <div style={{ marginTop: "75px" }}>
-          <Box sx={{ flexGrow: 1 }}>
+        <div className='mgtop4' >
+          <Box >
             <Grid container spacing={2}>
-              <Grid item xs={0.5}></Grid>
-              <Grid item xs={6}>
-                <div style={{ marginTop: "150px" }}>
+              <Grid item md={0.5} xs={0}></Grid>
+              <Grid item md={6} xs={12}>
+                <div className="mgtop15">
                   {" "}
                   <Text></Text>
-                  <div style={{ padding: "20px" }}>
+                  <div className="padding2">
                     <BuildButton onClick={handleBuildButtonClick} />
                   </div>
                 </div>
               </Grid>
-              <Grid item xs={5.5}>
-                <div
-                  style={{
-                    width: "800px",
-                    height: "630px",
-                    marginRight: "50px",
-                  }}
-                >
-                  <Spline scene="https://prod.spline.design/eiDBaP-xGcRYBWVk/scene.splinecode" />
-                </div>
+              <Grid item md={5.5} xs={12}>
+                  <BlobAnimation ></BlobAnimation>
               </Grid>
             </Grid>
           </Box>
@@ -66,24 +62,24 @@ export default function HomeV2() {
 
       <div ref={div2Ref} className="part2">
         <BuildText></BuildText>
-        <Box sx={{ flexGrow: 1 }} style={{ marginTop: "100px", display: "flex" }}>
+        <Box sx={{ flexGrow: 1 }} style={{ marginTop: "5%" }}>
           <Grid container spacing={2}>
-            <Grid item xs={0.5}></Grid>
-            <Grid item xs={5.5}>
-              <div className="url">
+            <Grid item md={0.5}></Grid>
+            <Grid item md={5.5}>
+              <div className="homeUrlInput">
                 <TextUrl></TextUrl>
                 <InputUrl></InputUrl>
               </div>
             </Grid>
-            <Grid item xs={0.5} >
+            <Grid item md={0.5} >
             </Grid>
-            <Grid item xs={5.5}>
-              <div className="new">
+            <Grid item md={5.5}>
+              <div className="homeUrlInput">
                 <TextNewWebsite></TextNewWebsite>
                 <InputNewWebsite></InputNewWebsite>
               </div>
             </Grid>
-            <Grid item xs={0.5}></Grid>
+            <Grid item md={0.5}></Grid>
           </Grid>
         </Box>
       </div>
@@ -91,6 +87,9 @@ export default function HomeV2() {
       <div ref={div3Ref} className='part2'>
         <HowItWorksText></HowItWorksText>
         <HowItWorks></HowItWorks>
+      </div>
+      <div >
+        <Footer onClick={handleClick} />
       </div>
 
     </div>

@@ -26,9 +26,9 @@ export default function Template2Component() {
         </div>
         <div className="chooseBox2">
           <div>
-            <Button variant="contained" id='chooseButton' onClick={handleGenerate} disableElevation>
+          <button  className="chooseButton" onClick={handleGenerate} >
               Choose Template
-            </Button>
+            </button>
           </div>
         </div>
       </div>
