@@ -2,7 +2,7 @@ import React from "react";
 import Template1 from "../../assets/temp1.png";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-
+import "../../styles/home2.css";
 export default function Template1Component() {
 
   const navigate = useNavigate();
@@ -27,9 +27,9 @@ export default function Template1Component() {
         </div>
         <div className="chooseBox2">
           <div >
-            <Button variant="contained" id="chooseButton" onClick={handleGenerate} disableElevation>
+            <button  className="chooseButton" onClick={handleGenerate} >
               Choose Template
-            </Button>
+            </button>
           </div>
         </div>
       </div>
