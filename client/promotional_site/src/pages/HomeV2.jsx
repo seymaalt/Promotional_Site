@@ -1,5 +1,6 @@
 import Spline from "@splinetool/react-spline";
-import { useRef } from 'react';
+import { useRef} from 'react';
+
 import "../styles/home2.css";
 import NavBar from "../components/HomeV2/Navbar";
 import Text from "../components/HomeV2/Text";
@@ -12,13 +13,15 @@ import Footer from "../components/HomeV2/Footer";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import BuildText from "../components/HomeV2/BuildText";
-import HowItWorksText from '../components/HomeV2/HowItWorksText'
-import HowItWorks from '../components/HomeV2/HowItWorks'
+import HowItWorksText from '../components/HomeV2/HowItWorksText';
+import HowItWorks from '../components/HomeV2/HowItWorks';
+
 
 export default function HomeV2() {
 
   const div2Ref = useRef(null);
   const div3Ref = useRef(null);
+
 
   const handleBuildButtonClick = () => {
     if (div2Ref.current) {
