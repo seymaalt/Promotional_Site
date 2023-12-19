@@ -129,32 +129,22 @@ export default function Navbar({ onClick }) {
         <a href="#" className='homeNavbarNavigate'>Pricing</a>
       </div>
 
-      <div>
+      
 
       {user ? (
-          <div className="fav">
-            <Button
-              ref={anchorRef}
-              variant="contained"
-              className="logged"
-              style={{ marginRight: "10px", backgroundColor: "white", color: "#7247AE", fontWeight: "600" }}
-              id="basic-button"
-              aria-controls={open ? 'basic-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined}
+          <div>
+            <button
+              ref={anchorRef}        
+                   
+              className='homeRegisterButton' 
               onClick={handleClick}
-
             >
               {user.username || user.name}
-            </Button>
+            </button>
             <Menu
-              id="basic-menu"
               anchorEl={anchorEl}
               open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                'aria-labelledby': 'basic-button',
-              }}
+              onClose={handleClose}             
             >
               <MenuItem onClick={handleProfile}>Profile</MenuItem>          
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
@@ -168,7 +158,7 @@ export default function Navbar({ onClick }) {
         </button>
         </div>
         )}
-
+<div>
 
       </div>
     </div>
