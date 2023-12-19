@@ -3,7 +3,7 @@ import { TextareaAutosize } from '@mui/material';
 import { ClassNames } from '@emotion/react';
 
 
-const EditableText = ({ initialValue, className,backColor, color, selectedFont, fontSize,textAlign }) => {
+const EditableText = ({ initialValue, className,backColor, color, selectedFont, fontSize,textAlign}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingText, setEditingText] = useState(initialValue);
 

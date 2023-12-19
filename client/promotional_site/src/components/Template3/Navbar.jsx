@@ -8,11 +8,11 @@ import ChangeDesign from './ChangeDesign';
 
 
 const Template3Navbar = () => {
-      const { response } = useContext(GlobalContext);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const { response } = useContext(GlobalContext);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
 
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [fontSize, setFontSize] = useState(34,4);
     const [color, setColor] = useState('(225, 73%, 43%)');
     const [selectedFont, setSelectedFont] = useState('DM Sans');
@@ -105,7 +105,7 @@ const Template3Navbar = () => {
         return { top: y, left: x };
 
     };
-
+    
     return (
         <div className='temp3Navbar'>
             <Grid container >
@@ -113,22 +113,22 @@ const Template3Navbar = () => {
                 <Grid item xs={8}>
                     <Grid container >
                         <Grid item xs={3} className='companyName' id={1} onDoubleClick={handleDivClick}>
-                            <EditableText className='companyName' initialValue='Company Name' backColor="#FAF8F4" fontSize={fontSize} selectedFont={selectedFont} color={color} textAlign={textAlign} />
+                            <EditableText className='editHover companyName' initialValue={response && response.businessName ? response.businessName : 'COMPANY NAME'} backColor="#FAF8F4" fontSize={fontSize} selectedFont={selectedFont} color={color} textAlign={textAlign} />
                             <ChangeDesign open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} textAlign={textAlign} />
                         </Grid>
                         <Grid item xs={6} className='navigation'>
 
-                            <a href='#' onDoubleClick={handleDivClickNav1} ><EditableText className='navigationButton' initialValue='Services' backColor="#FAF8F4" fontSize={fontSizeNav1} selectedFont={selectedFontNav1} color={colorNav1} textAlign={textAlignNav1} /></a>
+                            <a href='#' onDoubleClick={handleDivClickNav1} ><EditableText className='editHover navigationButton' initialValue='Services' backColor="#FAF8F4" fontSize={fontSizeNav1} selectedFont={selectedFontNav1} color={colorNav1} textAlign={textAlignNav1} /></a>
                             <ChangeDesign open={isModalOpenNav1} onClose={closeModal} handleFontChange={handleFontNav1Change} handleFontSizeChange={handleFontSizeNav1Change} handleColorChange={handleColorNav1Change} fontSize={fontSizeNav1} selectedFont={selectedFontNav1} color={colorNav1} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignNav1Change} />
 
-                            <a href='#' ><EditableText className='navigationButton' initialValue='Section 2' backColor="#FAF8F4" /></a>
+                            <a href='#' ><EditableText className='editHover navigationButton' initialValue='Section 2' backColor="#FAF8F4" /></a>
 
-                            <a href='#'><EditableText className='navigationButton' initialValue='Contact' backColor='#FAF8F4' /></a>
+                            <a href='#'><EditableText className='editHover navigationButton' initialValue='Contact' backColor='#FAF8F4' /></a>
 
                         </Grid>
                         <Grid item xs={3} className='contact'>
                             <a href='#'>
-                                <EditableText className='button-63' initialValue='Get Started' backColor="#FAF8F4" />
+                                <EditableText className='editHover button-63' initialValue='Get Started' backColor="#FAF8F4" />
                                 {/* Get Started */}
                             </a>
                         </Grid>

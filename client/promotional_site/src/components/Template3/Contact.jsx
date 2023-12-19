@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Grid from "@mui/material/Grid";
 import EmailIcon from '@mui/icons-material/Email';
+import EditableText from './EditableText';
 
 const ContactForm = () => {
     const [name, setName] = useState('');
@@ -15,28 +16,29 @@ const ContactForm = () => {
     return (
         <div className='part'>
             <div className='contactDiv'>
-                <h1>Get in Touch Today</h1>
+                
+                <EditableText className='editHover contactHeader'  initialValue='Get in Touch Today' backColor="rgb(30, 64, 175)" />
                 <form onSubmit={handleSubmit}  >
                     <label>
-                        <div style={{ color: "white" }}> <b>Name</b></div>
+                        <EditableText className='editHover contactLabel'  initialValue='Name' backColor="rgb(30, 64, 175)" />
+                        
                         <input type="text" style={{ border: "none", width: "350px", height: "40px", borderRadius: "5px" }} value={name} onChange={(e) => setName(e.target.value)} />
                     </label>
                     <br />
                     <br />
                     <label>
-                        <div style={{ color: "white" }}> <b>Email</b></div>
+                        <div style={{ color: "white" }}><b><EditableText className='editHover contactLabel' initialValue='Email' backColor="rgb(30, 64, 175)" /></b></div>
                         <input type="email" style={{ border: "none", width: "350px", height: "40px", borderRadius: "5px" }} value={email} onChange={(e) => setEmail(e.target.value)} />
                     </label>
                     <br />
                     <br />
                     <label>
-                        <div style={{ color: "white" }}> <b>Message</b></div>
+                        <div style={{ color: "white" }}> <b><EditableText className='editHover contactLabel' initialValue='Message' backColor="rgb(30, 64, 175)" /></b></div>
                         <textarea value={message} style={{ border: "none", width: "350px", height: "100px", borderRadius: "5px" }} onChange={(e) => setMessage(e.target.value)} />
                     </label>
                     <br />
                     <br />
-                    <button className='temp3Submit' type="submit">Send Message</button>
-
+                    <button className='temp3Submit' type="submit"><EditableText className='editHover' initialValue='Send Message' backColor="white" /></button>
                 </form>
             </div>
         </div>
