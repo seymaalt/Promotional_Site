@@ -1,6 +1,5 @@
 import Spline from "@splinetool/react-spline";
-import { useRef} from 'react';
-
+import { useRef } from 'react';
 import "../styles/home2.css";
 import NavBar from "../components/HomeV2/Navbar";
 import Text from "../components/HomeV2/Text";
@@ -8,6 +7,7 @@ import TextUrl from "../components/HomeV2/TextUrl";
 import InputUrl from "../components/HomeV2/InputUrl";
 import TextNewWebsite from "../components/HomeV2/TextNewWebsite";
 import InputNewWebsite from "../components/HomeV2/InputNewWebsite";
+import BlobAnimation from "../components/HomeV2/BlobAnimation";
 import BuildButton from "../components/HomeV2/BuildButton";
 import Footer from "../components/HomeV2/Footer";
 import Box from "@mui/material/Box";
@@ -53,9 +53,7 @@ export default function HomeV2() {
                 </div>
               </Grid>
               <Grid item md={5.5} xs={12}>
-                <div className="homeSpline">
-                  <Spline scene="https://prod.spline.design/eiDBaP-xGcRYBWVk/scene.splinecode" />
-                </div>
+                  <BlobAnimation ></BlobAnimation>
               </Grid>
             </Grid>
           </Box>
@@ -91,7 +89,7 @@ export default function HomeV2() {
         <HowItWorks></HowItWorks>
       </div>
       <div >
-        <Footer onClick={{handleClick,handleBuildButtonClick}}/>
+        <Footer onClick={handleClick} />
       </div>
 
     </div>
