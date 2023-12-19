@@ -60,7 +60,7 @@ const register = asyncHandler(async (req, res) => {
     emailToken: emailToken,
   });
 
-  const confirmationLink = `${process.env.CLIENT_URL}verify-email/${emailToken}`;
+  const confirmationLink = `${process.env.CLIENT_URL}user/verify-email/${emailToken}`;
 
   const mailOptions = {
     from: process.env.EMAIL,

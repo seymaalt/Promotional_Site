@@ -9,11 +9,12 @@ import HomePageImage from "../components/HomePageImage";
 import EditPageImage from "../components/EditPageImage.jsx"
 import HomePageText from "../components/HomePageText";
 import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from '@mui/material/Menu';
 import LoginModal from "../components/Login/LoginModal.jsx";
 import RegisterModal from "../components/Register/RegisterModal.jsx";
 import AuthContext from "../context/AuthContext.jsx";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from '@mui/material/Menu';
+
 import { useNavigate } from "react-router-dom";
 import KeyboardDoubleArrowDownRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowDownRounded';
 

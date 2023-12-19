@@ -1,0 +1,333 @@
+* {
+    font-family: "Poppins";
+}
+
+.padding2 {
+    padding: 2%;
+}
+
+.mgtop4 {
+    margin-top: 4%;
+}
+
+.mgtop15 {
+    margin-top: 15%;
+}
+
+/* Home Page */
+
+.homePage {
+    background-color: #161417;
+}
+
+.part2 {
+    min-height: 100vh;
+}
+
+.backgroundtemp2 {
+    background-color: #161417;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar2 {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background-color: #161417;
+}
+
+.homeNavbar {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    padding: 0 2%;
+    background-color: #161417;
+}
+
+.homeNavbarLogo {
+    width: 16rem;
+}
+
+.homeNavbarP2 {
+    display: flex;
+    flex-grow: 1;
+    margin-left: 30%;
+}
+
+.homeNavbarNavigate {
+    color: white;
+    font-size: 20px;
+    margin: 0 40px 0 0;
+    text-decoration: none;
+}
+
+.homeLoginButton {
+    color: white;
+    font-size: 20px;
+    margin: 0 30px 0 0;
+    text-decoration: none;
+}
+
+.homeRegisterButton {
+    color: #161417;
+    font-size: 20px;
+    margin: 0 0px 0 0;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 30px;
+}
+
+.chooseHeader2 h1 {
+    color: #ffffff;
+    font-size: 48px;
+    line-height: 48px;
+    vertical-align: baseline;
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 2.5rem;
+}
+
+.homePageText {
+    color: white;
+    font-size: 3.25rem;
+    width: 90%
+}
+
+.coloredText {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(45deg, #7040e2, #906ad7, #ad92cb);
+}
+
+.buildButtonDiv {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.homeSpline {
+    width: 100%;
+    height: 40rem;
+    margin-right: 3rem;
+}
+
+.homeBuildText {
+    color: white;
+    font-size: 330%;
+    width: 95%
+}
+
+.homeUrlDiv {
+    display: flex;
+}
+
+.homeUrlInput {
+    padding: 2%;
+    width: 90%;
+}
+
+.homeUrlText {
+    color: white;
+    font-size: 24px;
+    width: 80%
+}
+
+.homeInputLink {
+    position: relative;
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+
+.homeInputBussiness {
+    position: relative;
+    width: 45%;
+    align-items: center;
+}
+
+.howItWork {
+    border-radius: 30px;
+    background-color: #2F2D30;
+    height: 650px;
+}
+
+.howItWork:hover {
+    -webkit-box-shadow: 0px 0px 54px 21px rgba(144, 106, 215, 0.6);
+    -moz-box-shadow: 0px 0px 54px 21px rgba(144, 106, 215, 0.6);
+    box-shadow: 0px 0px 54px 21px rgba(144, 106, 215, 0.6);
+}
+
+.footerDiv {
+    display: flex;
+    align-items: center;
+    height: 30vh;
+    background-color: #2F2D30;
+}
+
+.footerLogo {
+    padding: 5%;
+    width: 70%;
+}
+
+.footerNavigate{
+    text-align: center;
+    color: white;
+    font-size: 1.15rem;
+}
+
+.footerCopyright{
+    padding: 2rem;
+    color: white;
+}
+/* Choose Screen */
+
+.chooseImage {
+    height: auto;
+    width: 28rem;
+}
+
+#chooseButton {
+    --glow-color: #7040e2;
+    --glow-spread-color: #906ad7;
+    --enhanced-glow-color: #ad92cb;
+    --btn-color: rgb(100, 61, 136);
+    border: .05em solid var(--glow-color);
+    padding: 0.5em 2em;
+    color: #8e61f7;
+    font-size: 1.05rem;
+    background-color: var(--btn-color);
+    border-radius: 0.65em;
+    outline: none;
+    box-shadow: 0 0 0.2em .05em var(--glow-color),
+        0 0 1.15em 0.08em var(--glow-spread-color),
+        inset 0 0 .15em .05em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+}
+
+#chooseButton:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+
+}
+
+.chooseShadow {
+    border-radius: 1.65rem;
+    box-shadow: 0 0 5px #7040e2;
+}
+
+.chooseBox {
+    display: flex;
+    height: 52dvh;
+    padding: 1rem;
+    background-color: #2F2D30;
+    border-radius: 1.65rem;
+    border-bottom-left-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+}
+
+.chooseBox2 {
+    background-color: #2F2D30;
+    border-radius: 1.65rem;
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+
+    .homeNavbarP2 {
+        display: none;
+    }
+
+    .homePageTextDiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .homePageText {
+        text-align: center;
+        color: white;
+        font-size: 3.25rem;
+        width: 80%;
+    }
+
+    .buildButtonDiv {
+        padding-top: 5%;
+        justify-content: center;
+    }
+
+    .mgtop15 {
+        margin-top: 0px;
+    }
+
+    .homeSpline {
+        padding-top: 10%;
+        zoom: 0.5;
+    }
+
+    .homeBuildText {
+        font-size: 300%;
+    }
+
+    .homeUrlDiv {
+        justify-content: center;
+    }
+
+    .homeUrlText {
+        font-size: 16px;
+        text-align: center;
+        width: 80%
+    }
+
+    .homeInputLink {
+        width: 100%;
+    }
+
+    .homeInputBussinessDiv {
+        text-align: center;
+    }
+
+    .homeInputBussiness {
+        justify-content: center;
+        position: relative;
+        width: 80%;
+        align-items: center;
+        padding-left: 10%;
+    }
+
+    .howItWork {
+        margin-left: 10%;
+        width: 80%;
+        height: 20rem;
+    }
+
+    .homeNavbarLogo {
+        width: 10rem;
+        padding-left: 5%;
+    }
+
+    .homeLoginButton {
+        font-size: 12px;
+    }
+
+    .homeRegisterButton {
+        font-size: 12px;
+    }
+
+    .homeLoginRegister {
+        margin-left: 14vw;
+    }
+}

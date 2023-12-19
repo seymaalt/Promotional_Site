@@ -3,7 +3,7 @@
 }
 
 * {
-  font-family: "Roboto", sans-serif;
+  font-family:"Poppins";
 }
 
 .middle {
@@ -392,6 +392,9 @@ body {
   padding-bottom: 1%;
   border-bottom: 1px solid rgb(165, 165, 165);
 }
+
+
+
 
 @media screen and (max-width: 1200px) {
 
