@@ -9,6 +9,7 @@ import AuthProvider from './context/AuthProvider.jsx'
 import TextProvider from "./context/TextProvider.jsx";
 import Favorites from './pages/Favorites.jsx'
 import Profile from "./pages/Profile.jsx";
+import ProfileV2 from "./components/HomeV2/ProfileV2.jsx";
 import PromotionalSite2 from "./pages/PromotionalSite2.jsx";
 import PromotionalSite3 from "./pages/PromotionalSite3.jsx";
 import ChooseTemplate from "./pages/ChooseTemplate.jsx";
@@ -30,6 +31,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomeV2 />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/profile2" element={<ProfileV2 />} />
               <Route path="/promotional-site" element={<PromotionalSite />} />
               <Route path="/promotional-site2" element={<PromotionalSite2 />} />
               <Route path="/promotional-site3" element={<PromotionalSite3 />} />

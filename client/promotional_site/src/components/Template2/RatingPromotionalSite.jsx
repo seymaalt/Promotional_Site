@@ -1,6 +1,8 @@
 import React from "react";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import './style/template2.css'
+
 
 export default function RatingPromotionalSite({ responseData }) {
 

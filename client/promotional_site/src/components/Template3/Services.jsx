@@ -66,7 +66,7 @@ const Services = () => {
     };
 
     return (
-        <div className='part'>
+        <div className='part3'>
             <Grid container spacing={2}>
                 <Grid item xs={6} >
                     <EditableText initialValue='A Glance at Our Services' className='editHover servicesHeader' backColor='white' />
