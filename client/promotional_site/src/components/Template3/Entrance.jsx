@@ -17,8 +17,13 @@ const Template3Navbar = () => {
     const [selectedFont, setSelectedFont] = useState('DM Sans');
     const [textAlign, setTextAlign] = useState("left");
     const [selectedImage, setSelectedImage] = useState("https://images.unsplash.com/photo-1619410283995-43d9134e7656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzEzMzd8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMERldmVsb3BtZW50fGVufDB8MHx8fDE3MDIzNjI3NzR8MA&ixlib=rb-4.0.3&q=80&w=1920")
+    const [selectedImage1, setSelectedImage1] = useState("https://images.unsplash.com/photo-1619410283995-43d9134e7656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzEzMzd8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMERldmVsb3BtZW50fGVufDB8MHx8fDE3MDIzNjI3NzR8MA&ixlib=rb-4.0.3&q=80&w=1920")
+    const [selectedImage2, setSelectedImage2] = useState("https://images.unsplash.com/photo-1619410283995-43d9134e7656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzEzMzd8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMERldmVsb3BtZW50fGVufDB8MHx8fDE3MDIzNjI3NzR8MA&ixlib=rb-4.0.3&q=80&w=1920")
+
 
     const [isImageUploaderOpen, setIsImageUploaderOpen] = useState(false);
+    const [isImageUploaderOpen1, setIsImageUploaderOpen1] = useState(false);
+    const [isImageUploaderOpen2, setIsImageUploaderOpen2] = useState(false);
 
 
     const handleImageClick = (event) => {
@@ -29,13 +34,38 @@ const Template3Navbar = () => {
         setIsImageUploaderOpen(true);
     };
 
+    const handleImageClick1 = (event) => {
+        const rect = event.target.getBoundingClientRect();
+        const middleX = event.clientX;
+        const middleY = event.clientY;
+        setModalPositionImage(calculateModalPosition(middleX,middleY))
+        setIsImageUploaderOpen1(true);
+    };
+    const handleImageClick2 = (event) => {
+        const rect = event.target.getBoundingClientRect();
+        const middleX = event.clientX;
+        const middleY = event.clientY;
+        setModalPositionImage(calculateModalPosition(middleX,middleY))
+        setIsImageUploaderOpen2(true);
+    };
     const handleImageChange = (newImage) => {
         setSelectedImage(newImage);
         setIsImageUploaderOpen(false);
     };
+    const handleImageChange1 = (newImage) => {
+        setSelectedImage1(newImage);
+        setIsImageUploaderOpen1(false);
+    };
+    const handleImageChange2 = (newImage) => {
+        setSelectedImage2(newImage);
+        setIsImageUploaderOpen2(false);
+    };
 
     const handleImageUploaderClose = () => {
         setIsImageUploaderOpen(false);
+        setIsImageUploaderOpen1(false);
+        setIsImageUploaderOpen2(false);
+
     };
 
     const openModal = () => {
@@ -79,25 +109,26 @@ const Template3Navbar = () => {
         y = (y + modalHeight) <= window.innerHeight ? y : window.innerHeight - modalHeight;
 
         return { top: y, left: x };
-
     };
 
     return (
-        <div className='part'>
+        <div className='part3'>
             <Grid container >
                 <Grid item xs={6}>
                     <div onDoubleClick={handleDivClick}>
-                        <EditableText initialValue='Transforming Ideas Into Solutions' className='entranceHead' backColor='white'  fontSize={fontSize} selectedFont={selectedFont} color={color} textAlign={textAlign}   />
+                        <EditableText initialValue='Transforming Ideas Into Solutions' className='editHover entranceHead' backColor='white'  fontSize={fontSize} selectedFont={selectedFont} color={color} textAlign={textAlign}   />
                     </div>
                     <ChangeDesign open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} textAlign={textAlign} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
                     <h3>
-                        <EditableText initialValue={response && response.descriptionName ? response.descriptionName : ' We leverage advanced technologies to transform your ideas into functional and innovative software applications.'} className='entranceDisc' backColor='white' />
+                        {/* We leverage advanced technologies to transform your ideas into functional and innovative software applications. */}
+                        <EditableText initialValue={response && response.descriptionName ? response.descriptionName : ' We leverage advanced technologies to transform your ideas into functional and innovative software applications.'} className='editHover entranceDisc' backColor='white' />
+
 
                     </h3>
                     <div className='entranceButtons'>
                         <a href='#'>
 
-                            <EditableText className='button-63' initialValue='Get Started' backColor="white" />
+                            <EditableText className='editHover button-63' initialValue='Get Started' backColor="white" />
                         </a>
                     </div>
                 </Grid>
@@ -105,21 +136,25 @@ const Template3Navbar = () => {
                     <div>
                         <img
                             src={selectedImage}
-                            className="changeImage entranceImage"
+                            className="editHover changeImage entranceImage"
                             alt="Image"
                             onClick={handleImageClick}
                         />
                         <ChangeImage isOpen={isImageUploaderOpen} onImageChange={handleImageChange} onClose={handleImageUploaderClose} modalPosition={modalPositionImage}/>
                         <img
-                            src="https://images.unsplash.com/photo-1619410283995-43d9134e7656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzEzMzd8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMERldmVsb3BtZW50fGVufDB8MHx8fDE3MDIzNjI3NzR8MA&ixlib=rb-4.0.3&q=80&w=1920"
-                            className="changeImage entranceImage2"
+                            src={selectedImage1}
+                            className="editHover changeImage entranceImage2"
                             alt="Image"
+                            onClick={handleImageClick1}  
                         />
+                        <ChangeImage isOpen={isImageUploaderOpen1} onImageChange={handleImageChange1} onClose={handleImageUploaderClose} modalPosition={modalPositionImage}/>
                         <img
-                            src="https://images.unsplash.com/photo-1619410283995-43d9134e7656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzEzMzd8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMERldmVsb3BtZW50fGVufDB8MHx8fDE3MDIzNjI3NzR8MA&ixlib=rb-4.0.3&q=80&w=1920"
-                            className="changeImage entranceImage3"
+                            src={selectedImage2}
+                            className="editHover changeImage entranceImage3"
                             alt="Image"
+                            onClick={handleImageClick2}
                         />
+                        <ChangeImage isOpen={isImageUploaderOpen2} onImageChange={handleImageChange2} onClose={handleImageUploaderClose} modalPosition={modalPositionImage}/>
                     </div>
                 </Grid>
             </Grid>

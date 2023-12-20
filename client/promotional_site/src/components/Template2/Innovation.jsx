@@ -3,6 +3,8 @@ import ChangeText from '../Template1/ChangeText'
 import TextContext from '../../context/TextContext';
 import { TextareaAutosize } from '@mui/material';
 import { Modal } from '@mui/base';
+import './style/template2.css'
+
 
 const Innovation = ({ responseData }) => {
   const { innovations, setInnovations } = React.useContext(TextContext);
