@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
+import EditableText from './EditableText';
 
 const ContactForm = () => {
     const [name, setName] = useState('');
@@ -14,6 +15,7 @@ const ContactForm = () => {
 
     return (
         <div className='part'>
+
             <div class="contactDiv">
                 <div class="content">
                     <div class="left-side">
@@ -52,6 +54,7 @@ const ContactForm = () => {
                         </form>
                     </div>
                 </div>
+
             </div>
         </div>
     );

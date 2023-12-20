@@ -3,7 +3,7 @@ import Logo from '../../assets/logo.png';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-export default function Footer({ howItWorks }) {
+export default function Footer({ click }) {
     return (
         <Grid container className='footerDiv' >
             <Grid md={4}>
@@ -17,7 +17,7 @@ export default function Footer({ howItWorks }) {
                         <a href="#" className='footerNavigate'>Build Website</a>
                     </Grid>
                     <Grid md={4} xs={4}>
-                        <a href="#" onClick={howItWorks} className='footerNavigate'>How It Works</a>
+                        <a href="#" onClick={click} className='footerNavigate'>How It Works</a>
                     </Grid>
                     <Grid md={4} xs={4}>
                         <a href="#" className='footerNavigate'>Pricing</a>
