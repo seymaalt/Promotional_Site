@@ -5,7 +5,7 @@ import CircleIcon from '@mui/icons-material/Circle';
 const Services = () => {
 
     return (
-        <div className='part'>
+        <div className='part3'>
             <Grid container spacing={2}>
                 <Grid item xs={6} >
                     <div className='servicesHeader'>

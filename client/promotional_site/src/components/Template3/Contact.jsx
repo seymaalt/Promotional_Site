@@ -13,7 +13,7 @@ const ContactForm = () => {
     };
 
     return (
-        <div className='part'>
+        <div className='part3'>
             <div class="contactDiv">
                 <div class="content">
                     <div class="left-side">

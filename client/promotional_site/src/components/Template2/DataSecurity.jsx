@@ -3,6 +3,8 @@ import TextContext from '../../context/TextContext';
 import ChangeText from '../Template1/ChangeText'
 import { TextareaAutosize } from '@mui/material';
 import { Modal } from '@mui/base';
+import './style/template2.css'
+
 
 const DataSecurity = ({ responseData }) => {
   const { dataSecurity, setDataSecurity } = React.useContext(TextContext);

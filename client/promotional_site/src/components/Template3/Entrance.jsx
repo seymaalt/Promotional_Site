@@ -83,7 +83,7 @@ const Template3Navbar = () => {
     };
 
     return (
-        <div className='part'>
+        <div className='part3'>
             <Grid container >
                 <Grid item xs={6}>
                     <div onDoubleClick={handleDivClick}>
