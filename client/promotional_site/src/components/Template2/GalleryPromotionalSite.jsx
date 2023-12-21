@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import './style/template2.css'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';

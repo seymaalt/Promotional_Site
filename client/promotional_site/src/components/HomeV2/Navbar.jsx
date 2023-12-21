@@ -47,7 +47,7 @@ export default function Navbar({ onClick }) {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-    navigate("/profile");
+    navigate("/profile2");
   };
 
 

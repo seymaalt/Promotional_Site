@@ -5,6 +5,8 @@ import ChangeText from '../Template1/ChangeText'
 import { useContext, useState } from "react";
 import { Modal, Button, TextareaAutosize } from '@mui/material';
 import TextContext from "../../context/TextContext";
+import './style/template2.css'
+
 
 export default function Head({ responseData, changedData }) {
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
