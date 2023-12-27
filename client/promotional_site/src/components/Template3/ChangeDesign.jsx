@@ -66,7 +66,7 @@ function ChangeDesign({ open, onClose, handleColorChange, handleFontChange, hand
                 padding: '8px',
                 borderRadius: '5px',
                 border: '1px solid #ccc',
-              }} onChange={handleFontChange}>
+              }} onChange={(e) => handleFontChange(e.target.value)}>
               <option value="Roboto, sans-serif">Roboto</option>
               <option value="Crimson Text, serif">Dosis</option>
               <option value="Ubuntu, sans-serif">Ubuntu</option>
