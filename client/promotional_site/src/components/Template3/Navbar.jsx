@@ -13,13 +13,13 @@ const Template3Navbar = () => {
 
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [fontSize, setFontSize] = useState(34,4);
+    const [fontSize, setFontSize] = useState();
     const [color, setColor] = useState('(225, 73%, 43%)');
     const [selectedFont, setSelectedFont] = useState('DM Sans');
     const [textAlign, setTextAlign] = useState("left");
 
     const [isModalOpenNav1, setIsModalOpenNav1] = useState(false);
-    const [fontSizeNav1, setFontSizeNav1] = useState(20);
+    const [fontSizeNav1, setFontSizeNav1] = useState();
     const [colorNav1, setColorNav1] = useState('#7a7a7a');
     const [selectedFontNav1, setSelectedFontNav1] = useState('');
     const [textAlignNav1, setTextAlignNav1] = useState("left");
@@ -110,9 +110,9 @@ const Template3Navbar = () => {
         <div className='temp3Navbar'>
             <Grid container >
                 <Grid item md={2} xs={0}></Grid>
-                <Grid item md={8}>
+                <Grid item md={8} xs={12}>
                     <Grid container >
-                        <Grid item xs={3} className='companyName' id={1} onDoubleClick={handleDivClick}>
+                        <Grid item md={3} xs={6} className='companyName' id={1} onDoubleClick={handleDivClick}>
                             <EditableText className='editHover companyName' initialValue={response && response.businessName ? response.businessName : 'COMPANY NAME'} backColor="#FAF8F4" fontSize={fontSize} selectedFont={selectedFont} color={color} textAlign={textAlign} />
                             <ChangeDesign open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} textAlign={textAlign} />
                         </Grid>

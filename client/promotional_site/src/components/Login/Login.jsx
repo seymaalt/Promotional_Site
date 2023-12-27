@@ -134,10 +134,8 @@ const Login = () => {
             alignItems: 'center',
           }}
         >
-
           <Typography component="h1" fontWeight="bold" variant="h5">
             Login
-
           </Typography>
           <Typography variant="subtitle2" fontWeight="400" padding="5px" gutterBottom>
             Login to track your favorite promotional site easily
