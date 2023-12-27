@@ -165,7 +165,7 @@ export default function Profile() {
                                 Email
                             </div>
                         </Grid>
-                        <Grid xs={5}>
+                        <Grid xs={5} style={{width:'100%',overflow:'hidden'}}>
                             <div className="profileData2">{user.email}</div>
                         </Grid>
                         <Grid xs={3}></Grid>

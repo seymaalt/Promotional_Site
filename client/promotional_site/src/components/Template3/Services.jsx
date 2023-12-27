@@ -75,7 +75,7 @@ const Services = () => {
                     <EditableText initialValue='We offer a broad spectrum of custom software development services ranging from enterprise software solutions to mobile applications, with a proven track record for success.' className='editHover servicesDisc' backColor='white' />
 
                 </Grid>
-                <Grid item xs={4} >
+                <Grid item md={4} xs={10} >
                     <Grid
                         className='servicesBox'
                         container
@@ -102,12 +102,12 @@ const Services = () => {
 
                             </Grid>
                             <Grid item xs={4}>
-                                <CircleIcon sx={{ padding: '2rem', float: 'right', fontSize: '4rem', color: 'white' }}></CircleIcon>
+                                <CircleIcon id='servicesWhiteCircle'></CircleIcon>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={4} >
+                <Grid item md={4} xs={10} >
                     <Grid
                         className='servicesBox'
                         container
@@ -129,12 +129,12 @@ const Services = () => {
 
                             </Grid>
                             <Grid item xs={4}>
-                                <CircleIcon sx={{ padding: '2rem', float: 'right', fontSize: '4rem', color: 'white' }}></CircleIcon>
+                                <CircleIcon id='servicesWhiteCircle'></CircleIcon>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={4} >
+                <Grid item md={4} xs={10} >
                     <Grid
                         className='servicesBox'
                         container
@@ -155,7 +155,7 @@ const Services = () => {
                                 <EditableText initialValue='Streamline your business operations.' className='editHover servicesBoxDisc' backColor='#E5E7EB' />
                             </Grid>
                             <Grid item xs={4}>
-                                <CircleIcon sx={{ padding: '2rem', float: 'right', fontSize: '4rem', color: 'white' }}></CircleIcon>
+                                <CircleIcon id='servicesWhiteCircle'></CircleIcon>
                             </Grid>
                         </Grid>
                     </Grid>

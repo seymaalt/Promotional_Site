@@ -12,7 +12,7 @@ const Template3Navbar = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
     const [modalPositionImage, setModalPositionImage] = useState({ top: 0, left: 0 });
-    const [fontSize, setFontSize] = useState(64);
+    const [fontSize, setFontSize] = useState();
     const [color, setColor] = useState('#1B1A1A');
     const [selectedFont, setSelectedFont] = useState('DM Sans');
     const [textAlign, setTextAlign] = useState("left");
@@ -114,7 +114,7 @@ const Template3Navbar = () => {
     return (
         <div className='part3'>
             <Grid container >
-                <Grid item xs={6}>
+                <Grid item md={6} xs={12}>
                     <div onDoubleClick={handleDivClick}>
                         <EditableText initialValue='Transforming Ideas Into Solutions' className='editHover entranceHead' backColor='white'  fontSize={fontSize} selectedFont={selectedFont} color={color} textAlign={textAlign}   />
                     </div>
@@ -132,7 +132,7 @@ const Template3Navbar = () => {
                         </a>
                     </div>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item md={6} xs={12}>
                     <div>
                         <img
                             src={selectedImage}

@@ -49,7 +49,6 @@
     flex-shrink: 0;
 }
 
-
 .dataSecInn {
     padding-top: 5%;
 }
@@ -131,7 +130,7 @@
 }
 
 .temp2Image {
-    width: 45dvh;
+    width: 75%;
     height: auto;
     margin-inline: 5%;
     border-radius: 16px;
@@ -216,22 +215,27 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    padding-bottom: 2rem;
 }
 
 @media screen and (max-width: 1200px) {
     .temp2Image {
-        width: 25dvh;
+        width: 70%;
         height: auto;
         margin-right: -40px;
     }
 
     .downloadbutton .grid {
         display: flex;
-        margin-inline: 10dvh;
     }
 
     .downloadbutton .grid img {
         height: 10dvh;
+    }
+
+    .ratingCard {
+        height: 100%;
+        flex-shrink: 0;
     }
 
     .starRating {
@@ -241,6 +245,9 @@
 
     .starText {
         font-size: 1rem;
+    }
+    .swiperSlide {
+        margin-top: 5%;
     }
 }
 
