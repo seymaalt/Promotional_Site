@@ -53,7 +53,7 @@ export default function HomeV2() {
                 </div>
               </Grid>
               <Grid item md={5.5} xs={12}>
-                  <BlobAnimation ></BlobAnimation>
+                <BlobAnimation ></BlobAnimation>
               </Grid>
             </Grid>
           </Box>

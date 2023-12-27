@@ -15,14 +15,14 @@ const Template3Footer = () => {
                 <Grid item xs={2}></Grid>
                 <Grid item xs={8}>
                     <Grid container >
-                        <Grid item xs={3}>
+                        <Grid item lg={3} md={4} xs={6}>
                             <div className='footerName'>COMPANY NAME</div>
                             <div className='footerleft'>Tel: 0 (216) 473 46 74</div>
                             <div className='footerleft'>info@venhancer.com</div>
                             <div className='footerleft'>Kozyatağı Mahallesi, 19 Mayıs Caddesi, Sarıkanarya Sokağı, Bina No 14 Byoffice Plaza (K2 Plaza) Kat 10, İç Kapı No 10, 34736 Kadıköy/İstanbul</div>
 
                         </Grid>
-                        <Grid item xs={6} className='footerNavigate'>
+                        <Grid item lg={6} md={4} xs={0} className='footerNavigate'>
                             <Grid container >
                                 <Grid item xs={12}>
                                     <a href='#' className='footerNavigation'>Services</a>
@@ -32,16 +32,16 @@ const Template3Footer = () => {
                             </Grid>
 
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item lg={3} md={4} xs={6} >
                             <div className='socialMedia'>
                                 <a href='#' className='socialMediaIcon'>
-                                    <InstagramIcon sx={{ fontSize: '3rem' }} />
+                                    <InstagramIcon id='footerIconSize'/>
                                 </a>
                                 <a href='#' className='socialMediaIcon'>
-                                    <WhatsAppIcon sx={{ fontSize: '3rem' }} />
+                                    <WhatsAppIcon id='footerIconSize' />
                                 </a>
                                 <a href='#' className='socialMediaIcon'>
-                                    <TwitterIcon sx={{ fontSize: '3rem' }} />
+                                    <TwitterIcon id='footerIconSize' />
                                 </a>
                             </div>
                         </Grid>

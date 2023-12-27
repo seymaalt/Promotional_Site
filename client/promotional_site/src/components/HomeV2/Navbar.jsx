@@ -47,7 +47,7 @@ export default function Navbar({ onClick }) {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-    navigate("/profile");
+    navigate("/profile2");
   };
 
 
@@ -99,6 +99,8 @@ export default function Navbar({ onClick }) {
 
   useEffect(() => {
     console.log(user);
+    // var fullUrl = window.location.href;
+    // console.log("Sayfanın tam URL'si: " + fullUrl);
   });
 
   useEffect(() => {
@@ -158,9 +160,6 @@ export default function Navbar({ onClick }) {
         </button>
         </div>
         )}
-<div>
-
-      </div>
     </div>
 
   );

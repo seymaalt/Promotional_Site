@@ -226,9 +226,9 @@ const Template3Navbar = () => {
     };
 
     return (
-        <div className='part'>
+        <div className='part3'>
             <Grid container >
-                <Grid item xs={6}>
+                <Grid item md={6} xs={12}>
                     <div onDoubleClick={handleDivClick}>
                         <EditableText initialValue={enteranceHeadText} handleDefaultTextChange={handleEnteranceHeadTextChange} className='editHover entranceHead' backColor='white' fontSize={designHead.fontSize} selectedFont={designHead.font} color={designHead.color} textAlign={designHead.textAlign} />
                     </div>
@@ -245,7 +245,7 @@ const Template3Navbar = () => {
                     <div className='entranceButtons'></div>
                     </div>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item md={6} xs={12}>
                     <div>
                         <img
                             src={selectedImage}

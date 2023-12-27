@@ -290,7 +290,7 @@ const Services = () => {
     };
 
     return (
-        <div className='part'>
+        <div className='part3'>
             <Grid container spacing={2}>
                 <Grid item xs={6} onDoubleClick={handleDivClickServiceHeader}>
                     <EditableText initialValue={serviceHeaderText} handleDefaultTextChange={handleServiceHeaderTextChange} className='editHover servicesHeader' backColor='white' fontSize={designServiceHeader.fontSize} selectedFont={designServiceHeader.font} color={designServiceHeader.color} textAlign={designServiceHeader.textAlign} />
@@ -300,7 +300,7 @@ const Services = () => {
                     <EditableText initialValue={serviceDiscText}  handleDefaultTextChange={handleServiceDiscTextChange} className='editHover servicesDisc' backColor='white' fontSize={designServiceDisc.fontSize} selectedFont={designServiceDisc.font} color={designServiceDisc.color} textAlign={designServiceDisc.textAlign} />
                 </Grid>
                 <ChangeDesign open={designServiceDisc.isModalOpen} onClose={closeModal} handleFontChange={handleFontServiceDiscChange} handleFontSizeChange={handleFontSizeServiceDiscChange} handleColorChange={handleColorServiceDiscChange} fontSize={designServiceDisc.fontSize} selectedFont={designServiceDisc.font} color={designServiceDisc.color} textAlign={designServiceDisc.textAlign} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignServiceDiscChange} />
-                <Grid item xs={4} >
+                <Grid item md={4} xs={10} >
                     <Grid
                         className='servicesBox'
                         container
@@ -326,12 +326,12 @@ const Services = () => {
 
                             </Grid>
                             <Grid item xs={4}>
-                                <CircleIcon sx={{ padding: '2rem', float: 'right', fontSize: '4rem', color: 'white' }}></CircleIcon>
+                                <CircleIcon id='servicesWhiteCircle'></CircleIcon>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={4} >
+                <Grid item md={4} xs={10} >
                     <Grid
                         className='servicesBox'
                         container
@@ -354,12 +354,12 @@ const Services = () => {
 
                             </Grid>
                             <Grid item xs={4}>
-                                <CircleIcon sx={{ padding: '2rem', float: 'right', fontSize: '4rem', color: 'white' }}></CircleIcon>
+                                <CircleIcon id='servicesWhiteCircle'></CircleIcon>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={4} >
+                <Grid item md={4} xs={10} >
                     <Grid
                         className='servicesBox'
                         container
@@ -380,7 +380,7 @@ const Services = () => {
                                 <EditableText initialValue={serviceBoxDiscText3} handleDefaultTextChange={handleServiceBoxDiscTextChange3} className='editHover servicesBoxDisc' backColor='#E5E7EB' fontSize={designServiceBoxDisc.fontSize} selectedFont={designServiceBoxDisc.font} color={designServiceBoxDisc.color} textAlign={designServiceBoxDisc.textAlign} />
                             </Grid>
                             <Grid item xs={4}>
-                                <CircleIcon sx={{ padding: '2rem', float: 'right', fontSize: '4rem', color: 'white' }}></CircleIcon>
+                                <CircleIcon id='servicesWhiteCircle'></CircleIcon>
                             </Grid>
                         </Grid>
                     </Grid>

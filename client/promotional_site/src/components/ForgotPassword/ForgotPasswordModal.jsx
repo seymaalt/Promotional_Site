@@ -15,11 +15,10 @@ export default function TransitionsModal() {
   return (
     <div>
       <Link
-        component="button"
         variant="body2"
         onClick={handleOpen}
         underline="none"
-        style={{ fontFamily:"poppins",fontSize:"20px",color:"white" }}
+        id="forgotPassword"
       >
         Forgot Password?
       </Link>

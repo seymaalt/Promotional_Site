@@ -2,6 +2,7 @@ import { Grid } from "@mui/material";
 import React from "react";
 import Innovation from "./Innovation";
 import DataSecurity from "./DataSecurity";
+import './style/template2.css'
 
 export default function DataSecInn({ responseData }) {
   return (

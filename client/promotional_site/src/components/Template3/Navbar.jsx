@@ -32,7 +32,6 @@ const Template3Navbar = () => {
         font: "Phantomsans, sans-serif",
         textAlign: "left",
     })
-
     const closeModal = () => {
         setDesignCompanyName(prevdesignCompanyName => {
             const updatedCompanyName = { ...prevdesignCompanyName, isModalOpen: false };
@@ -197,9 +196,9 @@ const Template3Navbar = () => {
         <div className='temp3Navbar'>
             <Grid container >
                 <Grid item md={2} xs={0}></Grid>
-                <Grid item md={8}>
+                <Grid item md={8} xs={12}>
                     <Grid container >
-                        <Grid item xs={3} className='companyName' id={1} onDoubleClick={handleDivClick}>
+                        <Grid item md={3} xs={6} className='companyName' id={1} onDoubleClick={handleDivClick}>
                             <EditableText className='editHover companyName' initialValue={companyNameText} handleDefaultTextChange={handleCompanyNameTextChange} backColor="#FAF8F4" fontSize={designCompanyName.fontSize} selectedFont={designCompanyName.font} color={designCompanyName.color} textAlign={designCompanyName.textAlign} />
 
                             <ChangeDesign open={designCompanyName.isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={designCompanyName.fontSize} selectedFont={designCompanyName.font} color={designCompanyName.color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} textAlign={designCompanyName.textAlign} />

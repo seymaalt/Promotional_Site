@@ -1,9 +1,8 @@
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
+import Grid from "@mui/material/Grid";
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -13,7 +12,6 @@ import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
 import LoginGoogle from '../../assets/google.png'
 import ForgotPasswordModal from '../ForgotPassword/ForgotPasswordModal';
-import { Navigate } from 'react-router';
 import { useNavigate } from "react-router-dom";
 
 
@@ -105,11 +103,10 @@ const Login = () => {
           else if (result.data == "Wrong Email") {
             alert("Wrong Email")
           }
-          else if (result.data == "Email not verified")
-          {
+          else if (result.data == "Email not verified") {
             alert("Email Not Verified")
           }
-          else {       
+          else {
             navigate("/");
           }
 
@@ -128,26 +125,14 @@ const Login = () => {
 
 
   return (
-
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-
-          <Typography fontWeight="bold"  style={{fontFamily:"poppins",color:"white",fontSize:"40px"}}>
+        <Box className='loginPageDiv'>
+          <Typography fontWeight="bold" id='loginPageHeader' >
             Welcome back !
-
           </Typography>
-         
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 5 }}>
             <TextField
-             
               margin="normal"
               required
               fullWidth
@@ -156,6 +141,7 @@ const Login = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              sx={{ backgroundColor: 'white', borderRadius: '4px' }}
             />
             <TextField
               margin="normal"
@@ -166,43 +152,51 @@ const Login = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              sx={{ backgroundColor: 'white', borderRadius: '4px' }}
             />
-            <FormControlLabel
-              style={{ marginTop: "3%",fontFamily:"poppins",fontSize:"24px",color:"white" }}
-              control={<Checkbox value="remember" style={{ color: "#906ad7",fontFamily:"poppins",fontSize:"24px" }} type="checkbox" checked={rememberMe} onChange={handleCheckboxChange} />}
-              label="
+            <Grid container sx={{ justifyContent: 'space-between',alignItems:'center' }}>
+              <Grid item xs={6}>
+                <FormControlLabel
+                  style={{ marginTop: "3%", fontFamily: "poppins", fontSize: "24px", color: "white" }}
+                  control={<Checkbox value="remember" style={{ color: "#906ad7", fontFamily: "poppins", fontSize: "24px" }} type="checkbox" checked={rememberMe} onChange={handleCheckboxChange} />}
+                  label="
               Remember me"
-            />
-
-
+                />
+              </Grid>
+              <Grid item xs={6} style={{textAlign:'right'}}>
+                <Button href="#" variant="body2" style={{ padding: '0px' }}>
+                  <ForgotPasswordModal />
+                </Button>
+              </Grid>
+            </Grid>
             <Button
-
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              style={{  backgroundImage: "linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)", borderRadius:"30px",fontFamily:"poppins",fontWeight:"500" }}
-              >
+              id='loginPageButton'
+            >
               Login
             </Button>
-            <p style={{ textAlign: "center" ,fontFamily:"poppins",fontSize:"20px",color:"white"}}> or </p>
+            <p className='loginPageOr'> or </p>
             <Button
               onClick={googleAuth}
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              style={{ background: 'white', fontWeight: "bold", color: "gray", borderRadius:"30px" }}
-              startIcon={<img src={LoginGoogle} alt="Google Logo" style={{ width: '24px', marginRight: '8px' }} />}
+              id='loginPageGoogle'
+              startIcon={<img src={LoginGoogle} alt="Google Logo" className='loginPageGoogleLogo' />}
             >
               Login with Google
             </Button>
           </Box>
-          <Button href="#" variant="body2" underline="none" style={{ marginLeft: "17px", fontWeight: "bold" , fontFamily:"poppins",fontSize:"20px",color:"white"}}>
-            <ForgotPasswordModal />
+
+          <Button href="/RegisterPage" variant="body2" underline="none" style={{ fontFamily: "poppins", fontSize: "1.15rem", color: "white", textTransform: 'none', float: 'left', padding: '0px', marginBottom: '4%',marginTop:'4%' }}>
+            Create Account
           </Button>
         </Box>
       </Container>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
 

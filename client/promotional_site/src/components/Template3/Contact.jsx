@@ -14,8 +14,7 @@ const ContactForm = () => {
     };
 
     return (
-        <div className='part'>
-
+        <div className='part3'>
             <div class="contactDiv">
                 <div class="content">
                     <div class="left-side">
@@ -44,7 +43,7 @@ const ContactForm = () => {
                     <div class="right-side">
                         <EditableText className='editHover topic-text' initialValue='Send us a message' backColor="rgb(30, 64, 175)" />
 
-                        <EditableText className='editHover topic' initialValue="If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you" backColor="rgb(30, 64, 175)" color="white" />
+                        <EditableText className='editHover topic-desc' initialValue="If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you" backColor="rgb(30, 64, 175)" color="white" />
 
                         <form action="#">
                             <div class="input-box">
