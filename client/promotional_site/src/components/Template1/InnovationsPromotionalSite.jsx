@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Modal, Button, TextareaAutosize } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import '../../styles/global.css'
 import { motion } from 'framer-motion';
 import { slideIn } from '../../utils/motion';
 import TextContext from '../../context/TextContext';
+import Template1Context from '../../context/Template1Context';
 import ChangeText from './ChangeText'
 
 const InnovationIcon = () => {
@@ -21,16 +22,20 @@ const InnovationIcon = () => {
 };
 
 export default function InnovationsPromotionalSite({ responseData, changedData, colorData }) {
-  const { innovations, setInnovations } = React.useContext(TextContext);
+  const { innovations, setInnovations } = useContext(TextContext);
+  const { template1Response, setTemplate1Response } = useContext(Template1Context);
   const [metin, setMetin] = useState(responseData.innovations);
   const [metinHeader, setMetinHeader] = useState("INNOVATIONS");
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [fontSize, setFontSize] = useState();
-  const [color, setColor] = useState('black');
-  const [textAlign, setTextAlign] = useState("center");
-  const [selectedFont, setSelectedFont] = useState('Roboto, sans-serif');
+
+  const [designInnovations, setDesignInnovations] = useState({
+    fontSize: "2rem",
+    color: 'black',
+    font: "Roboto, sans-serif",
+    textAlign: 'center',
+  })
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -42,19 +47,31 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
   };
 
   const handleFontSizeChange = (newFontSize) => {
-    setFontSize(newFontSize);
+    setDesignInnovations(prevdesignNav => {
+      const updatedNav = { ...prevdesignNav, fontSize: newFontSize };
+      return updatedNav;
+    });
   };
 
   const handleColorChange = (newColor) => {
-    setColor(newColor);
+    setDesignInnovations(prevdesignNav => {
+      const updatedNav = { ...prevdesignNav, color: newColor };
+      return updatedNav;
+    });
   };
 
   const handleTextAlignChange = (e) => {
-    setTextAlign(e);
+    setDesignInnovations(prevdesignNav => {
+      const updatedNav = { ...prevdesignNav, textAlign: e };
+      return updatedNav;
+    });
   }
 
   const handleFontChange = (e) => {
-    setSelectedFont(e.target.value);
+    setDesignInnovations(prevdesignNav => {
+      const updatedNav = { ...prevdesignNav, font: e.target.value };
+      return updatedNav;
+    });
   };
 
   const metniGuncelle = (e) => {
@@ -94,6 +111,10 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
     }
   };
 
+  useEffect(() => {
+    setTemplate1Response({ ...template1Response, innovations:(changedData == null ? responseData.innovations : changedData), designInnovations:designInnovations });
+    console.log(template1Response)
+  }, [innovations,designInnovations])
 
   return (
     <div>
@@ -118,14 +139,14 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
             </div> */}
             {duzenlemeModu ? (
               <div className='container'><TextareaAutosize
-                style={{ width: '100%', padding: "0px", resize: "none", border: "0px", fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: `${textAlign}` }}
+                style={{ width: '100%', padding: "0px", resize: "none", border: "0px", fontFamily: designInnovations.font, color: `${designInnovations.color}`, fontSize: `${designInnovations.fontSize}px`, textAlign: `${designInnovations.textAlign}` }}
                 multiline
                 rows={15}
                 defaultValue={responseData.innovations}
                 type="text" value={innovations} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus /></div>
             ) : (
               <div onClick={duzenlemeModunuToggle}>
-                <div className='container' style={{ textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }} >{changedData == null ? responseData.innovations : changedData}</div>
+                <div className='container' style={{ textAlign: `${designInnovations.textAlign}`, fontFamily: designInnovations.font, color: `${designInnovations.color}`, fontSize: `${designInnovations.fontSize}px` }} >{changedData == null ? responseData.innovations : changedData}</div>
               </div>
             )}
           </Grid>
@@ -135,7 +156,7 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
             </div>
           </Grid>
         </Grid>
-        <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
+        <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={designInnovations.fontSize} selectedFont={designInnovations.font} color={designInnovations.color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
       </motion.nav>
     </div>
   )
