@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Modal, Button, TextareaAutosize } from '@mui/material';
-import EditPageContext from '../../context/EditPageContext';
 import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
 import FormatAlignJustifyIcon from '@mui/icons-material/FormatAlignJustify';
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
