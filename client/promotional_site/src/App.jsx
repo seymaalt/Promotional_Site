@@ -5,6 +5,7 @@ import PromotionalSite from "./pages/PromotionalSite";
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import GlobalProvider from "./context/GlobalProvider.jsx";
+import Template2Provider from "./context/Template2Provider.jsx";
 import AuthProvider from './context/AuthProvider.jsx'
 import TextProvider from "./context/TextProvider.jsx";
 import Favorites from './pages/Favorites.jsx'
@@ -27,26 +28,28 @@ function App() {
     <AuthProvider>
       <TextProvider>
         <GlobalProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<HomeV2 />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/profile2" element={<ProfileV2 />} />
-              <Route path="/promotional-site" element={<PromotionalSite />} />
-              <Route path="/promotional-site2" element={<PromotionalSite2 />} />
-              <Route path="/promotional-site3" element={<PromotionalSite3 />} />
-              <Route path="/favorites" element={<Favorites />} />
-              <Route path="/ChooseTemplate" element={<ChooseTemplate />} />
-              <Route path="/ChooseTemplate2" element={<ChooseTemplateV2 />} />
-              <Route path="/Login" element={<LoginV2 />} />
-              <Route path="/LoginPage" element={<LoginPage />} />
-              <Route path="/RegisterPage" element={<RegisterPage />} />
-              <Route path="/Register" element={<RegisterV2 />} />
-              <Route path="/ForgotPassword" element={<ForgotPassword />} />
-              <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
-              <Route path="/user/verify-email/:emailToken" element={<EmailVerified />} />
-            </Routes>
-          </BrowserRouter>
+          <Template2Provider>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<HomeV2 />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile2" element={<ProfileV2 />} />
+                <Route path="/promotional-site" element={<PromotionalSite />} />
+                <Route path="/promotional-site2" element={<PromotionalSite2 />} />
+                <Route path="/promotional-site3" element={<PromotionalSite3 />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="/ChooseTemplate" element={<ChooseTemplate />} />
+                <Route path="/ChooseTemplate2" element={<ChooseTemplateV2 />} />
+                <Route path="/Login" element={<LoginV2 />} />
+                <Route path="/LoginPage" element={<LoginPage />} />
+                <Route path="/RegisterPage" element={<RegisterPage />} />
+                <Route path="/Register" element={<RegisterV2 />} />
+                <Route path="/ForgotPassword" element={<ForgotPassword />} />
+                <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
+                <Route path="/user/verify-email/:emailToken" element={<EmailVerified />} />
+              </Routes>
+            </BrowserRouter>
+          </Template2Provider>
         </GlobalProvider>
       </TextProvider>
     </AuthProvider>

@@ -2,10 +2,12 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import ChangeText from '../Template1/ChangeText'
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Modal, Button, TextareaAutosize } from '@mui/material';
 import TextContext from "../../context/TextContext";
 import './style/template2.css'
+import Template2Context from "../../context/Template2Context";
+
 
 
 export default function Head({ responseData, changedData }) {
@@ -17,7 +19,14 @@ export default function Head({ responseData, changedData }) {
   const [color, setColor] = useState('black');
   const [selectedFont, setSelectedFont] = useState('DM Sans');
   const [textAlign, setTextAlign] = useState("left");
+  const { template2Response, setTemplate2Response } = useContext(Template2Context);
 
+  const [designHeadDiscriprion,setDesignHeadDiscription] = useState({
+    fontSize: 25,
+    color:"black",
+    font :"DM Sans",
+    textAlign:"left",
+  })
 
   const metniGuncelle = (e) => {
     setDiscription(e.target.value)
@@ -34,19 +43,31 @@ export default function Head({ responseData, changedData }) {
     setIsModalOpen(false);
   };
   const handleTextAlignChange = (e) => {
-    setTextAlign(e);
+    setDesignHeadDiscription(prevdesign => {
+      const updatedDesign = { ...prevdesign, textAlign: e };
+      return updatedDesign;
+  });
   }
 
   const handleFontSizeChange = (newFontSize) => {
-    setFontSize(newFontSize);
+    setDesignHeadDiscription(prevdesign => {
+      const updatedDesign = { ...prevdesign, fontSize: newFontSize };
+      return updatedDesign;
+  });
   };
 
   const handleColorChange = (newColor) => {
-    setColor(newColor);
+    setDesignHeadDiscription(prevdesign => {
+      const updatedDesign = { ...prevdesign, color: newColor };
+      return updatedDesign;
+  });
   };
 
   const handleFontChange = (e) => {
-    setSelectedFont(e.target.value);
+    setDesignHeadDiscription(prevdesign => {
+      const updatedDesign = { ...prevdesign, font: e.target.value };
+      return updatedDesign;
+  });
   };
 
 
@@ -77,6 +98,10 @@ export default function Head({ responseData, changedData }) {
       return { top: y, left: x - modalWidth };
     }
   };
+  useEffect(() => {
+    setTemplate2Response({ ...template2Response, designHeadDiscriprion:designHeadDiscriprion, discription:(discription == null ? responseData.description : discription)});
+    console.log(template2Response)
+  }, [designHeadDiscriprion, discription])
   return (
     <div style={{ display: "flex" }}>
       <Grid container spacing={2}>
@@ -90,7 +115,7 @@ export default function Head({ responseData, changedData }) {
             {duzenlemeModu ? (
               <TextareaAutosize
                 style={{
-                  width: '100%', padding: "4%", maxwidth: "717px", maxHeight: "60dvh", justifyContent: "center", resize: "none", border: "0px",   overflow: "hidden", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`, background: "white"
+                  width: '100%', padding: "4%", maxwidth: "717px", maxHeight: "60dvh", justifyContent: "center", resize: "none", border: "0px",   overflow: "hidden", fontSize: `${designHeadDiscriprion.fontSize}px`, fontFamily: designHeadDiscriprion.font, textAlign: `${designHeadDiscriprion.textAlign}`, fontWeight: "400", color: `${designHeadDiscriprion.color}`, background: "white"
                 }}
                 multiline
                 rows={15}
@@ -101,10 +126,10 @@ export default function Head({ responseData, changedData }) {
                 <div
                   className="headDis "
                   style={{
-                    textAlign: `${textAlign}`,
-                    fontSize: `${fontSize}px`,
-                    color: `${color}`,
-                    fontFamily: selectedFont,
+                    textAlign: `${designHeadDiscriprion.textAlign}`,
+                    fontSize: `${designHeadDiscriprion.fontSize}px`,
+                    color: `${designHeadDiscriprion.color}`,
+                    fontFamily: designHeadDiscriprion.font,
 
                   }}
                 >
@@ -113,7 +138,7 @@ export default function Head({ responseData, changedData }) {
               </div>
             )}
           </div>
-          <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
+          <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={designHeadDiscriprion.fontSize} selectedFont={designHeadDiscriprion.font} color={designHeadDiscriprion.color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
           <div>
             <div className="downloadbutton">
               <Grid container>
