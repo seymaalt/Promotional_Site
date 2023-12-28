@@ -301,8 +301,9 @@ const Services = () => {
             selectedImage:selectedImage,selectedImage1:selectedImage1,selectedImage2:selectedImage2
         });
         console.log(template3Response)
-    }, [serviceHeaderText,serviceDiscText,serviceBoxHeaderText1,serviceBoxHeaderText2,serviceBoxHeaderText3,serviceBoxDiscText1,serviceBoxDiscText2,serviceBoxDiscText3,
-    ])
+
+    }, [serviceHeaderText,serviceDiscText,serviceBoxHeaderText1,serviceBoxHeaderText2,serviceBoxHeaderText3,serviceBoxDiscText1,serviceBoxDiscText2,serviceBoxDiscText3,designServiceBoxHeader,designServiceBoxDisc,designServiceHeader,designServiceDisc]);
+
 
     return (
         <div className='part3'>

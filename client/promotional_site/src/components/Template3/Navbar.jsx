@@ -196,9 +196,12 @@ const Template3Navbar = () => {
     };
 
     useEffect(() => {
-        setTemplate3Response({...template3Response,  companyNameText: companyNameText, designCompanyName: designCompanyName, navigationText1: navigationText1, navigationText2: navigationText2, navigationText3: navigationText3, designNav: designNav, buttonText: buttonText, designNavButton: designNavButton });
+        setTemplate3Response({
+            ...template3Response,
+            companyNameText: companyNameText, designCompanyName: designCompanyName, navigationText1: navigationText1, navigationText2: navigationText2, navigationText3: navigationText3, designNav: designNav, buttonText: buttonText, designNavButton: designNavButton
+        });
         console.log(template3Response)
-    }, [companyNameText, designCompanyName, navigationText1, navigationText2, navigationText3, designNav, buttonText, designNavButton])
+    }, [companyNameText, designCompanyName, navigationText1, navigationText2, navigationText3, designNav, buttonText, designNavButton]);
 
     return (
         <div className='temp3Navbar'>
