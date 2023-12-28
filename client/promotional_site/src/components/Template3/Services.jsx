@@ -300,7 +300,7 @@ const Services = () => {
             designServiceBoxDisc: designServiceBoxDisc, designServiceHeader: designServiceHeader, designServiceDisc: designServiceDisc
         });
         console.log(template3Response)
-    }, [])
+    }, [serviceHeaderText,serviceDiscText,serviceBoxHeaderText1,serviceBoxHeaderText2,serviceBoxHeaderText3,serviceBoxDiscText1,serviceBoxDiscText2,serviceBoxDiscText3,designServiceBoxHeader,designServiceBoxDisc,designServiceHeader,designServiceDisc]);
 
     return (
         <div className='part3'>
