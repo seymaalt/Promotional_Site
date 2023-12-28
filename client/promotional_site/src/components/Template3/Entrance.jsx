@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Grid from "@mui/material/Grid";
 import './style/template3.css'
 import GlobalContext from '../../context/GlobalContext'
+import Template3Context from '../../context/Template3Context';
 import EditableText from './EditableText';
 import ChangeDesign from './ChangeDesign';
 import ChangeImage from './ChangeImage'
@@ -9,6 +10,7 @@ import ChangeImage from './ChangeImage'
 
 const Template3Navbar = () => {
     const { response } = useContext(GlobalContext);
+    const { template3Response, setTemplate3Response } = useContext(Template3Context);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
     const [modalPositionImage, setModalPositionImage] = useState({ top: 0, left: 0 });
     const [selectedImage, setSelectedImage] = useState("https://images.unsplash.com/photo-1619410283995-43d9134e7656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzEzMzd8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMERldmVsb3BtZW50fGVufDB8MHx8fDE3MDIzNjI3NzR8MA&ixlib=rb-4.0.3&q=80&w=1920")
@@ -225,6 +227,11 @@ const Template3Navbar = () => {
         return { top: y, left: x };
     };
 
+    useEffect(() => {
+        setTemplate3Response({ ...template3Response, enteranceHeadText: enteranceHeadText, enteranceDiscText: enteranceDiscText, enteranceButtonText: enteranceButtonText, designHead: designHead, designEntranceDisc: designEntranceDisc, designEntranceButton: designEntranceButton });
+        console.log(template3Response)
+    }, [enteranceHeadText, enteranceButtonText, enteranceDiscText, designEntranceButton, designEntranceDisc, designHead])
+
     return (
         <div className='part3'>
             <Grid container >
@@ -233,8 +240,8 @@ const Template3Navbar = () => {
                         <EditableText initialValue={enteranceHeadText} handleDefaultTextChange={handleEnteranceHeadTextChange} className='editHover entranceHead' backColor='white' fontSize={designHead.fontSize} selectedFont={designHead.font} color={designHead.color} textAlign={designHead.textAlign} />
                     </div>
                     <ChangeDesign open={designHead.isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={designHead.fontSize} selectedFont={designHead.font} color={designHead.color} textAlign={designHead.textAlign} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
-                    <h3 onDoubleClick={handleDivClickDisc}> 
-                        <EditableText initialValue={enteranceDiscText} handleDefaultTextChange={handleEnteranceDiscTextChange} className='editHover entranceDisc' backColor='white' fontSize={designEntranceDisc.fontSize} selectedFont={designEntranceDisc.font} color={designEntranceDisc.color} textAlign={designEntranceDisc.textAlign}/>
+                    <h3 onDoubleClick={handleDivClickDisc}>
+                        <EditableText initialValue={enteranceDiscText} handleDefaultTextChange={handleEnteranceDiscTextChange} className='editHover entranceDisc' backColor='white' fontSize={designEntranceDisc.fontSize} selectedFont={designEntranceDisc.font} color={designEntranceDisc.color} textAlign={designEntranceDisc.textAlign} />
                     </h3>
                     <ChangeDesign open={designEntranceDisc.isModalOpen} onClose={closeModal} handleFontChange={handleFontDiscChange} handleFontSizeChange={handleFontSizeDiscChange} handleColorChange={handleColorDiscChange} fontSize={designEntranceDisc.fontSize} selectedFont={designEntranceDisc.font} color={designEntranceDisc.color} textAlign={designEntranceDisc.textAlign} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignDiscChange} />
                     <div className='entranceButtons'>
@@ -242,7 +249,7 @@ const Template3Navbar = () => {
                             <EditableText className='editHover button-63' initialValue={enteranceButtonText} handleDefaultTextChange={handleEnteranceButtonTextChange} backColor="white" fontSize={designEntranceButton.fontSize} selectedFont={designEntranceButton.font} color={designEntranceButton.color} textAlign={designEntranceButton.textAlign} />
                         </a>
                         <ChangeDesign open={designEntranceButton.isModalOpen} onClose={closeModal} handleFontChange={handleFontButtonChange} handleFontSizeChange={handleFontSizeButtonChange} handleColorChange={handleColorButtonChange} fontSize={designEntranceButton.fontSize} selectedFont={designEntranceButton.font} color={designEntranceButton.color} textAlign={designEntranceButton.textAlign} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignButtonChange} />
-                    <div className='entranceButtons'></div>
+                        <div className='entranceButtons'></div>
                     </div>
                 </Grid>
                 <Grid item md={6} xs={12}>

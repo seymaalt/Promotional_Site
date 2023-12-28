@@ -1,25 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Box from '@mui/material/Box';
 import ChangeText from '../Template1/ChangeText'
 import Grid from '@mui/material/Grid';
 import { TextareaAutosize } from "@mui/material";
 import { Modal } from "@mui/base";
+import Template2Context from '../../context/Template2Context';
 import './style/template2.css'
 
 export default function CommentsPromotionalSite({ responseData }) {
     const [duzenlemeModu, setDuzenlemeModu] = useState(false);
     const [duzenlemeModuu, setDuzenlemeModuu] = useState(false);
     const [duzenlemeModuuu, setDuzenlemeModuuu] = useState(false);
-    const [metin, setMetin] = useState()
-    const [metinn, setMetinn] = useState()
-    const [metinnn, setMetinnn] = useState()
+    const [metin, setMetin] = useState(responseData.comments[0])
+    const [metinn, setMetinn] = useState(responseData.comments[1])
+    const [metinnn, setMetinnn] = useState(responseData.comments[2])
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-    const [fontSize, setFontSize] = useState();
-    const [color, setColor] = useState('#1B1A1A');
-    const [selectedFont, setSelectedFont] = useState('DM Sans');
-    const [textAlign, setTextAlign] = useState("left");
+    const { template2Response, setTemplate2Response } = useContext(Template2Context);
 
+
+    const [designComment, setDesignComment] = useState({
+        fontSize: 20,
+        color: "#1B1A1A",
+        font: "DM Sans",
+        textAlign: "left",
+    })
 
     const metniGuncelle = (e) => {
         setMetin(e.target.value)
@@ -28,7 +33,10 @@ export default function CommentsPromotionalSite({ responseData }) {
         setDuzenlemeModu(!duzenlemeModu);
     };
     const handleTextAlignChange = (e) => {
-        setTextAlign(e);
+        setDesignComment(prevdesign => {
+            const updatedDesign = { ...prevdesign, textAlign: e };
+            return updatedDesign;
+        });
     };
     const metniGuncelle1 = (e) => {
         setMetinn(e.target.value)
@@ -51,15 +59,24 @@ export default function CommentsPromotionalSite({ responseData }) {
     };
 
     const handleFontSizeChange = (newFontSize) => {
-        setFontSize(newFontSize);
+        setDesignComment(prevdesign => {
+            const updatedDesign = { ...prevdesign, fontSize: newFontSize };
+            return updatedDesign;
+        });
     };
 
     const handleColorChange = (newColor) => {
-        setColor(newColor);
+        setDesignComment(prevdesign => {
+            const updatedDesign = { ...prevdesign, color: newColor };
+            return updatedDesign;
+        });
     };
 
     const handleFontChange = (e) => {
-        setSelectedFont(e.target.value);
+        setDesignComment(prevdesign => {
+            const updatedDesign = { ...prevdesign, font: e.target.value };
+            return updatedDesign;
+        });
     };
 
     const handleDivClick = (event) => {
@@ -79,6 +96,10 @@ export default function CommentsPromotionalSite({ responseData }) {
         return { top: y, left: x };
 
     };
+    useEffect(() => {
+        setTemplate2Response({ ...template2Response, designComment: designComment, metin: metin, metinn: metinn, metinnn: metinnn });
+        console.log(template2Response)
+    }, [, designComment, metin, metinn, metinnn])
     return (
         <div className="ratingDiv">
             <h1>Deneyimleyenler</h1>
@@ -99,19 +120,19 @@ export default function CommentsPromotionalSite({ responseData }) {
                                     {duzenlemeModu ? (
                                         <TextareaAutosize
                                             style={{
-                                                width: '100%', background: "#EBEBEB", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
+                                                width: '100%', background: "#EBEBEB", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${designComment.fontSize}px`, fontFamily: designComment.font, textAlign: `${designComment.textAlign}`, fontWeight: "400", color: `${designComment.color}`,
                                             }}
                                             multiline
                                             rows={15}
                                             defaultValue={responseData.comments[0]}
                                             type="text" value={metin} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus />
                                     ) : (
-                                        <div onClick={duzenlemeModunuToggle} style={{ textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }}>
+                                        <div onClick={duzenlemeModunuToggle} style={{ textAlign: `${designComment.textAlign}`, fontFamily: designComment.font, color: `${designComment.color}`, fontSize: `${designComment.fontSize}px` }}>
                                             {metin == null ? responseData.comments[0] : metin}
                                         </div>
                                     )}
                                 </div>
-                                <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
+                                <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={designComment.fontSize} selectedFont={designComment.font} color={designComment.color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
                             </div>
                         </div>
                     </Grid>
@@ -131,14 +152,14 @@ export default function CommentsPromotionalSite({ responseData }) {
                                     {duzenlemeModuu ? (
                                         <TextareaAutosize
                                             style={{
-                                                width: '100%', background: "#EBEBEB", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
+                                                width: '100%', background: "#EBEBEB", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${designComment.fontSize}px`, fontFamily: designComment.font, textAlign: `${designComment.textAlign}`, fontWeight: "400", color: `${designComment.color}`,
                                             }}
                                             multiline
                                             rows={15}
                                             defaultValue={responseData.comments[1]}
                                             type="text" value={metinn} onChange={metniGuncelle1} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle1} autoFocus />
                                     ) : (
-                                        <div onClick={duzenlemeModunuToggle1} style={{ textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }} >
+                                        <div onClick={duzenlemeModunuToggle1} style={{ textAlign: `${designComment.textAlign}`, fontFamily: designComment.font, color: `${designComment.color}`, fontSize: `${designComment.fontSize}px` }} >
                                             {metinn == null ? responseData.comments[1] : metinn}
                                         </div>
                                     )}
@@ -162,19 +183,19 @@ export default function CommentsPromotionalSite({ responseData }) {
                                     {duzenlemeModuuu ? (
                                         <TextareaAutosize
                                             style={{
-                                                width: '100%', background: "#EBEBEB", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "400", color: `${color}`,
+                                                width: '100%', background: "#EBEBEB", marginTop: "0px", maxHeight: "580px", justifyContent: "center", resize: "none", border: "0px", letterSpacing: "0em", fontSize: `${designComment.fontSize}px`, fontFamily: designComment.font, textAlign: `${designComment.textAlign}`, fontWeight: "400", color: `${designComment.color}`,
                                             }}
                                             multiline
                                             rows={15}
                                             defaultValue={responseData.comments[2]}
                                             type="text" value={metinnn} onChange={metniGuncelle2} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle2} autoFocus />
                                     ) : (
-                                        <div onClick={duzenlemeModunuToggle2} style={{ textAlign: `${textAlign}`, fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }} >
+                                        <div onClick={duzenlemeModunuToggle2} style={{ textAlign: `${designComment.textAlign}`, fontFamily: designComment.font, color: `${designComment.color}`, fontSize: `${designComment.fontSize}px` }} >
                                             {metinnn == null ? responseData.comments[2] : metinnn}
                                         </div>
                                     )}
                                 </div>
-                                <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
+                                <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={designComment.fontSize} selectedFont={designComment.font} color={designComment.color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
                             </div>
                         </div>
                     </Grid>
