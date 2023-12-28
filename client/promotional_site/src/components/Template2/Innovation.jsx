@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect, useContext } from 'react';
 import ChangeText from '../Template1/ChangeText'
 import TextContext from '../../context/TextContext';
 import { TextareaAutosize } from '@mui/material';
 import { Modal } from '@mui/base';
 import './style/template2.css'
+import Template2Context from '../../context/Template2Context';
 
 
 const Innovation = ({ responseData }) => {
@@ -11,10 +12,14 @@ const Innovation = ({ responseData }) => {
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [fontSize, setFontSize] = useState();
-  const [color, setColor] = useState('black');
-  const [selectedFont, setSelectedFont] = useState('Roboto, sans-serif');
-  const [textAlign, setTextAlign] = useState("center");
+  const { template2Response, setTemplate2Response } = useContext(Template2Context);
+
+  const [designInnovation, setDesignInnovation] = useState({
+    fontSize: 25,
+    color: "black",
+    font: "Roboto, sans-serif",
+    textAlign: "center",
+  })
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -26,19 +31,31 @@ const Innovation = ({ responseData }) => {
   };
 
   const handleFontSizeChange = (newFontSize) => {
-    setFontSize(newFontSize);
+    setDesignInnovation(prevdesign => {
+      const updated = { ...prevdesign, fontSize: newFontSize };
+      return updated;
+    });
   };
 
   const handleTextAlignChange = (e) => {
-    setTextAlign(e);
+    setDesignInnovation(prevdesign => {
+      const updated = { ...prevdesign, textAlign: e };
+      return updated;
+    });
   }
 
   const handleColorChange = (newColor) => {
-    setColor(newColor);
+    setDesignInnovation(prevdesign => {
+      const updated = { ...prevdesign, color: newColor };
+      return updated;
+    });
   };
 
   const handleFontChange = (e) => {
-    setSelectedFont(e.target.value);
+    setDesignInnovation(prevdesign => {
+      const updated = { ...prevdesign, font: e.target.value };
+      return updated;
+    });
   };
 
   const metniGuncelle = (e) => {
@@ -73,6 +90,10 @@ const Innovation = ({ responseData }) => {
       return { top: y, left: x - modalWidth };
     }
   };
+  useEffect(() => {
+    setTemplate2Response({ ...template2Response, designInnovation:designInnovation,innovations:(innovations == null ? responseData.innovations : innovations)});
+    console.log(template2Response)
+  }, [,designInnovation,innovations])
 
   return (
     <div>
@@ -81,18 +102,18 @@ const Innovation = ({ responseData }) => {
         {duzenlemeModu ? (
           <div className='container'>
             <TextareaAutosize
-              style={{ width: '150%', placeItems: "center", whiteSpace: "pre-wrap", display: "flex", fontWeight: "400", resize: "none", backgroundColor: "#F1F1F1", border: "0px", fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: `${textAlign}` }}
+              style={{ width: '150%', placeItems: "center", whiteSpace: "pre-wrap", display: "flex", fontWeight: "400", resize: "none", backgroundColor: "#F1F1F1", border: "0px", fontFamily: designInnovation.font, color: `${designInnovation.color}`, fontSize: `${designInnovation.fontSize}px`, textAlign: `${designInnovation.textAlign}` }}
               defaultValue={responseData.innovations}
               type="text" value={innovations} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus />
           </div>
         ) : (
           <div onClick={duzenlemeModunuToggle} >
-            <p className='DataSecP' style={{ fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px`, textAlign: `${textAlign}` }} > {innovations == null ? responseData.innovations : innovations}</p>
+            <p className='DataSecP' style={{ fontFamily: designInnovation.font, color: `${designInnovation.color}`, fontSize: `${designInnovation.fontSize}px`, textAlign: `${designInnovation.textAlign}` }} > {innovations == null ? responseData.innovations : innovations}</p>
           </div>
         )}
 
       </div>
-      <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
+      <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={designInnovation.fontSize} selectedFont={designInnovation.font} color={designInnovation.color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
     </div>
   );
 }

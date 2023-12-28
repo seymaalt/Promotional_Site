@@ -5,6 +5,7 @@ import PromotionalSite from "./pages/PromotionalSite";
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import GlobalProvider from "./context/GlobalProvider.jsx";
+import Template2Provider from "./context/Template2Provider.jsx";
 import AuthProvider from './context/AuthProvider.jsx'
 import TextProvider from "./context/TextProvider.jsx";
 import Template3Provider from "./context/Template3Provider.jsx";
@@ -30,6 +31,7 @@ function App() {
       <TextProvider>
         <GlobalProvider>
           <Template3Provider>
+           <Template2Provider>
             <Template1Provider>
               <BrowserRouter>
                 <Routes>
@@ -52,6 +54,7 @@ function App() {
                 </Routes>
               </BrowserRouter>
             </Template1Provider>
+            </Template2Provider>
           </Template3Provider>
         </GlobalProvider>
       </TextProvider>
