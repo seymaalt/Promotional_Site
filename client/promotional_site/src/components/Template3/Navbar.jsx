@@ -172,6 +172,7 @@ const Template3Navbar = () => {
 
         return { top: y, left: x };
     };
+    
     const [companyNameText, setCompanyNameText] = useState(response && response.businessName ? response.businessName : 'COMPANY NAME')
     const [navigationText1, setNavigationText1] = useState('Services')
     const [navigationText2, setNavigationText2] = useState('Section 2')

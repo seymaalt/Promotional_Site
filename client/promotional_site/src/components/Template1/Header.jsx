@@ -7,7 +7,7 @@ import TextContext from "../../context/TextContext";
 import Template1Context from "../../context/Template1Context";
 
 export default function HeaderPromotionalSite({ responseData, changedData, colorData }) {
-  const { template1Response, setTemplate1Response } = useContext(Template1Context);
+  const { contextHeader, setContextHeader } = useContext(Template1Context);
 
   const { header, setHeader } = useContext(TextContext);
   const [metin, setMetin] = useState(responseData.header);
@@ -82,12 +82,18 @@ export default function HeaderPromotionalSite({ responseData, changedData, color
 
 
   useEffect(() => {
-    setTemplate1Response({ ...template1Response, header: (changedData == null ? responseData.header : changedData), designHeader: designHeader });
-    console.log(template1Response)
+    setContextHeader({ header: (changedData == null ? responseData.header : changedData), designHeader: designHeader })
+    console.log(contextHeader)
   }, [header, designHeader])
 
+  useEffect(() => {
+    console.log(contextHeader)
+  })
+
   return (
-    <div>
+    <motion.nav variants={navVariants}
+      initial="hidden"
+      whileInView="show">
       <div id="header" onDoubleClick={openModal} >
         {duzenlemeModu ? (
           <TextareaAutosize
@@ -105,6 +111,6 @@ export default function HeaderPromotionalSite({ responseData, changedData, color
         )}
       </div>
       <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={designHeader.fontSize} selectedFont={designHeader.selectedFont} color={designHeader.color} modalPosition={modalPosition} />
-    </div>
+    </motion.nav >
   );
 }

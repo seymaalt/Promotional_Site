@@ -24,6 +24,8 @@ const LockIconExample = () => {
 export default function DataSecurityPromotionalSite({ responseData, changedData, colorData }) {
   const { dataSecurity, setDataSecurity } = useContext(TextContext);
   const { template1Response, setTemplate1Response } = useContext(Template1Context);
+  const { contextDataSecurity, setContextDataSecurity } = useContext(Template1Context);
+
   const [metin, setMetin] = useState(responseData.dataSecurity);
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -102,9 +104,12 @@ export default function DataSecurityPromotionalSite({ responseData, changedData,
   };
 
   useEffect(() => {
-    setTemplate1Response({ ...template1Response, dataSecurity:(changedData == null ? responseData.dataSecurity : changedData), designDataSecurity:designDataSecurity });
-    console.log(template1Response)
+    setContextDataSecurity({dataSecurity:(changedData == null ? responseData.dataSecurity : changedData), designDataSecurity:designDataSecurity})
   }, [dataSecurity,designDataSecurity])
+
+  useEffect(() => {
+    console.log(contextDataSecurity)
+  })
 
   return (
     <div>
