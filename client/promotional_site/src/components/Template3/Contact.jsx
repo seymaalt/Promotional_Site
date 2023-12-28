@@ -20,23 +20,31 @@ const ContactForm = () => {
                     <div class="left-side">
                         <div class="address details">
                             <LocationOnIcon sx={{ fontSize: '3rem', color: 'white' }} />
-                            <div class="topic">Address</div>
-                            <div class="text-one">Kozyatağı Mahallesi, 19 Mayıs Caddesi, Sarıkanarya Sokağı, Bina No 14 Byoffice Plaza (K2 Plaza) Kat 10, İç Kapı No 10, 34736 Kadıköy/İstanbul</div>
+                            <EditableText className='editHover topic' initialValue='Address' backColor="rgb(30, 64, 175)" />
+
+                            <EditableText className='editHover text-one' initialValue='Kozyatağı Mahallesi, 19 Mayıs Caddesi, Sarıkanarya Sokağı, Bina No 14 Byoffice Plaza (K2 Plaza) Kat 10, İç Kapı No 10, 34736 Kadıköy/İstanbul' backColor="rgb(30, 64, 175)" />
+
                         </div>
                         <div class="phone details">
                             <PhoneIcon sx={{ fontSize: '3rem', color: 'white' }}/>
-                            <div class="topic">Phone</div>
-                            <div class="text-one">0 (216) 473 46 74</div>
+
+                            <EditableText className='editHover topic' initialValue='Phone' backColor="rgb(30, 64, 175)" />
+
+                            <EditableText className='editHover text-one' initialValue='0 (216) 473 46 74' backColor="rgb(30, 64, 175)" />
+
                         </div>
                         <div class="email details">
                             <EmailIcon sx={{ fontSize: '3rem', color: 'white' }}/>
-                            <div class="topic">Email</div>
-                            <div class="text-one">info@venhancer.com</div>
+                            <EditableText className='editHover topic' initialValue='Email' backColor="rgb(30, 64, 175)" />
+                            <EditableText className='editHover text-one' initialValue='info@venhancer.com' backColor="rgb(30, 64, 175)" />
+
                         </div>
                     </div>
                     <div class="right-side">
-                        <div class="topic-text">Send us a message</div>
-                        <p style={{ color: 'white' }}>If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you.</p>
+                        <EditableText className='editHover topic-text' initialValue='Send us a message' backColor="rgb(30, 64, 175)" />
+
+                        <EditableText className='editHover topic-desc' initialValue="If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you" backColor="rgb(30, 64, 175)" color="white" />
+
                         <form action="#">
                             <div class="input-box">
                                 <input type="text" placeholder="Enter your name" />

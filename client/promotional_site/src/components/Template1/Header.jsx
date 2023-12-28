@@ -11,7 +11,7 @@ export default function HeaderPromotionalSite({ responseData, changedData, color
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [fontSize, setFontSize] = useState(48);
+  const [fontSize, setFontSize] = useState();
   const [color, setColor] = useState('white');
   const [selectedFont, setSelectedFont] = useState('Roboto, sans-serif');
 
@@ -70,7 +70,7 @@ export default function HeaderPromotionalSite({ responseData, changedData, color
     <motion.nav variants={navVariants}
       initial="hidden"
       whileInView="show">
-      <div className="header" onDoubleClick={openModal} >
+      <div id="header" onDoubleClick={openModal} >
       {duzenlemeModu ? (
         <TextareaAutosize
           style={{  marginTop: "0%",textTransform:"uppercase",paddingLeft:"10%",paddingRight:"10%", resize: "none", border: "0px", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: "center", color: `${color}`, background: (colorData == null ? 'black' : colorData) }}

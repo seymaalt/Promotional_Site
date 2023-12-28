@@ -43,13 +43,6 @@ body {
   justify-content: center;
 }
 
-.downloadButtons {
-  margin-top: 2%;
-  margin-inline-start: 30%;
-  margin-inline-end: 30%;
-  justify-content: center;
-}
-
 .discription2 {
   color: black;
   font-weight: 75px;
@@ -252,10 +245,6 @@ body {
   color: black;
 }
 
-.dataInvIcon {
-  width: 400px;
-}
-
 .logined {
   margin-top: 25px;
 }
@@ -402,12 +391,7 @@ body {
     -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2;
-  }
-
-  .downloadButtons {
-    margin-inline: 100px;
-    margin-top: 25%;
-    justify-content: center;
+    overflow: hidden;
   }
 
   .background {
@@ -462,10 +446,6 @@ body {
     align-items: center;
   }
 
-  .downloadButtons {
-    justify-content: center;
-  }
-
   #inputlink {
     width: 35dvh;
   }
@@ -511,10 +491,6 @@ body {
   .disc {
     margin-inline-start: 0%;
     margin-inline-end: 0%;
-  }
-
-  .dataInvIcon {
-    width: 165px;
   }
 
   .icon button {

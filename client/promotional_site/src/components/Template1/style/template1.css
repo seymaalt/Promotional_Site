@@ -1,3 +1,12 @@
+::-webkit-scrollbar {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(59, 59, 59);
+    border-radius: 2rem;
+}
+
 .innovationsHeader {
     font-size: 70px;
     margin-top: 3%;
@@ -17,9 +26,18 @@
 }
 
 .discription {
+    height: 30dvh;
+    overflow: auto;
     color: white;
     font-size: 25px;
     white-space: pre-wrap;
+}
+
+.downloadButtons {
+    margin-top: 2%;
+    margin-inline-start: 30%;
+    margin-inline-end: 30%;
+    justify-content: center;
 }
 
 .downloadbutton .grid {
@@ -137,7 +155,7 @@
     transition: all 350mx ease;
     cursor: pointer;
     border-block-end: solid 3px red;
-    width: 250px;
+    width: 90%;
     height: auto;
     display: block;
     cursor: pointer;
@@ -148,7 +166,7 @@
     transition: all 350mx ease;
     cursor: pointer;
     border-block-end: solid 3px red;
-    width: 250px;
+    width: 90%;
     height: auto;
     display: block;
     cursor: pointer;
@@ -159,7 +177,7 @@
     filter: opacity(.8);
 }
 
-.header {
+#header {
     text-align: center;
     color: white;
     text-transform: uppercase;
@@ -169,6 +187,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.dataInvIcon {
+    width: 80%;
 }
 
 .logo {
@@ -182,18 +204,52 @@
 @media screen and (max-width: 1200px) {
     .image {
         padding-top: 7%;
-        width: 250px;
+        width: 100%;
     }
 
     .singImage {
         padding-top: 7%;
-        width: 250px;
+        width: 100%;
+    }
+
+    .logo {
+        width: 15%;
+    }
+
+    #header {
+        font-size: 3rem;
+    }
+
+    .discription {
+        height: 40dvh;
+        overflow: auto;
+        color: white;
+        font-size: 1.2rem;
+        white-space: pre-wrap;
+    }
+
+    .downloadButtons {
+        justify-content: center;
+    }
+
+    .dataInvIcon {
+        width: 60%;
+    }
+
+    .innovationsHeader {
+        font-size: 2.45rem;
+    }
+
+    .container {
+        font-size: 1.20rem;
+        padding: 5%;
     }
 }
 
 @media screen and (max-width: 600px) {
     .innovationsHeader {
-        font-size: 28px;
+        font-size: 1.8rem;
+
     }
 
     .container {
@@ -203,6 +259,10 @@
 
     .discription {
         font-size: 24px;
+    }
+
+    .downloadButtons {
+        justify-content: center;
     }
 
     .downloadbutton .grid {
@@ -251,5 +311,9 @@
     .logo {
         width: 40%;
         margin-top: 15%;
+    }
+
+    .dataInvIcon {
+        width: 165px;
     }
 }
