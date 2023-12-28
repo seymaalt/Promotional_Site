@@ -14,16 +14,19 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
 
   const { discription, setDiscription } = useContext(TextContext);
   const { template1Response, setTemplate1Response } = useContext(Template1Context);
+  const { color, setColor } = useContext(Template1Context);
+  const { contextDescription, setContextDescription } = useContext(Template1Context);
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+  var backgroundColor = (colorData == null ? 'black' : colorData)
 
   const [designDiscription, setDesignDiscription] = useState({
     fontSize: "1.4rem",
     color: 'white',
     font: "Roboto, sans-serif",
     textAlign: 'center',
-    backgroundColor: colorData,
+    backgroundColor: (colorData == null ? 'black' : colorData),
   })
 
   const openModal = () => {
@@ -95,9 +98,15 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
   };
 
   useEffect(() => {
-    setTemplate1Response({ ...template1Response, discription:(changedData == null ? responseData.description : changedData), designDiscription:designDiscription });
-    console.log(template1Response)
-  }, [discription,designDiscription])
+    setColor({ backgroundColor: backgroundColor })
+    setContextDescription({ discription: (changedData == null ? responseData.description : changedData), designDiscription: designDiscription })
+
+  }, [discription, designDiscription])
+
+  useEffect(() => {
+    console.log(contextDescription)
+    console.log(color)
+  })
 
   return (
     <motion.nav variants={navVariants}
@@ -106,7 +115,7 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
       <div className='container'>
         {duzenlemeModu ? (
           <TextareaAutosize
-            style={{ width: '100%', justifyContent: "center", padding: "0px", resize: "none", border: "0px", fontSize: `${designDiscription.fontSize}px`, fontFamily: designDiscription.font, textAlign: `${designDiscription.textAlign}`, fontWeight: "75px", color: `${designDiscription.color}`, background: (designDiscription.backgroundColor == null ? 'black' : designDiscription.backgroundColor) }}
+            style={{ width: '100%', justifyContent: "center", padding: "0px", resize: "none", border: "0px", fontSize: `${designDiscription.fontSize}px`, fontFamily: designDiscription.font, textAlign: `${designDiscription.textAlign}`, fontWeight: "75px", color: `${designDiscription.color}`, background: (colorData == null ? 'black' : colorData) }}
             id="header"
             name="header"
             multiline

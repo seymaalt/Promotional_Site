@@ -24,6 +24,8 @@ const InnovationIcon = () => {
 export default function InnovationsPromotionalSite({ responseData, changedData, colorData }) {
   const { innovations, setInnovations } = useContext(TextContext);
   const { template1Response, setTemplate1Response } = useContext(Template1Context);
+  const { contextInnovations, setContextInnovations } = useContext(Template1Context);
+
   const [metin, setMetin] = useState(responseData.innovations);
   const [metinHeader, setMetinHeader] = useState("INNOVATIONS");
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
@@ -112,9 +114,9 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
   };
 
   useEffect(() => {
-    setTemplate1Response({ ...template1Response, innovations:(changedData == null ? responseData.innovations : changedData), designInnovations:designInnovations });
-    console.log(template1Response)
-  }, [innovations,designInnovations])
+    setContextInnovations({ innovations: (changedData == null ? responseData.innovations : changedData), designInnovations: designInnovations })
+    console.log(contextInnovations)
+  }, [innovations, designInnovations])
 
   return (
     <div>

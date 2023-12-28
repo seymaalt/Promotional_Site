@@ -1,17 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { motion } from 'framer-motion';
 import { navVariants } from '../../utils/motion';
+import Template1Context from '../../context/Template1Context';
 
 export default function GalleryPromotionalSite({ responseData, colorData }) {
+    const { template1Response, setTemplate1Response } = useContext(Template1Context);
+    const { contextImages, setContextImages } = useContext(Template1Context);
+
     const [model, setModel] = useState(false);
     const [tempImgSrc, setTempImgSrc] = useState('')
 
     const images = responseData.images
+
     const getImage = (image) => {
         setTempImgSrc(image)
         setModel(true)
     }
+
+    useEffect(() => {
+        setContextImages({images: images });
+    }, [images])
+
+    useEffect(() => {
+        console.log(contextImages)
+    })
+
     return (
         <div >
             <motion.nav variants={navVariants}
