@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Grid from "@mui/material/Grid";
 import './style/template3.css'
 import GlobalContext from '../../context/GlobalContext';
+import Template3Context from '../../context/Template3Context';
 import { TextareaAutosize } from '@mui/material';
 import EditableText from './EditableText';
 import ChangeDesign from './ChangeDesign';
@@ -9,6 +10,7 @@ import ChangeDesign from './ChangeDesign';
 
 const Template3Navbar = () => {
     const { response } = useContext(GlobalContext);
+    const { template3Response, setTemplate3Response } = useContext(Template3Context);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
 
     const [designCompanyName, setDesignCompanyName] = useState({
@@ -175,7 +177,7 @@ const Template3Navbar = () => {
     const [navigationText2, setNavigationText2] = useState('Section 2')
     const [navigationText3, setNavigationText3] = useState('Contact')
     const [buttonText, setButtonText] = useState('Get Started')
-    
+
     const handleCompanyNameTextChange = (e) => {
         setCompanyNameText(e);
     };
@@ -192,6 +194,11 @@ const Template3Navbar = () => {
         setButtonText(e);
     };
 
+    useEffect(() => {
+        setTemplate3Response({...template3Response,  companyNameText: companyNameText, designCompanyName: designCompanyName, navigationText1: navigationText1, navigationText2: navigationText2, navigationText3: navigationText3, designNav: designNav, buttonText: buttonText, designNavButton: designNavButton });
+        console.log(template3Response)
+    }, [companyNameText, designCompanyName, navigationText1, navigationText2, navigationText3, designNav, buttonText, designNavButton])
+
     return (
         <div className='temp3Navbar'>
             <Grid container >
@@ -200,9 +207,7 @@ const Template3Navbar = () => {
                     <Grid container >
                         <Grid item md={3} xs={6} className='companyName' id={1} onDoubleClick={handleDivClick}>
                             <EditableText className='editHover companyName' initialValue={companyNameText} handleDefaultTextChange={handleCompanyNameTextChange} backColor="#FAF8F4" fontSize={designCompanyName.fontSize} selectedFont={designCompanyName.font} color={designCompanyName.color} textAlign={designCompanyName.textAlign} />
-
                             <ChangeDesign open={designCompanyName.isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={designCompanyName.fontSize} selectedFont={designCompanyName.font} color={designCompanyName.color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} textAlign={designCompanyName.textAlign} />
-
                         </Grid>
                         <Grid item md={6} xs={0} className='navigation'>
 

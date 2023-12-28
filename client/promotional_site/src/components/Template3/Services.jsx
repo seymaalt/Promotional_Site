@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Grid from "@mui/material/Grid";
 import CircleIcon from '@mui/icons-material/Circle';
+import Template3Context from '../../context/Template3Context';
 import EditableText from './EditableText';
 import ChangeImage from './ChangeImage'
 import ChangeDesign from './ChangeDesign';
 
 
 const Services = () => {
+    const { template3Response, setTemplate3Response } = useContext(Template3Context);
+
     const [modalPositionImage, setModalPositionImage] = useState({ top: 0, left: 0 });
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
 
@@ -278,7 +281,7 @@ const Services = () => {
     };
     const handleServiceBoxDiscTextChange2 = (e) => {
         setServiceBoxDiscText2(e);
-    };    
+    };
     const handleServiceBoxDiscTextChange3 = (e) => {
         setServiceBoxDiscText3(e);
     };
@@ -289,6 +292,16 @@ const Services = () => {
         setServiceDiscText(e);
     };
 
+    useEffect(() => {
+        setTemplate3Response({
+            ...template3Response, serviceHeaderText: serviceHeaderText, serviceDiscText: serviceDiscText, serviceBoxHeaderText1: serviceBoxHeaderText1,
+            serviceBoxHeaderText2: serviceBoxHeaderText2, serviceBoxHeaderText3: serviceBoxHeaderText3, serviceBoxDiscText1: serviceBoxDiscText1,
+            serviceBoxDiscText2: serviceBoxDiscText2, serviceBoxDiscText3: serviceBoxDiscText3, designServiceBoxHeader: designServiceBoxHeader,
+            designServiceBoxDisc: designServiceBoxDisc, designServiceHeader: designServiceHeader, designServiceDisc: designServiceDisc
+        });
+        console.log(template3Response)
+    }, [])
+
     return (
         <div className='part3'>
             <Grid container spacing={2}>
@@ -297,7 +310,7 @@ const Services = () => {
                 </Grid>
                 <ChangeDesign open={designServiceHeader.isModalOpen} onClose={closeModal} handleFontChange={handleFontServiceHeaderChange} handleFontSizeChange={handleFontSizeServiceHeaderChange} handleColorChange={handleColorServiceHeaderChange} fontSize={designServiceHeader.fontSize} selectedFont={designServiceHeader.font} color={designServiceHeader.color} textAlign={designServiceHeader.textAlign} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignServiceHeaderChange} />
                 <Grid item xs={6} onDoubleClick={handleDivClickServiceDisc} >
-                    <EditableText initialValue={serviceDiscText}  handleDefaultTextChange={handleServiceDiscTextChange} className='editHover servicesDisc' backColor='white' fontSize={designServiceDisc.fontSize} selectedFont={designServiceDisc.font} color={designServiceDisc.color} textAlign={designServiceDisc.textAlign} />
+                    <EditableText initialValue={serviceDiscText} handleDefaultTextChange={handleServiceDiscTextChange} className='editHover servicesDisc' backColor='white' fontSize={designServiceDisc.fontSize} selectedFont={designServiceDisc.font} color={designServiceDisc.color} textAlign={designServiceDisc.textAlign} />
                 </Grid>
                 <ChangeDesign open={designServiceDisc.isModalOpen} onClose={closeModal} handleFontChange={handleFontServiceDiscChange} handleFontSizeChange={handleFontSizeServiceDiscChange} handleColorChange={handleColorServiceDiscChange} fontSize={designServiceDisc.fontSize} selectedFont={designServiceDisc.font} color={designServiceDisc.color} textAlign={designServiceDisc.textAlign} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignServiceDiscChange} />
                 <Grid item md={4} xs={10} >
@@ -322,7 +335,7 @@ const Services = () => {
                             alignItems="center"
                         >
                             <Grid item xs={8} onDoubleClick={handleDivClickServiceBoxDisc}>
-                                <EditableText initialValue={serviceBoxDiscText1}  handleDefaultTextChange={handleServiceBoxDiscTextChange1} className='editHover servicesBoxDisc' backColor='#E5E7EB' fontSize={designServiceBoxDisc.fontSize} selectedFont={designServiceBoxDisc.font} color={designServiceBoxDisc.color} textAlign={designServiceBoxDisc.textAlign} />
+                                <EditableText initialValue={serviceBoxDiscText1} handleDefaultTextChange={handleServiceBoxDiscTextChange1} className='editHover servicesBoxDisc' backColor='#E5E7EB' fontSize={designServiceBoxDisc.fontSize} selectedFont={designServiceBoxDisc.font} color={designServiceBoxDisc.color} textAlign={designServiceBoxDisc.textAlign} />
 
                             </Grid>
                             <Grid item xs={4}>
@@ -341,7 +354,7 @@ const Services = () => {
                         <img className='editHover servicesImage' src={selectedImage1} onClick={handleImageClick1}></img>
                         <ChangeImage isOpen={isImageUploaderOpen1} onImageChange={handleImageChange1} onClose={handleImageUploaderClose} modalPosition={modalPositionImage} />
 
-                        <div onDoubleClick={handleDivClickServiceBoxHeader}><EditableText initialValue={serviceBoxHeaderText2} handleDefaultTextChange={handleServiceBoxHeaderTextChange2} className='editHover servicesBoxHeader' backColor='#E5E7EB' fontSize={designServiceBoxHeader.fontSize} selectedFont={designServiceBoxHeader.font} color={designServiceBoxHeader.color} textAlign={designServiceBoxHeader.textAlign}  /></div>
+                        <div onDoubleClick={handleDivClickServiceBoxHeader}><EditableText initialValue={serviceBoxHeaderText2} handleDefaultTextChange={handleServiceBoxHeaderTextChange2} className='editHover servicesBoxHeader' backColor='#E5E7EB' fontSize={designServiceBoxHeader.fontSize} selectedFont={designServiceBoxHeader.font} color={designServiceBoxHeader.color} textAlign={designServiceBoxHeader.textAlign} /></div>
 
                         <Grid
                             container
@@ -369,7 +382,7 @@ const Services = () => {
                         <img className='editHover servicesImage' src={selectedImage2} onClick={handleImageClick2}></img>
                         <ChangeImage isOpen={isImageUploaderOpen2} onImageChange={handleImageChange2} onClose={handleImageUploaderClose} modalPosition={modalPositionImage} />
 
-                        <div onDoubleClick={handleDivClickServiceBoxHeader}><EditableText initialValue={serviceBoxHeaderText3} handleDefaultTextChange={handleServiceBoxHeaderTextChange3} className='editHover servicesBoxHeader' backColor='#E5E7EB' fontSize={designServiceBoxHeader.fontSize} selectedFont={designServiceBoxHeader.font} color={designServiceBoxHeader.color} textAlign={designServiceBoxHeader.textAlign}  /></div>
+                        <div onDoubleClick={handleDivClickServiceBoxHeader}><EditableText initialValue={serviceBoxHeaderText3} handleDefaultTextChange={handleServiceBoxHeaderTextChange3} className='editHover servicesBoxHeader' backColor='#E5E7EB' fontSize={designServiceBoxHeader.fontSize} selectedFont={designServiceBoxHeader.font} color={designServiceBoxHeader.color} textAlign={designServiceBoxHeader.textAlign} /></div>
                         <Grid
                             container
                             direction="row"
