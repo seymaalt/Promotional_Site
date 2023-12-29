@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Modal, Button, TextareaAutosize } from '@mui/material';
-import EditPageContext from '../../context/EditPageContext';
 import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
 import FormatAlignJustifyIcon from '@mui/icons-material/FormatAlignJustify';
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
@@ -66,7 +65,7 @@ function ChangeDesign({ open, onClose, handleColorChange, handleFontChange, hand
                 padding: '8px',
                 borderRadius: '5px',
                 border: '1px solid #ccc',
-              }} onChange={handleFontChange}>
+              }} onChange={(e) => handleFontChange(e.target.value)}>
               <option value="Roboto, sans-serif">Roboto</option>
               <option value="Crimson Text, serif">Dosis</option>
               <option value="Ubuntu, sans-serif">Ubuntu</option>

@@ -47,6 +47,7 @@
     height: 5rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 2%;
     background-color: #161417;
 }
@@ -57,27 +58,28 @@
 
 .homeNavbarP2 {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-grow: 1;
-    margin-left: 30%;
 }
 
 .homeNavbarNavigate {
     color: white;
-    font-size: 20px;
+    font-size: 1.3rem;
     margin: 0 40px 0 0;
     text-decoration: none;
 }
 
 .homeLoginButton {
     color: white;
-    font-size: 20px;
+    font-size: 1.3rem;
     margin: 0 30px 0 0;
     text-decoration: none;
 }
 
 .homeRegisterButton {
     color: #161417;
-    font-size: 20px;
+    font-size: 1.3rem;
     margin: 0 0px 0 0;
     text-decoration: none;
     padding: 8px 15px;
@@ -155,9 +157,12 @@
 }
 
 .howItWork {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 30px;
     background-color: #2F2D30;
-    height: 650px;
+    height: 40rem;
     margin-bottom: 5%;
 }
 
@@ -165,6 +170,15 @@
     -webkit-box-shadow: 0px 0px 54px 21px rgba(144, 106, 215, 0.6);
     -moz-box-shadow: 0px 0px 54px 21px rgba(144, 106, 215, 0.6);
     box-shadow: 0px 0px 54px 21px rgba(144, 106, 215, 0.6);
+}
+
+.howItWorkBusinessText{
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    width: 80%;
+    font-size: x-large;
+    font-weight: 600;
 }
 
 /* Footer */
@@ -249,6 +263,68 @@
     border-radius: 0px 30px 30px 0px;
 }
 
+#loginPageHeader {
+    font-family: poppins;
+    color: white;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 15%;
+}
+
+#forgotPassword {
+    font-family: poppins;
+    width: 80%;
+    text-align: right;
+    font-size: 1rem;
+    color: white;
+    text-transform: none;
+}
+
+.loginPageBox {
+    border-radius: 30px;
+    background-color: #2F2D30;
+    height: 80%;
+    display: flex;
+    margin-top: 5%;
+}
+
+.loginPageDivBox {
+    min-height: 100%;
+    border-radius: 30px 0px 0px 30px;
+    background-color: #2F2D30;
+}
+
+.loginPageDiv {
+    padding: 5%;
+}
+
+#loginPageButton {
+    background-image: linear-gradient(45deg, #7040e2, #906ad7, #ad92cb);
+    border-radius: 30px;
+    font-family: poppins;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.loginPageOr {
+    text-align: center;
+    font-family: poppins;
+    font-size: 20px;
+    color: white;
+}
+
+#loginPageGoogle {
+    background: white;
+    font-weight: bold;
+    color: gray;
+    border-radius: 30px;
+}
+
+.loginPageGoogleLogo {
+    width: 24px;
+    margin-right: 8px;
+}
+
 /* Profile Screen */
 .profileBackground {
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../assets/59438.jpg');
@@ -256,6 +332,13 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.profile2Logo {
+    width: 240%;
+    height: auto;
+    padding: 15px;
     align-items: center;
 }
 
@@ -269,7 +352,7 @@
     background-color: rgba(0, 0, 0, 0.466);
 }
 
-.profileHeader{
+.profileHeader {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -301,6 +384,8 @@
     font-size: 1.55rem;
     text-align: center;
     padding-right: 15%;
+    padding-left: 15%;
+
 }
 
 #profileButton2 {
@@ -351,7 +436,75 @@
     font-size: 1.15rem;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1200px) {
+
+    .homeNavbarP2 {
+        display: flex;
+        flex-grow: 1;
+    }
+
+    .homeNavbarLogo {
+        width: 13rem;
+        padding-left: 5%;
+    }
+
+    .homeNavbarNavigate {
+        font-size: 1rem;
+        margin: 0 40px 0 0;
+        text-decoration: none;
+    }
+
+    .homeLoginButton {
+        font-size: 20px;
+        margin: 0 30px 0 0;
+        text-decoration: none;
+    }
+
+    .homeBuildText {
+        font-size: 230%;
+    }
+
+    .homeUrlDiv {
+        justify-content: center;
+    }
+
+    .homeUrlText {
+        font-size: 16px;
+        text-align: center;
+        width: 80%
+    }
+
+    .homeInputLink {
+        width: 100%;
+    }
+
+    .homeInputBussinessDiv {
+        text-align: center;
+    }
+
+    .homeInputBussiness {
+        justify-content: center;
+        position: relative;
+        width: 80%;
+        align-items: center;
+        padding-left: 10%;
+    }
+
+    .howItWork {
+        height: 25rem;
+        margin-bottom: 5%;
+    }
+
+    .loginPageImage {
+        display: none;
+    }
+
+    .loginPageDivBox {
+        border-radius: 30px;
+    }
+}
+
+@media screen and (max-width: 800px) {
 
     .homeNavbarP2 {
         display: none;
@@ -433,10 +586,6 @@
         font-size: 12px;
     }
 
-    .homeLoginRegister {
-        margin-left: 14vw;
-    }
-
     .footerLogo {
         width: 40%;
     }
@@ -451,25 +600,90 @@
     }
 
     .footerDiv {
-        height: 24vh;
+        min-height: 24vh;
     }
 
     .footerLogo {
         padding: 1%;
         width: 50%;
     }
-    
+
     .footerNavigate {
         text-align: center;
         font-size: 0.65rem;
     }
-    
+
     .footerCopyright {
         font-size: 0.65rem;
         padding-top: 2rem;
     }
 
+    .loginPageDivBox {
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .loginPageBox {
+        height: 75%;
+        display: flex;
+        margin-top: 25%;
+    }
+
     .loginPageImage {
         display: none;
+    }
+
+    #loginPageHeader {
+        font-size: 2rem;
+    }
+
+    #forgotPassword {
+        font-size: 0.85rem;
+    }
+
+    #loginPageGoogle {
+        border-radius: 30px;
+        font-size: 0.65rem;
+    }
+
+    .loginPageGoogleLogo {
+        width: 16px;
+    }
+
+    .loginPageOr {
+        font-size: 0.85rem;
+    }
+
+    .profile2Logo {
+        margin-top: 30%;
+    }
+
+    .profileCard2 {
+        margin-top: 3%;
+        padding: 10%;
+        width: 60%;
+        border-radius: 1.875rem;
+        background-color: rgba(0, 0, 0, 0.466);
+    }
+
+    .profileHeader {
+        font-size: 2rem;
+        padding-bottom: 10%;
+    }
+
+    .profileLabel2 {
+        font-size: 0.95rem;
+    }
+
+    .profileData2 {
+        font-size: 0.65rem;
+    }
+
+    #profileButton2 {
+        width: 80%;
+        font-size: 0.55rem;
+        color: black;
     }
 }

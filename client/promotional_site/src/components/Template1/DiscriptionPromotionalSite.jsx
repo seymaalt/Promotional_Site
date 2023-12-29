@@ -6,19 +6,28 @@ import styles from '../../styles';
 import { navVariants } from '../../utils/motion';
 import Grid from "@mui/material/Grid";
 import TextContext from '../../context/TextContext';
+import Template1Context from '../../context/Template1Context';
 import ChangeText from './ChangeText'
 
 
 export default function DiscriptionPromotionalSite({ responseData, changedData, colorData }) {
+
   const { discription, setDiscription } = useContext(TextContext);
+  const { template1Response, setTemplate1Response } = useContext(Template1Context);
+  const { color, setColor } = useContext(Template1Context);
+  const { contextDescription, setContextDescription } = useContext(Template1Context);
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [fontSize, setFontSize] = useState();
-  const [color, setColor] = useState('white');
-  const [selectedFont, setSelectedFont] = useState('Roboto, sans-serif');
-  const [textAlign, setTextAlign] = useState("center");
+  var backgroundColor = (colorData == null ? 'black' : colorData)
 
+  const [designDiscription, setDesignDiscription] = useState({
+    fontSize: "1.4rem",
+    color: 'white',
+    font: "Roboto, sans-serif",
+    textAlign: 'center',
+    backgroundColor: (colorData == null ? 'black' : colorData),
+  })
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -30,19 +39,31 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
   };
 
   const handleFontSizeChange = (newFontSize) => {
-    setFontSize(newFontSize);
+    setDesignDiscription(prevdesignNav => {
+      const updatedNav = { ...prevdesignNav, fontSize: newFontSize };
+      return updatedNav;
+    });
   };
 
   const handleTextAlignChange = (e) => {
-    setTextAlign(e);
+    setDesignDiscription(prevdesignNav => {
+      const updatedNav = { ...prevdesignNav, textAlign: e };
+      return updatedNav;
+    });
   };
 
   const handleColorChange = (newColor) => {
-    setColor(newColor);
+    setDesignDiscription(prevdesignNav => {
+      const updatedNav = { ...prevdesignNav, color: newColor };
+      return updatedNav;
+    });
   };
 
   const handleFontChange = (e) => {
-    setSelectedFont(e.target.value);
+    setDesignDiscription(prevdesignNav => {
+      const updatedNav = { ...prevdesignNav, font: e.target.value };
+      return updatedNav;
+    });
   };
 
   const metniGuncelle = (e) => {
@@ -76,6 +97,16 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
     }
   };
 
+  useEffect(() => {
+    setColor({ backgroundColor: backgroundColor })
+    setContextDescription({ discription: (changedData == null ? responseData.description : changedData), designDiscription: designDiscription })
+
+  }, [discription, designDiscription])
+
+  useEffect(() => {
+    console.log(contextDescription)
+    console.log(color)
+  })
 
   return (
     <motion.nav variants={navVariants}
@@ -84,7 +115,7 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
       <div className='container'>
         {duzenlemeModu ? (
           <TextareaAutosize
-            style={{ width: '100%', justifyContent: "center", padding: "0px", resize: "none", border: "0px", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: `${textAlign}`, fontWeight: "75px", color: `${color}`, background: (colorData == null ? 'black' : colorData) }}
+            style={{ width: '100%', justifyContent: "center", padding: "0px", resize: "none", border: "0px", fontSize: `${designDiscription.fontSize}px`, fontFamily: designDiscription.font, textAlign: `${designDiscription.textAlign}`, fontWeight: "75px", color: `${designDiscription.color}`, background: (colorData == null ? 'black' : colorData) }}
             id="header"
             name="header"
             multiline
@@ -93,13 +124,13 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
             type="text" value={discription} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus />
         ) : (
           <div onClick={duzenlemeModunuToggle}>
-            <Grid container style={{ justifyContent: "center", color: `${color}`, fontSize: `${fontSize}px`, font: `${selectedFont}` }}>
-              <div className='discription' style={{ textAlign:`${textAlign}`, color: `${color}`, fontSize: `${fontSize}px`, fontFamily: selectedFont }}>{changedData == null ? responseData.description : changedData}</div>
+            <Grid container style={{ justifyContent: "center", color: `${designDiscription.color}`, fontSize: `${designDiscription.fontSize}px`, font: `${designDiscription.font}` }}>
+              <div className='discription' style={{ textAlign: `${designDiscription.textAlign}`, color: `${designDiscription.color}`, fontSize: `${designDiscription.fontSize}px`, fontFamily: designDiscription.font }}>{changedData == null ? responseData.description : changedData}</div>
             </Grid>
           </div>
         )}
       </div>
-      <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
+      <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={designDiscription.fontSize} selectedFont={designDiscription.font} color={designDiscription.color} modalPosition={modalPosition} handleTextAlignChange={handleTextAlignChange} />
     </motion.nav>
   )
 }

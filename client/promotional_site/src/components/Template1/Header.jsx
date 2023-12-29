@@ -1,23 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { motion } from 'framer-motion';
 import { navVariants } from '../../utils/motion';
 import ChangeText from './ChangeText'
 import { Modal, Button, TextareaAutosize } from '@mui/material';
 import TextContext from "../../context/TextContext";
+import Template1Context from "../../context/Template1Context";
 
-export default function HeaderPromotionalSite({ responseData, changedData, colorData}) {
-  const { header,setHeader } = useContext(TextContext);
+export default function HeaderPromotionalSite({ responseData, changedData, colorData }) {
+  const { contextHeader, setContextHeader } = useContext(Template1Context);
+
+  const { header, setHeader } = useContext(TextContext);
   const [metin, setMetin] = useState(responseData.header);
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const [fontSize, setFontSize] = useState(48);
-  const [color, setColor] = useState('white');
-  const [selectedFont, setSelectedFont] = useState('Roboto, sans-serif');
+
+  const [designHeader, setDesignHeader] = useState({
+    fontSize: "2rem",
+    color: 'white',
+    font: "Roboto, sans-serif",
+  })
 
   const openModal = () => {
     setIsModalOpen(true);
-
   };
 
   const closeModal = () => {
@@ -25,15 +30,24 @@ export default function HeaderPromotionalSite({ responseData, changedData, color
   };
 
   const handleFontSizeChange = (newFontSize) => {
-    setFontSize(newFontSize);
+    setDesignHeader(prevdesignNav => {
+      const updatedNav = { ...prevdesignNav, fontSize: newFontSize };
+      return updatedNav;
+    });
   };
 
   const handleColorChange = (newColor) => {
-    setColor(newColor);
+    setDesignHeader(prevdesignNav => {
+      const updatedNav = { ...prevdesignNav, color: newColor };
+      return updatedNav;
+    });
   };
 
   const handleFontChange = (e) => {
-    setSelectedFont(e.target.value);
+    setDesignHeader(prevdesignNav => {
+      const updatedNav = { ...prevdesignNav, font: e.target.value };
+      return updatedNav;
+    });
   };
 
   const metniGuncelle = (e) => {
@@ -66,27 +80,37 @@ export default function HeaderPromotionalSite({ responseData, changedData, color
     }
   };
 
+
+  useEffect(() => {
+    setContextHeader({ header: (changedData == null ? responseData.header : changedData), designHeader: designHeader })
+    console.log(contextHeader)
+  }, [header, designHeader])
+
+  useEffect(() => {
+    console.log(contextHeader)
+  })
+
   return (
     <motion.nav variants={navVariants}
       initial="hidden"
       whileInView="show">
-      <div className="header" onDoubleClick={openModal} >
-      {duzenlemeModu ? (
-        <TextareaAutosize
-          style={{  marginTop: "0%",textTransform:"uppercase",paddingLeft:"10%",paddingRight:"10%", resize: "none", border: "0px", fontSize: `${fontSize}px`, fontFamily: selectedFont, textAlign: "center", color: `${color}`, background: (colorData == null ? 'black' : colorData) }}
-          id="header"
-          name="header"
-          multiline
-          rows={15}
-          defaultValue={responseData.header}
-          type="text" value={header} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus />
+      <div id="header" onDoubleClick={openModal} >
+        {duzenlemeModu ? (
+          <TextareaAutosize
+            style={{ marginTop: "0%", textTransform: "uppercase", paddingLeft: "10%", paddingRight: "10%", resize: "none", border: "0px", fontSize: `${designHeader.fontSize}px`, fontFamily: designHeader.font, textAlign: "center", color: `${designHeader.color}`, background: (colorData == null ? 'black' : colorData) }}
+            id="header"
+            name="header"
+            multiline
+            rows={15}
+            defaultValue={responseData.header}
+            type="text" value={header} onChange={metniGuncelle} onDoubleClick={handleDivClick} onBlur={duzenlemeModunuToggle} autoFocus />
         ) : (
-        <div onClick={duzenlemeModunuToggle}>
-          <h1 style={{ fontFamily: selectedFont, color: `${color}`, fontSize: `${fontSize}px` }}>{changedData == null ? responseData.header : changedData}</h1>
-        </div>
+          <div onClick={duzenlemeModunuToggle}>
+            <h1 style={{ fontFamily: designHeader.font, color: `${designHeader.color}`, fontSize: `${designHeader.fontSize}px` }}>{changedData == null ? responseData.header : changedData}</h1>
+          </div>
         )}
       </div>
-      <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={fontSize} selectedFont={selectedFont} color={color} modalPosition={modalPosition}/>
+      <ChangeText open={isModalOpen} onClose={closeModal} handleFontChange={handleFontChange} handleFontSizeChange={handleFontSizeChange} handleColorChange={handleColorChange} fontSize={designHeader.fontSize} selectedFont={designHeader.selectedFont} color={designHeader.color} modalPosition={modalPosition} />
     </motion.nav >
   );
 }

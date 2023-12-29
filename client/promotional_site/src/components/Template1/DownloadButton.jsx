@@ -1,14 +1,36 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from 'framer-motion';
 import { navVariants } from '../../utils/motion';
 import Grid from "@mui/material/Grid";
+import Template1Context from "../../context/Template1Context";
+
 
 export default function DiscriptionPromotionalSite({ responseData }) {
-    const url = responseData.url;
-    var appStoreLink = '#'
-    var googleStoreLink = '#'
+    const { template1Response, setTemplate1Response } = useContext(Template1Context);
+    const { contextDownloadLinks, setContextDownloadLinks } = useContext(Template1Context);
+    const [appStoreLink, setAppStoreLink] = useState('#');
+    const [googleStoreLink, setGoogleStoreLink] = useState('#');
 
-    url.split("/", 5)[2] == 'play.google.com' ? googleStoreLink = url : appStoreLink = url
+    const url = responseData.url;
+
+    useEffect(() => {
+        url.split("/", 5)[2] === 'play.google.com'
+            ? setGoogleStoreLink(url, () => {
+                setContextDownloadLinks({
+                    appStoreLink: appStoreLink,
+                    googleStoreLink: googleStoreLink
+                });
+                console.log(contextDownloadLinks);
+            })
+            : setAppStoreLink(url, () => {
+                setContextDownloadLinks({
+                    appStoreLink: appStoreLink,
+                    googleStoreLink: googleStoreLink
+                });
+                console.log(contextDownloadLinks);
+            });
+    }, [, appStoreLink, googleStoreLink, contextDownloadLinks, setContextDownloadLinks]);
+
 
     return (
         <motion.nav variants={navVariants}

@@ -101,21 +101,14 @@ export default function SignUp() {
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Typography fontWeight="bold"  style={{fontFamily:"poppins",color:"white",fontSize:"40px"}}>
+        <Box className='loginPageDiv'>
+          <Typography fontWeight="bold" id='loginPageHeader'>
             Welcome !
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 5 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <FormControl sx={{ m: 1, width: "40ch" }} variant="outlined">
+                <FormControl sx={{ width: "100%" }} variant="outlined">
                   <InputLabel htmlFor="outlined-adornment-password">
                     Name
                   </InputLabel>
@@ -127,13 +120,14 @@ export default function SignUp() {
                     name="name"
                     type="text"
                     label="Password"
+                    sx={{ backgroundColor: 'white', borderRadius: '4px' }}
                   />
                 </FormControl>
                 {errors.username && <span>{errors.username}</span>}
               </Grid>
 
               <Grid item xs={12}>
-                <FormControl sx={{ m: 1, width: "40ch" }} variant="outlined">
+                <FormControl sx={{ width: "100%" }} variant="outlined">
                   <InputLabel htmlFor="outlined-adornment-password">
                     Email
                   </InputLabel>
@@ -145,12 +139,13 @@ export default function SignUp() {
                     type="text"
                     name="email"
                     label="email"
+                    sx={{ backgroundColor: 'white', borderRadius: '4px' }}
                   />
                 </FormControl>
                 {errors.email && <span>{errors.email}</span>}
               </Grid>
               <Grid item xs={12}>
-                <FormControl sx={{ m: 1, width: "40ch" }} variant="outlined">
+                <FormControl sx={{ width: "100%" }} variant="outlined">
                   <InputLabel htmlFor="outlined-adornment-password">
                     Password
                   </InputLabel>
@@ -158,9 +153,11 @@ export default function SignUp() {
                     required
                     fullWidth
                     onChange={handleChange}
-                    id="outlined-adornment-password"
+                    id="password"
+                    label="Password"
                     name="password"
                     type={showPassword ? "text" : "password"}
+                    sx={{ backgroundColor: 'white', borderRadius: '4px' }}
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
@@ -176,7 +173,6 @@ export default function SignUp() {
                         </IconButton>
                       </InputAdornment>
                     }
-                    label="Password"
                   />
                 </FormControl>
                 {errors.password && <span>{errors.password}</span>}
@@ -186,26 +182,28 @@ export default function SignUp() {
               </Grid>
             </Grid>
             <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-                style={{  backgroundImage: "linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)", borderRadius:"30px",fontFamily:"poppins",fontWeight:"500" }}
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              style={{ backgroundImage: "linear-gradient(45deg, #7040e2, #906ad7, #ad92cb)", borderRadius: "30px", fontFamily: "poppins", fontWeight: "500" }}
             >
               Register
             </Button>
-            <p style={{ textAlign: "center" ,fontFamily:"poppins",fontSize:"20px",color:"white"}}> or </p>
-                        <Button
+            <p style={{ textAlign: "center", fontFamily: "poppins", fontSize: "20px", color: "white" }}> or </p>
+            <Button
               onClick={googleAuth}
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              style={{ background: 'white', fontWeight: "bold", color: "gray", borderRadius:"30px" }}
+              style={{ background: 'white', fontWeight: "bold", color: "gray", borderRadius: "30px" }}
               startIcon={<img src={LoginGoogle} alt="Google Logo" style={{ width: '24px', marginRight: '8px' }} />}
             >
               Signed in with Google
             </Button>
-
+            <Button href="/LoginPage" variant="body2" underline="none" style={{ fontFamily: "poppins", fontSize: "1.1rem", color: "white", textTransform: 'none', padding: '0px', marginTop: '3%' }}>
+              Already have an account? Log In
+            </Button>
           </Box>
         </Box>
       </Container>

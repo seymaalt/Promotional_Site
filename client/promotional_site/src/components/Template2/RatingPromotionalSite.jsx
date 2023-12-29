@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import Template2Context from "../../context/Template2Context";
 import './style/template2.css'
 
 
 export default function RatingPromotionalSite({ responseData }) {
+
+    const [star, setStar] = useState()
+    const [rating, setRating] = useState()
+    const [developer, setDeveloper] = useState()
+    const { template2Response, setTemplate2Response } = useContext(Template2Context);
+
+
+    useEffect(() => {
+        setStar(responseData.star)
+        setDeveloper(responseData.developer)
+        setRating(responseData.rating)
+        setTemplate2Response({ ...template2Response, star: star, rating: rating, developer: developer });
+        console.log(template2Response)
+    }, [star, rating, developer])
 
     return (
         <div className="ratingDiv">
