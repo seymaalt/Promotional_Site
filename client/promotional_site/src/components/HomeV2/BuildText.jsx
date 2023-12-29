@@ -1,7 +1,7 @@
 
 export default function BuildText() {
   return (
-    <div style={{textAlign:"center"}}> <p className="homeBuildText">
+    <div className="homeBuildDiv"> <p className="homeBuildText">
     GUIDE YOUR WEBSITE WITH
     <span className="coloredText">
        {" "}ARTIFICIAL INTELLIGENCE
