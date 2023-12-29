@@ -14,9 +14,9 @@ const HowItWorks = () => {
 
           <Grid md={3} xs={12}>
             <div className='howItWork'>
-              <img src={UrlBusiness} style={{width:'90%', objectFit:'cover', padding:'5%', borderRadius:'36px'}}/>
+              <img src={UrlBusiness} className='howItWorkImage' />
               <div className='howItWorkBusinessText'>
-                Enter your apps URL on Google Play or App Store and see the result.
+                Enter your app's Google Play or App Store URL, choose the template you want and enjoy your demo page.
               </div>
             </div>
           </Grid>
@@ -25,9 +25,9 @@ const HowItWorks = () => {
 
           <Grid md={3} xs={12} >
             <div className='howItWork'>
-            <img src={Business} style={{width:'90%', objectFit:'cover', padding:'5%', borderRadius:'36px',}}/>
-            <div className='howItWorkBusinessText'>
-                Enter your apps URL on Google Play or App Store and see the result.
+              <img src={Business} className='howItWorkImage' />
+              <div className='howItWorkBusinessText'>
+                Enter your company name and brief introduction, choose the template you want and enjoy your introduction page.
               </div>
             </div>
           </Grid>
@@ -35,10 +35,10 @@ const HowItWorks = () => {
           <Grid item md={0.5}></Grid>
 
           <Grid md={3} xs={12}>
-              <div className='howItWork'>
-              <img src={Design} style={{width:'90%', objectFit:'cover', padding:'5%', borderRadius:'36px'}}/>
+            <div className='howItWork'>
+              <img src={Design} className='howItWorkImage' />
               <div className='howItWorkBusinessText'>
-                Enter your apps URL on Google Play or App Store and see the result.
+                Design the texts and photos created for you on your page as you wish.
               </div>
             </div>
           </Grid>
