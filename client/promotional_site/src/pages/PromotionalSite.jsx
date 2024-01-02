@@ -13,7 +13,8 @@ import DataSecurityPromotionalSite from '../components/Template1/DataSecurityPro
 import FooterPromotionalSite from '../components/Template1/FooterPromotionalSite.jsx';
 
 export default function PromotionalSite() {
-  const { response } = useContext(GlobalContext);
+  const { response, setColor } = useContext(GlobalContext);
+
   const { header, discription, innovations, dataSecurity } = useContext(TextContext);
   const myHtmlRef = useRef(null);
 
@@ -35,6 +36,7 @@ export default function PromotionalSite() {
       <div><NavbarPromotionalSite responseData={response} /></div>
       <Color src={response.logo} crossOrigin="anonymous" format="hex">
         {({ data }) => {
+          setColor(data)
           return (
             <div>
               <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>
