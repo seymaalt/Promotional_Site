@@ -425,7 +425,15 @@ body {
   border-bottom: 1px solid rgb(165, 165, 165);
 }
 
+.chooseScroll::-webkit-scrollbar {
+  background-color: transparent;
+}
 
+.chooseScroll::-webkit-scrollbar-thumb {
+  border: 1px solid rgb(32, 32, 32);
+  background: rgb(68, 68, 68);
+  border-radius: 0.3rem;
+}
 
 
 @media screen and (max-width: 1200px) {
