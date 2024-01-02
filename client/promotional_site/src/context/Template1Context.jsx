@@ -1,7 +1,26 @@
 import { createContext } from "react";
 
+
 const Template1Context = createContext({
-  template1Response: {},
-  setTemplate1Response: () => { },
+  contextHeader: null,
+  designHeader: {},
+  setContextHeader: () => { },
+  contextLogo: null,
+  setContextLogo: () => { },
+  color: null,
+  setColor: () => { },
+  contextDescription: null,
+  designDescription: {},
+  setContextDescription: () => { },
+  contextDownloadLinks: null,
+  setContextDownloadLinks: () => { },
+  contextImages: null,
+  setContextImages: () => { },
+  contextInnovations: null,
+  designInnovations: {},
+  setContextInnovations: () => { },
+  contextDataSecurity: null,
+  designDataSecurity: {},
+  setContextDataSecurity: () => { },
 });
 export default Template1Context;

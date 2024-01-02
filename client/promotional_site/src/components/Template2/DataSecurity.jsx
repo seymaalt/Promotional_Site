@@ -95,7 +95,7 @@ const DataSecurity = ({ responseData }) => {
   useEffect(() => {
     setTemplate2Response({ ...template2Response, dataSecurity:(dataSecurity == null ? responseData.dataSecurity : dataSecurity),designDataSecurity:designDataSecurity});
     console.log(template2Response)
-  }, [,dataSecurity,designDataSecurity])
+  }, [, , , dataSecurity,designDataSecurity])
 
   return (
     <div className='divStyle'>
