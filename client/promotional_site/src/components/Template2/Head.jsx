@@ -181,10 +181,10 @@ export default function Head({ responseData, changedData }) {
             >
               <img className="temp2Logo" src={responseData.logo} alt="Logo" />
             </div>
-            <div>
+            <div className="temp2ImageDiv">
               <img
                 src={responseData.images[0]}
-                className="temp2Image"
+                className="temp2Image0"
                 alt="Image"
               />
             </div>

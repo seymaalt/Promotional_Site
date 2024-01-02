@@ -3,7 +3,7 @@
 }
 
 * {
-  font-family:"Poppins";
+  font-family: "Poppins";
 }
 
 .middle {
@@ -174,8 +174,8 @@ body {
 
 .navbarLogo {
   margin-left: 2%;
-  width: 240px;
-  padding: 15px;
+  width: 15rem;
+  padding: 1rem;
   align-items: center;
 }
 
@@ -242,7 +242,46 @@ body {
 
 .icons {
   display: flex;
+  justify-content: end;
   color: black;
+  width: 100%;
+}
+
+.icon {
+  margin-inline: 3%;
+}
+
+#iconButton {
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, rgb(122, 122, 122),rgb(87, 85, 87) 50%, rgb(78, 77, 78) );
+  background-size: 200% auto;
+  padding: 0.8rem;
+  width: 140%;
+  border-radius: 0.8rem;
+}
+
+#iconButton:hover {
+  animation: gradient 2s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 75%;
+  }
+
+  50% {
+    background-position: 100% 30%;
+  }
+
+  100% {
+    background-position: 0% 75%;
+  }
+}
+
+#iconSize {
+  color: black;
+  font-size: 2.8rem;
 }
 
 .logined {
@@ -479,7 +518,11 @@ body {
   }
 
   .icon {
-    padding-right: 5%;
+    margin-left: 10px;
+  }
+
+  #iconButton {
+    font-size: 0.8rem;
   }
 
   .discription {

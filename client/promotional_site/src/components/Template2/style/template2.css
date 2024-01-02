@@ -129,6 +129,19 @@
     color: white;
 }
 
+.temp2ImageDiv{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.temp2Image0 {
+    height: auto;
+    border-radius: 16px;
+}
+
 .temp2Image {
     width: 75%;
     height: auto;
@@ -165,6 +178,15 @@
     padding: 4%;
 }
 
+.headDis::-webkit-scrollbar {
+    background-color: transparent;
+}
+
+.headDis::-webkit-scrollbar-thumb {
+    background-color: rgb(59, 59, 59);
+    border-radius: 2rem;
+}
+
 .downloadbutton .grid {
     justify-content: center;
     position: relative;
@@ -186,12 +208,12 @@
 }
 
 .logoo {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
 }
 
 .temp2Logo {
-    width: 14.8125rem;
+    width: 100%;
     border-radius: 1rem;
 }
 

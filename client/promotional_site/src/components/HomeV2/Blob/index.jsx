@@ -30,6 +30,7 @@ const Blob = () => {
   return (
     <mesh
       ref={mesh}
+      rotation={[90,0,20]}
       scale={1.5}
       position={[0, 0, 0]}
       onPointerOver={() => (hover.current = true)}
