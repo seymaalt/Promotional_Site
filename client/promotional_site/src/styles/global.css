@@ -258,11 +258,11 @@ body {
 #iconButton {
   font-size: 1rem;
   color: rgb(255, 255, 255);
-  background: linear-gradient(to right, rgb(122, 122, 122), rgb(87, 85, 87) 50%, rgb(78, 77, 78));
+  background: linear-gradient(to right, #7040e2, #906ad7, #ad92cb);
   background-size: 200% auto;
   padding: 0.8rem;
   width: 140%;
-  border-radius: 0.8rem;
+  border-radius: 30px;
 }
 
 #iconButton:hover {
