@@ -17,6 +17,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
 import Template1Context from '../../context/Template1Context';
+import GlobalContext from '../../context/GlobalContext';
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
@@ -44,7 +45,7 @@ const ButtonAppBar = ({ responseData }) => {
     designInnovations,
     contextDataSecurity,
     designDataSecurity} = useContext(Template1Context);
-
+const {color1}= useContext(GlobalContext);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -63,7 +64,7 @@ const ButtonAppBar = ({ responseData }) => {
     });
         const userId =response.data.id;
          console.log(userId);
-    
+         
        await axios.post(`${import.meta.env.VITE_PORT}/content/TempData`, {
         data: {
         userId,
