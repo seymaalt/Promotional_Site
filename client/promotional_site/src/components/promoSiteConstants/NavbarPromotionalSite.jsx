@@ -6,7 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import DownloadIcon from '@mui/icons-material/Download';
+import PublishIcon from '@mui/icons-material/Publish';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Logo from '../../assets/logosiyah.png'
 import axios from "axios";
@@ -81,10 +81,10 @@ const ButtonAppBar = ({ responseData }) => {
         </Typography>
         <div className='icons'>
           <div className='icon'>
-            <Button color="inherit" ><DownloadIcon /><b>Download</b></Button>
+            <Button id='iconButton'  ><PublishIcon sx={{marginRight:'5%'}}/><b>Publish</b></Button>
           </div>
           <div className='icon'>
-            <Button color="inherit" onClick={handleAddFavorite}><FavoriteIcon /></Button>
+            <Button id='iconSize' onClick={handleAddFavorite}><FavoriteIcon id='iconSize'/></Button>
           </div>
 
         </div>

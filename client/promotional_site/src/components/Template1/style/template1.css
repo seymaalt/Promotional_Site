@@ -1,10 +1,10 @@
-::-webkit-scrollbar {
+.discription::-webkit-scrollbar {
     background-color: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: rgb(59, 59, 59);
-    border-radius: 2rem;
+.discription::-webkit-scrollbar-thumb {
+    background-color: rgb(75, 75, 75);
+    border-radius: 0.5rem;
 }
 
 .innovationsHeader {
