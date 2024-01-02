@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react'
+import { useState, useEffect,useContext } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,14 +10,13 @@ import PublishIcon from '@mui/icons-material/Publish';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Logo from '../../assets/logosiyah.png'
 import axios from "axios";
-import { useContext } from 'react';
 import AuthContext from '../../context/AuthContext';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
-
+import Template1Context from '../../context/Template1Context';
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
@@ -32,6 +31,19 @@ const ButtonAppBar = ({ responseData }) => {
   const [navbarVisible, setNavbarVisible] = useState(true);
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const { contextHeader,
+    designHeader,
+    contextLogo,
+    color,
+    contextDescription,
+    designDescription,
+    contextDownloadLinks,
+    contextImages,
+    contextInnovations,
+    designInnovations,
+    contextDataSecurity,
+    designDataSecurity} = useContext(Template1Context);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -39,19 +51,43 @@ const ButtonAppBar = ({ responseData }) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const [state, setState] = useState({
-    left: false
-  });
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
+
+    
+  const handleDownload = async () => {
+    try {
+     const response = await axios.get(`${import.meta.env.VITE_PORT}/user/current`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+        const userId =response.data.id;
+         console.log(userId);
+    
+       await axios.post(`${import.meta.env.VITE_PORT}/content/TempData`, {
+        data: {
+        userId,
+        contextHeader,
+        designHeader,
+        contextLogo,
+        color,
+        contextDescription,
+        designDescription,
+        contextDownloadLinks,
+        contextImages,
+        contextInnovations,
+        designInnovations,
+        contextDataSecurity,
+        designDataSecurity}
+      });
+     
+
+    } catch (error) {
+      console.error('Error fetching data from the server!', error);
     }
-
-    setState({ ...state, [anchor]: open });
   };
 
-  const handleAddFavorite = async () => {
+ const handleAddFavorite = async () => {
     try {
       const data = {
         url: responseData.url,
@@ -81,7 +117,10 @@ const ButtonAppBar = ({ responseData }) => {
         </Typography>
         <div className='icons'>
           <div className='icon'>
-            <Button id='iconButton'  ><PublishIcon sx={{marginRight:'5%'}}/><b>Publish</b></Button>
+            <Button color="inherit"  onClick={handleDownload}><PublishIcon /><b>Download</b></Button>
+          </div>
+          <div className='icon'>
+            <Button color="inherit" onClick={handleAddFavorite}><FavoriteIcon /></Button>
           </div>
 
         </div>

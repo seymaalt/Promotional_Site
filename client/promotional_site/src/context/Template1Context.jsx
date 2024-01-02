@@ -14,7 +14,7 @@ const Template1Context = createContext({
   setContextDescription: () => { },
   contextDownloadLinks: null,
   setContextDownloadLinks: () => { },
-  contextImages: null,
+  contextImages: {},
   setContextImages: () => { },
   contextInnovations: null,
   designInnovations: {},
