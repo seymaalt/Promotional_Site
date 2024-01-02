@@ -117,11 +117,11 @@ const ButtonAppBar = ({ responseData }) => {
         </Typography>
         <div className='icons'>
           <div className='icon'>
-            <Button id='iconButton'  ><PublishIcon sx={{marginRight:'5%'}}/><b>Publish</b></Button>
+
+            <Button id='iconButton'   onClick={handleDownload}><PublishIcon sx={{marginRight:'5%'}}/><b>Publish</b></Button>
+
           </div>
-          <div className='icon'>
-            <Button id='iconSize' onClick={handleAddFavorite}><FavoriteIcon id='iconSize'/></Button>
-          </div>
+        
 
         </div>
 

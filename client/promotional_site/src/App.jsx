@@ -25,7 +25,7 @@ import EmailVerified from "./EmailVerified/EmailVerified.jsx";
 import RegisterPage from './pages/RegisterV2.jsx';
 import LoginV2 from './components/LoginV2/Login.jsx';
 import RegisterV2 from './components/RegisterV2/Register.jsx';
-
+1
 function App() {
   return (
     <AuthProvider>
@@ -53,6 +53,7 @@ function App() {
                   <Route path="/ForgotPassword" element={<ForgotPassword />} />
                   <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
                   <Route path="/user/verify-email/:emailToken" element={<EmailVerified />} />
+                  <Route path="/1/:publishToken" element={<PublishTemplate1 />} />
                 </Routes>
               </BrowserRouter>
             </Template1Provider>
