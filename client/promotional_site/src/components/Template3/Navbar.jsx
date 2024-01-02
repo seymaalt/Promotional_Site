@@ -201,7 +201,7 @@ const Template3Navbar = () => {
             companyNameText: companyNameText, designCompanyName: designCompanyName, navigationText1: navigationText1, navigationText2: navigationText2, navigationText3: navigationText3, designNav: designNav, buttonText: buttonText, designNavButton: designNavButton
         });
         console.log(template3Response)
-    }, [companyNameText, designCompanyName, navigationText1, navigationText2, navigationText3, designNav, buttonText, designNavButton]);
+    }, [buttonText],[navigationText1],[designCompanyName]);
 
     return (
         <div className='temp3Navbar'>
