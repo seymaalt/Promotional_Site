@@ -122,6 +122,14 @@
     margin-right: 3rem;
 }
 
+.homeBuildDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .homeBuildText {
     color: white;
     font-size: 330%;
@@ -172,7 +180,14 @@
     box-shadow: 0px 0px 54px 21px rgba(144, 106, 215, 0.6);
 }
 
-.howItWorkBusinessText{
+.howItWorkImage {
+    width: 90%;
+    object-fit: cover;
+    padding: 5%;
+    border-radius: 36px;
+}
+
+.howItWorkBusinessText {
     text-align: center;
     color: white;
     font-size: 24px;
@@ -493,6 +508,17 @@
     .howItWork {
         height: 25rem;
         margin-bottom: 5%;
+    }
+
+    .howItWorkImage {
+        width: 50%;
+        object-fit: cover;
+        padding: 5%;
+        border-radius: 36px;
+    }
+    
+    .howItWorkBusinessText {
+        font-size: 1rem;
     }
 
     .loginPageImage {

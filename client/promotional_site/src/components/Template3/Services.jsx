@@ -297,10 +297,13 @@ const Services = () => {
             ...template3Response, serviceHeaderText: serviceHeaderText, serviceDiscText: serviceDiscText, serviceBoxHeaderText1: serviceBoxHeaderText1,
             serviceBoxHeaderText2: serviceBoxHeaderText2, serviceBoxHeaderText3: serviceBoxHeaderText3, serviceBoxDiscText1: serviceBoxDiscText1,
             serviceBoxDiscText2: serviceBoxDiscText2, serviceBoxDiscText3: serviceBoxDiscText3, designServiceBoxHeader: designServiceBoxHeader,
-            designServiceBoxDisc: designServiceBoxDisc, designServiceHeader: designServiceHeader, designServiceDisc: designServiceDisc
+            designServiceBoxDisc: designServiceBoxDisc, designServiceHeader: designServiceHeader, designServiceDisc: designServiceDisc,
+            selectedImage:selectedImage,selectedImage1:selectedImage1,selectedImage2:selectedImage2
         });
         console.log(template3Response)
+
     }, [serviceHeaderText,serviceDiscText,serviceBoxHeaderText1,serviceBoxHeaderText2,serviceBoxHeaderText3,serviceBoxDiscText1,serviceBoxDiscText2,serviceBoxDiscText3,designServiceBoxHeader,designServiceBoxDisc,designServiceHeader,designServiceDisc]);
+
 
     return (
         <div className='part3'>

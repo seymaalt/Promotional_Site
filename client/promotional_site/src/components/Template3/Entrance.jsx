@@ -228,9 +228,14 @@ const Template3Navbar = () => {
     };
 
     useEffect(() => {
-        setTemplate3Response({ ...template3Response, enteranceHeadText: enteranceHeadText, enteranceDiscText: enteranceDiscText, enteranceButtonText: enteranceButtonText, designHead: designHead, designEntranceDisc: designEntranceDisc, designEntranceButton: designEntranceButton });
+        setTemplate3Response({
+            ...template3Response, enteranceHeadText: enteranceHeadText, enteranceDiscText: enteranceDiscText,
+            enteranceButtonText: enteranceButtonText, designHead: designHead, designEntranceDisc: designEntranceDisc,
+            designEntranceButton: designEntranceButton, selectedImage: selectedImage, selectedImage1: selectedImage1,
+            selectedImage2: selectedImage2
+        });
         console.log(template3Response)
-    }, [enteranceHeadText, enteranceButtonText, enteranceDiscText, designEntranceButton, designEntranceDisc, designHead])
+    }, [enteranceHeadText, enteranceButtonText, enteranceDiscText, designEntranceButton, designEntranceDisc, designHead, selectedImage, selectedImage1, selectedImage2])
 
     return (
         <div className='part3'>

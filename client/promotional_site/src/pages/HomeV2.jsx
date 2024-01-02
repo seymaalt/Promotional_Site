@@ -60,28 +60,28 @@ export default function HomeV2() {
         </div>
       </div>
 
-      <div ref={div2Ref} className="part2">
+      <div ref={div2Ref} className="part2" >
         <BuildText></BuildText>
-        <Box sx={{ flexGrow: 1 }} style={{ marginTop: "5%" }}>
-          <Grid container spacing={2}>
-            <Grid item md={0.5}></Grid>
-            <Grid item md={5.5}>
-              <div className="homeUrlInput">
-                <TextUrl></TextUrl>
-                <InputUrl></InputUrl>
-              </div>
+          <Box sx={{ flexGrow: 1 }} style={{ marginTop: "5%", }}>
+            <Grid container spacing={2}>
+              <Grid item md={0.5}></Grid>
+              <Grid item md={5.5}>
+                <div className="homeUrlInput">
+                  <TextUrl></TextUrl>
+                  <InputUrl></InputUrl>
+                </div>
+              </Grid>
+              <Grid item md={0.5} >
+              </Grid>
+              <Grid item md={5.5}>
+                <div className="homeUrlInput">
+                  <TextNewWebsite></TextNewWebsite>
+                  <InputNewWebsite></InputNewWebsite>
+                </div>
+              </Grid>
+              <Grid item md={0.5}></Grid>
             </Grid>
-            <Grid item md={0.5} >
-            </Grid>
-            <Grid item md={5.5}>
-              <div className="homeUrlInput">
-                <TextNewWebsite></TextNewWebsite>
-                <InputNewWebsite></InputNewWebsite>
-              </div>
-            </Grid>
-            <Grid item md={0.5}></Grid>
-          </Grid>
-        </Box>
+          </Box>
       </div>
 
       <div ref={div3Ref} className='part2'>
