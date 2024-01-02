@@ -1,7 +1,10 @@
 const asyncHandler = require("express-async-handler");
 const puppeteer = require("puppeteer");
 const express = require("express");
+const PublishingDataTemp1 = require("../models/publishingDataTemp1")
 const { Logger, ErrorLogger } = require("../controllers/logger")
+const crypto = require("crypto");
+
 
 const getContact = asyncHandler(async (req, res) => {
   try {
@@ -228,7 +231,73 @@ const getContactFAV = asyncHandler(async (req, res) => {
   }
 });
 
+const TempData = asyncHandler(async (req,res) => {
+  try {
+    const dataToSave = req.body.data;
+    
+    const publishToken = crypto.randomBytes(64).toString("hex");
+    // Veriyi sağlanan yapıdan çıkart
+    const {
+      userId,
+      contextHeader,
+      contextLogo,
+      color,
+      contextDescription,
+      contextImages,
+      contextInnovations,
+      contextDataSecurity,
+    } = dataToSave;
+
+    console.log(dataToSave);
+
+    const newData = new PublishingDataTemp1({
+      userId: userId, 
+      publishToken: publishToken, 
+      header: contextHeader.header,
+      designHeader: contextHeader.designHeader,
+      color: color.backgroundColor,
+      logo: contextLogo.temp1Logo,
+      description: contextDescription.discription,
+      designDescription: contextDescription.designDiscription,
+      images: contextImages.images,
+      innovations: contextInnovations.innovations,
+      designInnovations: contextInnovations.designInnovations,
+      dataSecurity: contextDataSecurity.dataSecurity,
+      designDataSecurity: contextDataSecurity.designDataSecurity,
+    });
+
+    await newData.save();
+
+    res.status(200).json({ success: true, message: "Veri başarıyla kaydedildi" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "İç Sunucu Hatası" });
+  }
+
+});
+
+const publishTemp1 = asyncHandler(async (req, res) => {
+  let { publishToken } = req.params;
+  publishToken = publishToken.trim();
+
+  const data = await PublishingDataTemp1.findOne({ publishToken });
+  if (data) {
+   
+    res.status(200).send(data);
+   
+  } else {
+    res.status(404).send(`failure`);
+   
+  }
+});
+
+
+
+
+
 module.exports = {
   getContact,
-  getContactFAV
+  getContactFAV,
+  TempData,
+  publishTemp1
 };

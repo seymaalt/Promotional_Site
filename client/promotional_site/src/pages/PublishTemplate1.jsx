@@ -7,9 +7,20 @@ import PublishDownloadButtonPromotionalSite from '../components/PublishTemplate1
 import PublishGalleryPromotionalSite from '../components/PublishTemplate1/PublishGalleryPromotionalSite';
 import PublishInnovationsPromotionalSite from '../components/PublishTemplate1/PublishInnovationsPromotionalSite';
 import PublishDataSecurityPromotionalSite from '../components/PublishTemplate1/PublishDataSecurityPromotionalSite';
-
+import axios from 'axios';
+import { useParams } from 'react-router';
 
 export default function PublishTemplate1() {
+
+    const { publishToken } = useParams()
+    axios.post(`${import.meta.env.VITE_PORT}/content/publishTemp1/${publishToken}`)
+            .then(result => {
+                console.log(result)
+             
+            })
+            .catch(err => console.log(err));
+
+
 
     return (
         <div>
