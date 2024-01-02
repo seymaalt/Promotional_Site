@@ -32,7 +32,7 @@ export default function PromotionalSite() {
 
   return (
     <div>
-      <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} /></div>
+      <div><NavbarPromotionalSite responseData={response} /></div>
       <Color src={response.logo} crossOrigin="anonymous" format="hex">
         {({ data }) => {
           return (

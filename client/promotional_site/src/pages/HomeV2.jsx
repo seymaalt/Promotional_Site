@@ -1,4 +1,3 @@
-import Spline from "@splinetool/react-spline";
 import { useRef } from 'react';
 import "../styles/home2.css";
 import NavBar from "../components/HomeV2/Navbar";
@@ -46,14 +45,14 @@ export default function HomeV2() {
               <Grid item md={6} xs={12}>
                 <div className="mgtop15">
                   {" "}
-                  <Text></Text>
+                  <Text />
                   <div className="padding2">
                     <BuildButton onClick={handleBuildButtonClick} />
                   </div>
                 </div>
               </Grid>
               <Grid item md={5.5} xs={12}>
-                <BlobAnimation ></BlobAnimation>
+                <BlobAnimation />
               </Grid>
             </Grid>
           </Box>
@@ -61,32 +60,31 @@ export default function HomeV2() {
       </div>
 
       <div ref={div2Ref} className="part2" >
-        <BuildText></BuildText>
-          <Box sx={{ flexGrow: 1 }} style={{ marginTop: "5%", }}>
-            <Grid container spacing={2}>
-              <Grid item md={0.5}></Grid>
-              <Grid item md={5.5}>
-                <div className="homeUrlInput">
-                  <TextUrl></TextUrl>
-                  <InputUrl></InputUrl>
-                </div>
-              </Grid>
-              <Grid item md={0.5} >
-              </Grid>
-              <Grid item md={5.5}>
-                <div className="homeUrlInput">
-                  <TextNewWebsite></TextNewWebsite>
-                  <InputNewWebsite></InputNewWebsite>
-                </div>
-              </Grid>
-              <Grid item md={0.5}></Grid>
+        <BuildText />
+        <Box sx={{ flexGrow: 1 }} style={{ marginTop: "5%", }}>
+          <Grid container spacing={2}>
+            <Grid item md={0.5} />
+            <Grid item md={5.5}>
+              <div className="homeUrlInput">
+                <TextUrl />
+                <InputUrl />
+              </div>
             </Grid>
-          </Box>
+            <Grid item md={0.5} />
+            <Grid item md={5.5}>
+              <div className="homeUrlInput">
+                <TextNewWebsite />
+                <InputNewWebsite />
+              </div>
+            </Grid>
+            <Grid item md={0.5} />
+          </Grid>
+        </Box>
       </div>
 
       <div ref={div3Ref} className='part2'>
-        <HowItWorksText></HowItWorksText>
-        <HowItWorks></HowItWorks>
+        <HowItWorksText />
+        <HowItWorks />
       </div>
       <div >
         <Footer onClick={handleClick} />
