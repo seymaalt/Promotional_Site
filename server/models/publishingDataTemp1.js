@@ -26,8 +26,8 @@ const DataSchema =  mongoose.Schema(
             fontSize:{type: String},
             color:{type:String},
             font:{type:String},
-            textAlign:{type:String}
-            
+            textAlign:{type:String},
+            backgroundColor:{type:String}
         }],
         color:{
             type: String,

@@ -16,7 +16,7 @@ export default function Template2Component() {
     <div className="chooseTemp1" >
       <div className="chooseShadow">
         <div className="chooseBox">
-          <div style={{ overflowY: "auto", overflowX: 'hidden' }}>
+          <div className="chooseScroll" style={{ overflowY: "auto", overflowX: 'hidden' }}>
             <img
               src={Template2}
               className="chooseImage"

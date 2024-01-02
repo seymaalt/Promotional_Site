@@ -3,7 +3,12 @@ import GlobalContext from "./GlobalContext";
 
 const GlobalProvider = ({ children }) => {
   const [response, setResponsee] = useState(null);
+  const [color1, setColor1] = useState(null);
   
+  const setColor = (color) => {
+    setColor1(color);
+  }
+
   const setResponse = (response) => {
     setResponsee(response);
   };
@@ -14,7 +19,9 @@ const GlobalProvider = ({ children }) => {
   const values = {
     response,
     getResponse,
-    setResponse,  
+    setResponse,
+    color1,
+    setColor
   };
 
   return <GlobalContext.Provider value={values}>{children}</GlobalContext.Provider>;
