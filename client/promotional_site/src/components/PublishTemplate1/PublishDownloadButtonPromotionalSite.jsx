@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { motion } from 'framer-motion';
 import { navVariants } from '../../utils/motion';
 import Grid from "@mui/material/Grid";
+import PublishContext from '../../context/PublishContext';
+
 
 export default function PublishDownloadButtonPromotionalSite() {
-
+    const { response } = useContext(PublishContext)
 
     return (
         <motion.nav variants={navVariants}

@@ -1,7 +1,9 @@
 import { createContext } from "react";
 
 const GlobalContext = createContext({
-  response:{},
-  setResponse : () => {},
+  response: {},
+  setResponse: () => { },
+  color1: null,
+  setColor: () => { },
 });
 export default GlobalContext;
