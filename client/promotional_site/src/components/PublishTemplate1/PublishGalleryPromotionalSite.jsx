@@ -3,28 +3,19 @@ import CloseIcon from '@mui/icons-material/Close';
 import { motion } from 'framer-motion';
 import { navVariants } from '../../utils/motion';
 import Template1Context from '../../context/Template1Context';
+import PublishContext from '../../context/PublishContext';
 
-export default function PublishGalleryPromotionalSite({ responseData, colorData }) {
-    const { template1Response, setTemplate1Response } = useContext(Template1Context);
-    const { contextImages, setContextImages } = useContext(Template1Context);
-
+export default function PublishGalleryPromotionalSite() {
+    const { response } = useContext(PublishContext)
     const [model, setModel] = useState(false);
     const [tempImgSrc, setTempImgSrc] = useState('')
 
-    const images = responseData.images
+    const images = response.images
 
     const getImage = (image) => {
         setTempImgSrc(image)
         setModel(true)
     }
-
-    useEffect(() => {
-        setContextImages({images: images });
-    }, [images])
-
-    useEffect(() => {
-        console.log(contextImages)
-    })
 
     return (
         <div >
@@ -42,7 +33,7 @@ export default function PublishGalleryPromotionalSite({ responseData, colorData 
                                 image == null ? <></> : <img
                                     src={images[i]}
                                     className={i % 2 == 0 ? 'image' : 'singImage'}
-                                    style={{ borderBlockColor: colorData }}
+                                    style={{ borderBlockColor: 'black' }}
                                     alt=''
                                     onClick={() => getImage(images[i])}
                                 />

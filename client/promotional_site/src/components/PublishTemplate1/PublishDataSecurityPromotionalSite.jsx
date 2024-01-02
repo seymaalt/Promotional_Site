@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect, useContext } from 'react'
+import PublishContext from '../../context/PublishContext';
 import { Modal, Button, TextareaAutosize } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { motion } from 'framer-motion';
@@ -20,6 +21,7 @@ const LockIconExample = () => {
 };
 
 export default function PublishDataSecurityPromotionalSite() {
+  const { response } = useContext(PublishContext);
 
   return (
     <div>
@@ -31,10 +33,10 @@ export default function PublishDataSecurityPromotionalSite() {
             <div><LockIconExample></LockIconExample></div>
           </Grid>
           <Grid xs={12} md={8}>
-            <div className="innovationsHeader" id="dataSecurity" style={{ color: 'black' }}>Data Security</div>           
-              <div >
-                <div className='container' style={{ textAlign: `center`, fontFamily: "Poppins", color: `black`, fontSize: `25px` }}>Data Security Desc</div>
-              </div>
+            <div className="innovationsHeader" id="dataSecurity" style={{ color: 'black' }}>Data Security</div>
+            <div >
+              <div className='container' style={{ textAlign: `${response.designInnovations[0].textAlign}`, fontFamily: response.designInnovations[0].font, color: `${response.designInnovations[0].color}`, fontSize: `${response.designInnovations[0].fontSize}` }}>{response.dataSecurity}</div>
+            </div>
           </Grid>
         </Grid>
       </motion.nav>

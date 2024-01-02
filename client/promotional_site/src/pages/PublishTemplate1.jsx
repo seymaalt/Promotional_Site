@@ -1,5 +1,5 @@
-import { useContext, useRef, useEffect } from 'react';
-import Color from 'color-thief-react';
+import { useContext, useState, useRef, useEffect } from 'react';
+import PublishContext from '../context/PublishContext';
 import PublishLogoPromotionalSite from '../components/PublishTemplate1/PublishLogoPromotionalSite';
 import PublishHeaderPromotionalSite from '../components/PublishTemplate1/PublishHeaderPromotionalSite';
 import PublishDiscriptionPromotionalSite from '../components/PublishTemplate1/PublishDiscriptionPromotionalSite';
@@ -11,20 +11,22 @@ import axios from 'axios';
 import { useParams } from 'react-router';
 
 export default function PublishTemplate1() {
+    const { response, setResponse } = useContext(PublishContext)
 
     const { publishToken } = useParams()
-    axios.post(`${import.meta.env.VITE_PORT}/content/publishTemp1/${publishToken}`)
+
+
+    useEffect(() => {
+        axios.post(`${import.meta.env.VITE_PORT}/content/publishTemp1/${publishToken}`)
             .then(result => {
-                console.log(result)
-             
+                setResponse(result.data)
+                console.log(result.data)
             })
-            .catch(err => console.log(err));
-
-
+    })
 
     return (
         <div>
-            <div className='part' style={{ backgroundColor: 'black' }}>
+            <div className='part' style={{ backgroundColor: response.color }}>
                 <PublishLogoPromotionalSite />
                 <PublishHeaderPromotionalSite />
                 <div className='disc' >
@@ -35,7 +37,7 @@ export default function PublishTemplate1() {
                 </div>
             </div>
             <div className='part'>
-                {/* <PublishGalleryPromotionalSite /> */}
+                <PublishGalleryPromotionalSite />
             </div>
             <div className='part'>
                 <PublishInnovationsPromotionalSite />
