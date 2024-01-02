@@ -34,6 +34,7 @@
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.0",
+    "sweetalert2": "^11.10.2",
     "swiper": "^11.0.3",
     "three": "^0.147.0"
   },
