@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import HomeV2 from "../src/pages/HomeV2"
 import PromotionalSite from "./pages/PromotionalSite";
+import PublishTemplate1 from "./pages/PublishTemplate1.jsx";
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import GlobalProvider from "./context/GlobalProvider.jsx";
@@ -39,6 +40,7 @@ function App() {
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/profile2" element={<ProfileV2 />} />
                   <Route path="/promotional-site" element={<PromotionalSite />} />
+                  <Route path="/publish-site" element={<PublishTemplate1 />} />
                   <Route path="/promotional-site2" element={<PromotionalSite2 />} />
                   <Route path="/promotional-site3" element={<PromotionalSite3 />} />
                   <Route path="/favorites" element={<Favorites />} />
