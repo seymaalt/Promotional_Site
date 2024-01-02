@@ -117,7 +117,9 @@ const ButtonAppBar = ({ responseData }) => {
         </Typography>
         <div className='icons'>
           <div className='icon'>
+
             <Button id='iconButton'   onClick={handleDownload}><PublishIcon sx={{marginRight:'5%'}}/><b>Publish</b></Button>
+
           </div>
         
 
