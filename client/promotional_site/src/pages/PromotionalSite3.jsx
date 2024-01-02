@@ -2,6 +2,7 @@ import GlobalContext from "../context/GlobalContext.jsx";
 import TextContext from '../context/TextContext.jsx';
 import { useContext, useRef, useEffect } from "react";
 import Grid from "@mui/material/Grid";
+import NavbarPromotionalSite from "../components/promoSiteConstants/NavbarPromotionalSite.jsx";
 import Navbar from "../components/Template3/Navbar.jsx";
 import Entrance from "../components/Template3/Entrance.jsx";
 import Services from "../components/Template3/Services.jsx";
@@ -15,6 +16,7 @@ export default function PromotionalSite3() {
 
     return (
         <div>
+            <div><NavbarPromotionalSite responseData={response} /></div>
             <Navbar></Navbar>
             <Grid container >
                 <Grid item md={2}></Grid>

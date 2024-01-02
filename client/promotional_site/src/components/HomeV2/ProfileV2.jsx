@@ -35,11 +35,21 @@ export default function Profile() {
             } catch (error) {
                 console.error("Error fetching user profile:", error);
             }
-
         };
-
-
         fetchData();
+
+        const getGoogleUser = async () => {
+            try {
+                const url = `${import.meta.env.VITE_PORT}/auth/login/success`;
+                const { data } = await axios.get(url, { withCredentials: true });
+                setUser(data.user._json);
+                console.log(data.user._json);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getGoogleUser();
+
     }, [token]);
     useEffect(() => (console.log(user)));
 
@@ -53,6 +63,7 @@ export default function Profile() {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         const name = data.get('name')
+        console.log(data)
 
         if (!name) {
             alert('İsim alanı boş bırakılamaz')
@@ -70,7 +81,7 @@ export default function Profile() {
                         alert('Hatali islem')
                     }
                 })
-                .catch(err => console.log(err));
+                .catch(err => console.log(err), alert('You cant change your name'));
         }
     }
 
@@ -118,14 +129,14 @@ export default function Profile() {
                             PROFILE
                         </div>
                     </Grid>
-                    <Grid item xs={12} className="centerColumn" sx={{paddingBottom:'4%'}}>
+                    <Grid item xs={12} className="centerColumn" sx={{ paddingBottom: '4%' }}>
                         <Grid xs={4}>
                             <div className="profileLabel2">
                                 Name
                             </div>
                         </Grid>
                         <Grid xs={5}>
-                            <div className="profileData2">{name == null ? user.username : name}</div>
+                            <div className="profileData2">{name == null ? user.username || user.given_name : name}</div>
                         </Grid>
                         <Grid xs={2}>
                             <Button variant="contained" size="medium" onClick={handleOpenEditName} id="profileButton2">
@@ -159,13 +170,13 @@ export default function Profile() {
                             </Box>
                         </Modal>
                     </Grid>
-                    <Grid item xs={12} className="centerColumn" sx={{paddingBottom:'4%'}}>
+                    <Grid item xs={12} className="centerColumn" sx={{ paddingBottom: '4%' }}>
                         <Grid xs={4}>
                             <div className="profileLabel2">
                                 Email
                             </div>
                         </Grid>
-                        <Grid xs={5} style={{width:'100%',overflow:'hidden'}}>
+                        <Grid xs={5} style={{ width: '100%', overflow: 'hidden' }}>
                             <div className="profileData2">{user.email}</div>
                         </Grid>
                         <Grid xs={3}></Grid>
