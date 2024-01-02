@@ -277,9 +277,18 @@ const TempData = asyncHandler(async (req,res) => {
 });
 
 const publishTemp1 = asyncHandler(async (req, res) => {
-  let {  } = req.params;
+  let { publishToken } = req.params;
+  publishToken = publishToken.trim();
 
- 
+  const data = await PublishingDataTemp1.findOne({ publishToken });
+  if (data) {
+   
+    res.status(200).send(data);
+   
+  } else {
+    res.status(404).send(`failure`);
+   
+  }
 });
 
 

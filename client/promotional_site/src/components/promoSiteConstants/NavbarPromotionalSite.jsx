@@ -117,11 +117,9 @@ const ButtonAppBar = ({ responseData }) => {
         </Typography>
         <div className='icons'>
           <div className='icon'>
-            <Button color="inherit"  onClick={handleDownload}><PublishIcon /><b>Download</b></Button>
+            <Button id='iconButton'   onClick={handleDownload}><PublishIcon sx={{marginRight:'5%'}}/><b>Publish</b></Button>
           </div>
-          <div className='icon'>
-            <Button color="inherit" onClick={handleAddFavorite}><FavoriteIcon /></Button>
-          </div>
+        
 
         </div>
 
