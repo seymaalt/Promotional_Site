@@ -13,7 +13,7 @@ import AuthContext from '../../context/AuthContext';
 import LoginGoogle from '../../assets/google.png'
 import ForgotPasswordModal from '../ForgotPassword/ForgotPasswordModal';
 import { useNavigate } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 
 
 const defaultTheme = createTheme();
@@ -72,7 +72,13 @@ const Login = () => {
     const email = data.get('email')
     const password = data.get('password')
     if (!email || !password) {
-      alert("Email or password is missing")
+      Swal.fire({
+        position: "top",
+        icon: "error",
+        title: "Email or password is missing",
+        showConfirmButton: false,
+        timer: 1500
+      });
       return;
     }
     else {
@@ -98,15 +104,40 @@ const Login = () => {
 
           }
           else if (result.data == "Password is incorrect") {
-            alert("Incorrect Password")
+            Swal.fire({
+              position: "top",
+              icon: "error",
+              title: "Incorrect Password",
+              showConfirmButton: false,
+              timer: 1500
+            });
           }
           else if (result.data == "Wrong Email") {
-            alert("Wrong Email")
+            Swal.fire({
+              position: "top",
+              icon: "error",
+              title: "Wrong Email",
+              showConfirmButton: false,
+              timer: 1500
+            });
           }
           else if (result.data == "Email not verified") {
-            alert("Email Not Verified")
+            Swal.fire({
+              position: "top",
+              icon: "error",
+              title: "Email Not Verified",
+              showConfirmButton: false,
+              timer: 1500
+            });
           }
           else {
+            Swal.fire({
+              position: "top",
+              icon: "success",
+              title: "Success",
+              showConfirmButton: false,
+              timer: 1500
+            });
             navigate("/");
           }
 
