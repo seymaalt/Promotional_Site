@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect } from 'react';
+import { useContext, useRef, useEffect, useState } from 'react';
 import Color from 'color-thief-react';
 import GlobalContext from '../context/GlobalContext.jsx';
 import TextContext from '../context/TextContext.jsx';
@@ -30,6 +30,8 @@ export default function PromotionalSite() {
     const computedStyle = window.getComputedStyle(myHtmlRef.current);
     console.log('Stil bilgisi:', computedStyle);
   };
+
+
 
   return (
     <div>

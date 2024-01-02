@@ -21,7 +21,6 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  var backgroundColor = (colorData == null ? 'black' : colorData)
 
   const [designDiscription, setDesignDiscription] = useState({
     fontSize: "1.4rem",

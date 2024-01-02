@@ -33,7 +33,7 @@ export default function PublishDataSecurityPromotionalSite() {
             <div><LockIconExample></LockIconExample></div>
           </Grid>
           <Grid xs={12} md={8}>
-            <div className="innovationsHeader" id="dataSecurity" style={{ color: 'black' }}>Data Security</div>
+            <div className="innovationsHeader" id="dataSecurity" style={{ color: response.color }}>Data Security</div>
             <div >
               <div className='container' style={{ textAlign: `${response.designInnovations[0].textAlign}`, fontFamily: response.designInnovations[0].font, color: `${response.designInnovations[0].color}`, fontSize: `${response.designInnovations[0].fontSize}` }}>{response.dataSecurity}</div>
             </div>

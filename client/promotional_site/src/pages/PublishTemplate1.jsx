@@ -26,7 +26,7 @@ export default function PublishTemplate1() {
 
     return (
         <div>
-            <div className='part' style={{ backgroundColor: response.color }}>
+            <div className='part' style={{ backgroundColor: response.color == null ? 'black' : response.color }}>
                 <PublishLogoPromotionalSite />
                 <PublishHeaderPromotionalSite />
                 <div className='disc' >
@@ -43,6 +43,6 @@ export default function PublishTemplate1() {
                 <PublishInnovationsPromotionalSite />
                 <PublishDataSecurityPromotionalSite />
             </div>
-        </div>
+        </div >
     );
 }
