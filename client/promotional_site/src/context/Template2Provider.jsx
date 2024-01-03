@@ -13,9 +13,7 @@ const Template2Provider = ({ children }) => {
   const [DataSecurity2,setDataSecurity2] = useState();
   const [Comments2,setComments2] = useState();
   const [DownloadStarDeveloper,setDownloadStarDeveloper] = useState({
-    star:response.star,
-    rating:response.rating,
-    developer:response.developer
+
   });
 
 

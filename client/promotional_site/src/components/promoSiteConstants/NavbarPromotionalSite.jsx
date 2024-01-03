@@ -30,7 +30,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 const ButtonAppBar = ({ responseData }) => {
   const { token, setToken, logout } = useContext(AuthContext);
   const [navbarVisible, setNavbarVisible] = useState(true);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const { contextHeader,
@@ -61,10 +61,12 @@ const ButtonAppBar = ({ responseData }) => {
         Authorization: `Bearer ${token}`,
       },
     });
-        const userId =response.data.id;
-         console.log(userId);
+     const userId =response.data.id;
+  
+   
+
          
-       await axios.post(`${import.meta.env.VITE_PORT}/content/TempData`, {
+       await axios.post(`${import.meta.env.VITE_PORT}/content/TempData/`, {      
         data: {
         userId,
         contextHeader,
@@ -78,7 +80,8 @@ const ButtonAppBar = ({ responseData }) => {
         contextInnovations,
         designInnovations,
         contextDataSecurity,
-        designDataSecurity}
+        designDataSecurity
+      }
       });
      
 
