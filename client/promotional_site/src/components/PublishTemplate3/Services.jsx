@@ -2,9 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import Grid from "@mui/material/Grid";
 import CircleIcon from '@mui/icons-material/Circle';
 import Template3Context from '../../context/Template3Context';
-import EditableText from './EditableText';
-import ChangeImage from './ChangeImage'
-import ChangeDesign from './ChangeDesign';
+
 
 
 const Services = () => {

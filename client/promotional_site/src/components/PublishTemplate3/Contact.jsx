@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
-import EditableText from './EditableText';
 
 const ContactForm = () => {
     const [name, setName] = useState('');
