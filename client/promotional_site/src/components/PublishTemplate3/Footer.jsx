@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid";
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import './style/template3.css'
 
 
 const Template3Footer = () => {
