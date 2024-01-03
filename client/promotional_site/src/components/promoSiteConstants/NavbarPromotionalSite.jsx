@@ -45,7 +45,6 @@ const ButtonAppBar = ({ responseData }) => {
     designInnovations,
     contextDataSecurity,
     designDataSecurity} = useContext(Template1Context);
-const {color1}= useContext(GlobalContext);
   const handleClickOpen = () => {
     setOpen(true);
   };
