@@ -100,16 +100,13 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
 
   useEffect(() => {
 
-    setColor({ backgroundColor: color1 })
     setContextDescription({ discription: (changedData == null ? responseData.description : changedData), designDiscription: designDiscription })
 
   }, [discription, designDiscription])
 
   useEffect(() => {
-    console.log(contextDescription)
-    console.log(color1)
     setColor({ backgroundColor: color1 })
-  })
+  }, [color1])
 
   return (
     <motion.nav variants={navVariants}

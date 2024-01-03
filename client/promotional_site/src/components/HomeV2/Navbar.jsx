@@ -93,7 +93,7 @@ export default function Navbar({ onClick }) {
   }, [token, logout, setToken]);
 
   useEffect(() => {
-    console.log(user);
+    //console.log(user);
     // var fullUrl = window.location.href;
     // console.log("Sayfanın tam URL'si: " + fullUrl);
   });

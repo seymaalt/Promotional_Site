@@ -13,7 +13,6 @@ import { useParams } from 'react-router';
 
 export default function PublishTemplate1() {
     const { response, setResponse } = useContext(PublishContext)
-
     const { publishToken } = useParams()
 
 
