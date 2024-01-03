@@ -86,9 +86,7 @@ export default function HeaderPromotionalSite({ responseData, changedData, color
     console.log(contextHeader)
   }, [header, designHeader])
 
-  useEffect(() => {
-    console.log(contextHeader)
-  })
+
 
   return (
     <motion.nav variants={navVariants}

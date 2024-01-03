@@ -107,10 +107,6 @@ export default function DataSecurityPromotionalSite({ responseData, changedData,
     setContextDataSecurity({dataSecurity:(changedData == null ? responseData.dataSecurity : changedData), designDataSecurity:designDataSecurity})
   }, [dataSecurity,designDataSecurity])
 
-  useEffect(() => {
-    console.log(contextDataSecurity)
-  })
-
   return (
     <div>
       <motion.nav variants={slideIn('left', 'spring', 0.8, 1.2)}

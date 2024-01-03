@@ -14,22 +14,22 @@ export default function DiscriptionPromotionalSite({ responseData }) {
     const url = responseData.url;
 
     useEffect(() => {
-        url.split("/", 5)[2] === 'play.google.com'
-            ? setGoogleStoreLink(url, () => {
-                setContextDownloadLinks({
-                    appStoreLink: appStoreLink,
-                    googleStoreLink: googleStoreLink
-                });
-                console.log(contextDownloadLinks);
-            })
-            : setAppStoreLink(url, () => {
-                setContextDownloadLinks({
-                    appStoreLink: appStoreLink,
-                    googleStoreLink: googleStoreLink
-                });
-                console.log(contextDownloadLinks);
-            });
-    }, [, appStoreLink, googleStoreLink, contextDownloadLinks, setContextDownloadLinks]);
+        if (url.split("/", 5)[2] === 'play.google.com') {
+            setGoogleStoreLink(url);
+        } else {
+            setAppStoreLink(url);
+        }
+    }, [url]);
+
+    useEffect(() => {
+        setContextDownloadLinks({
+            appStoreLink: appStoreLink,
+            googleStoreLink: googleStoreLink
+        });
+    }, [appStoreLink, googleStoreLink, setContextDownloadLinks]);
+
+
+
 
 
     return (
