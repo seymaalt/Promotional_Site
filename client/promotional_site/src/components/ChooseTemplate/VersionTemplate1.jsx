@@ -9,7 +9,7 @@ export default function Template1Component() {
 
   const handleGenerate = async () => {
 
-    navigate('/promotional-site');
+    navigate('/promotional-site1');
 
   };
 

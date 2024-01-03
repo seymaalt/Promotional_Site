@@ -13,14 +13,14 @@ const DataSecurity = ({ responseData }) => {
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const { template2Response, setTemplate2Response } = useContext(Template2Context);
+  const { setTemp2DataSecurity } = useContext(Template2Context);
 
 
-  const [designDataSecurity,setDesignDataSecurity] = useState({
+  const [designDataSecurity, setDesignDataSecurity] = useState({
     fontSize: 25,
-    color:"black",
-    font :"Roboto, sans-serif",
-    textAlign:"center",
+    color: "black",
+    font: "Roboto, sans-serif",
+    textAlign: "center",
   })
 
   const openModal = () => {
@@ -93,9 +93,8 @@ const DataSecurity = ({ responseData }) => {
     }
   };
   useEffect(() => {
-    setTemplate2Response({ ...template2Response, dataSecurity:(dataSecurity == null ? responseData.dataSecurity : dataSecurity),designDataSecurity:designDataSecurity});
-    console.log(template2Response)
-  }, [, , , dataSecurity,designDataSecurity])
+    setTemp2DataSecurity({ dataSecurity: (dataSecurity == null ? responseData.dataSecurity : dataSecurity), designDataSecurity: designDataSecurity });
+  }, [dataSecurity, designDataSecurity])
 
   return (
     <div className='divStyle'>
