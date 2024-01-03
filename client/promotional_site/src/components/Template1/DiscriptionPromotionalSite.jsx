@@ -21,7 +21,6 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  var backgroundColor = (colorData == null ? 'black' : colorData)
 
   const [designDiscription, setDesignDiscription] = useState({
     fontSize: "1.4rem",
@@ -100,6 +99,8 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
   };
 
   useEffect(() => {
+    console.log(color1)
+
     setColor({ backgroundColor: color1 })
     setContextDescription({ discription: (changedData == null ? responseData.description : changedData), designDiscription: designDiscription })
 
@@ -107,7 +108,6 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
 
   useEffect(() => {
     console.log(contextDescription)
-    console.log(color)
   })
 
   return (

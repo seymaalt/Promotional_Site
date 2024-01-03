@@ -31,7 +31,7 @@ export default function PublishInnovationsPromotionalSite() {
         whileInView="show">
         <Grid container>
           <Grid xs={12} md={8} spacing={2}>
-            <div className='innovationsHeader' style={{ color: 'black' }}>Innovation Header</div>
+            <div className='innovationsHeader' style={{ color: response.color }}>Innovation Header</div>
             <div>
               <div className='container' style={{ textAlign: `${response.designInnovations[0].textAlign}`, fontFamily: response.designInnovations[0].font, color: `${response.designInnovations[0].color}`, fontSize: `${response.designInnovations[0].fontSize}` }} >{response.innovations}</div>
             </div>

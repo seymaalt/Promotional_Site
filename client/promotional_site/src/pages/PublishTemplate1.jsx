@@ -17,17 +17,29 @@ export default function PublishTemplate1() {
 
 
     useEffect(() => {
-        axios.post(`${import.meta.env.VITE_PORT}/content/publishTemp1/${publishToken}`)
-            .then(result => {
-                setResponse(result.data)
-                console.log(result.data)
-            })
-    })
+        const fetchData = async () => {
+            try {
+                const result = await axios.post(`${import.meta.env.VITE_PORT}/content/publishTemp1/${publishToken}`);
+                setResponse(result.data);
+                console.log(result.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+    
+        fetchData();
+    }, [publishToken, setResponse]);
+    
+
+
 
     return (
         <div>
-            <div className='part' style={{ backgroundColor: response.color }}>
-                <PublishLogoPromotionalSite />
+           {response && 
+           <div>
+           <div className='part' style={{ backgroundColor:response.color }}>
+                 <PublishLogoPromotionalSite />
+
                 <PublishHeaderPromotionalSite />
                 <div className='disc' >
                     <PublishDiscriptionPromotionalSite />
@@ -43,6 +55,8 @@ export default function PublishTemplate1() {
                 <PublishInnovationsPromotionalSite />
                 <PublishDataSecurityPromotionalSite />
             </div>
+            </div>} 
         </div>
+
     );
 }

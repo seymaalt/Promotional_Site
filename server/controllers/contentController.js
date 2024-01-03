@@ -231,10 +231,10 @@ const getContactFAV = asyncHandler(async (req, res) => {
   }
 });
 
-const TempData = asyncHandler(async (req,res) => {
+const TempData = asyncHandler(async (req, res) => {
   try {
     const dataToSave = req.body.data;
-    
+
     const publishToken = crypto.randomBytes(64).toString("hex");
     // Veriyi sağlanan yapıdan çıkart
     const {
@@ -251,8 +251,8 @@ const TempData = asyncHandler(async (req,res) => {
     console.log(dataToSave);
 
     const newData = new PublishingDataTemp1({
-      userId: userId, 
-      publishToken: publishToken, 
+      userId: userId,
+      publishToken: publishToken,
       header: contextHeader.header,
       designHeader: contextHeader.designHeader,
       color: color.backgroundColor,
@@ -282,12 +282,11 @@ const publishTemp1 = asyncHandler(async (req, res) => {
 
   const data = await PublishingDataTemp1.findOne({ publishToken });
   if (data) {
-   
+
     res.status(200).send(data);
-   
   } else {
     res.status(404).send(`failure`);
-   
+
   }
 });
 
