@@ -31,7 +31,7 @@ const ButtonAppBar = ({ responseData }) => {
   const { response } = useContext(PublishContext);
   const [tokenLink, setTokenLink] = useState();
   const [navbarVisible, setNavbarVisible] = useState(true);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const { contextHeader,
@@ -54,6 +54,44 @@ const ButtonAppBar = ({ responseData }) => {
     setOpen(false);
   };
 
+
+
+    
+  const handleDownload = async () => {
+    try {
+     const response = await axios.get(`${import.meta.env.VITE_PORT}/user/current`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+     const userId =response.data.id;
+  
+   
+
+         
+       await axios.post(`${import.meta.env.VITE_PORT}/content/TempData/`, {      
+        data: {
+        userId,
+        contextHeader,
+        designHeader,
+        contextLogo,
+        color,
+        contextDescription,
+        designDescription,
+        contextDownloadLinks,
+        contextImages,
+        contextInnovations,
+        designInnovations,
+        contextDataSecurity,
+        designDataSecurity
+      }
+      });
+     
+
+    } catch (error) {
+      console.error('Error fetching data from the server!', error);
+    }
+  };
 
 
   const handleDownload = async () => {

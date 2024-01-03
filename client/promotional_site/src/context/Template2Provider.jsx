@@ -20,7 +20,6 @@ const Template2Provider = ({ children }) => {
     star: response == null ? null : response.star,
     rating: response == null ? null : response.rating,
     developer: response == null ? null : response.developer
-  });
 
   const setTemp2Logo = (logo) => {
     setLogo2(logo);
