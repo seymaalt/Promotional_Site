@@ -39,6 +39,7 @@ export default function PublishTemplate1() {
            <div>
            <div className='part' style={{ backgroundColor:response.color }}>
                  <PublishLogoPromotionalSite />
+
                 <PublishHeaderPromotionalSite />
                 <div className='disc' >
                     <PublishDiscriptionPromotionalSite />
@@ -56,5 +57,6 @@ export default function PublishTemplate1() {
             </div>
             </div>} 
         </div>
+
     );
 }
