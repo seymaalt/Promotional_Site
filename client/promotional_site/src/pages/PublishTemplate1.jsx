@@ -1,5 +1,6 @@
 import { useContext, useState, useRef, useEffect } from 'react';
 import PublishContext from '../context/PublishContext';
+import GlobalContext from '../context/GlobalContext';
 import PublishLogoPromotionalSite from '../components/PublishTemplate1/PublishLogoPromotionalSite';
 import PublishHeaderPromotionalSite from '../components/PublishTemplate1/PublishHeaderPromotionalSite';
 import PublishDiscriptionPromotionalSite from '../components/PublishTemplate1/PublishDiscriptionPromotionalSite';
@@ -21,7 +22,6 @@ export default function PublishTemplate1() {
             try {
                 const result = await axios.post(`${import.meta.env.VITE_PORT}/content/publishTemp1/${publishToken}`);
                 setResponse(result.data);
-                console.log(result.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -34,7 +34,7 @@ export default function PublishTemplate1() {
 
 
     return (
-        <div>
+        <div className='temp1Page'>
            {response && 
            <div>
            <div className='part' style={{ backgroundColor:response.color }}>

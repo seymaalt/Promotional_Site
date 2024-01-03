@@ -14,19 +14,23 @@ import FooterPromotionalSite from '../components/Template1/FooterPromotionalSite
 
 export default function PromotionalSite() {
   const { response, setColor } = useContext(GlobalContext);
+  const [ backColor, setBackColor ] = useState();
 
   const { header, discription, innovations, dataSecurity } = useContext(TextContext);
 
 
-
+  useEffect(() => {
+    console.log(backColor)
+    setColor(backColor)
+  })
 
 
   return (
-    <div>
+    <div className='temp1Page'>
       <div><NavbarPromotionalSite responseData={response} /></div>
       <Color src={response.logo} crossOrigin="anonymous" format="hex">
         {({ data }) => {
-          setColor(data)
+          setBackColor(data)
           return (
             <div>
               <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>

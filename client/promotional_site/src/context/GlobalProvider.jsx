@@ -3,10 +3,10 @@ import GlobalContext from "./GlobalContext";
 
 const GlobalProvider = ({ children }) => {
   const [response, setResponsee] = useState(null);
-  const [color1, setColor1] = useState(null);
+  const [color1, setColor1] = useState('black');
   
-  const setColor = (color) => {
-    setColor1(color);
+  const setColor = (color1) => {
+    setColor1(color1);
   }
 
   const setResponse = (response) => {

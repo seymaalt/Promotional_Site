@@ -99,7 +99,6 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
   };
 
   useEffect(() => {
-    console.log(color1)
 
     setColor({ backgroundColor: color1 })
     setContextDescription({ discription: (changedData == null ? responseData.description : changedData), designDiscription: designDiscription })
@@ -108,6 +107,8 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
 
   useEffect(() => {
     console.log(contextDescription)
+    console.log(color1)
+    setColor({ backgroundColor: color1 })
   })
 
   return (
