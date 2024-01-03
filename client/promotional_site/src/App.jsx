@@ -41,7 +41,7 @@ function App() {
                       <Route path="/" element={<HomeV2 />} />
                       <Route path="/profile" element={<Profile />} />
                       <Route path="/profile2" element={<ProfileV2 />} />
-                      <Route path="/promotional-site" element={<PromotionalSite />} />
+                      <Route path="/promotional-site1" element={<PromotionalSite />} />
                       <Route path="/publish-site" element={<PublishTemplate1 />} />
                       <Route path="/promotional-site2" element={<PromotionalSite2 />} />
                       <Route path="/promotional-site3" element={<PromotionalSite3 />} />
