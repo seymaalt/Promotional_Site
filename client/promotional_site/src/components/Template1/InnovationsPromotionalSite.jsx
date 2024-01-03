@@ -115,7 +115,6 @@ export default function InnovationsPromotionalSite({ responseData, changedData, 
 
   useEffect(() => {
     setContextInnovations({ innovations: (changedData == null ? responseData.innovations : changedData), designInnovations: designInnovations })
-    console.log(contextInnovations)
   }, [innovations, designInnovations])
 
   return (

@@ -22,9 +22,7 @@ export default function GalleryPromotionalSite({ responseData, colorData }) {
         setContextImages({images: images });
     }, [images])
 
-    useEffect(() => {
-        console.log(contextImages)
-    })
+
 
     return (
         <div >
