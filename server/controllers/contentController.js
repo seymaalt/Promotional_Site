@@ -268,7 +268,7 @@ const TempData = asyncHandler(async (req, res) => {
 
     await newData.save();
 
-    res.status(200).json({ success: true, message: "Veri başarıyla kaydedildi" });
+    res.status(200).json({ publishToken: publishToken });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "İç Sunucu Hatası" });
