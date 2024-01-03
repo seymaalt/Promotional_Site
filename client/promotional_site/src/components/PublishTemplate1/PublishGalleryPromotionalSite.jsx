@@ -33,7 +33,7 @@ export default function PublishGalleryPromotionalSite() {
                                 image == null ? <></> : <img
                                     src={images[i]}
                                     className={i % 2 == 0 ? 'image' : 'singImage'}
-                                    style={{ borderBlockColor: 'black' }}
+                                    style={{ borderBlockColor: response.color }}
                                     alt=''
                                     onClick={() => getImage(images[i])}
                                 />

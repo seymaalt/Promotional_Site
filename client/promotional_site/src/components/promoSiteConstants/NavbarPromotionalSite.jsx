@@ -1,23 +1,22 @@
 import * as React from 'react';
-import { useState, useEffect,useContext } from 'react'
-import AppBar from '@mui/material/AppBar';
+import { useState, useEffect, useContext } from 'react'
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
 import PublishIcon from '@mui/icons-material/Publish';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import Logo from '../../assets/logosiyah.png'
 import axios from "axios";
 import AuthContext from '../../context/AuthContext';
+import PublishContext from '../../context/PublishContext';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from "react-router-dom";
-import CloseIcon from '@mui/icons-material/Close';
 import Template1Context from '../../context/Template1Context';
 import GlobalContext from '../../context/GlobalContext';
+import Swal from 'sweetalert2'
+
+
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
@@ -29,6 +28,8 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 const ButtonAppBar = ({ responseData }) => {
   const { token, setToken, logout } = useContext(AuthContext);
+  const { response } = useContext(PublishContext);
+  const [tokenLink, setTokenLink] = useState();
   const [navbarVisible, setNavbarVisible] = useState(true);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -45,12 +46,14 @@ const ButtonAppBar = ({ responseData }) => {
     designInnovations,
     contextDataSecurity,
     designDataSecurity} = useContext(Template1Context);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
+
 
 
     
@@ -90,23 +93,52 @@ const ButtonAppBar = ({ responseData }) => {
     }
   };
 
- const handleAddFavorite = async () => {
-    try {
-      const data = {
-        url: responseData.url,
-        template: 'temp1',
-      };
 
-      const response = await axios.post(`${import.meta.env.VITE_PORT}/user/addFavorite`, data, {
+  const handleDownload = async () => {
+    try {
+      const userResponse = await axios.get(`${import.meta.env.VITE_PORT}/user/current`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      handleClickOpen();
-      console.log(response.data);
+      const userId = userResponse.data.id;
+      console.log(userId);
 
+      await axios.post(`${import.meta.env.VITE_PORT}/content/TempData`, {
+        data: {
+          userId,
+          contextHeader,
+          designHeader,
+          contextLogo,
+          color,
+          contextDescription,
+          designDescription,
+          contextDownloadLinks,
+          contextImages,
+          contextInnovations,
+          designInnovations,
+          contextDataSecurity,
+          designDataSecurity
+        }
+      }).then(result => {
+        console.log(result.data.publishToken)
+        setTokenLink("http://localhost:5173/1/" + result.data.publishToken)
+         Swal.fire({
+        title: "Your Page is Ready!",
+        html:
+         `
+        Your link: 
+       <a href="${("http://localhost:5173/1/" + result.data.publishToken)}" target='_blank'>${("http://localhost:5173/1/" + result.data.publishToken)}</a>
+  `,
+        imageUrl: "https://i.hizliresim.com/o23f2f4.png",
+        imageWidth: 130,
+        imageAlt: "Custom image"
+      });
+      });
+
+     
     } catch (error) {
-      console.error('Favori eklerken hata oluştu:', error);
+      console.error('Error fetching data from the server!', error);
     }
   };
 
@@ -121,34 +153,13 @@ const ButtonAppBar = ({ responseData }) => {
         <div className='icons'>
           <div className='icon'>
 
-            <Button id='iconButton'   onClick={handleDownload}><PublishIcon sx={{marginRight:'5%'}}/><b>Publish</b></Button>
+            <Button id='iconButton' onClick={handleDownload} ><PublishIcon sx={{ marginRight: '5%' }} /><b>Publish</b></Button>
 
           </div>
-        
+
 
         </div>
 
-        <BootstrapDialog
-          onClose={handleClose}
-          aria-labelledby="customized-dialog-title"
-          open={open}
-        >
-          <DialogTitle sx={{ m: 4, p: 2 }} id="customized-dialog-title">
-            Added to favorites
-          </DialogTitle>
-          <IconButton
-            onClick={handleClose}
-            aria-label="close"
-            sx={{
-              position: 'absolute',
-              right: 8,
-              top: 8,
-              color: (theme) => theme.palette.grey[500],
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </BootstrapDialog>
       </Toolbar>
       </div>
     </Box>

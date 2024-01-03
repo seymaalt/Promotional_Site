@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Grid from "@mui/material/Grid";
-import './style/template3.css'
 import GlobalContext from '../../context/GlobalContext';
 import Template3Context from '../../context/Template3Context';
 
