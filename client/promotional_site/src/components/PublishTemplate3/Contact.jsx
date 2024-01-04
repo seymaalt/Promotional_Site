@@ -23,6 +23,35 @@ const ContactForm = () => {
     const [headText, setHeadText] = useState("Send us a message")
     const [headDiscText, setHeadDiscText] = useState("If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you")
 
+    const [designTopic, setDesignTopic] = useState({
+        isModalOpen: false,
+        fontSize: 18,
+        color: 'white',
+        font: "DM Sans",
+        textAlign: "center",
+    })
+    const [designTopicOne, setDesignTopicOne] = useState({
+        isModalOpen: false,
+        fontSize: 14,
+        color: '#e4e4e4',
+        font: "DM Sans",
+        textAlign: "center",
+    })
+    const [designTopicHead, setDesignTopicHead] = useState({
+        isModalOpen: false,
+        fontSize: 36,
+        color: '#ffffff',
+        font: "DM Sans",
+        textAlign: "left",
+    })
+    const [designTopicDisc, setDesignTopicDisc] = useState({
+        isModalOpen: false,
+        fontSize: 20.8,
+        color: '#ffffff',
+        font: "DM Sans",
+        textAlign: "left",
+    })
+
     return (
         <div className='part3'>
             <div class="contactDiv">
@@ -31,10 +60,10 @@ const ContactForm = () => {
                         <div class="address details">
                             <LocationOnIcon sx={{ fontSize: '3rem', color: 'white' }} />
                             <div >
-                                <div className='editHover topic' initialValue={addressText} fontSize={designTopic.fontSize} selectedFont={designTopic.font} color={designTopic.color} textAlign={designTopic.textAlign} backColor="rgb(30, 64, 175)" />
+                                <div className=' topic' fontSize={designTopic.fontSize} selectedFont={designTopic.font} color={designTopic.color} textAlign={designTopic.textAlign} backColor="rgb(30, 64, 175)" >{addressText}</div>
                             </div>
                             <div>
-                                <div className='editHover text-one' initialValue={addressDiscText} fontSize={designTopicOne.fontSize} selectedFont={designTopicOne.font} color={designTopicOne.color} textAlign={designTopicOne.textAlign} backColor="rgb(30, 64, 175)" />
+                                <div className=' text-one' fontSize={designTopicOne.fontSize} selectedFont={designTopicOne.font} color={designTopicOne.color} textAlign={designTopicOne.textAlign} backColor="rgb(30, 64, 175)" >{addressDiscText}</div>
                             </div>
 
                         </div>
@@ -42,31 +71,31 @@ const ContactForm = () => {
                             <PhoneIcon sx={{ fontSize: '3rem', color: 'white' }} />
 
                             <div >
-                                <div className='editHover topic' initialValue={phoneText} fontSize={designTopic.fontSize} selectedFont={designTopic.font} color={designTopic.color} textAlign={designTopic.textAlign} backColor="rgb(30, 64, 175)" />
+                                <div className=' topic' fontSize={designTopic.fontSize} selectedFont={designTopic.font} color={designTopic.color} textAlign={designTopic.textAlign} backColor="rgb(30, 64, 175)" >{phoneText}</div>
                             </div>
 
                             <div >
-                                <div className='editHover text-one' initialValue={phoneDiscText} fontSize={designTopicOne.fontSize} selectedFont={designTopicOne.font} color={designTopicOne.color} textAlign={designTopicOne.textAlign} backColor="rgb(30, 64, 175)" />
+                                <div className=' text-one' fontSize={designTopicOne.fontSize} selectedFont={designTopicOne.font} color={designTopicOne.color} textAlign={designTopicOne.textAlign} backColor="rgb(30, 64, 175)" >{phoneDiscText}</div>
                             </div>
 
                         </div>
                         <div class="email details">
                             <EmailIcon sx={{ fontSize: '3rem', color: 'white' }} />
                             <div>
-                                <div className='editHover topic' initialValue={mailText} fontSize={designTopic.fontSize} selectedFont={designTopic.font} color={designTopic.color} textAlign={designTopic.textAlign} backColor="rgb(30, 64, 175)" />
+                                <div className=' topic' fontSize={designTopic.fontSize} selectedFont={designTopic.font} color={designTopic.color} textAlign={designTopic.textAlign} backColor="rgb(30, 64, 175)" >{mailText}</div>
                             </div>
                             <div >
-                                <div className='editHover text-one' initialValue={mailDiscText} fontSize={designTopicOne.fontSize} selectedFont={designTopicOne.font} color={designTopicOne.color} textAlign={designTopicOne.textAlign} backColor="rgb(30, 64, 175)" />
+                                <div className=' text-one' fontSize={designTopicOne.fontSize} selectedFont={designTopicOne.font} color={designTopicOne.color} textAlign={designTopicOne.textAlign} backColor="rgb(30, 64, 175)" >{mailDiscText}</div>
                             </div>
 
                         </div>
                     </div>
                     <div class="right-side">
                         <div >
-                        <div className='editHover topic-text' initialValue={headText} fontSize={designTopicHead.fontSize} selectedFont={designTopicHead.font} color={designTopicHead.color} textAlign={designTopicHead.textAlign} backColor="rgb(30, 64, 175)" />
+                            <div className=' topic-text' fontSize={designTopicHead.fontSize} selectedFont={designTopicHead.font} color={designTopicHead.color} textAlign={designTopicHead.textAlign} backColor="rgb(30, 64, 175)" >{headText}</div>
                         </div>
                         <div>
-                        <div className='editHover topic-desc' initialValue={headDiscText}  fontSize={designTopicDisc.fontSize} selectedFont={designTopicDisc.font} color={designTopicDisc.color} textAlign={designTopicDisc.textAlign} backColor="rgb(30, 64, 175)" />
+                            <div className=' topic-desc' fontSize={designTopicDisc.fontSize} selectedFont={designTopicDisc.font} color={designTopicDisc.color} textAlign={designTopicDisc.textAlign} backColor="rgb(30, 64, 175)" >{headDiscText}</div>
                         </div>
 
                         <form action="#">
@@ -74,7 +103,7 @@ const ContactForm = () => {
                                 <input type="text" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
                             </div>
                             <div class="input-box">
-                                <input type="text" placeholder="Enter your email"value={email} onChange={(e) => setEmail(e.target.value)} />
+                                <input type="text" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
                             </div>
                             <div class="input-box message-box">
                                 <textarea placeholder="Enter your message" value={message} onChange={(e) => setMessage(e.target.value)} ></textarea>

@@ -294,15 +294,17 @@ const Services = () => {
 
     useEffect(() => {
 
-        setServicesHeadContext3({ ServicesHeadContext3: { serviceHeaderText, designServiceHeader } })
-        setServicesDiscContext3({ ServicesDiscContext3: { serviceDiscText, designServiceDisc } })
+        setServicesHeadContext3({ serviceHeaderText, designServiceHeader })
+        setServicesDiscContext3({ serviceDiscText, designServiceDisc })
         setServicesBoxContext3({
-            ServicesBoxContext3: {
-                serviceBoxHeaderText1, serviceBoxHeaderText2, serviceBoxHeaderText3, serviceBoxDiscText1,
-                serviceBoxDiscText2, serviceBoxDiscText3, designServiceBoxHeader, designServiceBoxDisc, selectedImage, selectedImage1, selectedImage2
-            }
+
+            serviceBoxHeader: { serviceBoxHeaderText1, serviceBoxHeaderText2, serviceBoxHeaderText3 },
+            serviceBoxDisc: { serviceBoxDiscText1, serviceBoxDiscText2, serviceBoxDiscText3 },
+            serviceBoxImages: { selectedImage, selectedImage1, selectedImage2 },
+            designServiceBoxHeader, designServiceBoxDisc,
+
         })
-        
+
     }, [serviceHeaderText, serviceDiscText, designServiceHeader, designServiceDisc, serviceBoxHeaderText1, serviceBoxHeaderText2, serviceBoxHeaderText3, serviceBoxDiscText1, serviceBoxDiscText2, serviceBoxDiscText3, designServiceBoxHeader, designServiceBoxDisc]);
 
     useEffect(() => {

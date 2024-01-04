@@ -5,7 +5,7 @@ import PublishEntrance from '../components/PublishTemplate3/Entrance';
 import PublishFooter from '../components/PublishTemplate3/Footer';
 import PublishNavbar from '../components/PublishTemplate3/Navbar';
 import PublishServices from '../components/PublishTemplate3/Services';
-
+import Grid from "@mui/material/Grid";
 
 import axios from 'axios';
 import { useParams } from 'react-router';
@@ -19,7 +19,7 @@ export default function PublishTemplate1() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await axios.post(`${import.meta.env.VITE_PORT}/content/publishTemp1/${publishToken}`);
+                const result = await axios.post(`${import.meta.env.VITE_PORT}/content/publishTemp3/${publishToken}`);
                 setResponse(result.data);
                 console.log(result.data);
             } catch (error) {

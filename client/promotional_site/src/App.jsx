@@ -1,11 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
 import HomeV2 from "../src/pages/HomeV2"
 import PromotionalSite from "./pages/PromotionalSite";
 import PublishTemplate1 from "./pages/PublishTemplate1.jsx";
 import PublishTemplate2 from "./pages/PublishTemplate2.jsx";
-import Login from './components/Login/Login.jsx';
-import Register from './components/Register/Register.jsx';
+import PublishTemplate3 from './pages/PublishTemplate3.jsx';
 import GlobalProvider from "./context/GlobalProvider.jsx";
 import PublishProvider from "./context/PublishProvider.jsx";
 import Template2Provider from "./context/Template2Provider.jsx";
@@ -58,6 +56,7 @@ function App() {
                       <Route path="/user/verify-email/:emailToken" element={<EmailVerified />} />
                       <Route path="/1/:publishToken" element={<PublishTemplate1 />} />
                       <Route path="/2/:publishToken" element={<PublishTemplate2 />} />
+                      <Route path="/3/:publishToken" element={<PublishTemplate3 />} />
                     </Routes>
                   </BrowserRouter>
                 </PublishProvider>

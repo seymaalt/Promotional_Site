@@ -3,6 +3,7 @@ const puppeteer = require("puppeteer");
 const express = require("express");
 const PublishingDataTemp1 = require("../models/publishingDataTemp1")
 const PublishingDataTemp2 = require("../models/publishingDataTemp2")
+const PublishingDataTemp3 = require("../models/publishingDataTemp3")
 const { Logger, ErrorLogger } = require("../controllers/logger")
 const crypto = require("crypto");
 
@@ -318,6 +319,37 @@ const TempData = asyncHandler(async (req, res) => {
         tempNo
       } = dataToSave;
 
+      newData = new PublishingDataTemp3({
+        userId: userId,
+        publishToken: publishToken,
+        companyNameText:CompanyNameContext3.companyNameText,
+        designCompanyNameText:CompanyNameContext3.designCompanyName,
+        navigationText:NavigationText3.navigationText,
+        designNavigationText:NavigationText3.designNav,
+        buttonText:ButtonTextContext3.buttonText,
+        designNavButton:ButtonTextContext3.designNavButton,
+        enteranceHeadText:EntranceHeadContext3.enteranceHeadText,
+        designHead:EntranceHeadContext3.designHead,
+        enteranceDiscText:EntranceDiscContext3.enteranceDiscText,
+        designEntranceDisc:EntranceDiscContext3.designEntranceDisc,
+        enteranceButtonText:EntranceButtonContext3.enteranceButtonText,
+        designEntranceButton:EntranceButtonContext3.designEntranceButton,
+        images:EntranceImagesContext3.images,
+        serviceHeaderText:ServicesHeadContext3.serviceHeaderText,
+        designServiceHeader:ServicesHeadContext3.designServiceHeader,
+        serviceDiscText:ServicesDiscContext3.serviceDiscText,
+        designServiceDisc:ServicesDiscContext3.designServiceDisc,
+        serviceBoxHeader:ServicesBoxContext3.serviceBoxHeader,
+        serviceBoxDisc:ServicesBoxContext3.serviceBoxDisc,
+        serviceBoxImages:ServicesBoxContext3.serviceBoxImages,
+        designServiceBoxDisc:ServicesBoxContext3.designServiceDisc,
+        designServiceBoxHeader:ServicesBoxContext3.designServiceBoxHeader,
+
+        tempNo: tempNo
+      });
+
+      await newData.save();
+
 
         console.log(dataToSave)
 
@@ -364,7 +396,7 @@ const publishTemp3 = asyncHandler(async (req, res) => {
   let { publishToken } = req.params;
   publishToken = publishToken.trim();
 
-  const data = await PublishingDataTemp2.findOne({ publishToken });
+  const data = await PublishingDataTemp3.findOne({ publishToken });
   if (data) {
 
     res.status(200).send(data);
