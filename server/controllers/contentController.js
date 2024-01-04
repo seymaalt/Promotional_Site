@@ -302,6 +302,25 @@ const TempData = asyncHandler(async (req, res) => {
 
       await newData.save();
 
+    }else if (tempNoparams.tempNo == 3){
+      const {
+        userId,
+        CompanyNameContext3,
+        NavigationText3,
+        ButtonTextContext3,
+        EntranceHeadContext3,
+        EntranceDiscContext3,
+        EntranceButtonContext3,
+        EntranceImagesContext3,
+        ServicesHeadContext3,
+        ServicesDiscContext3,
+        ServicesBoxContext3,
+        tempNo
+      } = dataToSave;
+
+
+        console.log(dataToSave)
+
     }
 
 
@@ -341,6 +360,20 @@ const publishTemp2 = asyncHandler(async (req, res) => {
   }
 });
 
+const publishTemp3 = asyncHandler(async (req, res) => {
+  let { publishToken } = req.params;
+  publishToken = publishToken.trim();
+
+  const data = await PublishingDataTemp2.findOne({ publishToken });
+  if (data) {
+
+    res.status(200).send(data);
+  } else {
+    res.status(404).send(`failure`);
+
+  }
+});
+
 
 
 
@@ -350,5 +383,6 @@ module.exports = {
   getContactFAV,
   TempData,
   publishTemp1,
-  publishTemp2
+  publishTemp2,
+  publishTemp3
 };
