@@ -314,7 +314,7 @@ export default function Profile() {
                                                 New
                                             </div>
                                             <TextField id="newPassword" name="newPassword" className='profileInput2' type="password" onChange={handleChangeNewPassword} />
-                                            <div style={{ color: 'red' }}>{errorMessage}</div>
+                                            <div style={{ color: 'rgb(255, 18, 18)', marginTop:'2%' }}>{errorMessage}</div>
                                             <div className="profileModalLabel2">
                                                 Confirm
                                             </div>
