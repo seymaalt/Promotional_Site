@@ -31,7 +31,7 @@ const ButtonAppBar = ({ responseData }) => {
   const { response } = useContext(PublishContext);
   const [tokenLink, setTokenLink] = useState();
   const [navbarVisible, setNavbarVisible] = useState(true);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const { contextHeader,
@@ -53,7 +53,6 @@ const ButtonAppBar = ({ responseData }) => {
   const handleClose = () => {
     setOpen(false);
   };
-
 
 
   const handleDownload = async () => {
@@ -90,8 +89,7 @@ const ButtonAppBar = ({ responseData }) => {
         html:
          `
         Your link: 
-       <a href="${("http://localhost:5173/1/" + result.data.publishToken)}" target='_blank'>${("http://localhost:5173/1/" + result.data.publishToken)}</a>
-  `,
+       <a href="${("http://localhost:5173/1/" + result.data.publishToken)}" target='_blank'>${("http://localhost:5173/1/" + result.data.publishToken)}</a>`,
         imageUrl: "https://i.hizliresim.com/o23f2f4.png",
         imageWidth: 130,
         imageAlt: "Custom image"
