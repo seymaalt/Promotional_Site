@@ -9,14 +9,17 @@ const DataSchema =  mongoose.Schema(
         publishToken:{
             type: String,
         },
-        description:[{
-            text:{ type: String},
+        description:{
+             type: String,
+            
+        },
+        designDescription:{
             fontSize:{type: String},
             color:{type:String},
             font:{type:String},
             textAlign:{type:String},
-            backgroundColor:{type:String}
-        }],
+        },
+
         logo:{
             type: String,
         },
@@ -28,33 +31,46 @@ const DataSchema =  mongoose.Schema(
               type: String,
             }],
           ],
-        innovations:[{
-            text:{ type: String},
-            fontSize:{type: String},
-            color:{type:String},
-            font:{type:String},
-            textAlign:{type:String}
+        innovations:{
+            type: String,
+           
             
-        }],
-        dataSecurity:{
-            text:{ type: String},
+        },
+        designInnovations:{
             fontSize:{type: String},
             color:{type:String},
             font:{type:String},
-            textAlign:{type:String}
+            textAlign:{type:String},
+           
+        },
+        dataSecurity:{
+             type: String,
+
+        },
+        designDataSecurity:{
+            fontSize:{type: String},
+            color:{type:String},
+            font:{type:String},
+            textAlign:{type:String},
+           
         },
         comments:[{
-                text:{ type: String},
-                fontSize:{type: String},
-                color:{type:String},
-                font:{type:String},
-                textAlign:{type:String}
+                type: String,
+        }],
+        designComments:[{
+            fontSize:{type: String},
+            color:{type:String},
+            font:{type:String},
+            textAlign:{type:String},
+           
         }],
         downloadStarDeveloper:{
             download:{ type: String},
             star:{type: String},
             developer:{type:String}
-        }
+        },
+        tempNo:{type:String}
+
   
     }
  
