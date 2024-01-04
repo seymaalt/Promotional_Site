@@ -7,10 +7,6 @@ import PublishHead from '../components/PublishTemplate2/PublishHead.jsx'
 import PublishRating from '../components/PublishTemplate2/PublishRating.jsx'
 import FooterPromotionalSite from "../components/Template1/FooterPromotionalSite.jsx";
 import Grid from "@mui/material/Grid";
-
-
-
-
 import axios from 'axios';
 import { useParams } from 'react-router';
 
@@ -32,7 +28,7 @@ export default function PublishTemplate1() {
         };
 
         fetchData();
-    }, [publishToken, setResponse]);
+    }, [publishToken]);
 
 
 
