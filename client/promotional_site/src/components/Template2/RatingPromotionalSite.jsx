@@ -9,12 +9,9 @@ export default function RatingPromotionalSite({ responseData }) {
 
     const { DownloadStarDeveloper, setTemp2DownloadStarDeveloper } = useContext(Template2Context);
 
-    const [star, setStar] = useState()
-    const [rating, setRating] = useState()
-    const [developer, setDeveloper] = useState()
 
     useEffect(() => {
-        setTemp2DownloadStarDeveloper({ star: responseData.star, rating: responseData.rating, developer: responseData.developer })
+        setTemp2DownloadStarDeveloper({ star: responseData.star, download: responseData.rating, developer: responseData.developer })
     }, [responseData.star, responseData.rating, responseData.developer]);
     useEffect(() => {
         console.log(DownloadStarDeveloper)

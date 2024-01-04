@@ -1,16 +1,12 @@
-import { useContext, useState, useRef, useEffect } from 'react';
-import PublishContext from '../context/PublishContext';
-import PublishComment from '../components/PublishTemplate2/PublishComment'
-import PublishDataSecinn from '../components/PublishTemplate2/PublishDataSecinn'
-import PublishGallery from '../components/PublishTemplate2/PublishGallery'
-import PublishHead from '../components/PublishTemplate2/PublishHead'
-import PublishRating from '../components/PublishTemplate2/PublishRating'
+import { useContext, useEffect } from 'react';
+import PublishContext from '../context/PublishContext.jsx';
+import PublishComment from '../components/PublishTemplate2/PublishComment.jsx'
+import PublishDataSecinn from '../components/PublishTemplate2/PublishDataSecinn.jsx'
+import PublishGallery from '../components/PublishTemplate2/PublishGallery.jsx'
+import PublishHead from '../components/PublishTemplate2/PublishHead.jsx'
+import PublishRating from '../components/PublishTemplate2/PublishRating.jsx'
 import FooterPromotionalSite from "../components/Template1/FooterPromotionalSite.jsx";
 import Grid from "@mui/material/Grid";
-
-
-
-
 import axios from 'axios';
 import { useParams } from 'react-router';
 
@@ -32,7 +28,7 @@ export default function PublishTemplate1() {
         };
 
         fetchData();
-    }, [publishToken, setResponse]);
+    }, [publishToken]);
 
 
 

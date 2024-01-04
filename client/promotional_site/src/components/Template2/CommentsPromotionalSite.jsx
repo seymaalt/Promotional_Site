@@ -16,7 +16,7 @@ export default function CommentsPromotionalSite({ responseData }) {
     const [metinnn, setMetinnn] = useState(responseData.comments[2])
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-    const { setTemp2Comments } = useContext(Template2Context);
+    const { Comments2, setTemp2Comments } = useContext(Template2Context);
 
 
     const [designComment, setDesignComment] = useState({
@@ -99,6 +99,9 @@ export default function CommentsPromotionalSite({ responseData }) {
     useEffect(() => {
         setTemp2Comments({ comments: responseData.comments, designComment: designComment });
     }, [responseData.comments, designComment])
+    useEffect(() => {
+        console.log(Comments2)
+    },)
     return (
         <div className="ratingDiv">
             <h1>Deneyimleyenler</h1>

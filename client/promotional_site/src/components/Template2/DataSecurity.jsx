@@ -13,7 +13,7 @@ const DataSecurity = ({ responseData }) => {
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const { setTemp2DataSecurity } = useContext(Template2Context);
+  const { DataSecurity2, setTemp2DataSecurity } = useContext(Template2Context);
 
 
   const [designDataSecurity, setDesignDataSecurity] = useState({
@@ -95,6 +95,10 @@ const DataSecurity = ({ responseData }) => {
   useEffect(() => {
     setTemp2DataSecurity({ dataSecurity: (dataSecurity == null ? responseData.dataSecurity : dataSecurity), designDataSecurity: designDataSecurity });
   }, [dataSecurity, designDataSecurity])
+
+  useEffect(() => {
+    console.log(DataSecurity2)
+  },)
 
   return (
     <div className='divStyle'>

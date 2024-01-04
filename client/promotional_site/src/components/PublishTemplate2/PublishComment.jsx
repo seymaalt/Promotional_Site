@@ -3,11 +3,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Template2Context from '../../context/Template2Context';
 import './style/template2.css'
+import PublishContext from '../../context/PublishContext';
+
 
 export default function CommentsPromotionalSite() {
-    const [metin, setMetin] = useState(responseData.comments[0])
-    const [metinn, setMetinn] = useState(responseData.comments[1])
-    const [metinnn, setMetinnn] = useState(responseData.comments[2])
+    const { response } = useContext(PublishContext)
 
     return (
         <div className="ratingDiv">
@@ -26,8 +26,8 @@ export default function CommentsPromotionalSite() {
                                     </svg>
                                 </div>
                                 <div className="comment">
-                                        <div onClick={duzenlemeModunuToggle} style={{ textAlign: `${designComment.textAlign}`, fontFamily: designComment.font, color: `${designComment.color}`, fontSize: `${designComment.fontSize}px` }}>
-                                            {metin == null ? responseData.comments[0] : metin}
+                                        <div style={{ textAlign: `${response.designComments[0].textAlign}`, fontFamily: response.designComments[0].font, color: `${response.designComments[0].color}`, fontSize: `${response.designComments[0].fontSize}px` }}>
+                                            {response.comments[0] == null ? 'response.comments[0]' : response.comments[0]}
                                         </div>
                                 </div>
                             </div>
@@ -46,8 +46,8 @@ export default function CommentsPromotionalSite() {
                                     </svg>
                                 </div>
                                 <div className="comment">
-                                        <div style={{ textAlign: `${designComment.textAlign}`, fontFamily: designComment.font, color: `${designComment.color}`, fontSize: `${designComment.fontSize}px` }} >
-                                            {metinn == null ? responseData.comments[1] : metinn}
+                                        <div style={{ textAlign: `${response.designComments[0].textAlign}`, fontFamily: response.designComments[0].font, color: `${response.designComments[0].color}`, fontSize: `${response.designComments[0].fontSize}px` }} >
+                                            {response.comments[1] == null ? 'response.comments[1]' : response.comments[1]}
                                         </div>
                                 </div>
                             </div>
@@ -66,8 +66,8 @@ export default function CommentsPromotionalSite() {
                                     </svg>
                                 </div>
                                 <div className="comment">
-                                        <div style={{ textAlign: `${designComment.textAlign}`, fontFamily: designComment.font, color: `${designComment.color}`, fontSize: `${designComment.fontSize}px` }} >
-                                            {metinnn == null ? responseData.comments[2] : metinnn}
+                                        <div style={{ textAlign: `${response.designComments[0].textAlign}`, fontFamily: response.designComments[0].font, color: `${response.designComments[0].color}`, fontSize: `${response.designComments[0].fontSize}px` }} >
+                                            {response.comments[2] == null ? 'response.comments[2]' : response.comments[2]}
                                         </div>
                                 </div>
                             </div>

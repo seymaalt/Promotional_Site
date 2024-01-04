@@ -9,29 +9,17 @@ const DataSchema =  mongoose.Schema(
         publishToken:{
             type: String,
         },
-        header:{
-            type: String,
-        },
-        designHeader:[{
-            fontSize:{type: String},
-            color:{type:String},
-            font:{type:String},
-            textAlign:{type:String}
-            
-        }],
         description:{
-            type: String,
+             type: String,
+            
         },
-        designDescription:[{
+        designDescription:{
             fontSize:{type: String},
             color:{type:String},
             font:{type:String},
             textAlign:{type:String},
-            backgroundColor:{type:String}
-        }],
-        color:{
-            type: String,
         },
+
         logo:{
             type: String,
         },
@@ -44,29 +32,48 @@ const DataSchema =  mongoose.Schema(
             }],
           ],
         innovations:{
-            type: String,          
-        },
-        designInnovations:[{
-            fontSize:{type: String},
-            color:{type:String},
-            font:{type:String},
-            textAlign:{type:String}
-            
-        }],
-        dataSecurity:{
             type: String,
+           
+            
         },
-        designDataSecurity:[{
+        designInnovations:{
             fontSize:{type: String},
             color:{type:String},
             font:{type:String},
-            textAlign:{type:String}
-            
+            textAlign:{type:String},
+           
+        },
+        dataSecurity:{
+             type: String,
+
+        },
+        designDataSecurity:{
+            fontSize:{type: String},
+            color:{type:String},
+            font:{type:String},
+            textAlign:{type:String},
+           
+        },
+        comments:[{
+                type: String,
         }],
+        designComments:[{
+            fontSize:{type: String},
+            color:{type:String},
+            font:{type:String},
+            textAlign:{type:String},
+           
+        }],
+        downloadStarDeveloper:{
+            download:{ type: String},
+            star:{type: String},
+            developer:{type:String}
+        },
         tempNo:{type:String}
+
   
     }
  
 );
 
-module.exports= mongoose.model("PublishingDataTemp1",DataSchema);
+module.exports= mongoose.model("PublishingDataTemp2",DataSchema);

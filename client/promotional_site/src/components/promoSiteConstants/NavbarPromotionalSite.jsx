@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import Template1Context from '../../context/Template1Context';
 import GlobalContext from '../../context/GlobalContext';
 import Swal from 'sweetalert2'
+import Template2Context from '../../context/Template2Context';
 
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -26,35 +27,15 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const ButtonAppBar = ({ responseData }) => {
+const ButtonAppBar = () => {
   const { token, setToken, logout } = useContext(AuthContext);
-  const { response } = useContext(PublishContext);
-  const [tokenLink, setTokenLink] = useState();
-  const [navbarVisible, setNavbarVisible] = useState(true);
-  const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-  const { contextHeader,
-    designHeader,
-    contextLogo,
-    color,
-    contextDescription,
-    designDescription,
-    contextDownloadLinks,
-    contextImages,
-    contextInnovations,
-    designInnovations,
-    contextDataSecurity,
-    designDataSecurity} = useContext(Template1Context);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const { contextHeader, designHeader, contextLogo, color, contextDescription, designDescription,
+    contextDownloadLinks, contextImages, contextInnovations, designInnovations, contextDataSecurity, designDataSecurity } = useContext(Template1Context);
 
-
+  const { Logo2, Description2, DesignDescription2, DownloadLinks2, Images2, Innovations2, DesignInnovations2,
+    DataSecurity2, DesignDataSecurity2, Comments2, DesignComments2, DownloadStarDeveloper } = useContext(Template2Context);
 
   const handleDownload = async () => {
     try {
@@ -63,11 +44,17 @@ const ButtonAppBar = ({ responseData }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      const userId = userResponse.data.id;
-      console.log(userId);
 
-      await axios.post(`${import.meta.env.VITE_PORT}/content/TempData`, {
-        data: {
+      const userId = userResponse.data.id;
+
+      var fullUrl = window.location.href;
+
+      const tempNo = fullUrl.match(/\d+$/)[0];
+      console.log("Temp No: " + tempNo);
+      let postData;
+
+      if (tempNo == 1) {
+        postData = {
           userId,
           contextHeader,
           designHeader,
@@ -80,25 +67,47 @@ const ButtonAppBar = ({ responseData }) => {
           contextInnovations,
           designInnovations,
           contextDataSecurity,
-          designDataSecurity
-        }
+          designDataSecurity,
+          tempNo,
+        };
+      } else if (tempNo == 2) {
+        postData = {
+          userId,
+          Logo2,
+          Description2,
+          DesignDescription2,
+          DownloadLinks2,
+          Images2,
+          Innovations2,
+          DesignInnovations2,
+          DataSecurity2,
+          DesignDataSecurity2,
+          Comments2,
+          DesignComments2,
+          DownloadStarDeveloper,
+          tempNo,
+        };
+      }
+
+
+
+      await axios.post(`${import.meta.env.VITE_PORT}/content/TempData/${tempNo}`, {
+        data: postData,
       }).then(result => {
         console.log(result.data.publishToken)
-        setTokenLink("http://localhost:5173/1/" + result.data.publishToken)
-         Swal.fire({
-        title: "Your Page is Ready!",
-        html:
-         `
+        console.log(tempNo)
+        Swal.fire({
+          title: "Your Page is Ready!",
+          html:
+            `
         Your link: 
-       <a href="${("http://localhost:5173/1/" + result.data.publishToken)}" target='_blank'>${("http://localhost:5173/1/" + result.data.publishToken)}</a>
-  `,
-        imageUrl: "https://i.hizliresim.com/o23f2f4.png",
-        imageWidth: 130,
-        imageAlt: "Custom image"
-      });
+       <a href="${(`${import.meta.env.VITE_CLIENT_URL}/${tempNo}/` + result.data.publishToken)}" target='_blank'>${(`${import.meta.env.VITE_CLIENT_URL}/${tempNo}/` + result.data.publishToken)}</a>`,
+          imageUrl: "https://i.hizliresim.com/o23f2f4.png",
+          imageWidth: 130,
+          imageAlt: "Custom image"
+        });
       });
 
-     
     } catch (error) {
       console.error('Error fetching data from the server!', error);
     }

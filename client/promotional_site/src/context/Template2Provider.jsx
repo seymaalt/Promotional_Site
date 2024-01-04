@@ -16,11 +16,7 @@ const Template2Provider = ({ children }) => {
   const [designDataSecurity2, setDesignDataSecurity2] = useState();
   const [Comments2, setComments2] = useState();
   const [designComments2, setDesignComments2] = useState();
-  const [DownloadStarDeveloper, setDownloadStarDeveloper] = useState({
-    star: response == null ? null : response.star,
-    rating: response == null ? null : response.rating,
-    developer: response == null ? null : response.developer
-  });
+  const [DownloadStarDeveloper, setDownloadStarDeveloper] = useState();
 
   const setTemp2Logo = (logo) => {
     setLogo2(logo);
@@ -54,8 +50,8 @@ const Template2Provider = ({ children }) => {
     setDesignComments2(designDescription)
   };
 
-  const setTemp2DownloadStarDeveloper = (star, rating, developer) => {
-    setDownloadStarDeveloper({ star: star, rating: rating, developer: developer });
+  const setTemp2DownloadStarDeveloper = (developer) => {
+    setDownloadStarDeveloper(developer);
   };
 
 
