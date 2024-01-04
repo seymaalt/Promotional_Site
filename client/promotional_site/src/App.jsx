@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import HomeV2 from "../src/pages/HomeV2"
 import PromotionalSite from "./pages/PromotionalSite";
 import PublishTemplate1 from "./pages/PublishTemplate1.jsx";
+import PublishTemplate2 from "./pages/PublishTemplate2.jsx";
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import GlobalProvider from "./context/GlobalProvider.jsx";
@@ -56,6 +57,7 @@ function App() {
                       <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
                       <Route path="/user/verify-email/:emailToken" element={<EmailVerified />} />
                       <Route path="/1/:publishToken" element={<PublishTemplate1 />} />
+                      <Route path="/2/:publishToken" element={<PublishTemplate2 />} />
                     </Routes>
                   </BrowserRouter>
                 </PublishProvider>

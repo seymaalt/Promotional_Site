@@ -63,6 +63,7 @@ const DataSchema =  mongoose.Schema(
             textAlign:{type:String}
             
         }],
+        tempNo:{type:String}
   
     }
  
