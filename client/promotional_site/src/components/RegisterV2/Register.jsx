@@ -16,6 +16,7 @@ import { useState } from "react";
 import axios from 'axios'
 import LoginGoogle from '../../assets/google.png'
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 const defaultTheme = createTheme();
 
 export default function SignUp() {
@@ -84,11 +85,22 @@ export default function SignUp() {
 
         .then(result => {
           if (result.data == "User already registered") {
-            alert("User already exists with Email!")
+            Swal.fire({
+              position: "top",
+              icon: "error",
+              title: "User already exists with Email!",
+              showConfirmButton: false,
+              timer: 1500
+            });
           }
           else {
-            window.location.href = "/";
-            alert("Success! check your email ");
+            Swal.fire({
+              position: "top",
+              icon: "success",
+              title: "Success! check your email ",
+              showConfirmButton: false,
+              timer: 1500
+            });
           }
         })
         .catch(err => console.log(err))

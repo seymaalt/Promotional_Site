@@ -1,0 +1,809 @@
+.part3 {
+    min-height: 100vh;
+    position: relative;
+    margin: auto;
+    display: grid;
+    place-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.temp3Navbar {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 13dvh;
+    background-color: #FAF8F4;
+    border-bottom: 1px solid #DDDEDE;
+}
+
+.companyName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-align-last: center;
+    font-weight: 600;
+    font-size: 2.15rem;
+    color: hsl(225, 73%, 43%);
+}
+
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigationButton {
+    text-align-last: center;
+    font-size: 1.25rem;
+    padding: 2rem;
+    text-decoration: inherit;
+    color: #7a7a7a;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactHeader {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+}
+
+.contactLabel {
+    color: white;
+    font-weight: bold;
+}
+
+.button-63 {
+    align-items: center;
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 19px 24px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align-last: center;
+}
+
+.button-63:active,
+.button-63:hover {
+    background-image: linear-gradient(144deg, #b95afd, #6f5af7 50%, #19eefd);
+    outline: 0;
+}
+
+
+.entranceHead {
+    width: 100%;
+    text-align-last: left;
+    font-weight: bold;
+    padding: 3rem;
+    font-size: 4rem;
+}
+
+.entranceDisc {
+    text-align-last: left;
+    width: 100%;
+    position: relative;
+    font-weight: bold;
+    color: #7a7a7a;
+    padding-left: 3rem;
+    font-size: 1.325rem;
+}
+
+.entranceButtons {
+    padding-top: 5rem;
+    margin: 3rem;
+}
+
+.entranceImage {
+    float: inline-end;
+    margin-top: 10%;
+    border-radius: 2rem;
+    width: 40%;
+    box-shadow: #6f5af7 5px 5px, #1E45BF 10px 10px;
+}
+
+.entranceImage2 {
+    margin-left: 15%;
+    margin-top: 2%;
+    border-radius: 2rem;
+    width: 85%;
+    box-shadow: #6f5af7 5px 5px, #ded9fc 10px 10px;
+}
+
+.entranceImage3 {
+    margin-top: 2%;
+    border-radius: 2rem;
+    width: 50%;
+    box-shadow: #6f5af7 5px 5px, #ded9fc 10px 10px;
+}
+
+/* Services */
+
+.servicesHeader {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.servicesDisc {
+    width: 85%;
+    color: #6b7280;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
+    padding: 2rem;
+}
+
+.servicesBox {
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+    background-color: #E5E7EB;
+    border-radius: 2rem;
+    height: auto;
+    overflow: hidden;
+}
+
+.servicesImage {
+    border-radius: 1rem;
+    margin-top: 2rem;
+    object-fit: cover;
+    max-width: 90%;
+    height: 18rem;
+    display: block;
+}
+
+.editHover:hover {
+    outline: #84CC16 solid 2px;
+}
+
+.servicesBoxHeader {
+    padding: 2rem;
+    padding-bottom: 0rem;
+    font-size: 1.45rem;
+    font-weight: bold;
+    min-height: 5rem;
+}
+
+.servicesBoxDisc {
+    padding: 2rem;
+    font-size: 1.15rem;
+    float: left;
+    min-height: 5rem;
+}
+
+#servicesWhiteCircle {
+    padding: 2rem;
+    float: right;
+    font-size: 4rem;
+    color: white;
+}
+
+.image-container {
+    height: 100%;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Contact  */
+
+.contactDiv {
+    max-width: 1100px;
+    width: 100%;
+    background: rgb(30, 64, 175);
+    border-radius: 1rem;
+    padding: 6rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contactDiv .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contactDiv .content .left-side {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    position: relative;
+}
+
+.content .left-side::before {
+    content: "";
+    position: absolute;
+    height: 70%;
+    width: 2px;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #d6d6d8;
+}
+
+.content .left-side .details {
+    margin: 14px;
+    text-align: center;
+}
+
+.content .left-side .details .topic {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.content .left-side .details .text-one {
+    font-size: 14px;
+    color: #e4e4e4;
+}
+
+.contactDiv .content .right-side {
+    width: 75%;
+    margin-left: 75px;
+}
+
+.content .right-side .topic-text {
+    font-size: 36px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.content .right-side .topic-desc {
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+.right-side .input-box {
+    height: 55px;
+    width: 100%;
+    margin: 12px 0;
+}
+
+.right-side .input-box input,
+.right-side .input-box textarea {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: #f0f1f8;
+    border-radius: 6px;
+    padding: 0 15px;
+    resize: none;
+}
+
+.right-side .message-box {
+    min-height: 110px;
+}
+
+.right-side .input-box textarea {
+    padding-top: 6px;
+}
+
+.right-side .button {
+    display: inline-block;
+    margin-top: 12px;
+}
+
+.right-side .button input[type="button"] {
+    color: #152c70;
+    font-size: 1.35rem;
+    outline: none;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 0.65rem;
+    border-bottom-right-radius: 0;
+    box-shadow: rgba(184, 184, 184, 0.2) 0 15px 30px 5px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button input[type="button"]:hover {
+    background-color: rgb(226, 226, 226);
+}
+
+@media (max-width: 950px) {
+    .contactDiv {
+        width: 90%;
+        padding: 30px 40px 40px 35px;
+    }
+
+    .contactDiv .content .right-side {
+        width: 75%;
+        margin-left: 55px;
+    }
+}
+
+/* Footer */
+
+.temp3Footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: #1E45BF;
+}
+
+.footerName {
+    font-size: 1.45rem;
+    font-weight: bold;
+    color: white;
+}
+
+.footerleft {
+    margin-top: 2.15rem;
+    font-size: 1.15rem;
+    color: white;
+}
+
+.footerNavigate {
+    text-align: center;
+}
+
+.footerNavigation {
+    font-size: 1.15rem;
+    padding-inline: 3rem;
+    text-decoration: inherit;
+    color: #e7e7e7;
+}
+
+.socialMedia {
+    text-align: center;
+}
+
+.socialMediaIcon {
+    color: white;
+    position: relative;
+    list-style: none;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+#footerIconSize {
+    font-size: 400%;
+}
+
+ul li a {
+    text-decoration: none;
+}
+
+ul li a .fa-brands {
+    font-size: 6em;
+    color: #222;
+}
+
+ul li a::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 6em;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+}
+
+@media (min-width: 768px) {
+    .button-63 {
+        font-size: 24px;
+        min-width: 196px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .companyName {
+        font-size: 1.15rem;
+    }
+
+    .navigationButton {
+        font-size: 0.85rem;
+        padding: 1rem;
+    }
+
+    .button-63 {
+        font-size: 12px;
+        line-height: 1em;
+        max-width: 100%;
+        min-width: 70px;
+        padding: 11px 15px;
+    }
+
+    .entranceHead {
+        padding: 2rem;
+        font-size: 3rem;
+    }
+
+    .entranceDisc {
+        padding-left: 2rem;
+        font-size: 1.025rem;
+    }
+
+    .entranceButtons {
+        padding-top: 0rem;
+        margin: 3rem;
+    }
+
+    .servicesBox {
+        margin-top: 15%;
+        margin-bottom: 15%;
+    }
+
+    .servicesImage {
+        border-radius: 1rem;
+        margin-top: 2rem;
+        object-fit: cover;
+        max-width: 90%;
+        height: 100%;
+        display: block;
+    }
+
+    .servicesBoxHeader {
+        padding: 1rem;
+        padding-bottom: 0rem;
+        font-size: 1.15rem;
+        font-weight: bold;
+        min-height: 3rem;
+    }
+
+    .servicesBoxDisc {
+        padding: 1rem;
+        font-size: 0.85rem;
+        float: left;
+        min-height: 5rem;
+    }
+
+    #servicesWhiteCircle {
+        padding: 1rem;
+        float: right;
+        font-size: 3rem;
+        color: white;
+    }
+
+    .servicesHeader {
+        padding: 2rem;
+        font-size: 3rem;
+    }
+
+    .servicesDisc {
+        padding-left: 2rem;
+        font-size: 1.025rem;
+    }
+
+    .contactDiv {
+        padding: 4rem;
+        margin-bottom: 10%;
+    }
+
+    .content .left-side .details {
+        margin: 14px;
+        text-align: center;
+    }
+
+    .content .left-side .details .topic {
+        color: white;
+        font-weight: 500;
+    }
+
+    .content .left-side .details .text-one {
+        font-size: 9px;
+        color: #e4e4e4;
+    }
+
+    .content .right-side .topic-text {
+        font-size: 24px;
+        font-weight: 600;
+        color: #ffffff;
+    }
+
+    .right-side .input-box {
+        height: 45px;
+        width: 100%;
+        margin: 12px 0;
+    }
+
+    .right-side .input-box input,
+    .right-side .input-box textarea {
+        height: 100%;
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        background: #f0f1f8;
+        border-radius: 6px;
+        padding: 3 15px;
+        resize: none;
+    }
+
+    .right-side .button {
+        margin-top: 10px;
+    }
+
+    .right-side .button input[type="button"] {
+        font-size: 1.15rem;
+        padding: 8px 14px;
+    }
+
+    .temp3Footer {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        background-color: #1E45BF;
+    }
+
+    .footerName {
+        font-size: 1.15rem;
+        font-weight: bold;
+        color: white;
+    }
+
+    .footerleft {
+        margin-top: 1.65rem;
+        font-size: 0.75rem;
+        color: white;
+    }
+
+    .footerNavigate {
+        flex-direction: column;
+    }
+
+    .footerNavigation {
+        font-size: 50%;
+        padding-inline: 1rem;
+        text-decoration: inherit;
+        color: #e7e7e7;
+    }
+
+    .socialMedia {
+        display: flex;
+        text-align: center;
+    }
+
+    #footerIconSize {
+        font-size: 300%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .part3 {
+        min-height: 70vh;
+        position: relative;
+        margin: auto;
+        display: grid;
+        place-items: center;
+
+    }
+
+    .companyName {
+        font-size: 1.15rem;
+    }
+
+    .navigationButton {
+        display: none;
+    }
+
+    .entranceHead {
+        padding: 2rem;
+        font-size: 3rem;
+    }
+
+    .entranceDisc {
+        padding-left: 2rem;
+        font-size: 1.25rem;
+    }
+
+    .entranceButtons {
+        padding-top: 0rem;
+        margin: 1rem;
+    }
+
+    .entranceImage {
+        float: inline-end;
+        margin-top: 10%;
+        border-radius: 2rem;
+        width: 40%;
+        box-shadow: #6f5af7 5px 5px, #1E45BF 10px 10px;
+    }
+
+    .entranceImage2 {
+        margin-left: 15%;
+        margin-top: 2%;
+        border-radius: 2rem;
+        width: 55%;
+        box-shadow: #6f5af7 5px 5px, #ded9fc 10px 10px;
+    }
+
+    .entranceImage3 {
+        margin-top: 2%;
+        border-radius: 2rem;
+        width: 40%;
+        box-shadow: #6f5af7 5px 5px, #ded9fc 10px 10px;
+    }
+
+    .servicesBox {
+        margin-left: 10%;
+        margin-top: 15%;
+        margin-bottom: 15%;
+    }
+
+    .servicesImage {
+        border-radius: 1rem;
+        margin-top: 2rem;
+        object-fit: cover;
+        max-width: 90%;
+        height: 100%;
+        display: block;
+    }
+
+    .servicesBoxHeader {
+        padding: 1rem;
+        padding-bottom: 0rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        min-height: 3rem;
+    }
+
+    .servicesHeader {
+        padding: 1.65rem;
+        font-size: 3rem;
+    }
+
+    .servicesDisc {
+        padding-right: 0rem;
+        padding-left: 2rem;
+        font-size: 0.850rem;
+    }
+
+    .contactDiv {
+        padding: 1rem;
+        margin-bottom: 10%;
+    }
+
+    .content .left-side .details {
+        margin: 7px;
+        text-align: center;
+    }
+
+    .content .left-side .details .topic {
+        color: white;
+        font-weight: 500;
+    }
+
+    .content .left-side .details .text-one {
+        font-size: 7px;
+        color: #e4e4e4;
+    }
+
+    .content .right-side .topic-text {
+        font-size: 16px;
+        font-weight: 600;
+        color: #ffffff;
+    }
+
+    .content .right-side .topic-desc {
+        font-size: 10px;
+    }
+
+    .right-side .input-box {
+        height: 30px;
+        width: 80%;
+    }
+
+    .right-side .input-box input,
+    .right-side .input-box textarea {
+
+        font-size: 11px;
+
+    }
+
+    .right-side .button {
+        margin-top: 10px;
+    }
+
+    .right-side .button input[type="button"] {
+        font-size: 0.85rem;
+        padding: 8px 14px;
+    }
+
+    .temp3Footer {
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+        background-color: #1E45BF;
+    }
+
+    .footerName {
+        font-size: 0.5rem;
+        font-weight: bold;
+        color: white;
+    }
+
+    .footerleft {
+        margin-top: 1rem;
+        font-size: 0.25rem;
+        color: white;
+    }
+
+    .footerNavigation {
+        display: none;
+    }
+
+    .socialMedia {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .socialMediaIcon {
+        color: white;
+        position: relative;
+        list-style: none;
+        margin: 0 60%;
+        cursor: pointer;
+    }
+
+    ul li a {
+        text-decoration: none;
+    }
+
+    ul li a .fa-brands {
+        font-size: 6em;
+        color: #222;
+    }
+
+    ul li a::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 6em;
+        height: 0;
+        overflow: hidden;
+        transition: 0.5s ease-in-out;
+    }
+
+    #footerIconSize {
+        font-size: 100%;
+    }
+
+    .button-63 {
+        font-size: 20px;
+        line-height: 1em;
+        max-width: 100%;
+        min-width: 140px;
+        padding: 19px 24px;
+    }
+}

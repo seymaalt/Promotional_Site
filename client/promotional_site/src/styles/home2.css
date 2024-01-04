@@ -2,6 +2,16 @@
     font-family: "Poppins";
 }
 
+::-webkit-scrollbar {
+    background-color: rgb(22,20,23);
+}
+
+::-webkit-scrollbar-thumb {
+    border: 1px solid rgb(68, 68, 68);
+    background: rgb(230, 230, 230);
+    border-radius: 0.4rem;
+}
+
 .padding2 {
     padding: 2%;
 }
@@ -242,7 +252,6 @@
     height: 50px;
 
 }
-
 
 .chooseShadow {
     border-radius: 1.65rem;
@@ -511,7 +520,7 @@
     }
 
     .howItWorkImage {
-        width: 50%;
+        width: 70%;
         object-fit: cover;
         padding: 5%;
         border-radius: 36px;

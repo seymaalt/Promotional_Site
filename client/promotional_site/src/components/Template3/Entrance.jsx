@@ -10,7 +10,8 @@ import ChangeImage from './ChangeImage'
 
 const Template3Navbar = () => {
     const { response } = useContext(GlobalContext);
-    const { template3Response, setTemplate3Response } = useContext(Template3Context);
+    const { EntranceHeadContext3, setEntranceHeadContext3, EntranceDiscContext3, setEntranceDiscContext3, EntranceButtonContext3, setEntranceButtonContext3,
+        EntranceImagesContext3, setEntranceImagesContext3 } = useContext(Template3Context);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
     const [modalPositionImage, setModalPositionImage] = useState({ top: 0, left: 0 });
     const [selectedImage, setSelectedImage] = useState("https://images.unsplash.com/photo-1619410283995-43d9134e7656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzEzMzd8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMERldmVsb3BtZW50fGVufDB8MHx8fDE3MDIzNjI3NzR8MA&ixlib=rb-4.0.3&q=80&w=1920")
@@ -228,14 +229,18 @@ const Template3Navbar = () => {
     };
 
     useEffect(() => {
-        setTemplate3Response({
-            ...template3Response, enteranceHeadText: enteranceHeadText, enteranceDiscText: enteranceDiscText,
-            enteranceButtonText: enteranceButtonText, designHead: designHead, designEntranceDisc: designEntranceDisc,
-            designEntranceButton: designEntranceButton, selectedImage: selectedImage, selectedImage1: selectedImage1,
-            selectedImage2: selectedImage2
-        });
-        console.log(template3Response)
+        setEntranceHeadContext3({ enteranceHeadText, designHead });
+        setEntranceDiscContext3({ enteranceDiscText, designEntranceDisc })
+        setEntranceButtonContext3({ enteranceButtonText, designEntranceButton })
+        setEntranceImagesContext3({ images: { selectedImage, selectedImage1, selectedImage2 } })
     }, [enteranceHeadText, enteranceButtonText, enteranceDiscText, designEntranceButton, designEntranceDisc, designHead, selectedImage, selectedImage1, selectedImage2])
+
+    useEffect(() => {
+        console.log(EntranceHeadContext3)
+        console.log(EntranceDiscContext3)
+        console.log(EntranceButtonContext3)
+        console.log(EntranceImagesContext3)
+    })
 
     return (
         <div className='part3'>

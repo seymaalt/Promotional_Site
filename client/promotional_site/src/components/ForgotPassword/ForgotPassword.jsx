@@ -8,6 +8,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 const defaultTheme = createTheme();
 
 const ForgotPassword = () => {
@@ -17,19 +18,40 @@ const ForgotPassword = () => {
     const data = new FormData(event.currentTarget);
     const email = data.get('email')
     if (!email) {
-      alert("E-posta eksik")
+      Swal.fire({
+        position: "top",
+        icon: "error",
+        title: "E-posta eksik",
+        showConfirmButton: false,
+        timer: 1500
+      })
       return; // İşlemi burada sonlandır
     } else {
-      axios.post(`${import.meta.env.VITE_PORT}/user/forgotPassword`, {email})
+      axios.post(`${import.meta.env.VITE_PORT}/user/forgotPassword`, { email })
         .then(result => {
           console.log(result)
           const jwtToken = result.data.accessToken;
           localStorage.setItem('token', jwtToken);
           if (result.data == "Success") {
-            alert("Email sent.")
+            Swal.fire({
+              position: "top",
+              icon: "success",
+              title: "Email sent.",
+              showConfirmButton: false,
+              timer: 1500
+            });
           }
           else {
-            alert("User not exist!")
+            Swal.fire({
+              position: "top",
+              icon: "error",
+              title: "User not exist!",
+              showConfirmButton: false,
+              timer: 1500,
+              customClass: {
+                popup: 'swal2-popup-custom' // Özel bir sınıf ekleyerek z-index değerini kontrol etme
+              }
+            })
           }
         })
         .catch(err => console.log(err));

@@ -1,4 +1,4 @@
-import React, { useState,useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ChangeText from '../Template1/ChangeText'
 import TextContext from '../../context/TextContext';
 import { TextareaAutosize } from '@mui/material';
@@ -12,7 +12,7 @@ const Innovation = ({ responseData }) => {
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const { template2Response, setTemplate2Response } = useContext(Template2Context);
+  const { Innovations2, setTemp2Innovations2 } = useContext(Template2Context);
 
   const [designInnovation, setDesignInnovation] = useState({
     fontSize: 25,
@@ -91,9 +91,12 @@ const Innovation = ({ responseData }) => {
     }
   };
   useEffect(() => {
-    setTemplate2Response({ ...template2Response, designInnovation:designInnovation,innovations:(innovations == null ? responseData.innovations : innovations)});
-    console.log(template2Response)
-  }, [,designInnovation,innovations])
+    setTemp2Innovations2({ innovations: (innovations == null ? responseData.innovations : innovations), designInnovation: designInnovation, });
+  }, [innovations, designInnovation])
+
+  useEffect(() => {
+    console.log(Innovations2)
+  },)
 
   return (
     <div>

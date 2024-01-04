@@ -65,11 +65,6 @@ export default function Navbar({ onClick }) {
 
     prevOpen.current = open;
   }, [open]);
-
-  const handleButtonClick = () => {
-    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-    setButtonVisible(false);
-  };
   
   const handleRegisterClick = () => {
     navigate("/RegisterPage");
@@ -98,7 +93,7 @@ export default function Navbar({ onClick }) {
   }, [token, logout, setToken]);
 
   useEffect(() => {
-    console.log(user);
+    //console.log(user);
     // var fullUrl = window.location.href;
     // console.log("Sayfanın tam URL'si: " + fullUrl);
   });

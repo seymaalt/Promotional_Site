@@ -3,7 +3,7 @@
 }
 
 * {
-  font-family:"Poppins";
+  font-family: "Poppins";
 }
 
 .middle {
@@ -173,9 +173,13 @@ body {
 }
 
 .navbarLogo {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(45deg, #7040e2, #906ad7, #ad92cb);
   margin-left: 2%;
-  width: 240px;
-  padding: 15px;
+  width: 15rem;
+  padding: 1rem;
   align-items: center;
 }
 
@@ -242,7 +246,46 @@ body {
 
 .icons {
   display: flex;
+  justify-content: end;
   color: black;
+  width: 100%;
+}
+
+.icon {
+  margin-right: 5%;
+}
+
+#iconButton {
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, #7040e2, #906ad7, #ad92cb);
+  background-size: 200% auto;
+  padding: 0.8rem;
+  width: 140%;
+  border-radius: 30px;
+}
+
+#iconButton:hover {
+  animation: gradient 2s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 75%;
+  }
+
+  50% {
+    background-position: 100% 30%;
+  }
+
+  100% {
+    background-position: 0% 75%;
+  }
+}
+
+#iconSize {
+  color: black;
+  font-size: 2.8rem;
 }
 
 .logined {
@@ -382,7 +425,15 @@ body {
   border-bottom: 1px solid rgb(165, 165, 165);
 }
 
+.chooseScroll::-webkit-scrollbar {
+  background-color: transparent;
+}
 
+.chooseScroll::-webkit-scrollbar-thumb {
+  border: 1px solid rgb(32, 32, 32);
+  background: rgb(68, 68, 68);
+  border-radius: 0.3rem;
+}
 
 
 @media screen and (max-width: 1200px) {
@@ -401,6 +452,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .icons {
+    width: 30%;
+  }
+
+  .icon {
+    width: 90%;
+  }
+
+  #iconButton {
+    width: 100%;
   }
 
   .disc {
@@ -475,11 +538,16 @@ body {
   }
 
   .icons {
-    padding-right: 3%;
+    width: 30%;
   }
 
   .icon {
-    padding-right: 5%;
+    width: 90%;
+  }
+
+  #iconButton {
+    width: 100%;
+    font-size: 0.8rem;
   }
 
   .discription {
@@ -491,11 +559,6 @@ body {
   .disc {
     margin-inline-start: 0%;
     margin-inline-end: 0%;
-  }
-
-  .icon button {
-    margin-left: 40%;
-    padding: 0px;
   }
 
   .fav {

@@ -1,7 +1,12 @@
 const asyncHandler = require("express-async-handler");
 const puppeteer = require("puppeteer");
 const express = require("express");
+const PublishingDataTemp1 = require("../models/publishingDataTemp1")
+const PublishingDataTemp2 = require("../models/publishingDataTemp2")
+const PublishingDataTemp3 = require("../models/publishingDataTemp3")
 const { Logger, ErrorLogger } = require("../controllers/logger")
+const crypto = require("crypto");
+
 
 const getContact = asyncHandler(async (req, res) => {
   try {
@@ -228,7 +233,188 @@ const getContactFAV = asyncHandler(async (req, res) => {
   }
 });
 
+const TempData = asyncHandler(async (req, res) => {
+  try {
+    const tempNoparams = req.params;
+    const dataToSave = req.body.data;
+    const publishToken = crypto.randomBytes(64).toString("hex");
+    console.log(tempNoparams.tempNo);
+    if (tempNoparams.tempNo == 1) {
+      const {
+        userId,
+        contextHeader,
+        contextLogo,
+        color,
+        contextDescription,
+        contextImages,
+        contextInnovations,
+        contextDataSecurity,
+        tempNo
+      } = dataToSave;
+
+      const newData = new PublishingDataTemp1({
+        userId: userId,
+        publishToken: publishToken,
+        header: contextHeader.header,
+        designHeader: contextHeader.designHeader,
+        color: color.backgroundColor,
+        logo: contextLogo.temp1Logo,
+        description: contextDescription.discription,
+        designDescription: contextDescription.designDiscription,
+        images: contextImages.images,
+        innovations: contextInnovations.innovations,
+        designInnovations: contextInnovations.designInnovations,
+        dataSecurity: contextDataSecurity.dataSecurity,
+        designDataSecurity: contextDataSecurity.designDataSecurity,
+        tempNo: tempNo
+      });
+
+      await newData.save();
+
+    } else if (tempNoparams.tempNo == 2) {
+      const {
+        userId,
+        Logo2,
+        Description2,
+        Images2,
+        Innovations2,
+        DataSecurity2,
+        Comments2,
+        DownloadStarDeveloper,
+        tempNo
+      } = dataToSave;
+
+      newData = new PublishingDataTemp2({
+        userId: userId,
+        publishToken: publishToken,
+        logo: Logo2.temp2Logo,
+        description: Description2.discription,
+        designDescription: Description2.designHeadDiscriprion,
+        images: Images2.images,
+        innovations: Innovations2.innovations,
+        designInnovations: Innovations2.designInnovation,
+        dataSecurity: DataSecurity2.dataSecurity,
+        designDataSecurity: DataSecurity2.designDataSecurity,
+        comments: Comments2.comments,
+        designComments: Comments2.designComment,
+        downloadStarDeveloper: DownloadStarDeveloper,
+        tempNo: tempNo
+      });
+
+      await newData.save();
+
+    }else if (tempNoparams.tempNo == 3){
+      const {
+        userId,
+        CompanyNameContext3,
+        NavigationText3,
+        ButtonTextContext3,
+        EntranceHeadContext3,
+        EntranceDiscContext3,
+        EntranceButtonContext3,
+        EntranceImagesContext3,
+        ServicesHeadContext3,
+        ServicesDiscContext3,
+        ServicesBoxContext3,
+        tempNo
+      } = dataToSave;
+
+      newData = new PublishingDataTemp3({
+        userId: userId,
+        publishToken: publishToken,
+        companyNameText:CompanyNameContext3.companyNameText,
+        designCompanyNameText:CompanyNameContext3.designCompanyName,
+        navigationText:NavigationText3.navigationText,
+        designNavigationText:NavigationText3.designNav,
+        buttonText:ButtonTextContext3.buttonText,
+        designNavButton:ButtonTextContext3.designNavButton,
+        enteranceHeadText:EntranceHeadContext3.enteranceHeadText,
+        designHead:EntranceHeadContext3.designHead,
+        enteranceDiscText:EntranceDiscContext3.enteranceDiscText,
+        designEntranceDisc:EntranceDiscContext3.designEntranceDisc,
+        enteranceButtonText:EntranceButtonContext3.enteranceButtonText,
+        designEntranceButton:EntranceButtonContext3.designEntranceButton,
+        images:EntranceImagesContext3.images,
+        serviceHeaderText:ServicesHeadContext3.serviceHeaderText,
+        designServiceHeader:ServicesHeadContext3.designServiceHeader,
+        serviceDiscText:ServicesDiscContext3.serviceDiscText,
+        designServiceDisc:ServicesDiscContext3.designServiceDisc,
+        serviceBoxHeader:ServicesBoxContext3.serviceBoxHeader,
+        serviceBoxDisc:ServicesBoxContext3.serviceBoxDisc,
+        serviceBoxImages:ServicesBoxContext3.serviceBoxImages,
+        designServiceBoxDisc:ServicesBoxContext3.designServiceDisc,
+        designServiceBoxHeader:ServicesBoxContext3.designServiceBoxHeader,
+
+        tempNo: tempNo
+      });
+
+      await newData.save();
+
+
+        console.log(dataToSave)
+
+    }
+
+
+    res.status(200).json({ publishToken: publishToken });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "İç Sunucu Hatası" });
+  }
+
+});
+
+const publishTemp1 = asyncHandler(async (req, res) => {
+  let { publishToken } = req.params;
+  publishToken = publishToken.trim();
+
+  const data = await PublishingDataTemp1.findOne({ publishToken });
+  if (data) {
+
+    res.status(200).send(data);
+  } else {
+    res.status(404).send(`failure`);
+
+  }
+});
+
+const publishTemp2 = asyncHandler(async (req, res) => {
+  let { publishToken } = req.params;
+  publishToken = publishToken.trim();
+
+  const data = await PublishingDataTemp2.findOne({ publishToken });
+  if (data) {
+
+    res.status(200).send(data);
+  } else {
+    res.status(404).send(`failure`);
+
+  }
+});
+
+const publishTemp3 = asyncHandler(async (req, res) => {
+  let { publishToken } = req.params;
+  publishToken = publishToken.trim();
+
+  const data = await PublishingDataTemp3.findOne({ publishToken });
+  if (data) {
+
+    res.status(200).send(data);
+  } else {
+    res.status(404).send(`failure`);
+
+  }
+});
+
+
+
+
+
 module.exports = {
   getContact,
-  getContactFAV
+  getContactFAV,
+  TempData,
+  publishTemp1,
+  publishTemp2,
+  publishTemp3
 };

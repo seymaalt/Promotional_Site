@@ -3,12 +3,12 @@ import Template1Context from "./Template1Context";
 import GlobalContext from './GlobalContext';
 const Template1Provider = ({ children }) => {
 
-  const { response } = useContext(GlobalContext);
+  const { response, color1 } = useContext(GlobalContext);
 
   const [contextHeader, setContextHeader1] = useState((response == null ? null : response.header));
   const [designHeader, setDesignHeader1] = useState();
   const [contextLogo, setContextLogo1] = useState();
-  const [color, setColor1] = useState();
+  const [color, setColor1] = useState((color1 == null ? 'black' : color1));
   const [contextDescription, setContextDescription1] = useState((response == null ? null : response.description));
   const [designDescription, setDesignDescription1] = useState();
   const [contextAppStoreLink, setContextAppStoreLink] = useState();

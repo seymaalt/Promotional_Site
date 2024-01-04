@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect } from 'react';
+import { useContext, useRef, useEffect, useState } from 'react';
 import Color from 'color-thief-react';
 import GlobalContext from '../context/GlobalContext.jsx';
 import TextContext from '../context/TextContext.jsx';
@@ -13,28 +13,24 @@ import DataSecurityPromotionalSite from '../components/Template1/DataSecurityPro
 import FooterPromotionalSite from '../components/Template1/FooterPromotionalSite.jsx';
 
 export default function PromotionalSite() {
-  const { response } = useContext(GlobalContext);
+  const { response, setColor } = useContext(GlobalContext);
+  const [ backColor, setBackColor ] = useState();
+
   const { header, discription, innovations, dataSecurity } = useContext(TextContext);
-  const myHtmlRef = useRef(null);
 
-  const handleClick = () => {
-    const htmlContent = myHtmlRef.current.innerHTML;
-    console.log(htmlContent);
 
-    // Dışarıdan bir fonksiyon ya da script ile sayfa içeriğini alabilirsiniz
-    // Örnek: window.printScript içinde bir fonksiyonunuz varsa
-    const javascriptKodu = window.printScript ? window.printScript() : '';
-    console.log('JavaScript Kodları:', javascriptKodu);
+  useEffect(() => {
+    console.log(backColor)
+    setColor(backColor)
+  })
 
-    const computedStyle = window.getComputedStyle(myHtmlRef.current);
-    console.log('Stil bilgisi:', computedStyle);
-  };
 
   return (
-    <div>
-      <div style={{ height: 70 }}><NavbarPromotionalSite responseData={response} /></div>
+    <div className='temp1Page'>
+      <div><NavbarPromotionalSite responseData={response} /></div>
       <Color src={response.logo} crossOrigin="anonymous" format="hex">
         {({ data }) => {
+          setBackColor(data)
           return (
             <div>
               <div className='part' style={{ backgroundColor: (data == null ? 'black' : data) }}>

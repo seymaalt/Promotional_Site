@@ -7,19 +7,20 @@ import { navVariants } from '../../utils/motion';
 import Grid from "@mui/material/Grid";
 import TextContext from '../../context/TextContext';
 import Template1Context from '../../context/Template1Context';
+import GlobalContext from '../../context/GlobalContext';
 import ChangeText from './ChangeText'
 
 
 export default function DiscriptionPromotionalSite({ responseData, changedData, colorData }) {
 
   const { discription, setDiscription } = useContext(TextContext);
+  const { color1 } = useContext(GlobalContext);
   const { template1Response, setTemplate1Response } = useContext(Template1Context);
   const { color, setColor } = useContext(Template1Context);
   const { contextDescription, setContextDescription } = useContext(Template1Context);
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  var backgroundColor = (colorData == null ? 'black' : colorData)
 
   const [designDiscription, setDesignDiscription] = useState({
     fontSize: "1.4rem",
@@ -98,15 +99,14 @@ export default function DiscriptionPromotionalSite({ responseData, changedData, 
   };
 
   useEffect(() => {
-    setColor({ backgroundColor: backgroundColor })
+
     setContextDescription({ discription: (changedData == null ? responseData.description : changedData), designDiscription: designDiscription })
 
   }, [discription, designDiscription])
 
   useEffect(() => {
-    console.log(contextDescription)
-    console.log(color)
-  })
+    setColor({ backgroundColor: color1 })
+  }, [color1])
 
   return (
     <motion.nav variants={navVariants}

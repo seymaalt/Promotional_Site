@@ -9,7 +9,7 @@ export default function Template1Component() {
 
   const handleGenerate = async () => {
 
-    navigate('/promotional-site');
+    navigate('/promotional-site1');
 
   };
 
@@ -17,7 +17,7 @@ export default function Template1Component() {
     <div className="chooseTemp1" >
       <div className="chooseShadow">
         <div className="chooseBox" >
-          <div style={{ overflowY: "auto", overflowX: 'hidden' }}>
+          <div className="chooseScroll" style={{ overflowY: "auto", overflowX: 'hidden' }}>
             <img
               src={Template1}
               className="chooseImage"

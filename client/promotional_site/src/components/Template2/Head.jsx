@@ -17,7 +17,7 @@ export default function Head({ responseData, changedData }) {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const [logo, setLogo] = useState()
   const [image1, setImage1] = useState()
-  const { template2Response, setTemplate2Response } = useContext(Template2Context);
+  const { Logo2, setTemp2Logo, Description2, setTemp2Description } = useContext(Template2Context);
 
   const [designHeadDiscriprion, setDesignHeadDiscription] = useState({
     fontSize: 25,
@@ -92,16 +92,13 @@ export default function Head({ responseData, changedData }) {
     }
   };
   useEffect(() => {
-    setLogo(responseData.logo)
-    setImage1(responseData.images[0])
-    setTemplate2Response({ ...template2Response, designHeadDiscriprion: designHeadDiscriprion, discription: (discription == null ? responseData.description : discription), logo: responseData.logo, image1: responseData.images[0],url:url });
-    console.log(template2Response)
-  },[designHeadDiscriprion, discription, logo, image1,url], []);
-  // useEffect(() => {
-  //  setImage1(responseData.images[0])
-  //  setLogo(responseData.logo)
-  //  console.log(template2Response)
-  // }, [designHeadDiscriprion, discription, logo, image1,url])
+    setTemp2Logo({ temp2Logo: responseData.logo })
+    setTemp2Description({ discription: discription == null ? responseData.description : discription, designHeadDiscriprion: designHeadDiscriprion })
+  }, [responseData.logo, discription, designHeadDiscriprion]);
+  useEffect(() => {
+    console.log(Logo2)
+    console.log(Description2)
+  },)
   return (
     <div style={{ display: "flex" }}>
       <Grid container spacing={2}>
@@ -181,10 +178,10 @@ export default function Head({ responseData, changedData }) {
             >
               <img className="temp2Logo" src={responseData.logo} alt="Logo" />
             </div>
-            <div>
+            <div className="temp2ImageDiv">
               <img
                 src={responseData.images[0]}
-                className="temp2Image"
+                className="temp2Image0"
                 alt="Image"
               />
             </div>

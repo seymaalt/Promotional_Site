@@ -11,29 +11,24 @@ import 'swiper/css/scrollbar';
 import Template2Context from '../../context/Template2Context';
 
 export default function GalleryPromotionalSite({ responseData }) {
-    const { template2Response, setTemplate2Response } = useContext(Template2Context);
+    const { Images2, setTemp2Images } = useContext(Template2Context);
 
     const [model, setModel] = useState(false);
     const [tempImgSrc, setTempImgSrc] = useState('')
 
     const images = responseData.images
-    
-    const[galleryImage1, setGalleryImage1] =useState(images[0])
-    const[galleryImage2, setGalleryImage2] =useState(images[1])
-    const[galleryImage3, setGalleryImage3] =useState(images[2])
 
     const getImage = (image) => {
         setTempImgSrc(image)
         setModel(true)
-        setGalleryImage1(images[0])
-        setGalleryImage2(images[1])
-        setGalleryImage3(images[2])
     }
 
     useEffect(() => {
-        setTemplate2Response({ ...template2Response, galleryImage1:galleryImage1, galleryImage2:galleryImage2, galleryImage3:galleryImage3 });
-        console.log(template2Response)
-      }, [, ,galleryImage1,galleryImage2,galleryImage3] )
+        setTemp2Images({ images: images });
+    }, [images])
+    useEffect(() => {
+        console.log(Images2)
+    },)
 
     return (
         <div className='swiperSlide'>

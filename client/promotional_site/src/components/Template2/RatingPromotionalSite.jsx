@@ -7,19 +7,15 @@ import './style/template2.css'
 
 export default function RatingPromotionalSite({ responseData }) {
 
-    const [star, setStar] = useState()
-    const [rating, setRating] = useState()
-    const [developer, setDeveloper] = useState()
-    const { template2Response, setTemplate2Response } = useContext(Template2Context);
+    const { DownloadStarDeveloper, setTemp2DownloadStarDeveloper } = useContext(Template2Context);
 
 
     useEffect(() => {
-        setStar(responseData.star)
-        setDeveloper(responseData.developer)
-        setRating(responseData.rating)
-        setTemplate2Response({ ...template2Response, star: star, rating: rating, developer: developer });
-        console.log(template2Response)
-    }, [star, rating, developer])
+        setTemp2DownloadStarDeveloper({ star: responseData.star, download: responseData.rating, developer: responseData.developer })
+    }, [responseData.star, responseData.rating, responseData.developer]);
+    useEffect(() => {
+        console.log(DownloadStarDeveloper)
+    },)
 
     return (
         <div className="ratingDiv">
