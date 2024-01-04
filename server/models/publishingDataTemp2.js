@@ -10,8 +10,7 @@ const DataSchema =  mongoose.Schema(
             type: String,
         },
         description:{
-             type: String,
-            
+             type: String,   
         },
         designDescription:{
             fontSize:{type: String},

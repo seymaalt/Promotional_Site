@@ -18,10 +18,16 @@ const ForgotPassword = () => {
     const data = new FormData(event.currentTarget);
     const email = data.get('email')
     if (!email) {
-      alert("E-posta eksik")
+      Swal.fire({
+        position: "top",
+        icon: "error",
+        title: "E-posta eksik",
+        showConfirmButton: false,
+        timer: 1500
+      })
       return; // İşlemi burada sonlandır
     } else {
-      axios.post(`${import.meta.env.VITE_PORT}/user/forgotPassword`, {email})
+      axios.post(`${import.meta.env.VITE_PORT}/user/forgotPassword`, { email })
         .then(result => {
           console.log(result)
           const jwtToken = result.data.accessToken;
@@ -41,7 +47,10 @@ const ForgotPassword = () => {
               icon: "error",
               title: "User not exist!",
               showConfirmButton: false,
-              timer: 1500
+              timer: 1500,
+              customClass: {
+                popup: 'swal2-popup-custom' // Özel bir sınıf ekleyerek z-index değerini kontrol etme
+              }
             })
           }
         })
