@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const puppeteer = require("puppeteer");
 const express = require("express");
 const PublishingDataTemp1 = require("../models/publishingDataTemp1")
+const PublishingDataTemp2 = require("../models/publishingDataTemp2")
 const { Logger, ErrorLogger } = require("../controllers/logger")
 const crypto = require("crypto");
 
@@ -233,11 +234,12 @@ const getContactFAV = asyncHandler(async (req, res) => {
 
 const TempData = asyncHandler(async (req, res) => {
   try {
+    const tempNoparams = req.params;
     const dataToSave = req.body.data;
-
     const publishToken = crypto.randomBytes(64).toString("hex");
-
-    const {
+    console.log(tempNoparams.tempNo);
+    if(tempNoparams.tempNo == 1){
+        const {
       userId,
       contextHeader,
       contextLogo,
@@ -246,6 +248,7 @@ const TempData = asyncHandler(async (req, res) => {
       contextImages,
       contextInnovations,
       contextDataSecurity,
+      tempNo
     } = dataToSave;
 
     const newData = new PublishingDataTemp1({
@@ -262,9 +265,43 @@ const TempData = asyncHandler(async (req, res) => {
       designInnovations: contextInnovations.designInnovations,
       dataSecurity: contextDataSecurity.dataSecurity,
       designDataSecurity: contextDataSecurity.designDataSecurity,
+      tempNo:tempNo
     });
 
-    await newData.save();
+    }else if(tempNoparams.tempNo == 2){
+      const {
+        userId,
+        Logo2,
+        Description2,
+        Images2,
+        Innovations2,
+        DataSecurity2,
+        Comments2,
+        DownloadStarDeveloper,
+        tempNo
+      } = dataToSave;
+
+      newData = new PublishingDataTemp2({
+        userId: userId,
+        publishToken: publishToken,
+        logo: Logo2.temp2Logo,
+        description: Description2.discription,
+        designDescription:Description2.designHeadDiscriprion,
+        images: Images2.images,
+        innovations: Innovations2.innovations,
+        designInnovations:Innovations2.designInnovation,
+        dataSecurity: DataSecurity2.dataSecurity,
+        designDataSecurity:DataSecurity2.designDataSecurity,
+        comments: Comments2.comments,
+        designComments:Comments2.designComment,
+        downloadStarDeveloper: DownloadStarDeveloper,
+        tempNo:tempNo
+      });
+    
+
+    }
+  
+   await newData.save();
 
     res.status(200).json({ publishToken: publishToken });
   } catch (error) {
@@ -288,6 +325,20 @@ const publishTemp1 = asyncHandler(async (req, res) => {
   }
 });
 
+const publishTemp2 = asyncHandler(async (req, res) => {
+  let { publishToken } = req.params;
+  publishToken = publishToken.trim();
+
+  const data = await PublishingDataTemp2.findOne({ publishToken });
+  if (data) {
+
+    res.status(200).send(data);
+  } else {
+    res.status(404).send(`failure`);
+
+  }
+});
+
 
 
 
@@ -296,5 +347,6 @@ module.exports = {
   getContact,
   getContactFAV,
   TempData,
-  publishTemp1
+  publishTemp1,
+  publishTemp2
 };
