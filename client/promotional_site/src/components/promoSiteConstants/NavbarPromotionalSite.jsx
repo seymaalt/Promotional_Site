@@ -55,45 +55,6 @@ const ButtonAppBar = ({ responseData }) => {
   };
 
 
-
-    
-  const handleDownload = async () => {
-    try {
-     const response = await axios.get(`${import.meta.env.VITE_PORT}/user/current`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-     const userId =response.data.id;
-  
-   
-
-         
-       await axios.post(`${import.meta.env.VITE_PORT}/content/TempData/`, {      
-        data: {
-        userId,
-        contextHeader,
-        designHeader,
-        contextLogo,
-        color,
-        contextDescription,
-        designDescription,
-        contextDownloadLinks,
-        contextImages,
-        contextInnovations,
-        designInnovations,
-        contextDataSecurity,
-        designDataSecurity
-      }
-      });
-     
-
-    } catch (error) {
-      console.error('Error fetching data from the server!', error);
-    }
-  };
-
-
   const handleDownload = async () => {
     try {
       const userResponse = await axios.get(`${import.meta.env.VITE_PORT}/user/current`, {
@@ -128,8 +89,7 @@ const ButtonAppBar = ({ responseData }) => {
         html:
          `
         Your link: 
-       <a href="${("http://localhost:5173/1/" + result.data.publishToken)}" target='_blank'>${("http://localhost:5173/1/" + result.data.publishToken)}</a>
-  `,
+       <a href="${("http://localhost:5173/1/" + result.data.publishToken)}" target='_blank'>${("http://localhost:5173/1/" + result.data.publishToken)}</a>`,
         imageUrl: "https://i.hizliresim.com/o23f2f4.png",
         imageWidth: 130,
         imageAlt: "Custom image"
