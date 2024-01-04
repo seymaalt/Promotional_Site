@@ -37,16 +37,16 @@ const ButtonAppBar = () => {
   const { Logo2, Description2, DesignDescription2, DownloadLinks2, Images2, Innovations2, DesignInnovations2,
     DataSecurity2, DesignDataSecurity2, Comments2, DesignComments2, DownloadStarDeveloper } = useContext(Template2Context);
 
-    const {    CompanyNameContext3,
-      NavigationText3,
-      ButtonTextContext3,
-      EntranceHeadContext3,
-      EntranceDiscContext3,
-      EntranceButtonContext3,
-      EntranceImagesContext3,
-      ServicesHeadContext3,
-      ServicesDiscContext3,
-      ServicesBoxContext3,} = useContext(Template3Context);
+  const { CompanyNameContext3,
+    NavigationText3,
+    ButtonTextContext3,
+    EntranceHeadContext3,
+    EntranceDiscContext3,
+    EntranceButtonContext3,
+    EntranceImagesContext3,
+    ServicesHeadContext3,
+    ServicesDiscContext3,
+    ServicesBoxContext3, } = useContext(Template3Context);
   const handleDownload = async () => {
     try {
       const userResponse = await axios.get(`${import.meta.env.VITE_PORT}/user/current`, {
@@ -97,7 +97,7 @@ const ButtonAppBar = () => {
           DownloadStarDeveloper,
           tempNo,
         };
-      }else if(tempNo == 3){
+      } else if (tempNo == 3) {
         postData = {
           userId,
           CompanyNameContext3,
@@ -134,13 +134,25 @@ const ButtonAppBar = () => {
       });
 
     } catch (error) {
+      Swal.fire({
+        position: "top",
+        icon: "error",
+        title: "Oops...",
+        text: "You need to log in!",
+        showConfirmButton: false,
+        timer: 3000,
+        customClass: {
+          popup: 'swal2-popup-custom' // Özel bir sınıf ekleyerek z-index değerini kontrol etme
+        }
+      });
       console.error('Error fetching data from the server!', error);
+
     }
   };
 
   return (
     <Box >
-      <div className='appbar' style={{ backgroundColor: 'white', height: 70, width: '100%', top: 0 }}>       <Toolbar>
+      <div className='appbar' style={{  height: 70, width: '100%', top: 0 }}>       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, }}>
           <Button onClick={() => navigate('/')}>
             <img src={Logo} className='navbarLogo'></img>
