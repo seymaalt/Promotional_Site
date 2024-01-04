@@ -12,7 +12,7 @@ const Innovation = ({ responseData }) => {
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const { setTemp2Innovations2 } = useContext(Template2Context);
+  const { Innovations2, setTemp2Innovations2 } = useContext(Template2Context);
 
   const [designInnovation, setDesignInnovation] = useState({
     fontSize: 25,
@@ -93,6 +93,10 @@ const Innovation = ({ responseData }) => {
   useEffect(() => {
     setTemp2Innovations2({ innovations: (innovations == null ? responseData.innovations : innovations), designInnovation: designInnovation, });
   }, [innovations, designInnovation])
+
+  useEffect(() => {
+    console.log(Innovations2)
+  },)
 
   return (
     <div>
