@@ -238,37 +238,39 @@ const TempData = asyncHandler(async (req, res) => {
     const dataToSave = req.body.data;
     const publishToken = crypto.randomBytes(64).toString("hex");
     console.log(tempNoparams.tempNo);
-    if(tempNoparams.tempNo == 1){
-        const {
-      userId,
-      contextHeader,
-      contextLogo,
-      color,
-      contextDescription,
-      contextImages,
-      contextInnovations,
-      contextDataSecurity,
-      tempNo
-    } = dataToSave;
+    if (tempNoparams.tempNo == 1) {
+      const {
+        userId,
+        contextHeader,
+        contextLogo,
+        color,
+        contextDescription,
+        contextImages,
+        contextInnovations,
+        contextDataSecurity,
+        tempNo
+      } = dataToSave;
 
-    const newData = new PublishingDataTemp1({
-      userId: userId,
-      publishToken: publishToken,
-      header: contextHeader.header,
-      designHeader: contextHeader.designHeader,
-      color: color.backgroundColor,
-      logo: contextLogo.temp1Logo,
-      description: contextDescription.discription,
-      designDescription: contextDescription.designDiscription,
-      images: contextImages.images,
-      innovations: contextInnovations.innovations,
-      designInnovations: contextInnovations.designInnovations,
-      dataSecurity: contextDataSecurity.dataSecurity,
-      designDataSecurity: contextDataSecurity.designDataSecurity,
-      tempNo:tempNo
-    });
+      const newData = new PublishingDataTemp1({
+        userId: userId,
+        publishToken: publishToken,
+        header: contextHeader.header,
+        designHeader: contextHeader.designHeader,
+        color: color.backgroundColor,
+        logo: contextLogo.temp1Logo,
+        description: contextDescription.discription,
+        designDescription: contextDescription.designDiscription,
+        images: contextImages.images,
+        innovations: contextInnovations.innovations,
+        designInnovations: contextInnovations.designInnovations,
+        dataSecurity: contextDataSecurity.dataSecurity,
+        designDataSecurity: contextDataSecurity.designDataSecurity,
+        tempNo: tempNo
+      });
 
-    }else if(tempNoparams.tempNo == 2){
+      await newData.save();
+
+    } else if (tempNoparams.tempNo == 2) {
       const {
         userId,
         Logo2,
@@ -286,22 +288,22 @@ const TempData = asyncHandler(async (req, res) => {
         publishToken: publishToken,
         logo: Logo2.temp2Logo,
         description: Description2.discription,
-        designDescription:Description2.designHeadDiscriprion,
+        designDescription: Description2.designHeadDiscriprion,
         images: Images2.images,
         innovations: Innovations2.innovations,
-        designInnovations:Innovations2.designInnovation,
+        designInnovations: Innovations2.designInnovation,
         dataSecurity: DataSecurity2.dataSecurity,
-        designDataSecurity:DataSecurity2.designDataSecurity,
+        designDataSecurity: DataSecurity2.designDataSecurity,
         comments: Comments2.comments,
-        designComments:Comments2.designComment,
+        designComments: Comments2.designComment,
         downloadStarDeveloper: DownloadStarDeveloper,
-        tempNo:tempNo
+        tempNo: tempNo
       });
-    
+
+      await newData.save();
 
     }
-  
-   await newData.save();
+
 
     res.status(200).json({ publishToken: publishToken });
   } catch (error) {

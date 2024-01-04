@@ -27,103 +27,92 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const ButtonAppBar = ({ responseData }) => {
+const ButtonAppBar = () => {
   const { token, setToken, logout } = useContext(AuthContext);
-  const { response } = useContext(PublishContext);
-  const [tokenLink, setTokenLink] = useState();
-  const [navbarVisible, setNavbarVisible] = useState(true);
-  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-  const { contextHeader, designHeader, contextLogo, color, contextDescription, designDescription, contextDownloadLinks, contextImages, contextInnovations, designInnovations, contextDataSecurity, designDataSecurity } = useContext(Template1Context);
 
-const { Logo2, Description2, DesignDescription2, DownloadLinks2, Images2, Innovations2, DesignInnovations2, DataSecurity2, DesignDataSecurity2, Comments2, DesignComments2, DownloadStarDeveloper } = useContext(Template2Context);
+  const { contextHeader, designHeader, contextLogo, color, contextDescription, designDescription,
+    contextDownloadLinks, contextImages, contextInnovations, designInnovations, contextDataSecurity, designDataSecurity } = useContext(Template1Context);
 
-const handleClickOpen = () => {
-  setOpen(true);
-};
+  const { Logo2, Description2, DesignDescription2, DownloadLinks2, Images2, Innovations2, DesignInnovations2,
+    DataSecurity2, DesignDataSecurity2, Comments2, DesignComments2, DownloadStarDeveloper } = useContext(Template2Context);
 
-const handleClose = () => {
-  setOpen(false);
-};
-
-const handleDownload = async () => {
-  try {
-    const userResponse = await axios.get(`${import.meta.env.VITE_PORT}/user/current`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    const userId = userResponse.data.id;
-
-    var fullUrl = window.location.href;
-
-    const tempNo = fullUrl.match(/\d+$/)[0];
-    console.log("Temp No: " + tempNo);
-
-    let postData;
-
-    if (tempNo == 1) {
-      postData = {
-        userId,
-        contextHeader,
-        designHeader,
-        contextLogo,
-        color,
-        contextDescription,
-        designDescription,
-        contextDownloadLinks,
-        contextImages,
-        contextInnovations,
-        designInnovations,
-        contextDataSecurity,
-        designDataSecurity,
-        tempNo,
-      };
-    } else if (tempNo == 2) {
-      postData = {
-        userId,
-        Logo2,
-        Description2,
-        DesignDescription2,
-        DownloadLinks2,
-        Images2,
-        Innovations2,
-        DesignInnovations2,
-        DataSecurity2,
-        DesignDataSecurity2,
-        Comments2,
-        DesignComments2,
-        DownloadStarDeveloper,
-        tempNo,
-      };
-    }
-
-  
-
-    await axios.post(`${import.meta.env.VITE_PORT}/content/TempData/${tempNo}`, {
-      data: postData,
-    }).then(result => {
-      console.log(result.data.publishToken)
-      setTokenLink(`http://localhost:5173/${tempNo}/` + result.data.publishToken)
-      Swal.fire({
-        title: "Your Page is Ready!",
-        html:
-          `
-        Your link: 
-       <a href="${(`http://localhost:5173/${tempNo}/` + result.data.publishToken)}" target='_blank'>${(`http://localhost:5173/${tempNo}/` + result.data.publishToken)}</a>`,
-        imageUrl: "https://i.hizliresim.com/o23f2f4.png",
-        imageWidth: 130,
-        imageAlt: "Custom image"
+  const handleDownload = async () => {
+    try {
+      const userResponse = await axios.get(`${import.meta.env.VITE_PORT}/user/current`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
-    });
 
-  } catch (error) {
-    console.error('Error fetching data from the server!', error);
-  }
-};
-  
+      const userId = userResponse.data.id;
+
+      var fullUrl = window.location.href;
+
+      const tempNo = fullUrl.match(/\d+$/)[0];
+      console.log("Temp No: " + tempNo);
+      let postData;
+
+      if (tempNo == 1) {
+        postData = {
+          userId,
+          contextHeader,
+          designHeader,
+          contextLogo,
+          color,
+          contextDescription,
+          designDescription,
+          contextDownloadLinks,
+          contextImages,
+          contextInnovations,
+          designInnovations,
+          contextDataSecurity,
+          designDataSecurity,
+          tempNo,
+        };
+      } else if (tempNo == 2) {
+        postData = {
+          userId,
+          Logo2,
+          Description2,
+          DesignDescription2,
+          DownloadLinks2,
+          Images2,
+          Innovations2,
+          DesignInnovations2,
+          DataSecurity2,
+          DesignDataSecurity2,
+          Comments2,
+          DesignComments2,
+          DownloadStarDeveloper,
+          tempNo,
+        };
+      }
+
+
+
+      await axios.post(`${import.meta.env.VITE_PORT}/content/TempData/${tempNo}`, {
+        data: postData,
+      }).then(result => {
+        console.log(result.data.publishToken)
+        console.log(tempNo)
+        Swal.fire({
+          title: "Your Page is Ready!",
+          html:
+            `
+        Your link: 
+       <a href="${(`${import.meta.env.VITE_CLIENT_URL}/${tempNo}/` + result.data.publishToken)}" target='_blank'>${(`${import.meta.env.VITE_CLIENT_URL}/${tempNo}/` + result.data.publishToken)}</a>`,
+          imageUrl: "https://i.hizliresim.com/o23f2f4.png",
+          imageWidth: 130,
+          imageAlt: "Custom image"
+        });
+      });
+
+    } catch (error) {
+      console.error('Error fetching data from the server!', error);
+    }
+  };
+
   return (
     <Box >
       <div className='appbar' style={{ backgroundColor: 'white', height: 70, width: '100%', top: 0 }}>       <Toolbar>
