@@ -8,7 +8,7 @@ import ChangeDesign from './ChangeDesign';
 
 
 const Services = () => {
-    const { template3Response, setTemplate3Response } = useContext(Template3Context);
+    const { ServicesHeadContext3, setServicesHeadContext3, ServicesDiscContext3, setServicesDiscContext3, ServicesBoxContext3, setServicesBoxContext3 } = useContext(Template3Context);
 
     const [modalPositionImage, setModalPositionImage] = useState({ top: 0, left: 0 });
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
@@ -293,17 +293,23 @@ const Services = () => {
     };
 
     useEffect(() => {
-        setTemplate3Response({
-            ...template3Response, serviceHeaderText: serviceHeaderText, serviceDiscText: serviceDiscText, serviceBoxHeaderText1: serviceBoxHeaderText1,
-            serviceBoxHeaderText2: serviceBoxHeaderText2, serviceBoxHeaderText3: serviceBoxHeaderText3, serviceBoxDiscText1: serviceBoxDiscText1,
-            serviceBoxDiscText2: serviceBoxDiscText2, serviceBoxDiscText3: serviceBoxDiscText3, designServiceBoxHeader: designServiceBoxHeader,
-            designServiceBoxDisc: designServiceBoxDisc, designServiceHeader: designServiceHeader, designServiceDisc: designServiceDisc,
-            selectedImage:selectedImage,selectedImage1:selectedImage1,selectedImage2:selectedImage2
-        });
-        console.log(template3Response)
 
-    }, [serviceHeaderText,serviceDiscText,serviceBoxHeaderText1,serviceBoxHeaderText2,serviceBoxHeaderText3,serviceBoxDiscText1,serviceBoxDiscText2,serviceBoxDiscText3,designServiceBoxHeader,designServiceBoxDisc,designServiceHeader,designServiceDisc]);
+        setServicesHeadContext3({ ServicesHeadContext3: { serviceHeaderText, designServiceHeader } })
+        setServicesDiscContext3({ ServicesDiscContext3: { serviceDiscText, designServiceDisc } })
+        setServicesBoxContext3({
+            ServicesBoxContext3: {
+                serviceBoxHeaderText1, serviceBoxHeaderText2, serviceBoxHeaderText3, serviceBoxDiscText1,
+                serviceBoxDiscText2, serviceBoxDiscText3, designServiceBoxHeader, designServiceBoxDisc, selectedImage, selectedImage1, selectedImage2
+            }
+        })
+        
+    }, [serviceHeaderText, serviceDiscText, designServiceHeader, designServiceDisc, serviceBoxHeaderText1, serviceBoxHeaderText2, serviceBoxHeaderText3, serviceBoxDiscText1, serviceBoxDiscText2, serviceBoxDiscText3, designServiceBoxHeader, designServiceBoxDisc]);
 
+    useEffect(() => {
+        console.log(ServicesHeadContext3)
+        console.log(ServicesDiscContext3)
+        console.log(ServicesBoxContext3)
+    })
 
     return (
         <div className='part3'>

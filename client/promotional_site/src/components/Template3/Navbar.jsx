@@ -10,7 +10,7 @@ import ChangeDesign from './ChangeDesign';
 
 const Template3Navbar = () => {
     const { response } = useContext(GlobalContext);
-    const { template3Response, setTemplate3Response } = useContext(Template3Context);
+    const { CompanyNameContext3, setCompanyNameContext3, NavigationText3, setNavigationTextContext3, ButtonTextContext3, setButtonTextContext3 } = useContext(Template3Context);
     const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
 
     const [designCompanyName, setDesignCompanyName] = useState({
@@ -172,7 +172,7 @@ const Template3Navbar = () => {
 
         return { top: y, left: x };
     };
-    
+
     const [companyNameText, setCompanyNameText] = useState(response && response.businessName ? response.businessName : 'COMPANY NAME')
     const [navigationText1, setNavigationText1] = useState('Services')
     const [navigationText2, setNavigationText2] = useState('Section 2')
@@ -196,12 +196,15 @@ const Template3Navbar = () => {
     };
 
     useEffect(() => {
-        setTemplate3Response({
-            ...template3Response,
-            companyNameText: companyNameText, designCompanyName: designCompanyName, navigationText1: navigationText1, navigationText2: navigationText2, navigationText3: navigationText3, designNav: designNav, buttonText: buttonText, designNavButton: designNavButton
-        });
-        console.log(template3Response)
-    }, [buttonText],[navigationText1],[designCompanyName]);
+        setNavigationTextContext3({ NavigationText3: { navigationText1, navigationText2, navigationText3, designNav } });
+        setCompanyNameContext3({ CompanyNameContext3: { companyNameText, designCompanyName } });
+        setButtonTextContext3({ ButtonTextContext3: { buttonText, designNavButton } })
+    }, [navigationText1, navigationText2, navigationText3, designNav, companyNameText, designCompanyName, buttonText, designNavButton]);
+    useEffect(() => {
+        console.log(NavigationText3)
+        console.log(CompanyNameContext3)
+        console.log(ButtonTextContext3)
+    },)
 
     return (
         <div className='temp3Navbar'>
