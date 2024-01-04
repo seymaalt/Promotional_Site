@@ -12,7 +12,7 @@ routes.route("/").post(getContact);
 
 routes.route("/favorites").post(getContactFAV);
 
-routes.route("/TempData").post(TempData);
+routes.route("/TempData/:tempNo").post(TempData);
 
 routes.route('/publishTemp1/:publishToken').post(publishTemp1);
 

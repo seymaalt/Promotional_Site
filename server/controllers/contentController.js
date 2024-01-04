@@ -236,7 +236,7 @@ const TempData = asyncHandler(async (req, res) => {
     const dataToSave = req.body.data;
 
     const publishToken = crypto.randomBytes(64).toString("hex");
-    // Veriyi sağlanan yapıdan çıkart
+
     const {
       userId,
       contextHeader,
@@ -247,8 +247,6 @@ const TempData = asyncHandler(async (req, res) => {
       contextInnovations,
       contextDataSecurity,
     } = dataToSave;
-
-    console.log(dataToSave);
 
     const newData = new PublishingDataTemp1({
       userId: userId,
