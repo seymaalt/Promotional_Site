@@ -16,7 +16,7 @@ import Template1Context from '../../context/Template1Context';
 import GlobalContext from '../../context/GlobalContext';
 import Swal from 'sweetalert2'
 import Template2Context from '../../context/Template2Context';
-
+import Template3Context from '../../context/Template3Context';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -37,6 +37,16 @@ const ButtonAppBar = () => {
   const { Logo2, Description2, DesignDescription2, DownloadLinks2, Images2, Innovations2, DesignInnovations2,
     DataSecurity2, DesignDataSecurity2, Comments2, DesignComments2, DownloadStarDeveloper } = useContext(Template2Context);
 
+    const {    CompanyNameContext3,
+      NavigationText3,
+      ButtonTextContext3,
+      EntranceHeadContext3,
+      EntranceDiscContext3,
+      EntranceButtonContext3,
+      EntranceImagesContext3,
+      ServicesHeadContext3,
+      ServicesDiscContext3,
+      ServicesBoxContext3,} = useContext(Template3Context);
   const handleDownload = async () => {
     try {
       const userResponse = await axios.get(`${import.meta.env.VITE_PORT}/user/current`, {
@@ -87,6 +97,21 @@ const ButtonAppBar = () => {
           DownloadStarDeveloper,
           tempNo,
         };
+      }else if(tempNo == 3){
+        postData = {
+          userId,
+          CompanyNameContext3,
+          NavigationText3,
+          ButtonTextContext3,
+          EntranceHeadContext3,
+          EntranceDiscContext3,
+          EntranceButtonContext3,
+          EntranceImagesContext3,
+          ServicesHeadContext3,
+          ServicesDiscContext3,
+          ServicesBoxContext3,
+          tempNo,
+        }
       }
 
 
