@@ -1,40 +1,24 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Grid from "@mui/material/Grid";
-
-import GlobalContext from '../../context/GlobalContext'
-import Template3Context from '../../context/Template3Context';
+import PublishContext from '../../context/PublishContext';
 
 
 const Template3Navbar = () => {
-    const { response } = useContext(GlobalContext);
-    const { template3Response, setTemplate3Response } = useContext(Template3Context);
-    const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-    const [modalPositionImage, setModalPositionImage] = useState({ top: 0, left: 0 });
-    const [selectedImage, setSelectedImage] = useState("https://images.unsplash.com/photo-1619410283995-43d9134e7656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzEzMzd8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMERldmVsb3BtZW50fGVufDB8MHx8fDE3MDIzNjI3NzR8MA&ixlib=rb-4.0.3&q=80&w=1920")
-    const [selectedImage1, setSelectedImage1] = useState("https://images.unsplash.com/photo-1619410283995-43d9134e7656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzEzMzd8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMERldmVsb3BtZW50fGVufDB8MHx8fDE3MDIzNjI3NzR8MA&ixlib=rb-4.0.3&q=80&w=1920")
-    const [selectedImage2, setSelectedImage2] = useState("https://images.unsplash.com/photo-1619410283995-43d9134e7656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0MzEzMzd8MHwxfHNlYXJjaHw1fHxTb2Z0d2FyZSUyMERldmVsb3BtZW50fGVufDB8MHx8fDE3MDIzNjI3NzR8MA&ixlib=rb-4.0.3&q=80&w=1920")
-
-
-    const [enteranceHeadText, setEnteranceHeadText] = useState('Transforming Ideas Into Solutions')
-    const [enteranceDiscText, setEnteranceDiscText] = useState(response && response.descriptionName ? response.descriptionName : ' We leverage advanced technologies to transform your ideas into functional and innovative software applications.')
-    const [enteranceButtonText, setEntereanceButtonText] = useState('Get Started')
-
-
-
+    const { response } = useContext(PublishContext);
 
     return (
         <div className='part3'>
             <Grid container >
                 <Grid item md={6} xs={12}>
                     <div >
-                        <div initialValue={enteranceHeadText} className='editHover entranceHead' backColor='white' fontSize={designHead.fontSize} selectedFont={designHead.font} color={designHead.color} textAlign={designHead.textAlign} />
+                        <div className=' entranceHead' backColor='white' fontSize={response.designHead.fontSize} selectedFont={response.designHead.font} color={response.designHead.color} textAlign={response.designHead.textAlign} >{response.enteranceHeadText}</div>
                     </div>
                     <h3 >
-                        <div initialValue={enteranceDiscText}  className='editHover entranceDisc' backColor='white' fontSize={designEntranceDisc.fontSize} selectedFont={designEntranceDisc.font} color={designEntranceDisc.color} textAlign={designEntranceDisc.textAlign} />
+                        <div className=' entranceDisc' backColor='white' fontSize={response.designEntranceDisc.fontSize} selectedFont={response.designEntranceDisc.font} color={response.designEntranceDisc.color} textAlign={response.designEntranceDisc.textAlign} >{response.enteranceDiscText}</div>
                     </h3>
                     <div className='entranceButtons'>
                         <a href='#'>
-                            <div className='editHover button-63' initialValue={enteranceButtonText} backColor="white" fontSize={designEntranceButton.fontSize} selectedFont={designEntranceButton.font} color={designEntranceButton.color} textAlign={designEntranceButton.textAlign} />
+                            <div className=' button-63' backColor="white" fontSize={response.designEntranceButton.fontSize} selectedFont={response.designEntranceButton.font} color={response.designEntranceButton.color} textAlign={response.designEntranceButton.textAlign} >{response.enteranceButtonText}</div>
                         </a>
                         <div className='entranceButtons'></div>
                     </div>
@@ -42,19 +26,19 @@ const Template3Navbar = () => {
                 <Grid item md={6} xs={12}>
                     <div>
                         <img
-                            src={selectedImage}
-                            className="editHover changeImage entranceImage"
+                            src={response.images.selectedImage}
+                            className=" changeImage entranceImage"
                             alt="Image"
                         />
 
                         <img
-                            src={selectedImage1}
+                            src={response.images.selectedImage1}
                             className="editHover changeImage entranceImage2"
                             alt="Image"
                         />
 
                         <img
-                            src={selectedImage2}
+                            src={response.images.selectedImage2}
                             className="editHover changeImage entranceImage3"
                             alt="Image"
                         />
