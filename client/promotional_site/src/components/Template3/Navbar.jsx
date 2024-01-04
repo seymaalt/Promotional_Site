@@ -196,9 +196,9 @@ const Template3Navbar = () => {
     };
 
     useEffect(() => {
-        setNavigationTextContext3({ NavigationText3: { navigationText1, navigationText2, navigationText3, designNav } });
-        setCompanyNameContext3({ CompanyNameContext3: { companyNameText, designCompanyName } });
-        setButtonTextContext3({ ButtonTextContext3: { buttonText, designNavButton } })
+        setNavigationTextContext3({ navigationText: { navigationText1, navigationText2, navigationText3 }, designNav });
+        setCompanyNameContext3({ companyNameText, designCompanyName });
+        setButtonTextContext3({ buttonText, designNavButton })
     }, [navigationText1, navigationText2, navigationText3, designNav, companyNameText, designCompanyName, buttonText, designNavButton]);
     useEffect(() => {
         console.log(NavigationText3)
