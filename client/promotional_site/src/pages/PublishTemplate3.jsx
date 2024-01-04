@@ -19,7 +19,7 @@ export default function PublishTemplate1() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await axios.post(`${import.meta.env.VITE_PORT}/content/publishTemp1/${publishToken}`);
+                const result = await axios.post(`${import.meta.env.VITE_PORT}/content/publishTemp3/${publishToken}`);
                 setResponse(result.data);
                 console.log(result.data);
             } catch (error) {

@@ -10,6 +10,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { useNavigate, useParams } from "react-router-dom";
 import image from '../../assets/59438.jpg'
+import Swal from "sweetalert2";
+import "./style/profile.css"
 
 export default function Profile() {
     const { token, setToken } = useContext(AuthContext);
@@ -66,23 +68,80 @@ export default function Profile() {
         console.log(data)
 
         if (!name) {
-            alert('İsim alanı boş bırakılamaz')
+            Swal.fire({
+                position: "top",
+                icon: "error",
+                title: "İsim alanı boş bırakılamaz",
+                showConfirmButton: false,
+                timer: 1500,
+                customClass: {
+                    popup: 'swal2-popup-custom' // Özel bir sınıf ekleyerek z-index değerini kontrol etme
+                }
+            });
         } else {
             axios.post(`${import.meta.env.VITE_PORT}/user/changeName/`, { name, user })
                 .then(result => {
                     console.log(result)
                     if (result.data.message == "Success") {
-                        alert('İsim değiştirildi!')
+                        Swal.fire({
+                            position: "top",
+                            icon: "success",
+                            title: "İsim değiştirildi!",
+                            showConfirmButton: false,
+                            timer: 1500,
+                            customClass: {
+                                popup: 'swal2-popup-custom' // Özel bir sınıf ekleyerek z-index değerini kontrol etme
+                            }
+                        });
                         setToken(result.data.accessToken)
                         localStorage.setItem('token', result.data.accessToken)
                         navigate("/")
                     }
                     else {
-                        alert('Hatali islem')
+                        Swal.fire({
+                            position: "top",
+                            icon: "error",
+                            title: "Hatali islem",
+                            showConfirmButton: false,
+                            timer: 1500,
+                            customClass: {
+                                popup: 'swal2-popup-custom' // Özel bir sınıf ekleyerek z-index değerini kontrol etme
+                            }
+                        });
                     }
                 })
-                .catch(err => console.log(err), alert('You cant change your name'));
+                .catch(err => console.log(err),
+                    Swal.fire({
+                        position: "top",
+                        icon: "error",
+                        title: "You cant change your name",
+                        showConfirmButton: false,
+                        timer: 1500,
+                        customClass: {
+                            popup: 'swal2-popup-custom' // Özel bir sınıf ekleyerek z-index değerini kontrol etme
+                        }
+                    }));
         }
+    }
+
+    const [errorMessage, setErrorMessage] = useState('');
+    const handleChangeNewPassword = (event) => {
+        const newPassword = event.target.value
+
+        if (!newPassword.trim()) {
+            setErrorMessage( "Şifre alanı boş bırakılamaz!")
+          } else if (!/^(?=.*[A-Z])(?=.*[a-z])/.test(newPassword)) {
+            setErrorMessage( "Şifre Bir büyük bir küçük harf içermeli")
+          } else if (!/^(?=.*\d)/.test(newPassword)) {
+            setErrorMessage( "Şifre sayi içermeli")
+          } else if (!/^(?=.*[.,;@$!%*?&])/.test(newPassword)) {
+            setErrorMessage( "Şifre özel karaktere içermeli")
+          } else if (!/^.{8,12}$/.test(newPassword)) {
+            setErrorMessage( "Şifre en az 8 en çok 12 karakter içermeli")
+          }else{
+            setErrorMessage("")
+          }
+
     }
 
     const handleEditPassword = (event) => {
@@ -93,21 +152,58 @@ export default function Profile() {
         const confirmPassword = data.get('confirmPassword')
 
         if (!oldPassword || !newPassword || !confirmPassword) {
-            alert("Eksik bilgi!")
+            Swal.fire({
+                position: "top",
+                icon: "error",
+                title: "Eksik bilgi!",
+                showConfirmButton: false,
+                timer: 1500,
+                customClass: {
+                    popup: 'swal2-popup-custom' // Özel bir sınıf ekleyerek z-index değerini kontrol etme
+                }
+            });
             return;
-        } else if (newPassword != confirmPassword) {
-            alert("Yeni şifre eşleşmiyor!")
+        }
+        else if (newPassword != confirmPassword) {
+            Swal.fire({
+                position: "top",
+                icon: "error",
+                title: "Yeni şifre eşleşmiyor!",
+                showConfirmButton: false,
+                timer: 1500,
+                customClass: {
+                    popup: 'swal2-popup-custom' // Özel bir sınıf ekleyerek z-index değerini kontrol etme
+                }
+            });
         }
         else {
             axios.post(`${import.meta.env.VITE_PORT}/user/profile/`, { oldPassword, confirmPassword, user })
                 .then(result => {
                     console.log(result)
                     if (result.data == "Success") {
-                        alert('Sifre değiştirildi!')
+                        Swal.fire({
+                            position: "top",
+                            icon: "success",
+                            title: "Sifre değiştirildi!",
+                            showConfirmButton: false,
+                            timer: 1500,
+                            customClass: {
+                                popup: 'swal2-popup-custom' // Özel bir sınıf ekleyerek z-index değerini kontrol etme
+                            }
+                        });
                         navigate("/")
                     }
                     else if (result.data = "wrongOldPassword") {
-                        alert('Eski sifre hatali')
+                        Swal.fire({
+                            position: "top",
+                            icon: "error",
+                            title: "Eski sifre hatali",
+                            showConfirmButton: false,
+                            timer: 1500,
+                            customClass: {
+                                popup: 'swal2-popup-custom' // Özel bir sınıf ekleyerek z-index değerini kontrol etme
+                            }
+                        });
                     }
                 })
                 .catch(err => console.log(err));
@@ -149,8 +245,9 @@ export default function Profile() {
                             aria-describedby="unstyled-modal-description"
                             open={openEditName}
                             onClose={handleCloseEditName}
+                            style={{zIndex :1}}
                         >
-                            <Box component="form" onSubmit={handleEditName} noValidate sx={{ mt: 1 }}>
+                            <Box component="form" onSubmit={handleEditName} noValidate sx={{ mt: 1 }} >
                                 <div className="centerColumn" >
                                     <div className='modalCard2'>
                                         <h2 className="profileModalHeader2">
@@ -200,8 +297,9 @@ export default function Profile() {
                             aria-describedby="unstyled-modal-description"
                             open={openEditPassword}
                             onClose={handleCloseEditPassword}
+                            style={{zIndex :1}}
                         >
-                            <Box component="form" onSubmit={handleEditPassword} noValidate sx={{ mt: 1 }}>
+                            <Box component="form" onSubmit={handleEditPassword} noValidate sx={{ mt: 1 }} >
                                 <div className="centerColumn">
                                     <div className='modalCard2'>
                                         <h2 className="profileModalHeader2">
@@ -215,7 +313,8 @@ export default function Profile() {
                                             <div className="profileModalLabel2">
                                                 New
                                             </div>
-                                            <TextField id="newPassword" name="newPassword" className='profileInput2' type="password" />
+                                            <TextField id="newPassword" name="newPassword" className='profileInput2' type="password" onChange={handleChangeNewPassword} />
+                                            <div style={{ color: 'red' }}>{errorMessage}</div>
                                             <div className="profileModalLabel2">
                                                 Confirm
                                             </div>
