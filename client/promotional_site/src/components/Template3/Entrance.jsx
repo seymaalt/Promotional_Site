@@ -231,7 +231,7 @@ const Template3Navbar = () => {
     useEffect(() => {
         setEntranceHeadContext3({ EntranceHeadContext3: { enteranceHeadText, designHead } });
         setEntranceDiscContext3({ EntranceDiscContext3: { enteranceDiscText, designEntranceDisc } })
-        setEntranceButtonContext3({ EntranceButtonContext3: { enteranceButtonText, designEntranceButton } })
+        setEntranceButtonContext3( { enteranceButtonText, designEntranceButton } )
         setEntranceImagesContext3({ EntranceImagesContext3: { selectedImage, selectedImage1, selectedImage2 } })
     }, [enteranceHeadText, enteranceButtonText, enteranceDiscText, designEntranceButton, designEntranceDisc, designHead, selectedImage, selectedImage1, selectedImage2])
 
