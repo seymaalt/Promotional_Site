@@ -10,9 +10,6 @@ const DataSchema = mongoose.Schema(
             type: String,
 
         },
-
-
-
         companyNameText: {
             type: String,
         },
@@ -71,11 +68,11 @@ const DataSchema = mongoose.Schema(
             font: { type: String },
             textAlign: { type: String },
         },
-        images: [
-            [{
-                type: String,
-            }],
-        ],
+        images:{ 
+            selectedImage: { type: String },
+            selectedImage1: { type: String },
+            selectedImage2: { type: String },
+        },
 
         serviceHeaderText: {
             type: String,
