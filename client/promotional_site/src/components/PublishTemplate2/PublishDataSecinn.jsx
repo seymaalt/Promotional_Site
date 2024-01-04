@@ -4,6 +4,7 @@ import Innovation from "./PublishInnovation";
 import DataSecurity from "./PublishDataSecurity";
 import './style/template2.css'
 
+
 export default function DataSecInn({ responseData }) {
   return (
     <div className="dataSecInn">

@@ -1,6 +1,5 @@
-import { useContext, useState, useRef, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import PublishContext from '../context/PublishContext';
-import GlobalContext from '../context/GlobalContext';
 import PublishLogoPromotionalSite from '../components/PublishTemplate1/PublishLogoPromotionalSite';
 import PublishHeaderPromotionalSite from '../components/PublishTemplate1/PublishHeaderPromotionalSite';
 import PublishDiscriptionPromotionalSite from '../components/PublishTemplate1/PublishDiscriptionPromotionalSite';
@@ -19,42 +18,44 @@ export default function PublishTemplate1() {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                console.log(publishToken)
                 const result = await axios.post(`${import.meta.env.VITE_PORT}/content/publishTemp1/${publishToken}`);
                 setResponse(result.data);
+
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
-    
+
         fetchData();
-    }, [publishToken, setResponse]);
-    
+    }, [publishToken]);
+
 
 
 
     return (
         <div className='temp1Page'>
-           {response && 
-           <div>
-           <div className='part' style={{ backgroundColor:response.color }}>
-                 <PublishLogoPromotionalSite />
+            {response &&
+                <div>
+                    <div className='part' style={{ backgroundColor: response.color }}>
+                        <PublishLogoPromotionalSite />
 
-                <PublishHeaderPromotionalSite />
-                <div className='disc' >
-                    <PublishDiscriptionPromotionalSite />
-                </div>
-                <div className='downloadButtons'>
-                    <PublishDownloadButtonPromotionalSite />
-                </div>
-            </div>
-            <div className='part'>
-                <PublishGalleryPromotionalSite />
-            </div>
-            <div className='part'>
-                <PublishInnovationsPromotionalSite />
-                <PublishDataSecurityPromotionalSite />
-            </div>
-            </div>} 
+                        <PublishHeaderPromotionalSite />
+                        <div className='disc' >
+                            <PublishDiscriptionPromotionalSite />
+                        </div>
+                        <div className='downloadButtons'>
+                            <PublishDownloadButtonPromotionalSite />
+                        </div>
+                    </div>
+                    <div className='part'>
+                        <PublishGalleryPromotionalSite />
+                    </div>
+                    <div className='part'>
+                        <PublishInnovationsPromotionalSite />
+                        <PublishDataSecurityPromotionalSite />
+                    </div>
+                </div>}
         </div>
 
     );

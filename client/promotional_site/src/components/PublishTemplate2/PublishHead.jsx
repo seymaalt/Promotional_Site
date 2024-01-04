@@ -3,20 +3,22 @@ import Grid from "@mui/material/Grid";
 import { useContext} from "react";
 import TextContext from "../../context/TextContext";
 import './style/template2.css'
-
+import PublishContext from '../../context/PublishContext';
 
 
 
 export default function Head() {
+  const { response } = useContext(PublishContext)
+
   const { discription, setDiscription } = useContext(TextContext);
 
-  const url = responseData.url;
-  var appStoreLink = "#";
-  var googleStoreLink = "#";
+  // const url = responseData.url;
+  // var appStoreLink = "#";
+  // var googleStoreLink = "#";
 
-  url.split("/", 5)[2] == "play.google.com"
-    ? (googleStoreLink = url)
-    : (appStoreLink = url);
+  // url.split("/", 5)[2] == "play.google.com"
+  //   ? (googleStoreLink = url)
+  //   : (appStoreLink = url);
 
 
   return (
@@ -33,13 +35,13 @@ export default function Head() {
                 <div
                   className="headDis "
                   style={{
-                    textAlign: `${designHeadDiscriprion.textAlign}`,
-                    fontSize: `${designHeadDiscriprion.fontSize}px`,
-                    color: `${designHeadDiscriprion.color}`,
-                    fontFamily: designHeadDiscriprion.font,
+                    textAlign: `${response.designDescription.textAlign}`,
+                    fontSize: `${response.designDescription.fontSize}px`,
+                    color: `${response.designDescription.color}`,
+                    fontFamily: response.designDescription.font,
                   }}
                 >
-                  {discription == null ? responseData.description : discription}
+                  {response.description == null ? 'responseData.description' : response.description}
                 </div>
               </div>
           </div>
@@ -52,7 +54,7 @@ export default function Head() {
                   className="grid"
                   style={{ marginBottom: 0 }}
                 >
-                  <a href={appStoreLink}>
+                  <a href='#'>
                     <img
                       src="https://i.ibb.co/T1kqnWp/App-Store-hemen-indir-button-logo-icon-transparan-PNG-gorseli-1.png"
                       alt="Logo"
@@ -65,7 +67,7 @@ export default function Head() {
                   className="grid"
                   style={{ marginBottom: 0 }}
                 >
-                  <a href={googleStoreLink}>
+                  <a href='#'>
                     <img
                       src="https://i.ibb.co/xMJKQ5j/Google-Play-hemen-indir-button-logo-icon-transparan-PNG-gorseli-1.png"
                       alt="Logo"
@@ -83,11 +85,11 @@ export default function Head() {
             <div
               className="logoo"
             >
-              <img className="temp2Logo" src={responseData.logo} alt="Logo" />
+              <img className="temp2Logo" src={response.logo} alt="Logo" />
             </div>
             <div className="temp2ImageDiv">
               <img
-                src={responseData.images[0]}
+                src={response.images[0]}
                 className="temp2Image0"
                 alt="Image"
               />
