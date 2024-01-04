@@ -3,6 +3,7 @@ const puppeteer = require("puppeteer");
 const express = require("express");
 const PublishingDataTemp1 = require("../models/publishingDataTemp1")
 const PublishingDataTemp2 = require("../models/publishingDataTemp2")
+const PublishingDataTemp3 = require("../models/publishingDataTemp3")
 const { Logger, ErrorLogger } = require("../controllers/logger")
 const crypto = require("crypto");
 
@@ -364,7 +365,7 @@ const publishTemp3 = asyncHandler(async (req, res) => {
   let { publishToken } = req.params;
   publishToken = publishToken.trim();
 
-  const data = await PublishingDataTemp2.findOne({ publishToken });
+  const data = await PublishingDataTemp3.findOne({ publishToken });
   if (data) {
 
     res.status(200).send(data);
