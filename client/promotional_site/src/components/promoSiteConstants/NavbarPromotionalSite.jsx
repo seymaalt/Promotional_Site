@@ -126,7 +126,7 @@ const ButtonAppBar = () => {
           html:
             `
         Your link: 
-       <a href="${(`${import.meta.env.VITE_CLIENT_URL}/${tempNo}/` + result.data.publishToken)}" target='_blank'>${(`${import.meta.env.VITE_CLIENT_URL}/${tempNo}/` + result.data.publishToken)}</a>`,
+       <a href="${(`${tempNo}/` + result.data.publishToken)}" target='_blank'>Go to your page.</a>`,
           imageUrl: "https://i.hizliresim.com/o23f2f4.png",
           imageWidth: 130,
           imageAlt: "Custom image"

@@ -3,7 +3,7 @@
 }
 
 ::-webkit-scrollbar {
-    background-color: rgb(22,20,23);
+    background-color: rgb(22, 20, 23);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -132,7 +132,7 @@
     margin-right: 3rem;
 }
 
-.homeBuildDiv{
+.homeBuildDiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -179,15 +179,33 @@
     flex-direction: column;
     align-items: center;
     border-radius: 30px;
-    background-color: #2F2D30;
+    background: #2F2D30;
     height: 40rem;
     margin-bottom: 5%;
 }
 
 .howItWork:hover {
+    background: linear-gradient(45deg, #7140e2ad, #906ad750, #ad92cbd0);
+    background-size: 300% auto;
+    animation: gradient 8s alternate infinite;
+    border: 1px solid rgba(255, 255, 255, 0.432);;
     -webkit-box-shadow: 0px 0px 54px 21px rgba(144, 106, 215, 0.6);
     -moz-box-shadow: 0px 0px 54px 21px rgba(144, 106, 215, 0.6);
     box-shadow: 0px 0px 54px 21px rgba(144, 106, 215, 0.6);
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 75%;
+    }
+
+    50% {
+        background-position: 100% 30%;
+    }
+
+    100% {
+        background-position: 0% 75%;
+    }
 }
 
 .howItWorkImage {
@@ -198,12 +216,14 @@
 }
 
 .howItWorkBusinessText {
+    border-top: 1px solid rgba(255, 255, 255, 0.733);
     text-align: center;
-    color: white;
-    font-size: 24px;
+    color: rgba(255, 255, 255, 0.733);
+    font-size: 1.6rem;
     width: 80%;
-    font-size: x-large;
-    font-weight: 600;
+    border-radius: 0.2rem;
+    margin-top: 10%;
+    padding-top: 6%;
 }
 
 /* Footer */
@@ -462,6 +482,20 @@
 
 @media screen and (max-width: 1200px) {
 
+    .homePageTextDiv{
+        display: flex;
+        justify-content: center;
+    }
+
+    .homePageText{
+        text-align: center;
+    }
+
+    .buildButtonDiv{
+        display: flex;
+        justify-content: center;
+    }
+
     .homeNavbarP2 {
         display: flex;
         flex-grow: 1;
@@ -515,19 +549,22 @@
     }
 
     .howItWork {
+        margin-left: 10%;
+        width: 80%;
         height: 25rem;
         margin-bottom: 5%;
     }
 
     .howItWorkImage {
-        width: 70%;
+        width: 50%;
         object-fit: cover;
         padding: 5%;
         border-radius: 36px;
     }
-    
+
     .howItWorkBusinessText {
         font-size: 1rem;
+        margin-top: 0%;
     }
 
     .loginPageImage {
